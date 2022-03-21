@@ -1,0 +1,23 @@
+{
+    "columns": [
+        {
+            "key": "id",
+            "name": "#",
+            "sortable": true
+        },
+        {
+            "key": "number",
+            "name": "Number"
+        }
+    ],
+    "rows": [
+        {
+            "id": 1,
+            "number": "2020_01"
+        },
+        {
+            "id": 2,
+            "number": "2020_02"
+        }
+    ]
+}

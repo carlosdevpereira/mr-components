@@ -1,0 +1,19 @@
+{
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.organizeImports": false,
+        "source.fixAll.stylelint": true
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": false
+    },
+    "stylelint.enable": true,
+    "stylelint.autoFixOnSave": true,
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "stylelint.config": null,
+    "vue3snippets.enable-compile-vue-file-on-did-save-code": false
+}

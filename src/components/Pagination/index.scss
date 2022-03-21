@@ -1,0 +1,45 @@
+@import '../../assets/scss/_variables.scss';
+
+.mr-pagination {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+
+    .flex {
+        display: flex;
+    }
+
+    .align-items-center {
+        align-items: center;
+    }
+
+    .page-last-item {
+        margin-right: 4px;
+    }
+
+    .total-items-count {
+        margin-left: 4px;
+    }
+
+    i.ri {
+        padding-top: 1px;
+        margin-right: 4px;
+        margin-left: 4px;
+        font-size: 13px;
+    }
+
+    &-pages {
+        display: flex;
+
+        .go-to-previous-page {
+            margin-right: 8px;
+        }
+
+        .go-to-next-page {
+            margin-left: 8px;
+        }
+    }
+}

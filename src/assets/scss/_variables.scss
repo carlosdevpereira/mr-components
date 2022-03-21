@@ -1,0 +1,27 @@
+@use 'sass:color';
+
+// Theme colors
+$primaryColor: #172b4d;
+
+$whiteColor: #fff;
+$sectionBackgroundColor: #f2f2f2;
+$textColor: #19191b;
+$borderColor: #d6d6d6;
+
+$variants: (
+    'default': $primaryColor,
+    'primary': #5e72e4,
+    'secondary': #f4f5f7,
+    'danger': #f5365c,
+    'warning': #fb6340,
+    'success': #2dce89,
+    'info': #11cdef,
+);
+
+// Appearance
+$fontFamily: 'Lato';
+$fontSize: 14px;
+$borderRadius: 6px;
+
+// Breakpoints
+$smallBreakpoint: 640px;
