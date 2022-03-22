@@ -41,7 +41,7 @@
     "prettier": "^2.5.1",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.26.5",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^12.6.0",
     "start-server-and-test": "^1.14.0",
     "storybook-builder-vite": "^0.1.21",
     "stylelint": "^14.5.0",
