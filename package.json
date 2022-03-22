@@ -23,7 +23,7 @@
     "vue": "^3.2.25"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.7",
+    "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.5",
     "@storybook/addon-actions": "^6.5.0-alpha.49",
     "@storybook/addon-essentials": "^6.5.0-alpha.49",
