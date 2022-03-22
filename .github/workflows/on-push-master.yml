@@ -14,7 +14,7 @@ jobs:
               npm ci
               npm run test:unit:coverage
 
-      - name: Upload test coverage
+      - name: Upload test coverage 🧪
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -24,8 +24,9 @@ jobs:
           name: codecov-umbrella
           verbose: true
 
-  build-storybook:
+  build-and-deploy-storybook:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - uses: actions/checkout@v2
       - run: |
