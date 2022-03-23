@@ -26,7 +26,7 @@
     "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.5",
     "@storybook/addon-actions": "^6.5.0-alpha.49",
-    "@storybook/addon-essentials": "^6.5.0-alpha.49",
+    "@storybook/addon-essentials": "^6.5.0-alpha.50",
     "@storybook/addon-links": "^6.5.0-alpha.49",
     "@storybook/vue3": "^6.5.0-alpha.49",
     "@vitejs/plugin-vue": "^2.0.0",
