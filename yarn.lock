@@ -12477,10 +12477,19 @@
     "camelcase" "^5.3.1"
     "vue-inbrowser-compiler-demi" "^4.44.22"
 
-"vue-loader@^16.0.0", "vue-loader@^16.8.3":
+"vue-loader@^16.0.0":
   "integrity" "sha512-7vKN45IxsKxe5GcVCbc2qFU5aWzyiLrYJyUuMz4BQLKctCj/fmCa0w6fGiiQ2cLFetNcek1ppGJQDCup0c1hpA=="
   "resolved" "https://registry.npmjs.org/vue-loader/-/vue-loader-16.8.3.tgz"
   "version" "16.8.3"
+  dependencies:
+    "chalk" "^4.1.0"
+    "hash-sum" "^2.0.0"
+    "loader-utils" "^2.0.0"
+
+"vue-loader@^17.0.0":
+  "integrity" "sha512-OWSXjrzIvbF2LtOUmxT3HYgwwubbfFelN8PAP9R9dwpIkj48TVioHhWWSx7W7fk+iF5cgg3CBJRxwTdtLU4Ecg=="
+  "resolved" "https://registry.npmjs.org/vue-loader/-/vue-loader-17.0.0.tgz"
+  "version" "17.0.0"
   dependencies:
     "chalk" "^4.1.0"
     "hash-sum" "^2.0.0"
