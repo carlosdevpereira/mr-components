@@ -10,23 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Cache node modules 📦
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
+      - uses: actions/setup-node@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          node-version: '14'
+
+      - name: Install dependencies 📦
+        run: npm ci
 
       - name: Execute unit tests 🧪
-        run: |
-              npm ci
-              npm run test:unit:coverage
+        run: npm run test:unit:coverage
 
       - name: Upload test coverage 🧪
         uses: codecov/codecov-action@v2
@@ -43,22 +35,15 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v3
-
-      - name: Cache node modules 📦
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
+      - uses: actions/setup-node@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          node-version: '14'
 
-      - run: |
-              npm ci
-              npm run build
+      - name: Install dependencies 📦
+        run: npm ci
+
+      - name: Build Storybook 📕
+        run: npm run build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
