@@ -9,6 +9,22 @@ import { flushPromises, shallowMount } from '@vue/test-utils'
 import { first } from 'lodash'
 
 describe('Table', () => {
+    describe('Prop defaults', () => {
+        let wrapper
+
+        beforeEach(() => {
+            wrapper = shallowMount(Table)
+        })
+
+        it('sets default value for columns array prop', () => {
+            expect(Array.isArray(wrapper.vm.columns)).toBeTruthy()
+        })
+
+        it('sets default value for rows array prop', () => {
+            expect(Array.isArray(wrapper.vm.rows)).toBeTruthy()
+        })
+    })
+
     describe('Simple table', () => {
         let wrapper
 

@@ -13,5 +13,5 @@ module.exports = {
     },
     setupFilesAfterEnv: ['./tests/unit/setup-tests.js'],
     transformIgnorePatterns: ['/node_modules/', '\\.pnp\\.[^\\/]+$'],
-    coverageReporters: ['text-summary', 'clover'],
+    coverageReporters: ['text-summary', 'clover', 'html'],
 }

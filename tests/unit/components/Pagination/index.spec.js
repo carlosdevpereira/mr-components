@@ -19,8 +19,14 @@ describe('Pagination', () => {
             expect(wrapper.find('.page-first-item').text()).toBe('1')
         })
 
-        it('shows the correct last item of the current page', () => {
+        it('shows the correct last item of the current page', async () => {
+            expect(wrapper.vm.pageLastItem).toBe(10)
             expect(wrapper.find('.page-last-item').text()).toBe('10')
+
+            await wrapper.setProps({ totalCount: 1 })
+
+            expect(wrapper.vm.pageLastItem).toBe(1)
+            expect(wrapper.find('.page-last-item').text()).toBe('1')
         })
 
         it('shows the correct total number of items available', () => {

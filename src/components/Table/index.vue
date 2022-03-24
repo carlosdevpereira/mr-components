@@ -211,6 +211,7 @@ export default {
         sortedRows() {
             if (!this.localSort || !this.sortField) return this.rows
 
+            /* istanbul ignore next */
             return [...this.rows].sort((a, b) => {
                 if (this.sortFieldDirection === 'asc') {
                     if (a[this.sortField] > b[this.sortField]) return 1

@@ -8,8 +8,8 @@
     "build": "vuepress build docs",
     "test": "yarn test:unit --verbose",
     "test:watch": "yarn test --watch",
-    "test:unit": "jest tests/unit --no-cache --detectOpenHandles",
-    "test:unit:coverage": "jest tests/unit --no-cache --detectOpenHandles --coverage",
+    "test:unit": "jest --no-cache --detectOpenHandles",
+    "test:unit:coverage": "jest --no-cache --detectOpenHandles --coverage",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "format": "prettier . --write"
   },
