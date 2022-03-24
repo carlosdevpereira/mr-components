@@ -154,6 +154,12 @@ describe('Table', () => {
                 ).length
                 expect(columnCount).toBe(expectedVisibleColumns)
             })
+
+            it('propagates update:columns event when columns array mutates', () => {
+                wrapper.vm.visibleColumns = wrapper.vm.visibleColumns
+
+                expect(wrapper.emitted('update:columns')).toBeTruthy()
+            })
         })
     })
 
@@ -174,6 +180,7 @@ describe('Table', () => {
         })
 
         it('renders pagination component', () => {
+            expect(wrapper.vm.hasPagination).toBeTruthy()
             expect(wrapper.findComponent(Pagination).exists()).toBeTruthy()
         })
 
@@ -182,6 +189,13 @@ describe('Table', () => {
             await paginationComponent.vm.$emit('update:page', 2)
 
             expect(wrapper.emitted('update:page')).toBeTruthy()
+        })
+
+        it('propagates update:rows-per-page event when pagination limit changes', async () => {
+            // for now just update limit directly, when implementing the limit select this must be replaced:
+            wrapper.vm.limit = 20
+
+            expect(wrapper.emitted('update:rows-per-page')).toBeTruthy()
         })
     })
 
@@ -290,6 +304,83 @@ describe('Table', () => {
                 expect(wrapper.emitted('update:sort-direction')).toBeTruthy()
                 expect(wrapper.emitted('update:sort-direction')[0][0]).toBe('asc')
             })
+        })
+    })
+
+    describe('Row Selection', () => {
+        let wrapper
+
+        beforeEach(async () => {
+            wrapper = shallowMount(Table, {
+                props: {
+                    columns: SimpleTableFixture.columns,
+                    rows: SimpleTableFixture.rows,
+                    selectableRows: true,
+                },
+            })
+
+            await flushPromises()
+        })
+
+        describe('when select-all-rows checkbox is toggled', () => {
+            it('selects all rows when select-all-rows header checkbox is toggled on', () => {
+                wrapper.vm.selectToggleAllRows = true
+
+                expect(wrapper.vm.selectedRows.length).toBe(wrapper.vm.rows.length)
+            })
+
+            it('clears the selection when select-all-rows header checkbox is toggled off', () => {
+                wrapper.vm.selectToggleAllRows = false
+
+                expect(wrapper.vm.selectedRows.length).toBe(0)
+            })
+        })
+
+        describe("when row checkbox's are toggled", () => {
+            it('selects a specific row', () => {
+                wrapper.vm.selectToggleRow(true, wrapper.vm.rows[0])
+
+                expect(wrapper.vm.selectedRows.length).toBe(1)
+            })
+
+            it('clear row selection', () => {
+                wrapper.vm.selectToggleRow(true, wrapper.vm.rows[0])
+
+                expect(wrapper.vm.selectedRows.length).toBe(1)
+
+                wrapper.vm.selectToggleRow(false, wrapper.vm.rows[0])
+
+                expect(wrapper.vm.selectedRows.length).toBe(0)
+            })
+        })
+    })
+
+    describe('Row transitions', () => {
+        let wrapper
+
+        beforeEach(async () => {
+            wrapper = shallowMount(Table, {
+                props: {
+                    columns: SimpleTableFixture.columns,
+                    rows: SimpleTableFixture.rows,
+                },
+            })
+
+            await flushPromises()
+        })
+
+        it('hides rows on before enter', () => {
+            let elMock = {
+                style: {
+                    opacity: 1,
+                    height: 1,
+                },
+            }
+
+            wrapper.vm.onBeforeEnter(elMock)
+
+            expect(elMock.style.opacity).toBe(0)
+            expect(elMock.style.height).toBe(0)
         })
     })
 })

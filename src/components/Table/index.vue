@@ -189,6 +189,7 @@ export default {
 
     emits: [
         'selected-rows-changed',
+        'update:columns',
         'update:page',
         'update:rows-per-page',
         'update:sort-by',
