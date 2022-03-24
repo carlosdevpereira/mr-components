@@ -84,6 +84,8 @@ app.component('Checkbox', Checkbox)
     
 ![Mr. Components Icon](./docs/.vuepress/public/images/logo@1x.png)
 
-<small>This icon has been designed using resources from Flaticon.com</small>
+<sub>
+    <sup>This icon has been designed using resources from Flaticon.com</sup>
+</sub>
 
 </div>
