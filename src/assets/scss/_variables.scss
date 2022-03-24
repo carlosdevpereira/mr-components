@@ -19,8 +19,8 @@ $variants: (
 );
 
 // Appearance
-$fontFamily: 'Lato';
-$fontSize: 14px;
+$fontFamily: 'Lato', 'Trebuchet MS' !default;
+$fontSize: 14px !default;
 $borderRadius: 6px;
 
 // Breakpoints

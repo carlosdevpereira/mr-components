@@ -1,4 +1,4 @@
-name: Tests
+name: On push
 
 on:
   push:
@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
 
       - name: Install dependencies 📦
         run: npm ci
@@ -18,5 +22,5 @@ jobs:
       - name: Execute unit tests 🧪
         run: npm run test:unit
       
-      - name: Build Storybook 📕
+      - name: Build Docs 📕
         run: npm run build

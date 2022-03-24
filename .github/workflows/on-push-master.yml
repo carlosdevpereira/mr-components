@@ -1,4 +1,4 @@
-name: Tests
+name: On push to master
 
 on:
   push:
@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
 
       - name: Install dependencies 📦
         run: npm ci
@@ -27,14 +31,14 @@ jobs:
           name: codecov-umbrella
           verbose: true
 
-      - name: Build Storybook 📕
+      - name: Build Docs 📕
         run: npm run build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: storybook-deployment
-          FOLDER: storybook-static
+          BRANCH: docs-deployment
+          FOLDER: docs/.vuepress/dist
           CLEAN: true
           TARGET_FOLDER: docs

@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import 'remixicon/fonts/remixicon.css'
 import Icon from '../Icon/index.vue'
 
 export const themes = ['solid', 'outlined', 'text', 'text-solid']
