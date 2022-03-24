@@ -14,7 +14,71 @@
 
 ## Installation
 
-@TODO
+The **@mr-components** package can be installed by running:
+
+```bash:no-line-numbers
+npm install --save-dev @mr-components
+```
+
+## How to use
+
+To start using the components, you can either:
+
+### Register the components globally in your `main.js` file:
+
+```js
+import App from './App.vue'
+import { createApp } from 'vue'
+import { RegisterComponents } from '@mr-components'
+// other imports
+
+let app = createApp(App)
+RegisterComponents(app)
+```
+
+### Register only the components you need:
+
+```js
+import App from './App.vue'
+import { createApp } from 'vue'
+import { Button, Checkbox } from '@mr-components'
+// other imports
+
+let app = createApp(App)
+app.component('Button', Button)
+app.component('Checkbox', Checkbox)
+```
+
+### Import the components directly in your Single File Components:
+
+```html
+<template>
+    <div>
+        <button>Click me</button>
+    </div>
+</template>
+
+<script>
+    import { Button } from '@mr-components'
+
+    export default {
+        components: {
+            Button,
+        },
+
+        // ...
+    }
+</script>
+```
+
+## Checkout the available components:
+
+-   [Button](https://mr-components.carlosdevpereira.com/components/button.html#basic-button)
+-   [Checkbox](https://mr-components.carlosdevpereira.com/components/checkbox.html)
+-   [Icon](https://mr-components.carlosdevpereira.com/components/icon.html)
+-   [Pagination](https://mr-components.carlosdevpereira.com/components/pagination.html)
+-   [Table](https://mr-components.carlosdevpereira.com/components/table.html#column-definition)
+-   [Spinner](https://mr-components.carlosdevpereira.com/components/spinner.html)
 
 <div align="center" style="margin-top: 5rem;">
     
