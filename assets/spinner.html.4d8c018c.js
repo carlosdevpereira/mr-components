@@ -1,1 +1,0 @@
-import{o as r,a as n,F as a,e,i as t}from"./app.873fb2d1.js";import{_ as s}from"./plugin-vue_export-helper.21dcd24c.js";const o={},c=e("h1",{id:"spinner",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#spinner","aria-hidden":"true"},"#"),t(" Spinner")],-1),i=e("p",null,"@TODO",-1);function _(d,l){return r(),n(a,null,[c,i],64)}var f=s(o,[["render",_]]);export{f as default};

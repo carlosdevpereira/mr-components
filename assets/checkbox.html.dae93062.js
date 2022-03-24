@@ -1,1 +1,0 @@
-import{o as a,a as c,F as o,e,i as r}from"./app.873fb2d1.js";import{_ as t}from"./plugin-vue_export-helper.21dcd24c.js";const s={},n=e("h1",{id:"checkbox",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#checkbox","aria-hidden":"true"},"#"),r(" Checkbox")],-1),_=e("p",null,"@TODO",-1);function h(d,i){return a(),c(o,null,[n,_],64)}var f=t(s,[["render",h]]);export{f as default};
