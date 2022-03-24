@@ -1,0 +1,1 @@
+const e={key:"v-0746ee80",path:"/components/icon.html",title:"Icon",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1648127299e3,contributors:[{name:"Carlos Pereira",email:"carlos.dev.pereira@gmail.com",commits:1}]},filePathRelative:"components/icon.md"};export{e as data};
