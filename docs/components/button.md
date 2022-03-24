@@ -118,6 +118,8 @@ Every button can define a **theme** and a **variant**. The theme defines the des
   </CodeGroupItem>
 </CodeGroup>
 
+<br />
+
 ## Sizes
 
 The buttons can also define their sizes, through the **size** prop. The available sizes are: **sm**, **md** and **lg** and the buttons will use the **md** size by default.
@@ -141,6 +143,8 @@ The buttons can also define their sizes, through the **size** prop. The availabl
 
   </CodeGroupItem>
 </CodeGroup>
+
+<br />
 
 ## Icons
 
@@ -183,6 +187,8 @@ Buttons can define their icons through the **icon** prop. By default the icon wi
 </CodeGroup>
 
 The icon library used contains more than 2200 icons and will be shipped by default when the Button component is imported. Full list of icons [here](https://remixicon.com/)
+
+<br />
 
 ## States
 

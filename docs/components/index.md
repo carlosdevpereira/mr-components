@@ -2,7 +2,7 @@
 
 1. [Button](./button.md)
 2. [Checkbox](./checkbox.md)
-3. [Table](./table.md)
-4. [Icon](./icon.md)
-5. [Spinner](./spinner.md)
-6. [Pagination](./pagination.md)
+3. [Icon](./icon.md)
+4. [Pagination](./pagination.md)
+5. [Table](./table.md)
+6. [Spinner](./spinner.md)
