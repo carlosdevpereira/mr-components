@@ -1,0 +1,1 @@
+const e={key:"v-ba046b82",path:"/components/pagination.html",title:"Pagination",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"Simple pagination",slug:"simple-pagination",children:[]}],git:{updatedTime:16481682e5,contributors:[{name:"Carlos Pereira",email:"carlos.dev.pereira@gmail.com",commits:1}]},filePathRelative:"components/pagination.md"};export{e as data};
