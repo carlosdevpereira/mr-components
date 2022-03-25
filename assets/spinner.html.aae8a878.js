@@ -1,1 +1,0 @@
-const e={key:"v-09d99da0",path:"/components/spinner.html",title:"Spinner",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1648162754e3,contributors:[{name:"Carlos Pereira",email:"carlos.dev.pereira@gmail.com",commits:1}]},filePathRelative:"components/spinner.md"};export{e as data};
