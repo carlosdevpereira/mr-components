@@ -1,11 +1,7 @@
 ## Description:
 
 
-
-
 ## What are the expected visible changes:
-
-
 
 
 #### TODO:
