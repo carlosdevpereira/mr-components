@@ -5,5 +5,5 @@
 
 
 #### TODO:
-[ ] Implementation <br>
+[ ] Implementation
 [ ] Unit tests
