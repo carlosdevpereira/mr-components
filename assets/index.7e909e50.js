@@ -1,0 +1,1 @@
+import{o as e,a as _}from"./app.2d23967d.js";import{_ as r}from"./plugin-vue_export-helper.21dcd24c.js";const s={},n={class:"mr-spinner"};function c(t,a){return e(),_("span",n)}var p=r(s,[["render",c]]);export{p as default};
