@@ -28,7 +28,7 @@
     "@vuepress/plugin-register-components": "^2.0.0-beta.36",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
-    "eslint": "^8.5.0",
+    "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^8.2.0",
     "jest": "^27.4.5",
