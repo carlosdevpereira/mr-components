@@ -1,18 +1,25 @@
 ---
 name: Feature
-about: Template to use for features
+about: Template to use for a new feature request
 title: 'Feature: '
 labels: feature
 assignees: carlosdevpereira
+---
+
+# Story
+
+As a user I want to/I need to...
+
+# Acceptance Criteria
+
+-   [ ]
+-   [ ]
+-   [ ]
 
 ---
 
-# Description
-
-
-# What are the expected visible changes
-
-----
 ## TODO's:
+
 [ ] Implementation
 [ ] Unit tests
+[ ] Documentation
