@@ -4,185 +4,185 @@
 @import '../../assets/scss/_variables.scss';
 
 $sizes: (
-    'sm': (
-        'font-size': 11px,
-        'padding': 0.5rem 0.8rem,
-    ),
-    'md': (
-        'font-size': 13.5px,
-        'padding': 0.7rem 1rem,
-    ),
-    'lg': (
-        'font-size': 18px,
-        'padding': 0.9rem 1.2rem,
-    ),
+	'sm': (
+		'font-size': 11px,
+		'padding': 0.5rem 0.8rem,
+	),
+	'md': (
+		'font-size': 13.5px,
+		'padding': 0.7rem 1rem,
+	),
+	'lg': (
+		'font-size': 18px,
+		'padding': 0.9rem 1.2rem,
+	),
 );
 
 .mr-button {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: $fontFamily;
-    font-size: $fontSize;
-    font-weight: 600;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: $borderRadius;
-    outline: none;
-    transition: background-color 200ms ease-out;
-    will-change: transform;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	font-weight: 600;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: $borderRadius;
+	outline: none;
+	transition: background-color 200ms ease-out;
+	will-change: transform;
 
-    @each $sizeName, $sizeValues in $sizes {
-        &.size-#{$sizeName} {
-            padding: map.get($sizeValues, 'padding');
-            font-size: map.get($sizeValues, 'font-size');
-        }
-    }
+	@each $sizeName, $sizeValues in $sizes {
+		&.size-#{$sizeName} {
+			padding: map.get($sizeValues, 'padding');
+			font-size: map.get($sizeValues, 'font-size');
+		}
+	}
 
-    &:hover {
-        transform: translateY(-1px);
-    }
+	&:hover {
+		transform: translateY(-1px);
+	}
 
-    &:active {
-        transform: translateY(0);
-    }
+	&:active {
+		transform: translateY(0);
+	}
 
-    &:disabled {
-        cursor: not-allowed;
-        opacity: 0.75;
-    }
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.75;
+	}
 
-    &.solid-theme {
-        color: color.invert(map.get($variants, 'default'), $weight: 100%);
-        background-color: map.get($variants, 'default');
-        border-color: map.get($variants, 'default');
-        box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+	&.solid-theme {
+		color: color.invert(map.get($variants, 'default'), $weight: 100%);
+		background-color: map.get($variants, 'default');
+		border-color: map.get($variants, 'default');
+		box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
 
-        @each $variantName, $variantColor in $variants {
-            &.variant-#{$variantName} {
-                @if color.lightness($variantColor) < 80 {
-                    color: $whiteColor;
-                }
+		@each $variantName, $variantColor in $variants {
+			&.variant-#{$variantName} {
+				@if color.lightness($variantColor) < 80 {
+					color: $whiteColor;
+				}
 
-                @else {
-                    color: $textColor;
-                }
+				@else {
+					color: $textColor;
+				}
 
-                background-color: $variantColor;
-                border-color: $variantColor;
+				background-color: $variantColor;
+				border-color: $variantColor;
 
-                &:active {
-                    background-color: darken($variantColor, 7%);
-                }
-            }
-        }
-    }
+				&:active {
+					background-color: darken($variantColor, 7%);
+				}
+			}
+		}
+	}
 
-    &.outlined-theme {
-        color: map.get($variants, 'default');
-        background-color: transparent;
-        border-color: map.get($variants, 'default');
+	&.outlined-theme {
+		color: map.get($variants, 'default');
+		background-color: transparent;
+		border-color: map.get($variants, 'default');
 
-        &:not(:disabled):hover {
-            color: color.invert(map.get($variants, 'default'), $weight: 100%);
-            background-color: map.get($variants, 'default');
-            box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
-        }
+		&:not(:disabled):hover {
+			color: color.invert(map.get($variants, 'default'), $weight: 100%);
+			background-color: map.get($variants, 'default');
+			box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+		}
 
-        @each $variantName, $variantColor in $variants {
-            &.variant-#{$variantName} {
-                border-color: $variantColor;
+		@each $variantName, $variantColor in $variants {
+			&.variant-#{$variantName} {
+				border-color: $variantColor;
 
-                @if color.lightness($variantColor) < 80 {
-                    color: $variantColor;
-                }
+				@if color.lightness($variantColor) < 80 {
+					color: $variantColor;
+				}
 
-                @else {
-                    color: $textColor;
-                }
+				@else {
+					color: $textColor;
+				}
 
-                &:not(:disabled):hover {
-                    @if color.lightness($variantColor) < 80 {
-                        color: $whiteColor;
-                    }
+				&:not(:disabled):hover {
+					@if color.lightness($variantColor) < 80 {
+						color: $whiteColor;
+					}
 
-                    @else {
-                        color: $textColor;
-                    }
+					@else {
+						color: $textColor;
+					}
 
-                    background-color: $variantColor;
-                    box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
-                }
+					background-color: $variantColor;
+					box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+				}
 
-                &:active {
-                    background-color: darken($variantColor, 7%);
-                }
-            }
-        }
-    }
+				&:active {
+					background-color: darken($variantColor, 7%);
+				}
+			}
+		}
+	}
 
-    &.text-theme {
-        color: map.get($variants, 'default');
-        background-color: transparent;
+	&.text-theme {
+		color: map.get($variants, 'default');
+		background-color: transparent;
 
-        @each $variantName, $variantColor in $variants {
-            &.variant-#{$variantName} {
-                @if color.lightness($variantColor) < 80 {
-                    color: $variantColor;
-                }
+		@each $variantName, $variantColor in $variants {
+			&.variant-#{$variantName} {
+				@if color.lightness($variantColor) < 80 {
+					color: $variantColor;
+				}
 
-                @else {
-                    color: $textColor;
-                }
+				@else {
+					color: $textColor;
+				}
 
-                &:not(:disabled):hover {
-                    background-color: fade-out($variantColor, 0.9);
-                }
+				&:not(:disabled):hover {
+					background-color: fade-out($variantColor, 0.9);
+				}
 
-                &:active {
-                    background-color: fade-out($variantColor, 0.8);
-                }
-            }
-        }
-    }
+				&:active {
+					background-color: fade-out($variantColor, 0.8);
+				}
+			}
+		}
+	}
 
-    &.text-solid-theme {
-        color: map.get($variants, 'default');
-        background-color: transparent;
+	&.text-solid-theme {
+		color: map.get($variants, 'default');
+		background-color: transparent;
 
-        @each $variantName, $variantColor in $variants {
-            &.variant-#{$variantName} {
-                background-color: fade-out($variantColor, 0.9);
+		@each $variantName, $variantColor in $variants {
+			&.variant-#{$variantName} {
+				background-color: fade-out($variantColor, 0.9);
 
-                @if color.lightness($variantColor) < 80 {
-                    color: $variantColor;
-                }
+				@if color.lightness($variantColor) < 80 {
+					color: $variantColor;
+				}
 
-                @else {
-                    color: $textColor;
-                }
+				@else {
+					color: $textColor;
+				}
 
-                &:active {
-                    background-color: fade-out($variantColor, 0.8);
-                }
-            }
-        }
-    }
+				&:active {
+					background-color: fade-out($variantColor, 0.8);
+				}
+			}
+		}
+	}
 
-    .mr-icon {
-        &.icon-position-start:not(.only-icon) {
-            margin-right: 8px;
-        }
+	.mr-icon {
+		&.icon-position-start:not(.only-icon) {
+			margin-right: 8px;
+		}
 
-        &.icon-position-end:not(.only-icon) {
-            margin-left: 8px;
-        }
-    }
+		&.icon-position-end:not(.only-icon) {
+			margin-left: 8px;
+		}
+	}
 
-    img {
-        width: 24px;
-        height: 24px;
-        zoom: 0.7;
-    }
+	img {
+		width: 24px;
+		height: 24px;
+		zoom: 0.7;
+	}
 }

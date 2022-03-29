@@ -1,21 +1,25 @@
 <template>
-    <button class="mr-button" :class="classes" :disabled="disabled">
-        <Icon
-            v-if="iconPosition === 'start' && icon !== ''"
-            :name="icon"
-            class="icon-position-start"
-            :class="{ 'only-icon': !$slots['default'] }"
-        />
+	<button
+		class="mr-button"
+		:class="classes"
+		:disabled="disabled"
+	>
+		<Icon
+			v-if="iconPosition === 'start' && icon !== ''"
+			:name="icon"
+			class="icon-position-start"
+			:class="{ 'only-icon': !$slots['default'] }"
+		/>
 
-        <slot></slot>
+		<slot />
 
-        <Icon
-            v-if="iconPosition === 'end' && icon !== ''"
-            :name="icon"
-            class="icon-position-end"
-            :class="{ 'only-icon': !$slots['default'] }"
-        />
-    </button>
+		<Icon
+			v-if="iconPosition === 'end' && icon !== ''"
+			:name="icon"
+			class="icon-position-end"
+			:class="{ 'only-icon': !$slots['default'] }"
+		/>
+	</button>
 </template>
 
 <script>
@@ -28,49 +32,49 @@ export const sizes = ['sm', 'md', 'lg']
 export const iconPositions = ['start', 'end']
 
 export default {
-    props: {
-        theme: {
-            type: String,
-            default: themes[0],
-            validator: (v) => themes.includes(v),
-        },
+	components: { Icon },
 
-        variant: {
-            type: String,
-            default: variants[0],
-            validator: (v) => variants.includes(v),
-        },
+	props: {
+		theme: {
+			type: String,
+			default: themes[0],
+			validator: v => themes.includes(v),
+		},
 
-        size: {
-            type: String,
-            default: 'md',
-            validator: (v) => sizes.includes(v),
-        },
+		variant: {
+			type: String,
+			default: variants[0],
+			validator: v => variants.includes(v),
+		},
 
-        icon: {
-            type: String,
-            default: '',
-        },
+		size: {
+			type: String,
+			default: 'md',
+			validator: v => sizes.includes(v),
+		},
 
-        iconPosition: {
-            type: String,
-            default: iconPositions[0],
-            validator: (v) => iconPositions.includes(v),
-        },
+		icon: {
+			type: String,
+			default: '',
+		},
 
-        disabled: {
-            type: Boolean,
-            default: false,
-        },
-    },
+		iconPosition: {
+			type: String,
+			default: iconPositions[0],
+			validator: v => iconPositions.includes(v),
+		},
 
-    computed: {
-        classes() {
-            return `${this.theme}-theme variant-${this.variant} size-${this.size}`
-        },
-    },
+		disabled: {
+			type: Boolean,
+			default: false,
+		},
+	},
 
-    components: { Icon },
+	computed: {
+		classes() {
+			return `${this.theme}-theme variant-${this.variant} size-${this.size}`
+		},
+	},
 }
 </script>
 

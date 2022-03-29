@@ -1,5 +1,5 @@
 <template>
-    <span class="mr-spinner" />
+	<span class="mr-spinner" />
 </template>
 
 <style lang="scss" src="./index.scss" />
