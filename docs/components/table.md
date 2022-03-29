@@ -8,19 +8,28 @@ The table component is an extension to the default HTML table, featuring: column
 
 ### Props
 
-| Name             | Type       | Default | Description                                                                                                                                                 |
-| ---------------- | ---------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| loading          | `Boolean`  | `false` | Defines if the table should be in loading state or not, showing a spinner when this prop is set to true.                                                    |
-| selectable-rows  | `Boolean`  | `false` | Defines if the table can allow rows to be selected or not, showing checkboxes on each row when this prop is set to true.                                    |
-| columns          | `[]Object` | `[]`    | Array containing the columns that the table component should render.                                                                                        |
-| rows             | `[]Object` | `[]`    | Array containing the rows that the table component should render.                                                                                           |
-| local-pagination | `Boolean`  | `false` | Defines if the table should paginate the rows internally or not. <br> Pages will be calculated based on the `page`, `rows-per-page` and `total-rows` props. |
-| page             | `Number`   | `0`     | Defines the current page for the table pagination.                                                                                                          |
-| rows-per-page    | `Number`   | `10`    | Defines the maximum number of rows to show by page.                                                                                                         |
-| total-rows       | `Number`   | `0`     | Defines the total number of rows available to paginate through.                                                                                             |
-| local-sort       | `Boolean`  | `false` | Defines if the table should sort the rows internally or not. <br> The sorting will be based on the `sort-by` and `sort-direction` props.                    |
-| sort-by          | `String`   | `''`    | Defines the field that is actively being used to sort the table.                                                                                            |
-| sort-direction   | `String`   | `'asc'` | Defines the direction of the sorting applied to the table when sorting by a specific field.                                                                 |
+| Name                | Type      | Default | Description                                                                                                                                                 |
+| ------------------- | --------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| loading             | `Boolean` | `false` | Defines if the table should be in loading state or not, showing a spinner when this prop is set to true.                                                    |
+| selectable-rows     | `Boolean` | `false` | Defines if the table can allow rows to be selected or not, showing checkboxes on each row when this prop is set to true.                                    |
+| [columns](#columns) | `Array`   | `[]`    | Array containing the columns that the table component should render.                                                                                        |
+| rows                | `Array`   | `[]`    | Array containing the rows that the table component should render.                                                                                           |
+| local-pagination    | `Boolean` | `false` | Defines if the table should paginate the rows internally or not. <br> Pages will be calculated based on the `page`, `rows-per-page` and `total-rows` props. |
+| page                | `Number`  | `0`     | Defines the current page for the table pagination.                                                                                                          |
+| rows-per-page       | `Number`  | `10`    | Defines the maximum number of rows to show by page.                                                                                                         |
+| total-rows          | `Number`  | `0`     | Defines the total number of rows available to paginate through.                                                                                             |
+| local-sort          | `Boolean` | `false` | Defines if the table should sort the rows internally or not. <br> The sorting will be based on the `sort-by` and `sort-direction` props.                    |
+| sort-by             | `String`  | `''`    | Defines the field that is actively being used to sort the table.                                                                                            |
+| sort-direction      | `String`  | `'asc'` | Defines the direction of the sorting applied to the table when sorting by a specific field.                                                                 |
+
+#### Columns
+
+| Property | Type      | Description                                                                  |
+| -------- | --------- | ---------------------------------------------------------------------------- |
+| key      | `String`  | Key identifier of the column, used to search for the value in the row object |
+| name     | `String`  | Name of the column to show in the table header                               |
+| hidden   | `Boolean` | Defines if the column should be hidden or not                                |
+| sortable | `Boolean` | Defines if the column allows sorting                                         |
 
 ### Events
 
