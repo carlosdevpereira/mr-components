@@ -1,15 +1,18 @@
 <template>
-    <label class="mr-checkbox-container" :class="labelClasses">
-        <input
-            type="checkbox"
-            class="mr-checkbox"
-            :class="classes"
-            :disabled="disabled"
-            v-model="currentValue"
-        />
+	<label
+		class="mr-checkbox-container"
+		:class="labelClasses"
+	>
+		<input
+			v-model="currentValue"
+			type="checkbox"
+			class="mr-checkbox"
+			:class="classes"
+			:disabled="disabled"
+		>
 
-        {{ label }}
-    </label>
+		{{ label }}
+	</label>
 </template>
 
 <script>
@@ -18,62 +21,62 @@ export const variants = ['default', 'primary', 'secondary', 'danger', 'warning',
 export const sizes = ['sm', 'md', 'lg']
 
 export default {
-    props: {
-        theme: {
-            type: String,
-            default: themes[0],
-            validator: (v) => themes.includes(v),
-        },
+	props: {
+		theme: {
+			type: String,
+			default: themes[0],
+			validator: v => themes.includes(v),
+		},
 
-        variant: {
-            type: String,
-            default: variants[0],
-            validator: (v) => variants.includes(v),
-        },
+		variant: {
+			type: String,
+			default: variants[0],
+			validator: v => variants.includes(v),
+		},
 
-        size: {
-            type: String,
-            default: 'md',
-            validator: (v) => sizes.includes(v),
-        },
+		size: {
+			type: String,
+			default: 'md',
+			validator: v => sizes.includes(v),
+		},
 
-        disabled: {
-            type: Boolean,
-            default: false,
-        },
+		disabled: {
+			type: Boolean,
+			default: false,
+		},
 
-        label: {
-            type: String,
-            default: '',
-        },
+		label: {
+			type: String,
+			default: '',
+		},
 
-        modelValue: {
-            type: Boolean,
-            default: false,
-        },
-    },
+		modelValue: {
+			type: Boolean,
+			default: false,
+		},
+	},
 
-    emit: ['update:modelValue'],
+	emits: ['update:model-value'],
 
-    computed: {
-        currentValue: {
-            get() {
-                return this.modelValue
-            },
+	computed: {
+		currentValue: {
+			get() {
+				return this.modelValue
+			},
 
-            set(value) {
-                return this.$emit('update:modelValue', value)
-            },
-        },
+			set(value) {
+				return this.$emit('update:model-value', value)
+			},
+		},
 
-        classes() {
-            return `${this.theme}-theme variant-${this.variant}`
-        },
+		classes() {
+			return `${this.theme}-theme variant-${this.variant}`
+		},
 
-        labelClasses() {
-            return `size-${this.size} ${this.disabled ? 'disabled' : ''}`
-        },
-    },
+		labelClasses() {
+			return `size-${this.size} ${this.disabled ? 'disabled' : ''}`
+		},
+	},
 }
 </script>
 
