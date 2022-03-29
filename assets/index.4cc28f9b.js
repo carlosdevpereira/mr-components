@@ -1,1 +1,0 @@
-import{o as e,a,n}from"./app.430f2dcb.js";import{_ as o}from"./plugin-vue_export-helper.21dcd24c.js";const t={props:{name:{type:String,required:!0}}};function s(c,i,r,m,p,l){return e(),a("i",{class:n(["mr-icon ri",`ri-${r.name}`])},null,2)}var u=o(t,[["render",s]]);export{u as default};
