@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"core-js": "^3.6.5",
-		"gsap": "^3.9.1",
+		"gsap": "^3.10.1",
 		"lodash": "^4.17.21",
 		"remixicon": "^2.5.0",
 		"vue": "^3.2.25"
