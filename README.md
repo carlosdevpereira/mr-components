@@ -8,6 +8,8 @@
 ![Coverage](https://img.shields.io/codecov/c/github/carlosdevpereira/mr-components?label=Coverage&token=UD340F6YOJ)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen)](https://opensource.org/licenses/MIT)
 
+[![Deploy](https://api.netlify.com/api/v1/badges/a8db4607-cb44-46a5-b7a5-2b5c925b2fbd/deploy-status)](https://mr-components.carlosdevpereira.com)
+
 <a href="https://mr-components.carlosdevpereira.com" target="_blank">Docs</a>
 
 </div>
