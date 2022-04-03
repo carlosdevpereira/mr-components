@@ -34,8 +34,14 @@ describe('Select', () => {
 			expect(wrapper.text()).toContain('Please select an option')
 		})
 
-		it('shows the select value when an option is selected', async () => {
+		it('shows the select value name when an option object is selected', async () => {
 			await wrapper.setProps({ value: { key: 1, name: 'Option 1' } })
+
+			expect(wrapper.text()).toContain('Option 1')
+		})
+
+		it('shows the exact value when not an object', async () => {
+			await wrapper.setProps({ value: 'Option 1' })
 
 			expect(wrapper.text()).toContain('Option 1')
 		})
