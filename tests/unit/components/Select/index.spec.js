@@ -5,6 +5,42 @@ import { shallowMount } from '@vue/test-utils'
 describe('Select', () => {
 	let wrapper
 
+	describe('Events', () => {
+		beforeEach(() => {
+			wrapper = shallowMount(Select, {
+				props: {
+					options: [{ key: 1, name: 'Option 1' }],
+				},
+			})
+		})
+
+		it('propagates update:value event when select value changes', () => {
+			wrapper.vm.currentValue = true
+
+			expect(wrapper.emitted('update:value')).toBeTruthy()
+		})
+	})
+
+	describe('Label', () => {
+		beforeEach(() => {
+			wrapper = shallowMount(Select, {
+				props: {
+					options: [{ key: 1, name: 'Option 1' }],
+				},
+			})
+		})
+
+		it('shows value of `label` prop when no value is selected', () => {
+			expect(wrapper.text()).toContain('Please select an option')
+		})
+
+		it('shows the select value when an option is selected', async () => {
+			await wrapper.setProps({ value: { key: 1, name: 'Option 1' } })
+
+			expect(wrapper.text()).toContain('Option 1')
+		})
+	})
+
 	describe('Classes', () => {
 		beforeEach(() => {
 			wrapper = shallowMount(Select, {
