@@ -10,7 +10,7 @@
 		"test:watch": "yarn test --watch",
 		"test:unit": "jest --no-cache --detectOpenHandles",
 		"test:unit:coverage": "rm -rf ./coverage && jest --no-cache --detectOpenHandles --coverage",
-		"lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+		"lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src docs/.vuepress/components",
 		"format": "prettier . --write"
 	},
 	"dependencies": {

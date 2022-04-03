@@ -16,7 +16,7 @@
 				/>
 
 				<transition
-					name="fade"
+					name="pop-in-fade"
 					appear
 				>
 					<div
@@ -67,6 +67,7 @@
 
 			<transition-group
 				v-if="!loading"
+				name="pop-out"
 				appear
 				tag="tbody"
 				:css="false"
