@@ -20,7 +20,17 @@ jobs:
         run: npm ci
 
       - name: Execute unit tests 🧪
-        run: npm run test:unit
+        run: npm run test:unit:coverage
+
+      - name: Upload test coverage 🧪
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          files: ./coverage/clover.xml,./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          verbose: true
       
       - name: Build Docs 📕
         run: npm run build
