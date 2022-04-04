@@ -23,6 +23,7 @@ jobs:
         run: npm run test:unit:coverage
 
       - name: Upload test coverage 🧪
+        if: ${{ github.actor != 'dependabot[bot]' }}
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
