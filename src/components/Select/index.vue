@@ -26,7 +26,7 @@
 					:class="{selected: currentValue === option}"
 					@click="currentValue = option"
 				>
-					{{ option[optionName] }}
+					{{ option[optionName] ? option[optionName] : option }}
 				</li>
 			</ul>
 		</transition>
@@ -80,11 +80,6 @@ export default {
 		options: {
 			type: Array,
 			default: () => []
-		},
-
-		optionKey: {
-			type: String,
-			default: "key"
 		},
 
 		optionName: {

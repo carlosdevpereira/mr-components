@@ -8,7 +8,7 @@
 $sizes: (
 	'sm': (
 		'font-size': 11px,
-		'line-height': 18px,
+		'line-height': 12px,
 		'padding': 0.5rem 0.8rem,
 	),
 	'md': (
@@ -55,6 +55,7 @@ $sizes: (
 
 			.mr-icon {
 				padding-top: 2px;
+				padding-left: map.get($sizeValues, 'font-size') - 5px;
 				font-size: map.get($sizeValues, 'font-size') + 4px;
 			}
 		}

@@ -44,6 +44,10 @@ export default {
         page(currentPage) {
             this.fetchRows(currentPage, this.rowsPerPage)
         },
+
+        rowsPerPage(limit) {
+            this.fetchRows(this.page, limit)
+        },
     },
 
     mounted() {

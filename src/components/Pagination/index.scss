@@ -34,7 +34,8 @@
 	&-pages {
 		display: flex;
 
-		.go-to-previous-page {
+		.go-to-previous-page,
+		.mr-select-container {
 			margin-right: 8px;
 		}
 
