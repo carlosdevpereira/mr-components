@@ -72,7 +72,7 @@ export default {
 			default: 'Please select an option'
 		},
 
-		value: {
+		modelValue: {
 			type: [Object, Number, String],
 			default: null
 		},
@@ -93,7 +93,7 @@ export default {
 		}
 	},
 
-	emits: ["update:visible", "update:value"],
+	emits: ["update:model-value"],
 
 	data() {
 		return {
@@ -104,19 +104,19 @@ export default {
 	computed: {
 		currentValue: {
 			get() {
-				return this.value;
+				return this.modelValue;
 			},
 
 			set(value) {
-				this.$emit("update:value", value);
+				this.$emit("update:model-value", value);
 			}
 		},
 
 		valueOrLabel() {
-			if (this.value) {
-				if (this.value[this.optionName]) return this.value[this.optionName]
+			if (this.modelValue) {
+				if (this.modelValue[this.optionName]) return this.modelValue[this.optionName]
 
-				return this.value
+				return this.modelValue
 			}
 
 			return this.label

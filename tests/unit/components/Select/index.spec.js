@@ -1,23 +1,52 @@
 import Select from '@/components/Select'
-import Icon from '@/components/Icon'
 import { shallowMount } from '@vue/test-utils'
 
 describe('Select', () => {
 	let wrapper
 
-	describe('Events', () => {
-		beforeEach(() => {
+	describe('Options', () => {
+		beforeAll(() => {
 			wrapper = shallowMount(Select, {
 				props: {
-					options: [{ key: 1, name: 'Option 1' }],
+					options: [
+						{ key: 1, name: 'Option 1' },
+						{ key: 2, name: 'Option 2' },
+					],
 				},
 			})
 		})
 
-		it('propagates update:value event when select value changes', () => {
-			wrapper.vm.currentValue = true
+		it('shows select options list when select is clicked', async () => {
+			await wrapper.find('.mr-select-container').trigger('click')
 
-			expect(wrapper.emitted('update:value')).toBeTruthy()
+			const optionList = wrapper.find('.mr-select')
+			expect(optionList.exists()).toBeTruthy()
+		})
+
+		it('shows correct number of options', () => {
+			const options = wrapper.findAll('.mr-select .mr-select-option')
+			expect(options.length).toBe(2)
+		})
+
+		it('shows the right options text', () => {
+			const options = wrapper.findAll('.mr-select .mr-select-option')
+
+			expect(options[0].text()).toBe('Option 1')
+			expect(options[1].text()).toBe('Option 2')
+		})
+
+		it('updates the value when an option is selected', async () => {
+			const options = wrapper.findAll('.mr-select .mr-select-option')
+			await options[0].trigger('click')
+
+			expect(wrapper.emitted('update:model-value')).toBeTruthy()
+			expect(wrapper.emitted('update:model-value')[0][0].key).toBe(1)
+			expect(wrapper.emitted('update:model-value')[0][0].name).toBe('Option 1')
+		})
+
+		it('hides select options list after an option is selected', async () => {
+			const optionList = wrapper.find('.mr-select')
+			expect(optionList.exists()).toBeFalsy()
 		})
 	})
 
@@ -44,6 +73,55 @@ describe('Select', () => {
 			await wrapper.setProps({ value: 'Option 1' })
 
 			expect(wrapper.text()).toContain('Option 1')
+		})
+	})
+
+	describe('States', () => {
+		describe('Disabled', () => {
+			beforeEach(() => {
+				wrapper = shallowMount(Select, {
+					props: {
+						disabled: false,
+						options: [{ key: 1, name: 'Option 1' }],
+					},
+				})
+			})
+
+			it('select is not disabled when `disabled` prop is false', () => {
+				expect(wrapper.find(".mr-select-container[disabled='true']").exists()).toBeFalsy()
+			})
+
+			it('sets the select as disabled when `disabled` prop is true', async () => {
+				expect(wrapper.find('label[disabled="true"]').exists()).toBeFalsy()
+
+				await wrapper.setProps({ disabled: true })
+
+				expect(wrapper.find("label[disabled='true']").exists()).toBeTruthy()
+			})
+
+			it('sets the select as disabled when no options are provided', async () => {
+				expect(wrapper.find('label[disabled="true"]').exists()).toBeFalsy()
+
+				await wrapper.setProps({ options: [] })
+
+				expect(wrapper.find("label[disabled='true']").exists()).toBeTruthy()
+			})
+		})
+	})
+
+	describe('Events', () => {
+		beforeEach(() => {
+			wrapper = shallowMount(Select, {
+				props: {
+					options: [{ key: 1, name: 'Option 1' }],
+				},
+			})
+		})
+
+		it('propagates update:model-value event when select value changes', () => {
+			wrapper.vm.currentValue = true
+
+			expect(wrapper.emitted('update:model-value')).toBeTruthy()
 		})
 	})
 
@@ -82,39 +160,6 @@ describe('Select', () => {
 			await wrapper.setData({ visible: true })
 
 			expect(wrapper.find('.mr-select-container.state-opened').exists()).toBeTruthy()
-		})
-	})
-
-	describe('States', () => {
-		describe('Disabled', () => {
-			beforeEach(() => {
-				wrapper = shallowMount(Select, {
-					props: {
-						disabled: false,
-						options: [{ key: 1, name: 'Option 1' }],
-					},
-				})
-			})
-
-			it('select is not disabled when `disabled` prop is false', () => {
-				expect(wrapper.find(".mr-select-container[disabled='true']").exists()).toBeFalsy()
-			})
-
-			it('sets the select as disabled when `disabled` prop is true', async () => {
-				expect(wrapper.find('label[disabled="true"]').exists()).toBeFalsy()
-
-				await wrapper.setProps({ disabled: true })
-
-				expect(wrapper.find("label[disabled='true']").exists()).toBeTruthy()
-			})
-
-			it('sets the select as disabled when no options are provided', async () => {
-				expect(wrapper.find('label[disabled="true"]').exists()).toBeFalsy()
-
-				await wrapper.setProps({ options: [] })
-
-				expect(wrapper.find("label[disabled='true']").exists()).toBeTruthy()
-			})
 		})
 	})
 })

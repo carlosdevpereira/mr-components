@@ -40,7 +40,6 @@ $sizes: (
 	border: 1px solid transparent;
 	border-radius: $borderRadius;
 	outline: none;
-	box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
 	transition: background-color 200ms ease-out;
 	will-change: transform;
 
@@ -71,7 +70,7 @@ $sizes: (
 		width: 100%;
 		min-width: 150px;
 		max-height: 170px;
-		padding: 0.8rem 0;
+		padding: 4px 0 0;
 		overflow-y: auto;
 		cursor: default;
 		background-color: $sectionBackgroundColor;

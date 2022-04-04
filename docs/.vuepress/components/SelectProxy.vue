@@ -1,6 +1,6 @@
 <template>
     <Select 
-        v-model:value="value"
+        v-model="value"
         :theme="theme"
         :variant="variant"
         :options="options"
