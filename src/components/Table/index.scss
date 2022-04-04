@@ -146,7 +146,7 @@
 			flex: 1;
 			padding: 0.8rem 0 0.8rem 1.5rem;
 			line-height: 25px;
-			border: none;
+			border: 0 solid fade-out(darken($sectionBackgroundColor, 5%), 0.1);
 
 			&.row-selection-cell {
 				max-width: 30px;
@@ -154,28 +154,48 @@
 		}
 	}
 
-	@media screen and (max-width: $smallBreakpoint) {
+	@media screen and (max-width: $mediumBreakpoint) {
 		border: 0;
 
 		thead {
 			display: none;
 		}
 
-		tbody tr {
+		&:not(.is-loading) tbody tr {
 			flex-direction: column;
-			margin: 1em;
+			margin: 0;
+			margin-bottom: 1rem;
+			background-color: $sectionBackgroundColor;
 			border: none;
+			border-radius: $borderRadius;
+
+			&:hover {
+				background-color: $sectionBackgroundColor;
+			}
+
+			&.active {
+				background-color: darken($sectionBackgroundColor, 5%);
+			}
 
 			td {
 				flex-direction: column;
+				padding: 0.5rem 1rem;
+
+				&:not(:last-child) {
+					border-bottom-width: 1px;
+				}
 
 				&::before {
 					display: flex;
 					align-items: center;
 					padding: 0.5em;
-					margin: -0.5em -0.5em 0.75em;
-					content: attr(data-label);
-					background: $sectionBackgroundColor;
+					margin: -0.5em -0.5em 0;
+					font-size: 11px;
+					font-weight: bold;
+					color: $textColor;
+					text-transform: uppercase;
+					letter-spacing: 0.35px;
+					content: attr(data-label) ':';
 				}
 			}
 		}

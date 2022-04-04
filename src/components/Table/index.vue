@@ -45,7 +45,10 @@
 						v-if="selectableRows"
 						class="row-selection-cell"
 					>
-						<Checkbox v-model="selectToggleAllRows" />
+						<Checkbox
+							v-model="selectToggleAllRows"
+							variant="success"
+						/>
 					</th>
 
 					<th
@@ -85,6 +88,7 @@
 						data-label="Selected"
 					>
 						<Checkbox
+							variant="success"
 							:model-value="isSelected(row)"
 							@update:model-value="v => selectToggleRow(v, row)"
 						/>
