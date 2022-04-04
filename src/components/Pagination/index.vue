@@ -14,6 +14,14 @@
 		</div>
 
 		<div class="mr-pagination-pages flex align-items-center">
+			<Select
+				size="sm"
+				class="row-limit-per-page"
+				:model-value="limit"
+				:options="limitOptions"
+				@update:model-value="updateLimit"
+			/>
+
 			<Button
 				size="sm"
 				theme="text-solid"
@@ -48,12 +56,14 @@
 
 <script>
 import Button from '../Button/index.vue'
+import Select from '../Select/index.vue'
 import Icon from '../Icon/index.vue'
 
 export default {
 	components: {
 		Icon,
 		Button,
+		Select
 	},
 
 	props: {
@@ -89,6 +99,10 @@ export default {
 		totalPages() {
 			return Math.ceil(this.totalCount / this.limit)
 		},
+
+		limitOptions() {
+			return [10, 25, 50, 100]
+		}
 	},
 
 	methods: {
@@ -99,6 +113,10 @@ export default {
 		goToPreviousPage() {
 			this.$emit('update:page', this.page - 1)
 		},
+
+		updateLimit(limit) {
+			this.$emit('update:limit', limit)
+		}
 	},
 }
 </script>

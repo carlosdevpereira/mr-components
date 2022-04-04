@@ -126,7 +126,7 @@
 			<Pagination
 				v-if="hasPagination"
 				v-model:page="currentPage"
-				:limit="limit"
+				v-model:limit="limit"
 				:total-count="totalRows"
 			/>
 

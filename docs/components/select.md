@@ -17,7 +17,6 @@ The select component is a lightweight extension of the standard select element, 
 | label       | `String`                 | `'Please select an option'` | Defines the text to display on the select component. Defaults to static text when no option is selected, otherwise uses the option name as the label.            |
 | value       | `Object\|Number\|String` | `null`                      | Defines the value of the select component.                                                                                                                       |
 | options     | `Array`                  | `[]`                        | Defines the options to display when select is opened.                                                                                                            |
-| option-key  | `String`                 | `'key'`                     | Defines the key identifier of the option.                                                                                                                        |
 | option-name | `String`                 | `'name'`                    | Defines the name of the option that will be displayed as the option text and displayed as the value of the select when the option is selected.                   |
 
 ### Events

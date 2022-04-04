@@ -82,5 +82,28 @@ describe('Pagination', () => {
 			expect(wrapper.emitted()['update:page']).toBeTruthy()
 			expect(wrapper.emitted()['update:page'][0]).toEqual([2])
 		})
+
+		it('shows the rows per page select limiter', () => {
+			const rowsPerPageSelect = wrapper.findComponent('.row-limit-per-page')
+
+			expect(rowsPerPageSelect.exists()).toBeTruthy()
+		})
+
+		it('has valid rows per page limit options', () => {
+			const limitsConfigured = wrapper.vm.limitOptions
+
+			expect(limitsConfigured.length).toBe(4)
+			expect(limitsConfigured).toContain(10)
+			expect(limitsConfigured).toContain(25)
+			expect(limitsConfigured).toContain(50)
+			expect(limitsConfigured).toContain(100)
+		})
+
+		it('updates the rows per page limit', async () => {
+			await wrapper.vm.updateLimit(25)
+
+			expect(wrapper.emitted('update:limit'))
+			expect(wrapper.emitted('update:limit')[0][0]).toBe(25)
+		})
 	})
 })
