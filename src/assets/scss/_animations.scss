@@ -1,0 +1,40 @@
+@mixin clickable() {
+	&:not([disabled='true']):hover {
+		transform: translateY(-1px);
+	}
+
+	&:not([disabled='true']):active,
+	&:not([disabled='true']).state-opened {
+		transform: translateY(0);
+	}
+}
+
+@mixin pop-in-fade() {
+	.pop-in-fade-enter-from {
+		opacity: 0;
+		transform: scale(0) translateY(-100px);
+	}
+
+	.pop-in-fade-enter-active,
+	.pop-in-fade-leave-active {
+		transition: all 150ms ease-in-out;
+	}
+
+	.pop-in-fade-enter,
+	.pop-in-fade-leave-to {
+		opacity: 0;
+		transform: scale(0) translateY(-80px);
+	}
+}
+
+@mixin pop-out() {
+	.pop-out-enter-active,
+	.pop-out-leave-active {
+		transition: opacity 2s;
+	}
+
+	.pop-out-enter,
+	.pop-out-leave-to {
+		opacity: 0;
+	}
+}

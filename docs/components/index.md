@@ -6,3 +6,4 @@
 4. [Pagination](./pagination.md)
 5. [Table](./table.md)
 6. [Spinner](./spinner.md)
+7. [Select](./select.md)
