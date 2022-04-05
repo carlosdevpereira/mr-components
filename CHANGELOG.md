@@ -1,5 +1,42 @@
 # Changelog
 
+## [1.1.0](https://github.com/carlosdevpereira/mr-components/compare/v1.0.0...v1.1.0) (2022-04-05)
+
+
+### ✨ Features
+
+* add rows per page limit to pagination and table components ([#70](https://github.com/carlosdevpereira/mr-components/issues/70)) ([04532df](https://github.com/carlosdevpereira/mr-components/commit/04532df2a92a0a40f889bdd3b99bae2475c38c2c))
+* row selection panel ([#72](https://github.com/carlosdevpereira/mr-components/issues/72)) ([58be1ea](https://github.com/carlosdevpereira/mr-components/commit/58be1ea7ca3efd7ea1bc597927a32538ddced464))
+* select component ([#65](https://github.com/carlosdevpereira/mr-components/issues/65)) ([69f6cd4](https://github.com/carlosdevpereira/mr-components/commit/69f6cd48d4c18dad7a1f35b787633f9776f8f8f4))
+* table responsiveness ([#71](https://github.com/carlosdevpereira/mr-components/issues/71)) ([479ff93](https://github.com/carlosdevpereira/mr-components/commit/479ff938b952e7d55b5701b54df89916faacb2c9))
+
+
+### 👷 Maintenance
+
+* add automatic dependency approvals ([9b4ecb8](https://github.com/carlosdevpereira/mr-components/commit/9b4ecb86284453351728ca3847d2b3b7ceff8c19))
+* automatically merge dependabot prs ([145a633](https://github.com/carlosdevpereira/mr-components/commit/145a6332a5ae62473765e0b728adac3fefd5c9cd))
+* **deps-dev:** bump @vitejs/plugin-vue from 2.2.4 to 2.3.1 ([#61](https://github.com/carlosdevpereira/mr-components/issues/61)) ([782aebe](https://github.com/carlosdevpereira/mr-components/commit/782aebe1ce6cc4432104d32ac4e1774cd7ed4ac5))
+* **deps-dev:** bump @vuepress/plugin-register-components ([#64](https://github.com/carlosdevpereira/mr-components/issues/64)) ([97edf09](https://github.com/carlosdevpereira/mr-components/commit/97edf090018c47520c4a5111b8e8ea21ee010066))
+* **deps-dev:** bump prettier from 2.6.1 to 2.6.2 ([#68](https://github.com/carlosdevpereira/mr-components/issues/68)) ([492c6d2](https://github.com/carlosdevpereira/mr-components/commit/492c6d239611b8f77f70d1a8e760ca1c15b67add))
+* **deps-dev:** bump sass from 1.49.10 to 1.49.11 ([#69](https://github.com/carlosdevpereira/mr-components/issues/69)) ([645130e](https://github.com/carlosdevpereira/mr-components/commit/645130ef7aa580d5eabc7763dd0741cc1989a9a8))
+* **deps-dev:** bump sass from 1.49.9 to 1.49.10 ([#59](https://github.com/carlosdevpereira/mr-components/issues/59)) ([f8de61f](https://github.com/carlosdevpereira/mr-components/commit/f8de61fea9cc7e2770481564a428dbbc8ca01bd5))
+* **deps-dev:** bump vite from 2.8.6 to 2.9.1 ([#57](https://github.com/carlosdevpereira/mr-components/issues/57)) ([074c792](https://github.com/carlosdevpereira/mr-components/commit/074c792e0ff869b8d66a6e2389167ec987277b26))
+* **deps-dev:** bump vuepress from 2.0.0-beta.36 to 2.0.0-beta.37 ([#58](https://github.com/carlosdevpereira/mr-components/issues/58)) ([4996fc7](https://github.com/carlosdevpereira/mr-components/commit/4996fc77a299056d7df6427dd7b33dd7566b15f9))
+* **deps:** bump codecov/codecov-action from 2 to 3 ([#73](https://github.com/carlosdevpereira/mr-components/issues/73)) ([7580431](https://github.com/carlosdevpereira/mr-components/commit/7580431a48f3eb57de52524fc4495d0a118acb84))
+* **deps:** bump dependabot/fetch-metadata from 1.1.1 to 1.3.0 ([#67](https://github.com/carlosdevpereira/mr-components/issues/67)) ([c75c4ae](https://github.com/carlosdevpereira/mr-components/commit/c75c4aec0d894c5abaae5dc1f0632d4bf86e7d57))
+* **deps:** bump gsap from 3.9.1 to 3.10.2 ([#62](https://github.com/carlosdevpereira/mr-components/issues/62)) ([f62e454](https://github.com/carlosdevpereira/mr-components/commit/f62e4540b89c91a177c17f4cc727e220d78eff88))
+* **deps:** bump JamesIves/github-pages-deploy-action ([#66](https://github.com/carlosdevpereira/mr-components/issues/66)) ([a7b78ef](https://github.com/carlosdevpereira/mr-components/commit/a7b78efedb0332beea9e84e3bdc4464f4f1ac463))
+* improve pull request template ([67bce92](https://github.com/carlosdevpereira/mr-components/commit/67bce92854a9463b9e6699339a1ab6c4275ef05f))
+* only upload coverage when normal prs ([ea794ef](https://github.com/carlosdevpereira/mr-components/commit/ea794ef696065ded27d00674a50fe4aee24a031c))
+* run auto-approve-dependencies workflow for dependabot branches ([305b0bf](https://github.com/carlosdevpereira/mr-components/commit/305b0bfeac64b51ea7b5e5b94e395c970626e94b))
+* upload code coverage reports for all commits ([fc7e9cd](https://github.com/carlosdevpereira/mr-components/commit/fc7e9cd71091a00fedc1d402bbfd20ff3f4937e3))
+
+
+### 🚨 Bug Fixes
+
+* run auto-aprove-dependencies for all dependabot branches ([63c6d5e](https://github.com/carlosdevpereira/mr-components/commit/63c6d5e81ee0db655798a59d0281085707cea83a))
+* spinner component animation ([#77](https://github.com/carlosdevpereira/mr-components/issues/77)) ([c44bcae](https://github.com/carlosdevpereira/mr-components/commit/c44bcae17d615893ff565faaa08a0221b775944f))
+
 ## 1.0.0 (2022-03-30)
 
 
