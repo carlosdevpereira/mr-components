@@ -3,7 +3,7 @@ name: Dependabot pull-request automatic approval and merge
 on:
   pull_request_target:
     branches:
-      - 'dependabot/npm_and_yarn/**'
+      - 'dependabot/**'
 
 permissions:
   pull-requests: write
