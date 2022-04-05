@@ -19,7 +19,7 @@
 The **@mr-components** package can be installed by running:
 
 ```bash:no-line-numbers
-npm install --save-dev @mr-components
+npm install --save-dev @carlosdevpereira/mr-components
 ```
 
 ## How to use
@@ -31,11 +31,13 @@ To start using the components, you can either:
 ```js
 import App from './App.vue'
 import { createApp } from 'vue'
-import { RegisterComponents } from '@mr-components'
+
+import '@carlosdevpereira/mr-components/dist/style.css'
+import UseMrComponents from '@carlosdevpereira/mr-components'
 // other imports
 
 let app = createApp(App)
-RegisterComponents(app)
+UseMrComponents(app)
 ```
 
 ### Register only the components you need:
@@ -43,7 +45,9 @@ RegisterComponents(app)
 ```js
 import App from './App.vue'
 import { createApp } from 'vue'
-import { Button, Checkbox } from '@mr-components'
+
+import '@carlosdevpereira/mr-components/dist/style.css'
+import { Button, Checkbox } from '@carlosdevpereira/mr-components'
 // other imports
 
 let app = createApp(App)
@@ -55,21 +59,22 @@ app.component('Checkbox', Checkbox)
 
 ```html
 <template>
-    <div>
-        <button>Click me</button>
-    </div>
+	<div>
+		<button>Click me</button>
+	</div>
 </template>
 
 <script>
-    import { Button } from '@mr-components'
+	import '@carlosdevpereira/mr-components/dist/style.css'
+	import { Button } from '@carlosdevpereira/mr-components'
 
-    export default {
-        components: {
-            Button,
-        },
+	export default {
+		components: {
+			Button,
+		},
 
-        // ...
-    }
+		// ...
+	}
 </script>
 ```
 
@@ -81,6 +86,7 @@ app.component('Checkbox', Checkbox)
 -   [Pagination](https://mr-components.carlosdevpereira.com/components/pagination.html)
 -   [Table](https://mr-components.carlosdevpereira.com/components/table.html#column-definition)
 -   [Spinner](https://mr-components.carlosdevpereira.com/components/spinner.html)
+-   [Select](https://mr-components.carlosdevpereira.com/components/select.html)
 
 <div align="center" style="margin-top: 5rem;">
     

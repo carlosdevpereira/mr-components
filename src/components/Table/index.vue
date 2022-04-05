@@ -9,7 +9,6 @@
 			<div class="mr-table-options">
 				<Button
 					theme="text-solid"
-					size="sm"
 					icon="more-line"
 					class="column-visibility-panel-toggle"
 					@click="columnVisibilityPanelIsOpen = !columnVisibilityPanelIsOpen"

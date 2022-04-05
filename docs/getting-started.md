@@ -2,13 +2,13 @@
 
 ## Installation
 
-To install the **@mr-components** package in your project you just need to run one of the following commands:
+To install the **@carlosdevpereira/mr-components** package in your project you just need to run one of the following commands:
 
 <CodeGroup>
   <CodeGroupItem title="NPM" active>
 
 ```bash:no-line-numbers
-npm install --save-dev @mr-components
+npm install --save-dev @carlosdevpereira/mr-components
 ```
 
   </CodeGroupItem>
@@ -16,7 +16,7 @@ npm install --save-dev @mr-components
   <CodeGroupItem title="YARN">
 
 ```bash:no-line-numbers
-yarn add -D @mr-components
+yarn add -D @carlosdevpereira/mr-components
 ```
 
   </CodeGroupItem>
@@ -28,11 +28,13 @@ Now you just need to register the components within your Vue instance. To do thi
 ```js
 import App from './App.vue'
 import { createApp } from 'vue'
-import { RegisterComponents } from '@mr-components'
+
+import '@carlosdevpereira/mr-components/dist/style.css'
+import UseMrComponents from '@carlosdevpereira/mr-components'
 // other imports
 
 let app = createApp(App)
-RegisterComponents(app)
+UseMrComponents(app)
 ```
 
 or just the components you need:
@@ -40,7 +42,9 @@ or just the components you need:
 ```js
 import App from './App.vue'
 import { createApp } from 'vue'
-import { Button, Checkbox } from '@mr-components'
+
+import '@carlosdevpereira/mr-components/dist/style.css'
+import { Button, Checkbox } from '@carlosdevpereira/mr-components'
 // other imports
 
 let app = createApp(App)
@@ -52,20 +56,21 @@ You can also import and register the **@mr-components** locally within a Single 
 
 ```vue
 <template>
-    <div>
-        <Button>Click me</Button>
-    </div>
+	<div>
+		<Button>Click me</Button>
+	</div>
 </template>
 
 <script>
-import { Button } from '@mr-components'
+import '@carlosdevpereira/mr-components/dist/style.css'
+import { Button } from '@carlosdevpereira/mr-components'
 
 export default {
-    components: {
-        Button,
-    },
+	components: {
+		Button,
+	},
 
-    // ...
+	// ...
 }
 </script>
 ```

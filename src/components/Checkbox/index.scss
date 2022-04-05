@@ -10,11 +10,11 @@ $sizes: (
 		'width': 19px,
 		'height': 19px,
 		'checkmark-width': 3px,
-		'checkmark-height': 8px,
+		'checkmark-height': 8.5px,
 		'switch-width': 34px,
 		'switch-checkmark-width': 13px,
 		'switch-checkmark-height': 13px,
-		'switch-translate': 15px,
+		'switch-translate': 17px,
 	),
 	'md': (
 		'font-size': 13.5px,
@@ -26,7 +26,7 @@ $sizes: (
 		'switch-width': 38px,
 		'switch-checkmark-width': 15px,
 		'switch-checkmark-height': 15px,
-		'switch-translate': 17px,
+		'switch-translate': 19px,
 	),
 	'lg': (
 		'font-size': 18px,
@@ -39,11 +39,12 @@ $sizes: (
 		'switch-width': 44px,
 		'switch-checkmark-width': 18px,
 		'switch-checkmark-height': 18px,
-		'switch-translate': 20px,
+		'switch-translate': 21.5px,
 	),
 );
 
 .mr-checkbox-container {
+	display: flex;
 	vertical-align: top;
 	cursor: pointer;
 
@@ -54,11 +55,12 @@ $sizes: (
 	@supports (-webkit-appearance: none) or (-moz-appearance: none) {
 		input[type='checkbox'] {
 			position: relative;
-			display: inline-block;
+			display: flex;
+			align-items: center;
 			height: 21px;
 			margin: 0;
 			margin-right: 8px;
-			vertical-align: top;
+			vertical-align: middle;
 			cursor: pointer;
 			border: 1px solid $borderColor;
 			outline: none;
@@ -67,10 +69,6 @@ $sizes: (
 			appearance: none;
 
 			&::after {
-				position: absolute;
-				top: 0;
-				left: 0;
-				display: block;
 				content: '';
 				transition: transform 0.3s ease, opacity 0.2s;
 			}
@@ -85,24 +83,24 @@ $sizes: (
 			}
 
 			&:not(.switch-theme) {
+				justify-content: center;
 				width: 21px;
+				overflow: hidden;
 				border-radius: 7px;
 
 				&::after {
-					top: 2.5px;
-					left: 6px;
 					width: 5px;
 					height: 9px;
 					border: 2px solid;
 					border-top: 0;
 					border-left: 0;
 					opacity: 0;
-					transform: rotate(20deg);
+					transform: translateX(-150%) translateY(-150%) rotate(-140deg);
 				}
 
 				&:checked::after {
 					opacity: 1;
-					transform: rotate(43deg);
+					transform: translateX(0) translateY(-1.5px) rotate(43deg);
 				}
 			}
 
@@ -174,13 +172,11 @@ $sizes: (
 				border-radius: 11px;
 
 				&::after {
-					top: 2px;
-					left: 2px;
 					width: 15px;
 					height: 15px;
 					background-color: #bbc1e1;
 					border-radius: 50%;
-					transform: translateX(0);
+					transform: translateX(2px);
 				}
 
 				&:checked::after {

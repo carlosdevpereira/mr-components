@@ -8,14 +8,17 @@
 $sizes: (
 	'sm': (
 		'font-size': 11px,
+		'line-height': 13px,
 		'padding': 0.5rem 0.8rem,
 	),
 	'md': (
 		'font-size': 13.5px,
+		'line-height': 16px,
 		'padding': 0.7rem 1rem,
 	),
 	'lg': (
 		'font-size': 18px,
+		'line-height': 22px,
 		'padding': 0.9rem 1.2rem,
 	),
 );
@@ -31,6 +34,7 @@ $sizes: (
 	font-family: $fontFamily;
 	font-size: $fontSize;
 	font-weight: 600;
+	line-height: $lineHeight;
 	cursor: pointer;
 	border: 1px solid transparent;
 	border-radius: $borderRadius;
@@ -42,6 +46,7 @@ $sizes: (
 		&.size-#{$sizeName} {
 			padding: map.get($sizeValues, 'padding');
 			font-size: map.get($sizeValues, 'font-size');
+			line-height: map.get($sizeValues, 'line-height');
 		}
 	}
 

@@ -1,3 +1,4 @@
+import 'remixicon/fonts/remixicon.css'
 import Button from './src/components/Button/index.vue'
 import Checkbox from './src/components/Checkbox/index.vue'
 import Icon from './src/components/Icon/index.vue'
@@ -6,7 +7,7 @@ import Spinner from './src/components/Spinner/index.vue'
 import Table from './src/components/Table/index.vue'
 import Select from './src/components/Select/index.vue'
 
-export const RegisterComponents = vueInstance => {
+export default vueInstance => {
 	vueInstance
 		.component('Button', Button)
 		.component('Checkbox', Checkbox)

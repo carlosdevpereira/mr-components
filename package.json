@@ -2,10 +2,19 @@
 	"name": "mr-components",
 	"version": "1.0.0",
 	"private": true,
+	"author": "carlosdevpereira",
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/mr-components.umd.js",
+	"module": "./dist/mr-components.es.js",
 	"scripts": {
 		"dev": "vuepress dev docs",
 		"serve": "dev",
-		"build": "vuepress build docs",
+		"build:docs": "vuepress build docs",
+		"build:lib": "vite build",
+		"build": "yarn build:lib && yarn build:docs",
 		"test": "yarn test:unit --verbose",
 		"test:watch": "yarn test --watch",
 		"test:unit": "jest --no-cache --detectOpenHandles",
