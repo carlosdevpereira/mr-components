@@ -1,0 +1,1 @@
+const t={key:"v-5dc4b15a",path:"/getting-started.html",title:"Getting Started",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"Installation",slug:"installation",children:[]}],git:{updatedTime:164920048e4,contributors:[{name:"Carlos Pereira",email:"carlos.dev.pereira@gmail.com",commits:1}]},filePathRelative:"getting-started.md"};export{t as data};
