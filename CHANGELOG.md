@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/carlosdevpereira/mr-components/compare/v1.1.0...v1.2.0) (2022-04-05)
+
+
+### ✨ Features
+
+* prepare component library distribution ([0c56ea4](https://github.com/carlosdevpereira/mr-components/commit/0c56ea42bbdc66f383a57e25dbe34535c56c0053))
+* publish to npm workflow ([68a199c](https://github.com/carlosdevpereira/mr-components/commit/68a199cdb70076d23134402e34bda7bc6ec3dc21))
+
 ## [1.1.0](https://github.com/carlosdevpereira/mr-components/compare/v1.0.0...v1.1.0) (2022-04-05)
 
 
