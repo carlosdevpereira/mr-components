@@ -1,1 +1,0 @@
-import{_ as r,o as s,d as n,F as a,h as _,g as t,n as c}from"./app.fb37c6a2.js";const i={},l={class:"mr-spinner"};function o(d,m){return s(),n("div",l,[(s(),n(a,null,_(2,e=>t("div",{key:e,class:c(["mr-spinner-item",`mr-spinner-item-${e}`])},null,2)),64))])}var f=r(i,[["render",o],["__file","index.vue"]]);export{f as default};
