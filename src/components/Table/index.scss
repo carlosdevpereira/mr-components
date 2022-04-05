@@ -261,4 +261,12 @@
 			border-color: darken(map.get($variants, 'primary'), 8%);
 		}
 	}
+
+	.mr-table-row-selection-actions {
+		display: flex;
+
+		button {
+			margin-left: 8px;
+		}
+	}
 }

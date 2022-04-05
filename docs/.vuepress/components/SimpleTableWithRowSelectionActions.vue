@@ -9,6 +9,12 @@
                 @click="logSelectedRows(rows)">
                 Log
             </Button>
+
+            <Button 
+                variant="primary"
+                @click="logSelectedRows(rows)">
+                Log 2
+            </Button>
 		</template>
     </Table>
 </template>
