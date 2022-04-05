@@ -328,6 +328,9 @@ describe('Table', () => {
 
 		beforeEach(async () => {
 			wrapper = shallowMount(Table, {
+				global: {
+					stubs: { teleport: true },
+				},
 				props: {
 					columns: SimpleTableFixture.columns,
 					rows: SimpleTableFixture.rows,
@@ -365,6 +368,45 @@ describe('Table', () => {
 				expect(wrapper.vm.selectedRows.length).toBe(1)
 
 				wrapper.vm.selectToggleRow(false, wrapper.vm.rows[0])
+
+				expect(wrapper.vm.selectedRows.length).toBe(0)
+			})
+		})
+
+		describe('row selection panel', () => {
+			it('shows when at least one row is selected', async () => {
+				await wrapper.vm.selectToggleRow(true, wrapper.vm.rows[0])
+
+				expect(wrapper.find('.mr-table-row-selection-panel').exists()).toBeTruthy()
+			})
+
+			it('shows the correct number of selected rows', async () => {
+				await wrapper.vm.selectToggleRow(true, wrapper.vm.rows[0])
+				const rowSelectionCountElement = wrapper.find(
+					'.mr-table-row-selection-panel .row-selection-count strong'
+				)
+
+				expect(rowSelectionCountElement.text()).toBe('1')
+			})
+
+			it('clears row selection', async () => {
+				await wrapper.vm.selectToggleRow(true, wrapper.vm.rows[0])
+
+				expect(wrapper.vm.selectedRows.length).toBe(1)
+
+				wrapper.vm.clearRowSelection()
+
+				expect(wrapper.vm.selectedRows.length).toBe(0)
+			})
+
+			it('clear row selection when the clear button is clicked', async () => {
+				await wrapper.vm.selectToggleRow(true, wrapper.vm.rows[0])
+
+				expect(wrapper.vm.selectedRows.length).toBe(1)
+
+				await wrapper
+					.find('.mr-table-row-selection-panel .clear-row-selection')
+					.trigger('click')
 
 				expect(wrapper.vm.selectedRows.length).toBe(0)
 			})
