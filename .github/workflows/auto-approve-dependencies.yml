@@ -1,9 +1,13 @@
-name: Dependabot pull-request automatic approval and merge
+name: Dependency approval
 
 on:
   pull_request_target:
-    branches:
-      - 'dependabot/**'
+    types:
+      - opened
+      - synchronize
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
 
 permissions:
   pull-requests: write
