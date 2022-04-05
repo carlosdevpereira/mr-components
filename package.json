@@ -1,9 +1,13 @@
 {
-	"name": "mr-components",
+	"name": "@carlosdevpereira/mr-components",
 	"version": "1.1.0",
-	"private": true,
 	"author": "carlosdevpereira",
 	"license": "MIT",
+	"homepage": "https://mr-components.carlosdevpereira.com",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/carlosdevpereira/mr-components"
+	},
 	"files": [
 		"dist"
 	],
