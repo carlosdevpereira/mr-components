@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.3](https://github.com/carlosdevpereira/mr-components/compare/v1.1.2...v1.1.3) (2022-04-05)
+
+
+### 🚨 Bug Fixes
+
+* publish to npm on release-please action ([c45ae52](https://github.com/carlosdevpereira/mr-components/commit/c45ae521eeea6853e1e89fa17bc4ec3ce483748c))
+
 ### [1.1.2](https://github.com/carlosdevpereira/mr-components/compare/v1.1.1...v1.1.2) (2022-04-05)
 
 
