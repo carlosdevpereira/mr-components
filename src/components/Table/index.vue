@@ -51,6 +51,9 @@
 						/>
 					</th>
 
+					<!-- @TODO: Column sorting for small screens
+						(Can be a select component with the table columns
+						as options and another select with the directions) -->
 					<th
 						v-for="(col, index) in visibleColumns"
 						:key="index"
@@ -127,6 +130,7 @@
 			v-if="!loading"
 			class="mr-table-footer"
 		>
+			<!-- @TODO: On pagination change, scroll to the top of the table -->
 			<Pagination
 				v-if="hasPagination"
 				v-model:page="currentPage"
@@ -141,6 +145,35 @@
 				{{ totalRows || rows.length }} Results
 			</div>
 		</footer>
+
+		<Teleport
+			v-if="selectableRows && selectedRows.length"
+			to="body"
+		>
+			<div class="mr-table-row-selection-panel">
+				<div class="row-selection-count">
+					<strong>
+						{{ selectedRows.length }}
+					</strong>
+					<small>selected</small>
+
+					<Button
+						class="clear-row-selection"
+						variant="primary"
+						@click="clearRowSelection"
+					>
+						Clear selection
+					</Button>
+				</div>
+
+				<div class="mr-table-row-selection-actions">
+					<slot
+						name="selection-actions"
+						:rows="selectedRows"
+					/>
+				</div>
+			</div>
+		</Teleport>
 	</div>
 </template>
 
@@ -364,6 +397,10 @@ export default {
 				const rowIndex = this.selectedRows.indexOf(row)
 				this.selectedRows.splice(rowIndex, 1)
 			}
+		},
+
+		clearRowSelection() {
+			this.selectedRows = []
 		},
 
 		onBeforeEnter(el) {

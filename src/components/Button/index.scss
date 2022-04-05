@@ -35,7 +35,7 @@ $sizes: (
 	border: 1px solid transparent;
 	border-radius: $borderRadius;
 	outline: none;
-	transition: background-color 200ms ease-out;
+	transition: background-color 200ms ease-out, transform 100ms linear;
 	will-change: transform;
 
 	@each $sizeName, $sizeValues in $sizes {
@@ -64,8 +64,10 @@ $sizes: (
 				background-color: $variantColor;
 				border-color: $variantColor;
 
-				&:active {
+				&:active,
+				&:focus-visible {
 					background-color: darken($variantColor, 7%);
+					border-color: darken($variantColor, 7%);
 				}
 			}
 		}
@@ -107,8 +109,10 @@ $sizes: (
 					box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
 				}
 
-				&:active {
+				&:active,
+				&:focus-visible {
 					background-color: darken($variantColor, 7%);
+					border-color: darken($variantColor, 5%);
 				}
 			}
 		}
@@ -132,8 +136,10 @@ $sizes: (
 					background-color: fade-out($variantColor, 0.9);
 				}
 
-				&:active {
+				&:active,
+				&:focus-visible {
 					background-color: fade-out($variantColor, 0.8);
+					border-color: fade-out($variantColor, 0.95);
 				}
 			}
 		}
@@ -155,8 +161,10 @@ $sizes: (
 					color: $textColor;
 				}
 
-				&:active {
+				&:active,
+				&:focus-visible {
 					background-color: fade-out($variantColor, 0.8);
+					border-color: fade-out($variantColor, 0.95);
 				}
 			}
 		}
