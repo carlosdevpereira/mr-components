@@ -51,7 +51,7 @@ The table component is an extension to the default HTML table, featuring: column
 
 ```vue
 <template>
-    <Table v-model:columns="columns" :rows="rows" />
+	<Table v-model:columns="columns" :rows="rows" />
 </template>
 
 <script>
@@ -78,7 +78,7 @@ export default {
 
 ```vue
 <template>
-    <Table v-model:columns="columns" :rows="rows" loading />
+	<Table v-model:columns="columns" :rows="rows" loading />
 </template>
 
 <script>
@@ -105,7 +105,7 @@ export default {
 
 ```vue
 <template>
-    <Table v-model:columns="columns" :rows="rows" selectable-rows />
+	<Table v-model:columns="columns" :rows="rows" selectable-rows />
 </template>
 
 <script>
@@ -116,6 +116,43 @@ export default {
             rows: [...],
         }
     },
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+## Row Selection with actions
+
+<Simple-Table-With-Row-Selection-Actions />
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Table v-model:columns="columns" :rows="rows" selectable-rows>
+		<template #selection-actions="{ rows }">
+			<Button @click="logSelectedRows(rows)"> Log </Button>
+		</template>
+	</Table>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            columns: [...],
+            rows: [...],
+        }
+    },
+
+    methods: {
+        logSelectedRows(rows) {
+            console.log(rows)
+        }
+    }
 }
 </script>
 ```
@@ -134,14 +171,14 @@ export default {
 
 ```vue
 <template>
-    <Table
-        v-model:columns="columns"
-        v-model:page="page"
-        v-model:rows-per-page="rowsPerPage"
-        :total-rows="totalRows"
-        :rows="rows"
-        local-pagination
-    />
+	<Table
+		v-model:columns="columns"
+		v-model:page="page"
+		v-model:rows-per-page="rowsPerPage"
+		:total-rows="totalRows"
+		:rows="rows"
+		local-pagination
+	/>
 </template>
 
 <script>
@@ -171,14 +208,14 @@ export default {
 
 ```vue
 <template>
-    <Table
-        v-model:columns="columns"
-        v-model:page="page"
-        v-model:rows-per-page="rowsPerPage"
-        :rows="rows"
-        :loading="loading"
-        :total-rows="totalRows"
-    />
+	<Table
+		v-model:columns="columns"
+		v-model:page="page"
+		v-model:rows-per-page="rowsPerPage"
+		:rows="rows"
+		:loading="loading"
+		:total-rows="totalRows"
+	/>
 </template>
 
 <script>
@@ -230,13 +267,13 @@ export default {
 
 ```vue
 <template>
-    <Table
-        v-model:columns="columns"
-        v-model:sort-by="sortBy"
-        v-model:sort-direction="sortDirection"
-        :rows="rows"
-        local-sort
-    />
+	<Table
+		v-model:columns="columns"
+		v-model:sort-by="sortBy"
+		v-model:sort-direction="sortDirection"
+		:rows="rows"
+		local-sort
+	/>
 </template>
 
 <script>
@@ -266,17 +303,17 @@ export default {
 
 ```vue
 <template>
-    <Table
-        v-model:columns="columns"
-        v-model:sort-by="sortBy"
-        v-model:sort-direction="sortDirection"
-        v-model:page="page"
-        v-model:rows-per-page="rowsPerPage"
-        :rows="rows"
-        :total-rows="totalRows"
-        local-sort
-        local-pagination
-    />
+	<Table
+		v-model:columns="columns"
+		v-model:sort-by="sortBy"
+		v-model:sort-direction="sortDirection"
+		v-model:page="page"
+		v-model:rows-per-page="rowsPerPage"
+		:rows="rows"
+		:total-rows="totalRows"
+		local-sort
+		local-pagination
+	/>
 </template>
 
 <script>

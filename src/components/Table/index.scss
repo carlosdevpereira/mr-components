@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'sass:map';
+
 @import '../../assets/scss/_variables.scss';
 @import '../../assets/scss/_animations.scss';
 
@@ -207,4 +210,63 @@
 	}
 
 	@include pop-out;
+}
+
+.mr-table-row-selection-panel {
+
+	$background: darken(map.get($variants, 'primary'), 10%);
+
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 60px;
+	padding: 0 1.5rem;
+	background-color: $background;
+	box-shadow: 0 -3px 12px 3px rgb(0 0 0 / 15%);
+
+	@if color.lightness($background) < 80 {
+		color: #fff;
+	}
+
+	@else {
+		color: $textColor;
+	}
+
+	.row-selection-count {
+		display: flex;
+		align-items: center;
+
+		strong {
+			margin-right: 4px;
+		}
+
+		button {
+			margin-left: 16px;
+		}
+	}
+
+	.mr-button.variant-primary {
+		background-color: darken(map.get($variants, 'primary'), 7%);
+		border-color: darken(map.get($variants, 'primary'), 7%);
+
+		&:active,
+		&:focus-visible {
+			background-color: darken(map.get($variants, 'primary'), 8%);
+			border-color: darken(map.get($variants, 'primary'), 8%);
+		}
+	}
+
+	.mr-table-row-selection-actions {
+		display: flex;
+
+		button {
+			margin-left: 8px;
+		}
+	}
 }

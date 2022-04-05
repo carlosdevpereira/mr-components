@@ -1,9 +1,6 @@
 name: Dependabot pull-request automatic approval and merge
 
-on:
-  pull_request_target:
-    branches:
-      - 'dependabot/**'
+on: pull_request_target
 
 permissions:
   pull-requests: write
