@@ -65,16 +65,16 @@ app.component('Checkbox', Checkbox)
 </template>
 
 <script>
-	import '@carlosdevpereira/mr-components/dist/style.css'
-	import { Button } from '@carlosdevpereira/mr-components'
+import '@carlosdevpereira/mr-components/dist/style.css'
+import { Button } from '@carlosdevpereira/mr-components'
 
-	export default {
-		components: {
-			Button,
-		},
+export default {
+	components: {
+		Button,
+	},
 
-		// ...
-	}
+	// ...
+}
 </script>
 ```
 
