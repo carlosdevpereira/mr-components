@@ -23,3 +23,11 @@ th,
 td {
 	line-height: 25px;
 }
+
+.half-width-fill-on-mobile {
+	width: 50%;
+
+	@media screen and (max-width: 968px) {
+		width: 100%;
+	}
+}

@@ -1,18 +1,12 @@
 <template>
     <Select 
         v-model="value"
-        :theme="theme"
-        :variant="variant"
-        :options="options"
-        :size="size"
-        :disabled="disabled"
-        :label="label" />
+        v-bind="$attrs"
+        :options="options" />
 </template>
 
 <script>
 export default {
-    props: ['theme', 'variant', 'label', 'disabled', 'size'],
-
     data() {
         return {
             value: null,

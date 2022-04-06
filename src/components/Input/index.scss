@@ -1,0 +1,215 @@
+@use 'sass:color';
+@use 'sass:map';
+
+@import '../../assets/scss/_variables.scss';
+@import '../../assets/scss/_states.scss';
+
+$sizes: (
+	'sm': (
+		'font-size': 11px,
+		'line-height': 12px,
+		'padding': 0.5rem 0.8rem,
+	),
+	'md': (
+		'font-size': 13.5px,
+		'line-height': 21.5px,
+		'padding': 0.7rem 1rem,
+	),
+	'lg': (
+		'font-size': 18px,
+		'line-height': 26px,
+		'padding': 0.9rem 1.2rem,
+	),
+);
+
+.mr-input-container {
+	@include canBeDisabled();
+
+	position: relative;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	font-weight: 600;
+	text-transform: capitalize;
+	letter-spacing: 0.53px;
+
+	&.inline {
+		flex-direction: row;
+		align-items: center;
+
+		input {
+			margin-left: 8px;
+		}
+
+		&.label-position-end {
+			input {
+				order: 1;
+				margin-right: 8px;
+				margin-left: 0;
+			}
+
+			span {
+				order: 2;
+			}
+		}
+	}
+
+	&:not(.inline).label-position {
+		&-start {
+			align-items: start;
+		}
+
+		&-center {
+			align-items: center;
+		}
+
+		&-end {
+			align-items: end;
+		}
+	}
+
+	&.has-icon .mr-icon {
+		position: absolute;
+		top: 50%;
+		z-index: 10;
+		padding-top: 4px;
+		color: $textColor;
+		opacity: 0.45;
+		transform: translateY(-50%);
+	}
+
+	input {
+		@include canBeDisabled();
+
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		padding: 0.8rem;
+		margin-top: 4px;
+		font-family: $fontFamily;
+		font-size: $fontSize;
+		background-color: $sectionBackgroundColor;
+		border: 1px solid transparent;
+		border-radius: $borderRadius;
+		outline: none;
+		transition: background-color 200ms ease-in-out, border-color 300ms ease-in-out;
+		will-change: transform;
+	}
+
+	@each $sizeName, $sizeValues in $sizes {
+		&.size-#{$sizeName} {
+			font-size: map.get($sizeValues, 'font-size');
+			line-height: map.get($sizeValues, 'line-height');
+
+			&.has-icon {
+				&.icon-position-start {
+					input {
+						padding-left: map.get($sizeValues, 'font-size') * 3;
+					}
+
+					.mr-icon {
+						left: map.get($sizeValues, 'font-size') * 1.25;
+					}
+				}
+
+				&.icon-position-end {
+					input {
+						padding-right: map.get($sizeValues, 'font-size') * 3;
+						padding-left: map.get($sizeValues, 'padding');
+					}
+
+					.mr-icon {
+						right: map.get($sizeValues, 'font-size') * 1.25;
+						left: unset;
+					}
+				}
+			}
+
+			input {
+				padding: map.get($sizeValues, 'padding');
+				font-size: map.get($sizeValues, 'font-size');
+				line-height: map.get($sizeValues, 'line-height');
+			}
+		}
+	}
+
+	&.solid-theme {
+		input {
+			color: color.invert(map.get($variants, 'default'), $weight: 100%);
+			background-color: map.get($variants, 'default');
+			border-color: map.get($variants, 'default');
+		}
+
+		@each $variantName, $variantColor in $variants {
+			&.variant-#{$variantName} {
+				$fadedVariant: fade-out($variantColor, 0.3);
+				$fadedVariantFocus: fade-out($variantColor, 0.2);
+
+				@if color.lightness($fadedVariant) < 80 {
+					input {
+						color: $whiteColor;
+
+						&::placeholder {
+							color: $whiteColor;
+						}
+					}
+				}
+
+				@else {
+					input {
+						color: $textColor;
+
+						&::placeholder {
+							color: $textColor;
+						}
+					}
+				}
+
+				input {
+					background-color: $fadedVariant;
+					border-color: fade-out($variantColor, 0.7);
+
+					&:focus {
+						background-color: $fadedVariantFocus;
+					}
+				}
+			}
+		}
+	}
+
+	&.outlined-theme {
+		input {
+			color: map.get($variants, 'default');
+			background-color: fade-out($sectionBackgroundColor, 0.5);
+			border-color: map.get($variants, 'default');
+		}
+
+		@each $variantName, $variantColor in $variants {
+			&.variant-#{$variantName} {
+				@if color.lightness($variantColor) > 80 {
+					input {
+						color: $textColor;
+					}
+				}
+
+				@else {
+					input {
+						color: $variantColor;
+					}
+				}
+
+				input {
+					border-color: fade-out($variantColor, 0.8);
+
+					&:focus {
+						border-color: fade-out($variantColor, 0.5);
+					}
+				}
+			}
+		}
+	}
+}

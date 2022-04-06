@@ -21,9 +21,9 @@ The select component is a lightweight extension of the standard select element, 
 
 ### Events
 
-| Name         | Description                                                            |
-| ------------ | ---------------------------------------------------------------------- |
-| update:value | Event emitted whenever an option from the select component is selected |
+| Name               | Description                                                            |
+| ------------------ | ---------------------------------------------------------------------- |
+| update:model-value | Event emitted whenever an option from the select component is selected |
 
 ## Basic Select
 
@@ -165,7 +165,7 @@ export default {
 
 ## States
 
-Besides themes and sizes, every button can define a set of props to control their visible states.
+Besides themes and sizes, every select component can define a set of props to control their visible states.
 
 ### Disabled
 
