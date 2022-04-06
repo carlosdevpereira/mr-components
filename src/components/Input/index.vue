@@ -10,9 +10,10 @@
 			:name="icon"
 		/>
 
-		<span>
-			{{ label ? label : '' }}
-		</span>
+		<span
+			v-if="label"
+			v-text="label"
+		/>
 
 		<input
 			v-model="currentValue"

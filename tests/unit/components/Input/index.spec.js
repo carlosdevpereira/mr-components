@@ -1,4 +1,5 @@
 import Input from '@/components/Input'
+import Icon from '@/components/Icon'
 import { shallowMount } from '@vue/test-utils'
 
 describe('Input', () => {
@@ -52,6 +53,9 @@ describe('Input', () => {
 					theme: 'outlined',
 					variant: 'success',
 					size: 'lg',
+					icon: 'chat-3-line',
+					iconPosition: 'start',
+					inline: true,
 				},
 			})
 		})
@@ -60,6 +64,9 @@ describe('Input', () => {
 			expect(wrapper.vm.classes).toContain('outlined-theme')
 			expect(wrapper.vm.classes).toContain('variant-success')
 			expect(wrapper.vm.classes).toContain('size-lg')
+			expect(wrapper.vm.classes).toContain('has-icon')
+			expect(wrapper.vm.classes).toContain('icon-position-start')
+			expect(wrapper.vm.classes).toContain('inline')
 		})
 
 		it('sets the correct theme class', () => {
@@ -72,6 +79,24 @@ describe('Input', () => {
 
 		it('sets the correct size class', () => {
 			expect(wrapper.find('.mr-input-container.size-lg').exists()).toBeTruthy()
+		})
+
+		it('sets the correct icon class', () => {
+			expect(wrapper.find('.mr-input-container.has-icon').exists()).toBeTruthy()
+			expect(wrapper.findComponent(Icon).exists()).toBeTruthy()
+			expect(wrapper.findComponent(Icon).vm.name).toBe('chat-3-line')
+		})
+
+		it('sets the correct icon position class', async () => {
+			expect(wrapper.find('.mr-input-container.icon-position-start').exists()).toBeTruthy()
+
+			await wrapper.setProps({ iconPosition: 'end' })
+
+			expect(wrapper.find('.mr-input-container.icon-position-end').exists()).toBeTruthy()
+		})
+
+		it('sets the correct inline class', async () => {
+			expect(wrapper.find('.mr-input-container.inline').exists()).toBeTruthy()
 		})
 	})
 })
