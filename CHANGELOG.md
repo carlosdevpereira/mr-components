@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.5](https://github.com/carlosdevpereira/mr-components/compare/v1.1.4...v1.1.5) (2022-04-06)
+
+
+### 👷 Maintenance
+
+* deploy to github pages when release is published only ([32cfb0a](https://github.com/carlosdevpereira/mr-components/commit/32cfb0a09cb015a17a5bd36579eefbd0983ac04d))
+
 ### [1.1.4](https://github.com/carlosdevpereira/mr-components/compare/v1.1.3...v1.1.4) (2022-04-06)
 
 
