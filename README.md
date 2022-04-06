@@ -4,7 +4,7 @@
 
 # Mr. Components
 
-![Tests](https://github.com/carlosdevpereira/mr-components/actions/workflows/on-push-master.yml/badge.svg)
+![Tests](https://github.com/carlosdevpereira/mr-components/actions/workflows/on-push-test-and-build.yml/badge.svg)
 ![Coverage](https://img.shields.io/codecov/c/github/carlosdevpereira/mr-components?label=Coverage&token=UD340F6YOJ)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen)](https://opensource.org/licenses/MIT)
 
@@ -65,16 +65,16 @@ app.component('Checkbox', Checkbox)
 </template>
 
 <script>
-import '@carlosdevpereira/mr-components/dist/style.css'
-import { Button } from '@carlosdevpereira/mr-components'
+	import '@carlosdevpereira/mr-components/dist/style.css'
+	import { Button } from '@carlosdevpereira/mr-components'
 
-export default {
-	components: {
-		Button,
-	},
+	export default {
+		components: {
+			Button,
+		},
 
-	// ...
-}
+		// ...
+	}
 </script>
 ```
 

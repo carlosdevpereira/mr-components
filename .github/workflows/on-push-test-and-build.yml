@@ -3,10 +3,10 @@ name: Build
 on:
   push:
     branches:
-      - master
+      - '**'
 
 jobs:
-  test-build-and-deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,6 +22,7 @@ jobs:
         run: npm run test:unit:coverage
 
       - name: Upload test coverage 🧪
+        if: ${{ github.actor != 'dependabot[bot]' }}
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -30,15 +31,6 @@ jobs:
           flags: unittests
           name: codecov-umbrella
           verbose: true
-
+      
       - name: Build Docs 📕
         run: npm run build
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.0
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: docs-deployment
-          FOLDER: docs/.vuepress/dist
-          CLEAN: true
-          TARGET_FOLDER: docs
