@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.6](https://github.com/carlosdevpereira/mr-components/compare/v1.1.5...v1.1.6) (2022-04-06)
+
+
+### 🚨 Bug Fixes
+
+* tag major and minor versions when releasing a new version ([2076d88](https://github.com/carlosdevpereira/mr-components/commit/2076d885ca54a68e3ea7990041cb2c29dcc169bf))
+
 ### [1.1.5](https://github.com/carlosdevpereira/mr-components/compare/v1.1.4...v1.1.5) (2022-04-06)
 
 
