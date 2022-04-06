@@ -35,6 +35,7 @@ module.exports = {
 					'/components/button.md',
 					'/components/checkbox.md',
 					'/components/icon.md',
+					'/components/input.md',
 					'/components/pagination.md',
 					'/components/table.md',
 					'/components/select.md',
@@ -56,6 +57,7 @@ module.exports = {
 						'../../src/components/Pagination/index.vue'
 					),
 					Icon: path.resolve(__dirname, '../../src/components/Icon/index.vue'),
+					Input: path.resolve(__dirname, '../../src/components/Input/index.vue'),
 					Checkbox: path.resolve(__dirname, '../../src/components/Checkbox/index.vue'),
 					Select: path.resolve(__dirname, '../../src/components/Select/index.vue'),
 					Spinner: path.resolve(__dirname, '../../src/components/Spinner/index.vue'),

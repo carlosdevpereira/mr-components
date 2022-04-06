@@ -10,15 +10,23 @@
 		{{ valueOrLabel }}
 		<Icon :name="icon" />
 
-		<transition name="pop-in-fade" appear>
-			<ul v-if="visible && !isDisabled" class="mr-select">
+		<transition
+			name="pop-in-fade"
+			appear
+		>
+			<ul
+				v-if="visible && !isDisabled"
+				class="mr-select"
+			>
 				<li
 					v-for="(option, key) in options"
 					:key="key"
 					class="mr-select-option"
 					:class="{ selected: currentValue === option }"
 					@click="currentValue = option"
-				>{{ option[optionName] ? option[optionName] : option }}</li>
+				>
+					{{ option[optionName] ? option[optionName] : option }}
+				</li>
 			</ul>
 		</transition>
 	</label>
