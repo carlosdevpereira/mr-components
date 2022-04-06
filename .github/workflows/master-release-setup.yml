@@ -11,6 +11,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
+          token: ${{ secrets.GH_TOKEN }}
           release-type: node
           package-name: Mr.Components
           pull-request-title-pattern: '🚀 Release ${component} ${version}'
