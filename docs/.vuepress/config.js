@@ -20,6 +20,7 @@ module.exports = {
 	serviceWorker: false,
 	themeConfig: {
 		logo: '/images/logo@1x.png',
+		darkMode: false,
 		repo: 'carlosdevpereira/mr-components',
 		editLink: false,
 		search: true,
