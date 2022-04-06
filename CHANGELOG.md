@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.7](https://github.com/carlosdevpereira/mr-components/compare/v1.1.6...v1.1.7) (2022-04-06)
+
+
+### 🚨 Bug Fixes
+
+* create releases with a PAT ([d510778](https://github.com/carlosdevpereira/mr-components/commit/d5107783f2adafe9e071fb1a0f2aec96d6fc0335))
+
 ### [1.1.6](https://github.com/carlosdevpereira/mr-components/compare/v1.1.5...v1.1.6) (2022-04-06)
 
 
