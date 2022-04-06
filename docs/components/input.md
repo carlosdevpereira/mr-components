@@ -8,12 +8,19 @@ The input component is a lightweight extension of the standard input element, su
 
 ### Props
 
-| Name     | Type      | Default     | Description                                                                                                                                                     |
-| -------- | --------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| theme    | `String`  | `'default'` | Defines the theme of the input component. Possible values are: `solid` and `outlined`                                                                           |
-| variant  | `String`  | `'default'` | Defines the variant of the theme applied to the input component. Possible values are: `default`, `primary`, `secondary`, `danger`, `warning`, `success`, `info` |
-| size     | `String`  | `'md'`      | Defines the size of the input component. Possible values are: `sm`, `md`, `lg`                                                                                  |
-| disabled | `Boolean` | `false`     | Defines if the input component is disabled or not                                                                                                               |
+| Name           | Type                     | Default     | Description                                                                                                                                                     |
+| -------------- | ------------------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| theme          | `String`                 | `'default'` | Defines the theme of the input component. Possible values are: `default`, `solid` and `outlined`                                                                |
+| variant        | `String`                 | `'default'` | Defines the variant of the theme applied to the input component. Possible values are: `default`, `primary`, `secondary`, `danger`, `warning`, `success`, `info` |
+| size           | `String`                 | `'md'`      | Defines the size of the input component. Possible values are: `sm`, `md`, `lg`                                                                                  |
+| disabled       | `Boolean`                | `false`     | Defines if the input component is disabled or not                                                                                                               |
+| label          | `String`                 | `''`        | Label to display on top or besides the input element                                                                                                            |
+| label-position | `String`                 | `'start'`   | Defines where the label text must be placed. Possible values are: `start`, `center` and `end`                                                                   |
+| inline         | `Boolean`                | `false`     | Defines if the label and the input must be inline or not                                                                                                        |
+| icon           | `String`                 | `''`        | Defines the icon to show inside the input element                                                                                                               |
+| icon-position  | `String`                 | `'start'`   | Defines where the icon must be placed. Possible values are: `start` and `end`                                                                                   |
+| placeholder    | `String`                 | `''`        | Defines the placeholder to show when the input is empty.                                                                                                        |
+| model-value    | `Object\|Number\|String` | `null`      | Defines the value of the input                                                                                                                                  |
 
 ### Events
 
@@ -99,10 +106,24 @@ Every input can define a **theme** and a **variant**. The theme defines the desi
 
 The input boxes can also define their sizes, through the **size** prop. The available sizes are: **sm**, **md** and **lg** and the input component will use the **md** size by default.
 
-<p class="components-inline">
+<p class="components-inline half-width-fill-on-mobile">
     <Input-Proxy size="sm" placeholder="Small input" label="Small input" />
     <Input-Proxy size="md" placeholder="Normal input" label="Normal input" />
     <Input-Proxy size="lg" placeholder="Large input" label="Large input" />
+</p>
+
+## Icons
+
+<p class="components-inline half-width-fill-on-mobile">
+    <Input-Proxy icon="chat-3-line" size="sm" placeholder="Input with start icon" />
+    <Input-Proxy icon="chat-3-line" size="md" placeholder="Input with end icon" />
+    <Input-Proxy icon="chat-3-line" size="lg" placeholder="Input with end icon" />
+</p>
+
+<p class="components-inline half-width-fill-on-mobile">
+    <Input-Proxy icon="chat-3-line" icon-position="end" size="sm" placeholder="Input with start icon" />
+    <Input-Proxy icon="chat-3-line" icon-position="end" size="md" placeholder="Input with end icon" />
+    <Input-Proxy icon="chat-3-line" icon-position="end" size="lg" placeholder="Input with end icon" />
 </p>
 
 ## States

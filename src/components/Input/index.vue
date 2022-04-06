@@ -5,6 +5,11 @@
 		:class="classes"
 		:disabled="isDisabled"
 	>
+		<Icon
+			v-if="icon"
+			:name="icon"
+		/>
+
 		<span>
 			{{ label ? label : '' }}
 		</span>
@@ -19,11 +24,19 @@
 </template>
 
 <script>
+import 'remixicon/fonts/remixicon.css'
+import Icon from '../Icon/index.vue'
+
 export const themes = ['default', 'solid', 'outlined']
 export const variants = ['default', 'primary', 'secondary', 'danger', 'warning', 'success', 'info']
 export const sizes = ['sm', 'md', 'lg']
 
 export default {
+	name: 'Input',
+
+	components: {
+		Icon
+	},
 
 	props: {
 		theme: {
@@ -65,6 +78,17 @@ export default {
 			default: false,
 		},
 
+		icon: {
+			type: String,
+			default: '',
+		},
+
+		iconPosition: {
+			type: String,
+			default: 'start',
+			validator: (v) => ['start', 'end'].includes(v)
+		},
+
 		placeholder: {
 			type: String,
 			default: ''
@@ -94,7 +118,16 @@ export default {
 		},
 
 		classes() {
-			return `${this.theme}-theme variant-${this.variant} size-${this.size} ${this.inline ? 'inline' : ''} label-position-${this.labelPosition}`;
+			let classes = []
+
+			if (this.theme) classes.push(`${this.theme}-theme`)
+			if (this.variant) classes.push(` variant-${this.variant}`)
+			if (this.size) classes.push(` size-${this.size}`)
+			if (this.inline) classes.push(` inline`)
+			if (this.labelPosition) classes.push(` label-position-${this.labelPosition}`)
+			if (this.icon) classes.push(' has-icon icon-position-' + this.iconPosition)
+
+			return classes.join('')
 		},
 	}
 }

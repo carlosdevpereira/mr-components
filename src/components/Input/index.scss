@@ -71,6 +71,16 @@ $sizes: (
 		}
 	}
 
+	&.has-icon .mr-icon {
+		position: absolute;
+		top: 50%;
+		z-index: 10;
+		padding-top: 4px;
+		color: $textColor;
+		opacity: 0.45;
+		transform: translateY(-50%);
+	}
+
 	input {
 		@include canBeDisabled();
 
@@ -94,6 +104,30 @@ $sizes: (
 		&.size-#{$sizeName} {
 			font-size: map.get($sizeValues, 'font-size');
 			line-height: map.get($sizeValues, 'line-height');
+
+			&.has-icon {
+				&.icon-position-start {
+					input {
+						padding-left: map.get($sizeValues, 'font-size') * 3;
+					}
+
+					.mr-icon {
+						left: map.get($sizeValues, 'font-size') * 1.25;
+					}
+				}
+
+				&.icon-position-end {
+					input {
+						padding-right: map.get($sizeValues, 'font-size') * 3;
+						padding-left: map.get($sizeValues, 'padding');
+					}
+
+					.mr-icon {
+						right: map.get($sizeValues, 'font-size') * 1.25;
+						left: unset;
+					}
+				}
+			}
 
 			input {
 				padding: map.get($sizeValues, 'padding');
