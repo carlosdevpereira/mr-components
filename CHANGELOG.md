@@ -1,5 +1,22 @@
 # Changelog
 
+### [1.1.4](https://github.com/carlosdevpereira/mr-components/compare/v1.1.3...v1.1.4) (2022-04-06)
+
+
+### 🚨 Bug Fixes
+
+* readme.md indentation ([0b343c3](https://github.com/carlosdevpereira/mr-components/commit/0b343c3a909602b9afef8347c96a3461b3a17100))
+
+
+### 👷 Maintenance
+
+* add package description and icon ([2f61e65](https://github.com/carlosdevpereira/mr-components/commit/2f61e65ad84b769c78e5d32527b14e97e1b9a108))
+* **deps-dev:** bump @vue/test-utils from 2.0.0-rc.18 to 2.0.0-rc.19 ([#83](https://github.com/carlosdevpereira/mr-components/issues/83)) ([f266ee1](https://github.com/carlosdevpereira/mr-components/commit/f266ee13a9b653b077a6bbaaa126719123e73857))
+* **deps-dev:** bump @vuepress/plugin-register-components ([#85](https://github.com/carlosdevpereira/mr-components/issues/85)) ([8d8f651](https://github.com/carlosdevpereira/mr-components/commit/8d8f6517442460c04399e3f6e79e485887b27b71))
+* **deps-dev:** bump eslint-plugin-vue from 8.5.0 to 8.6.0 ([#82](https://github.com/carlosdevpereira/mr-components/issues/82)) ([ac07a5c](https://github.com/carlosdevpereira/mr-components/commit/ac07a5c5c73d93055e3a80612a5e4c688f8343c0))
+* **deps-dev:** bump vuepress from 2.0.0-beta.37 to 2.0.0-beta.38 ([#84](https://github.com/carlosdevpereira/mr-components/issues/84)) ([ade9851](https://github.com/carlosdevpereira/mr-components/commit/ade9851cb4f016b007bebc6e48cf7c9f3c03e126))
+* disable documentation dark mode ([a32b6a3](https://github.com/carlosdevpereira/mr-components/commit/a32b6a330e9da43f0efabd7a5bf9622ac634e963))
+
 ### [1.1.3](https://github.com/carlosdevpereira/mr-components/compare/v1.1.2...v1.1.3) (2022-04-05)
 
 
