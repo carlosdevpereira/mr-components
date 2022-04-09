@@ -13,7 +13,7 @@ The button component is a lightweight extension of the standard HTML button, sup
 
 ```vue
 <template>
-    <button>Default</button>
+	<Button>Default</Button>
 </template>
 ```
 
@@ -77,41 +77,41 @@ Every button can define a **theme** and a **variant**. The theme defines the des
 
 ```vue
 <template>
-    <!-- Solid -->
-    <Button>Default</Button>
-    <Button variant="primary">Primary</Button>
-    <Button variant="secondary">Secondary</Button>
-    <Button variant="danger">Danger</Button>
-    <Button variant="warning">Warning</Button>
-    <Button variant="success">Success</Button>
-    <Button variant="info">Info</Button>
+	<!-- Solid -->
+	<Button>Default</Button>
+	<Button variant="primary">Primary</Button>
+	<Button variant="secondary">Secondary</Button>
+	<Button variant="danger">Danger</Button>
+	<Button variant="warning">Warning</Button>
+	<Button variant="success">Success</Button>
+	<Button variant="info">Info</Button>
 
-    <!-- Outlined -->
-    <Button theme="outlined">Default</Button>
-    <Button theme="outlined" variant="primary">Primary</Button>
-    <Button theme="outlined" variant="secondary">Secondary</Button>
-    <Button theme="outlined" variant="danger">Danger</Button>
-    <Button theme="outlined" variant="warning">Warning</Button>
-    <Button theme="outlined" variant="success">Success</Button>
-    <Button theme="outlined" variant="info">Info</Button>
+	<!-- Outlined -->
+	<Button theme="outlined">Default</Button>
+	<Button theme="outlined" variant="primary">Primary</Button>
+	<Button theme="outlined" variant="secondary">Secondary</Button>
+	<Button theme="outlined" variant="danger">Danger</Button>
+	<Button theme="outlined" variant="warning">Warning</Button>
+	<Button theme="outlined" variant="success">Success</Button>
+	<Button theme="outlined" variant="info">Info</Button>
 
-    <!-- Text -->
-    <Button theme="text">Default</Button>
-    <Button theme="text" variant="primary">Primary</Button>
-    <Button theme="text" variant="secondary">Secondary</Button>
-    <Button theme="text" variant="danger">Danger</Button>
-    <Button theme="text" variant="warning">Warning</Button>
-    <Button theme="text" variant="success">Success</Button>
-    <Button theme="text" variant="info">Info</Button>
+	<!-- Text -->
+	<Button theme="text">Default</Button>
+	<Button theme="text" variant="primary">Primary</Button>
+	<Button theme="text" variant="secondary">Secondary</Button>
+	<Button theme="text" variant="danger">Danger</Button>
+	<Button theme="text" variant="warning">Warning</Button>
+	<Button theme="text" variant="success">Success</Button>
+	<Button theme="text" variant="info">Info</Button>
 
-    <!-- Text Solid -->
-    <Button theme="text-solid">Default</Button>
-    <Button theme="text-solid" variant="primary">Primary</Button>
-    <Button theme="text-solid" variant="secondary">Secondary</Button>
-    <Button theme="text-solid" variant="danger">Danger</Button>
-    <Button theme="text-solid" variant="warning">Warning</Button>
-    <Button theme="text-solid" variant="success">Success</Button>
-    <Button theme="text-solid" variant="info">Info</Button>
+	<!-- Text Solid -->
+	<Button theme="text-solid">Default</Button>
+	<Button theme="text-solid" variant="primary">Primary</Button>
+	<Button theme="text-solid" variant="secondary">Secondary</Button>
+	<Button theme="text-solid" variant="danger">Danger</Button>
+	<Button theme="text-solid" variant="warning">Warning</Button>
+	<Button theme="text-solid" variant="success">Success</Button>
+	<Button theme="text-solid" variant="info">Info</Button>
 </template>
 ```
 
@@ -135,9 +135,9 @@ The buttons can also define their sizes, through the **size** prop. The availabl
 
 ```vue
 <template>
-    <Button size="sm">Small button</Button>
-    <Button size="md">Medium button</Button>
-    <Button size="lg">Large button</Button>
+	<Button size="sm">Small button</Button>
+	<Button size="md">Medium button</Button>
+	<Button size="lg">Large button</Button>
 </template>
 ```
 
@@ -171,15 +171,15 @@ Buttons can define their icons through the **icon** prop. By default the icon wi
 
 ```vue
 <template>
-    <!-- Starting with an icon -->
-    <Button size="sm" icon="chat-3-line">Chat</Button>
-    <Button icon="chat-3-line">Chat</Button>
-    <Button size="lg" icon="chat-3-line">Chat</Button>
+	<!-- Starting with an icon -->
+	<Button size="sm" icon="chat-3-line">Chat</Button>
+	<Button icon="chat-3-line">Chat</Button>
+	<Button size="lg" icon="chat-3-line">Chat</Button>
 
-    <!-- Ending with an icon -->
-    <Button size="sm" icon="chat-3-line" icon-position="end">Chat</Button>
-    <Button icon="chat-3-line" icon-position="end">Chat</Button>
-    <Button size="lg" icon="chat-3-line" icon-position="end">Chat</Button>
+	<!-- Ending with an icon -->
+	<Button size="sm" icon="chat-3-line" icon-position="end">Chat</Button>
+	<Button icon="chat-3-line" icon-position="end">Chat</Button>
+	<Button size="lg" icon="chat-3-line" icon-position="end">Chat</Button>
 </template>
 ```
 
@@ -241,41 +241,41 @@ Besides themes and sizes, every button can define a set of props to control thei
 
 ```vue
 <template>
-    <!-- Solid -->
-    <Button disabled>Default</Button>
-    <Button disabled variant="primary">Primary</Button>
-    <Button disabled variant="secondary">Secondary</Button>
-    <Button disabled variant="danger">Danger</Button>
-    <Button disabled variant="warning">Warning</Button>
-    <Button disabled variant="success">Success</Button>
-    <Button disabled variant="info">Info</Button>
+	<!-- Solid -->
+	<Button disabled>Default</Button>
+	<Button disabled variant="primary">Primary</Button>
+	<Button disabled variant="secondary">Secondary</Button>
+	<Button disabled variant="danger">Danger</Button>
+	<Button disabled variant="warning">Warning</Button>
+	<Button disabled variant="success">Success</Button>
+	<Button disabled variant="info">Info</Button>
 
-    <!-- Outlined -->
-    <Button disabled theme="outlined">Default</Button>
-    <Button disabled theme="outlined" variant="primary">Primary</Button>
-    <Button disabled theme="outlined" variant="secondary">Secondary</Button>
-    <Button disabled theme="outlined" variant="danger">Danger</Button>
-    <Button disabled theme="outlined" variant="warning">Warning</Button>
-    <Button disabled theme="outlined" variant="success">Success</Button>
-    <Button disabled theme="outlined" variant="info">Info</Button>
+	<!-- Outlined -->
+	<Button disabled theme="outlined">Default</Button>
+	<Button disabled theme="outlined" variant="primary">Primary</Button>
+	<Button disabled theme="outlined" variant="secondary">Secondary</Button>
+	<Button disabled theme="outlined" variant="danger">Danger</Button>
+	<Button disabled theme="outlined" variant="warning">Warning</Button>
+	<Button disabled theme="outlined" variant="success">Success</Button>
+	<Button disabled theme="outlined" variant="info">Info</Button>
 
-    <!-- Text -->
-    <Button disabled theme="text">Default</Button>
-    <Button disabled theme="text" variant="primary">Primary</Button>
-    <Button disabled theme="text" variant="secondary">Secondary</Button>
-    <Button disabled theme="text" variant="danger">Danger</Button>
-    <Button disabled theme="text" variant="warning">Warning</Button>
-    <Button disabled theme="text" variant="success">Success</Button>
-    <Button disabled theme="text" variant="info">Info</Button>
+	<!-- Text -->
+	<Button disabled theme="text">Default</Button>
+	<Button disabled theme="text" variant="primary">Primary</Button>
+	<Button disabled theme="text" variant="secondary">Secondary</Button>
+	<Button disabled theme="text" variant="danger">Danger</Button>
+	<Button disabled theme="text" variant="warning">Warning</Button>
+	<Button disabled theme="text" variant="success">Success</Button>
+	<Button disabled theme="text" variant="info">Info</Button>
 
-    <!-- Text Solid -->
-    <Button disabled theme="text-solid">Default</Button>
-    <Button disabled theme="text-solid" variant="primary">Primary</Button>
-    <Button disabled theme="text-solid" variant="secondary">Secondary</Button>
-    <Button disabled theme="text-solid" variant="danger">Danger</Button>
-    <Button disabled theme="text-solid" variant="warning">Warning</Button>
-    <Button disabled theme="text-solid" variant="success">Success</Button>
-    <Button disabled theme="text-solid" variant="info">Info</Button>
+	<!-- Text Solid -->
+	<Button disabled theme="text-solid">Default</Button>
+	<Button disabled theme="text-solid" variant="primary">Primary</Button>
+	<Button disabled theme="text-solid" variant="secondary">Secondary</Button>
+	<Button disabled theme="text-solid" variant="danger">Danger</Button>
+	<Button disabled theme="text-solid" variant="warning">Warning</Button>
+	<Button disabled theme="text-solid" variant="success">Success</Button>
+	<Button disabled theme="text-solid" variant="info">Info</Button>
 </template>
 ```
 

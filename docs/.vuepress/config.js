@@ -38,6 +38,7 @@ module.exports = {
 					'/components/input.md',
 					'/components/pagination.md',
 					'/components/table.md',
+					'/components/textarea.md',
 					'/components/select.md',
 					'/components/spinner.md',
 				],
@@ -52,6 +53,7 @@ module.exports = {
 				components: {
 					Button: path.resolve(__dirname, '../../src/components/Button/index.vue'),
 					Table: path.resolve(__dirname, '../../src/components/Table/index.vue'),
+					Textarea: path.resolve(__dirname, '../../src/components/Textarea/index.vue'),
 					Pagination: path.resolve(
 						__dirname,
 						'../../src/components/Pagination/index.vue'
