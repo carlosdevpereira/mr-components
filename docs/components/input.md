@@ -34,11 +34,55 @@ The input component is a lightweight extension of the standard input element, su
     <Input-Proxy />
 </div>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Input v-model="value" />
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			value: '',
+		}
+	},
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ### Placeholder
 
 <div class="half-width-fill-on-mobile">
     <Input-Proxy placeholder="Write here..." />
 </div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Input v-model="value" placeholder="Write here" />
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			value: '',
+		}
+	},
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ### Label
 
@@ -60,6 +104,30 @@ The input component is a lightweight extension of the standard input element, su
     <Input-Proxy label="End" label-position="end" />
 </div>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Input v-model="value" label="Start" />
+	<Input v-model="value" label="Center" label-position="center" />
+	<Input v-model="value" label="End" label-position="end" />
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			value: '',
+		}
+	},
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 <br>
 
 <strong>Dispositions:</strong>
@@ -73,6 +141,29 @@ The input component is a lightweight extension of the standard input element, su
 <div class="half-width-fill-on-mobile">
     <Input-Proxy label="Inline End" label-position="end" inline />
 </div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Input v-model="value" label="Inline" inline />
+	<Input v-model="value" label="Inline End" inline label-position="end" />
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			value: '',
+		}
+	},
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Themes
 
@@ -102,6 +193,34 @@ Every input can define a **theme** and a **variant**. The theme defines the desi
     <Input-Proxy theme="outlined" variant="info" placeholder="Outlined info input" />
 </p>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<!-- Solid -->
+	<Input theme="solid" placeholder="Solid input" />
+	<Input theme="solid" variant="primary" placeholder="Solid primary input" />
+	<Input theme="solid" variant="secondary" placeholder="Solid secondary input" />
+	<Input theme="solid" variant="danger" placeholder="Solid danger input" />
+	<Input theme="solid" variant="warning" placeholder="Solid warning input" />
+	<Input theme="solid" variant="success" placeholder="Solid success input" />
+	<Input theme="solid" variant="info" placeholder="Solid info input" />
+
+	<!-- Outlined -->
+	<Input theme="outlined" placeholder="Outlined input" />
+	<Input theme="outlined" variant="primary" placeholder="Outlined primary input" />
+	<Input theme="outlined" variant="secondary" placeholder="Outlined secondary input" />
+	<Input theme="outlined" variant="danger" placeholder="Outlined danger input" />
+	<Input theme="outlined" variant="warning" placeholder="Outlined warning input" />
+	<Input theme="outlined" variant="success" placeholder="Outlined success input" />
+	<Input theme="outlined" variant="info" placeholder="Outlined info input" />
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ## Sizes
 
 The input boxes can also define their sizes, through the **size** prop. The available sizes are: **sm**, **md** and **lg** and the input component will use the **md** size by default.
@@ -111,6 +230,20 @@ The input boxes can also define their sizes, through the **size** prop. The avai
     <Input-Proxy size="md" placeholder="Normal input" label="Normal input" />
     <Input-Proxy size="lg" placeholder="Large input" label="Large input" />
 </p>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Input size="sm" placeholder="Small input" label="Small input" />
+	<Input size="md" placeholder="Normal input" label="Normal input" />
+	<Input size="lg" placeholder="Large input" label="Large input" />
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Icons
 
@@ -125,6 +258,26 @@ The input boxes can also define their sizes, through the **size** prop. The avai
     <Input-Proxy icon="chat-3-line" icon-position="end" size="md" placeholder="Input with end icon" />
     <Input-Proxy icon="chat-3-line" icon-position="end" size="lg" placeholder="Input with end icon" />
 </p>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<!-- Icon on the left -->
+	<Input icon="chat-3-line" size="sm" placeholder="Input with start icon" />
+	<Input icon="chat-3-line" size="md" placeholder="Input with end icon" />
+	<Input icon="chat-3-line" size="lg" placeholder="Input with end icon" />
+
+	<!-- Icon on the right -->
+	<Input icon="chat-3-line" icon-position="end" size="sm" placeholder="Input with start icon" />
+	<Input icon="chat-3-line" icon-position="end" size="md" placeholder="Input with end icon" />
+	<Input icon="chat-3-line" icon-position="end" size="lg" placeholder="Input with end icon" />
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## States
 
@@ -155,3 +308,33 @@ Besides themes and sizes, every input box can define a set of props to control t
     <Input-Proxy theme="outlined" variant="success" placeholder="Disabled input" disabled />
     <Input-Proxy theme="outlined" variant="info" placeholder="Disabled input" disabled />
 </p>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Input placeholder="Disabled input" disabled />
+
+	<!-- Solid -->
+	<Input theme="solid" placeholder="Disabled input" disabled />
+	<Input theme="solid" variant="primary" placeholder="Disabled input" disabled />
+	<Input theme="solid" variant="secondary" placeholder="Disabled input" disabled />
+	<Input theme="solid" variant="danger" placeholder="Disabled input" disabled />
+	<Input theme="solid" variant="warning" placeholder="Disabled input" disabled />
+	<Input theme="solid" variant="success" placeholder="Disabled input" disabled />
+	<Input theme="solid" variant="info" placeholder="Disabled input" disabled />
+
+	<!-- Outlined -->
+	<Input theme="outlined" placeholder="Disabled input" disabled />
+	<Input theme="outlined" variant="primary" placeholder="Disabled input" disabled />
+	<Input theme="outlined" variant="secondary" placeholder="Disabled input" disabled />
+	<Input theme="outlined" variant="danger" placeholder="Disabled input" disabled />
+	<Input theme="outlined" variant="warning" placeholder="Disabled input" disabled />
+	<Input theme="outlined" variant="success" placeholder="Disabled input" disabled />
+	<Input theme="outlined" variant="info" placeholder="Disabled input" disabled />
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
