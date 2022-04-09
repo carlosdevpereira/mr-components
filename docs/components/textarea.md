@@ -41,11 +41,55 @@ The textarea component is a lightweight extension of the standard textarea eleme
     <Textarea-Proxy />
 </div>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Textarea v-model="value" />
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			value: '',
+		}
+	},
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ### Placeholder
 
 <div class="half-width-fill-on-mobile">
     <Textarea-Proxy placeholder="Write here..." />
 </div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Textarea v-model="value" placeholder="Write here..." />
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			value: '',
+		}
+	},
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ### Label
 
@@ -67,6 +111,30 @@ The textarea component is a lightweight extension of the standard textarea eleme
     <Textarea-Proxy label="End" label-position="end" />
 </div>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Textarea v-model="value" label="Start" />
+	<Textarea v-model="value" label="Center" label-position="center" />
+	<Textarea v-model="value" label="End" label-position="end" />
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			value: '',
+		}
+	},
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 <br>
 
 <strong>Dispositions:</strong>
@@ -80,6 +148,29 @@ The textarea component is a lightweight extension of the standard textarea eleme
 <div class="half-width-fill-on-mobile">
     <Textarea-Proxy label="Inline End" label-position="end" inline />
 </div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Textarea v-model="value" label="Inline" inline />
+	<Textarea v-model="value" label="Inline End" inline label-position="end" />
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			value: '',
+		}
+	},
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Themes
 
@@ -109,6 +200,34 @@ Every textarea can define a **theme** and a **variant**. The theme defines the d
     <Textarea-Proxy theme="outlined" variant="info" placeholder="Outlined info textarea" />
 </p>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<!-- Solid -->
+	<Textarea theme="solid" placeholder="Solid textarea" />
+	<Textarea theme="solid" variant="primary" placeholder="Solid primary textarea" />
+	<Textarea theme="solid" variant="secondary" placeholder="Solid secondary textarea" />
+	<Textarea theme="solid" variant="danger" placeholder="Solid danger textarea" />
+	<Textarea theme="solid" variant="warning" placeholder="Solid warning textarea" />
+	<Textarea theme="solid" variant="success" placeholder="Solid success textarea" />
+	<Textarea theme="solid" variant="info" placeholder="Solid info textarea" />
+
+	<!-- Outlined -->
+	<Textarea theme="outlined" placeholder="Outlined textarea" />
+	<Textarea theme="outlined" variant="primary" placeholder="Outlined primary textarea" />
+	<Textarea theme="outlined" variant="secondary" placeholder="Outlined secondary textarea" />
+	<Textarea theme="outlined" variant="danger" placeholder="Outlined danger textarea" />
+	<Textarea theme="outlined" variant="warning" placeholder="Outlined warning textarea" />
+	<Textarea theme="outlined" variant="success" placeholder="Outlined success textarea" />
+	<Textarea theme="outlined" variant="info" placeholder="Outlined info textarea" />
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ## Sizes
 
 The textarea boxes can also define their sizes, through the **size** prop. The available sizes are: **sm**, **md** and **lg** and the textarea component will use the **md** size by default.
@@ -119,6 +238,20 @@ The textarea boxes can also define their sizes, through the **size** prop. The a
     <Textarea-Proxy size="lg" placeholder="Large textarea" label="Large textarea" />
 </p>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Textarea size="sm" placeholder="Small textarea" label="Small textarea" />
+	<Textarea size="md" placeholder="Normal textarea" label="Normal textarea" />
+	<Textarea size="lg" placeholder="Large textarea" label="Large textarea" />
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ### Height
 
 <p class="components-inline half-width-fill-on-mobile">
@@ -128,6 +261,25 @@ The textarea boxes can also define their sizes, through the **size** prop. The a
     <Textarea-Proxy placeholder="This textarea will grow to fit its content" label="Fit content" height="fit-content" />
 </p>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Textarea placeholder="Small textarea" label="Small textarea" height="sm" />
+	<Textarea placeholder="Normal textarea" label="Normal textarea" height="md" />
+	<Textarea placeholder="Large textarea" label="Large textarea" height="lg" />
+	<Textarea
+		placeholder="This textarea will grow to fit its content"
+		label="Fit content"
+		height="fit-content"
+	/>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ### Not resizable
 
 <p class="components-inline half-width-fill-on-mobile">
@@ -136,19 +288,76 @@ The textarea boxes can also define their sizes, through the **size** prop. The a
     <Textarea-Proxy placeholder="This textarea cannot be resized vertically" label="Static textarea" not-resizable-vertically />
 </p>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Textarea placeholder="This textarea cannot be resized" label="Static textarea" not-resizable />
+	<Textarea
+		placeholder="This textarea cannot be resized horizontally"
+		label="Static textarea"
+		not-resizable-horizontally
+	/>
+	<Textarea
+		placeholder="This textarea cannot be resized vertically"
+		label="Static textarea"
+		not-resizable-vertically
+	/>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ## Icons
 
 <p class="components-inline half-width-fill-on-mobile">
     <Textarea-Proxy icon="chat-3-line" size="sm" placeholder="Textarea with start icon" />
-    <Textarea-Proxy icon="chat-3-line" size="md" placeholder="Textarea with end icon" />
-    <Textarea-Proxy icon="chat-3-line" size="lg" placeholder="Textarea with end icon" />
+    <Textarea-Proxy icon="chat-3-line" size="md" placeholder="Textarea with start icon" />
+    <Textarea-Proxy icon="chat-3-line" size="lg" placeholder="Textarea with start icon" />
 </p>
 
 <p class="components-inline half-width-fill-on-mobile">
-    <Textarea-Proxy icon="chat-3-line" icon-position="end" size="sm" placeholder="Textarea with start icon" />
+    <Textarea-Proxy icon="chat-3-line" icon-position="end" size="sm" placeholder="Textarea with end icon" />
     <Textarea-Proxy icon="chat-3-line" icon-position="end" size="md" placeholder="Textarea with end icon" />
     <Textarea-Proxy icon="chat-3-line" icon-position="end" size="lg" placeholder="Textarea with end icon" />
 </p>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<!-- Icon on the left -->
+	<Textarea icon="chat-3-line" size="sm" placeholder="Textarea with start icon" />
+	<Textarea icon="chat-3-line" size="md" placeholder="Textarea with start icon" />
+	<Textarea icon="chat-3-line" size="lg" placeholder="Textarea with start icon" />
+
+	<!-- Icon on the right -->
+	<Textarea
+		icon="chat-3-line"
+		icon-position="end"
+		size="sm"
+		placeholder="Textarea with end icon"
+	/>
+	<Textarea
+		icon="chat-3-line"
+		icon-position="end"
+		size="md"
+		placeholder="Textarea with end icon"
+	/>
+	<Textarea
+		icon="chat-3-line"
+		icon-position="end"
+		size="lg"
+		placeholder="Textarea with end icon"
+	/>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## States
 
@@ -179,3 +388,33 @@ Besides themes and sizes, every textarea box can define a set of props to contro
     <Textarea-Proxy theme="outlined" variant="success" placeholder="Disabled textarea" disabled />
     <Textarea-Proxy theme="outlined" variant="info" placeholder="Disabled textarea" disabled />
 </p>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Textarea placeholder="Disabled textarea" disabled />
+
+	<!-- Solid -->
+	<Textarea theme="solid" placeholder="Disabled textarea" disabled />
+	<Textarea theme="solid" variant="primary" placeholder="Disabled textarea" disabled />
+	<Textarea theme="solid" variant="secondary" placeholder="Disabled textarea" disabled />
+	<Textarea theme="solid" variant="danger" placeholder="Disabled textarea" disabled />
+	<Textarea theme="solid" variant="warning" placeholder="Disabled textarea" disabled />
+	<Textarea theme="solid" variant="success" placeholder="Disabled textarea" disabled />
+	<Textarea theme="solid" variant="info" placeholder="Disabled textarea" disabled />
+
+	<!-- Outlined -->
+	<Textarea theme="outlined" placeholder="Disabled textarea" disabled />
+	<Textarea theme="outlined" variant="primary" placeholder="Disabled textarea" disabled />
+	<Textarea theme="outlined" variant="secondary" placeholder="Disabled textarea" disabled />
+	<Textarea theme="outlined" variant="danger" placeholder="Disabled textarea" disabled />
+	<Textarea theme="outlined" variant="warning" placeholder="Disabled textarea" disabled />
+	<Textarea theme="outlined" variant="success" placeholder="Disabled textarea" disabled />
+	<Textarea theme="outlined" variant="info" placeholder="Disabled textarea" disabled />
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
