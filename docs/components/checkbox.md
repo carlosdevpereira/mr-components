@@ -13,7 +13,7 @@ The checkbox component is a lightweight extension of the standard HTML input typ
 
 ```vue
 <template>
-    <Checkbox v-model="value" variant="default" label="Default" />
+	<Checkbox v-model="value" variant="default" label="Default" />
 </template>
 ```
 
@@ -65,32 +65,32 @@ Every checkbox can define a **theme** and a **variant**. The theme defines the d
 
 ```vue
 <template>
-    <!-- Solid -->
-    <Checkbox v-model="value" variant="default" label="Default" />
-    <Checkbox v-model="value" variant="primary" label="Primary" />
-    <Checkbox v-model="value" variant="secondary" label="Secondary" />
-    <Checkbox v-model="value" variant="danger" label="Danger" />
-    <Checkbox v-model="value" variant="warning" label="Warning" />
-    <Checkbox v-model="value" variant="success" label="Success" />
-    <Checkbox v-model="value" variant="info" label="Info" />
+	<!-- Solid -->
+	<Checkbox v-model="value" variant="default" label="Default" />
+	<Checkbox v-model="value" variant="primary" label="Primary" />
+	<Checkbox v-model="value" variant="secondary" label="Secondary" />
+	<Checkbox v-model="value" variant="danger" label="Danger" />
+	<Checkbox v-model="value" variant="warning" label="Warning" />
+	<Checkbox v-model="value" variant="success" label="Success" />
+	<Checkbox v-model="value" variant="info" label="Info" />
 
-    <!-- Outlined -->
-    <Checkbox v-model="value" theme="outlined" variant="default" label="Default" />
-    <Checkbox v-model="value" theme="outlined" variant="primary" label="Primary" />
-    <Checkbox v-model="value" theme="outlined" variant="secondary" label="Secondary" />
-    <Checkbox v-model="value" theme="outlined" variant="danger" label="Danger" />
-    <Checkbox v-model="value" theme="outlined" variant="warning" label="Warning" />
-    <Checkbox v-model="value" theme="outlined" variant="success" label="Success" />
-    <Checkbox v-model="value" theme="outlined" variant="info" label="Info" />
+	<!-- Outlined -->
+	<Checkbox v-model="value" theme="outlined" variant="default" label="Default" />
+	<Checkbox v-model="value" theme="outlined" variant="primary" label="Primary" />
+	<Checkbox v-model="value" theme="outlined" variant="secondary" label="Secondary" />
+	<Checkbox v-model="value" theme="outlined" variant="danger" label="Danger" />
+	<Checkbox v-model="value" theme="outlined" variant="warning" label="Warning" />
+	<Checkbox v-model="value" theme="outlined" variant="success" label="Success" />
+	<Checkbox v-model="value" theme="outlined" variant="info" label="Info" />
 
-    <!-- Switch -->
-    <Checkbox v-model="value" theme="switch" variant="default" label="Default" />
-    <Checkbox v-model="value" theme="switch" variant="primary" label="Primary" />
-    <Checkbox v-model="value" theme="switch" variant="secondary" label="Secondary" />
-    <Checkbox v-model="value" theme="switch" variant="danger" label="Danger" />
-    <Checkbox v-model="value" theme="switch" variant="warning" label="Warning" />
-    <Checkbox v-model="value" theme="switch" variant="success" label="Success" />
-    <Checkbox v-model="value" theme="switch" variant="info" label="Info" />
+	<!-- Switch -->
+	<Checkbox v-model="value" theme="switch" variant="default" label="Default" />
+	<Checkbox v-model="value" theme="switch" variant="primary" label="Primary" />
+	<Checkbox v-model="value" theme="switch" variant="secondary" label="Secondary" />
+	<Checkbox v-model="value" theme="switch" variant="danger" label="Danger" />
+	<Checkbox v-model="value" theme="switch" variant="warning" label="Warning" />
+	<Checkbox v-model="value" theme="switch" variant="success" label="Success" />
+	<Checkbox v-model="value" theme="switch" variant="info" label="Info" />
 </template>
 ```
 
@@ -101,7 +101,7 @@ Every checkbox can define a **theme** and a **variant**. The theme defines the d
 
 ## Sizes
 
-### Solid
+### Checkbox
 
 <p class="components-inline">
     <CheckboxProxy size="sm" label="Small checkbox" />
@@ -122,15 +122,15 @@ Every checkbox can define a **theme** and a **variant**. The theme defines the d
 
 ```vue
 <template>
-    <!-- Solid -->
-    <Checkbox v-model="value" size="sm" label="Small checkbox" />
-    <Checkbox v-model="value" size="md" label="Medium checkbox" />
-    <Checkbox v-model="value" size="lg" label="Large checkbox" />
+	<!-- Solid -->
+	<Checkbox v-model="value" size="sm" label="Small checkbox" />
+	<Checkbox v-model="value" size="md" label="Medium checkbox" />
+	<Checkbox v-model="value" size="lg" label="Large checkbox" />
 
-    <!-- Switch -->
-    <Checkbox v-model="value" theme="switch" size="sm" label="Small switch" />
-    <Checkbox v-model="value" theme="switch" size="md" label="Medium switch" />
-    <Checkbox v-model="value" theme="switch" size="lg" label="Large switch" />
+	<!-- Switch -->
+	<Checkbox v-model="value" theme="switch" size="sm" label="Small switch" />
+	<Checkbox v-model="value" theme="switch" size="md" label="Medium switch" />
+	<Checkbox v-model="value" theme="switch" size="lg" label="Large switch" />
 </template>
 ```
 
@@ -180,32 +180,32 @@ Besides themes and sizes, every checkbox can define a set of props to control th
 
 ```vue
 <template>
-    <!-- Solid -->
-    <Checkbox v-model="value" variant="default" label="Default" disabled />
-    <Checkbox v-model="value" variant="primary" label="Primary" disabled />
-    <Checkbox v-model="value" variant="secondary" label="Secondary" disabled />
-    <Checkbox v-model="value" variant="danger" label="Danger" disabled />
-    <Checkbox v-model="value" variant="warning" label="Warning" disabled />
-    <Checkbox v-model="value" variant="success" label="Success" disabled />
-    <Checkbox v-model="value" variant="info" label="Info" disabled />
+	<!-- Solid -->
+	<Checkbox v-model="value" variant="default" label="Default" disabled />
+	<Checkbox v-model="value" variant="primary" label="Primary" disabled />
+	<Checkbox v-model="value" variant="secondary" label="Secondary" disabled />
+	<Checkbox v-model="value" variant="danger" label="Danger" disabled />
+	<Checkbox v-model="value" variant="warning" label="Warning" disabled />
+	<Checkbox v-model="value" variant="success" label="Success" disabled />
+	<Checkbox v-model="value" variant="info" label="Info" disabled />
 
-    <!-- Outlined -->
-    <Checkbox v-model="value" theme="outlined" variant="default" label="Default" disabled />
-    <Checkbox v-model="value" theme="outlined" variant="primary" label="Primary" disabled />
-    <Checkbox v-model="value" theme="outlined" variant="secondary" label="Secondary" disabled />
-    <Checkbox v-model="value" theme="outlined" variant="danger" label="Danger" disabled />
-    <Checkbox v-model="value" theme="outlined" variant="warning" label="Warning" disabled />
-    <Checkbox v-model="value" theme="outlined" variant="success" label="Success" disabled />
-    <Checkbox v-model="value" theme="outlined" variant="info" label="Info" disabled />
+	<!-- Outlined -->
+	<Checkbox v-model="value" theme="outlined" variant="default" label="Default" disabled />
+	<Checkbox v-model="value" theme="outlined" variant="primary" label="Primary" disabled />
+	<Checkbox v-model="value" theme="outlined" variant="secondary" label="Secondary" disabled />
+	<Checkbox v-model="value" theme="outlined" variant="danger" label="Danger" disabled />
+	<Checkbox v-model="value" theme="outlined" variant="warning" label="Warning" disabled />
+	<Checkbox v-model="value" theme="outlined" variant="success" label="Success" disabled />
+	<Checkbox v-model="value" theme="outlined" variant="info" label="Info" disabled />
 
-    <!-- Switch -->
-    <Checkbox v-model="value" theme="switch" variant="default" label="Default" disabled />
-    <Checkbox v-model="value" theme="switch" variant="primary" label="Primary" disabled />
-    <Checkbox v-model="value" theme="switch" variant="secondary" label="Secondary" disabled />
-    <Checkbox v-model="value" theme="switch" variant="danger" label="Danger" disabled />
-    <Checkbox v-model="value" theme="switch" variant="warning" label="Warning" disabled />
-    <Checkbox v-model="value" theme="switch" variant="success" label="Success" disabled />
-    <Checkbox v-model="value" theme="switch" variant="info" label="Info" disabled />
+	<!-- Switch -->
+	<Checkbox v-model="value" theme="switch" variant="default" label="Default" disabled />
+	<Checkbox v-model="value" theme="switch" variant="primary" label="Primary" disabled />
+	<Checkbox v-model="value" theme="switch" variant="secondary" label="Secondary" disabled />
+	<Checkbox v-model="value" theme="switch" variant="danger" label="Danger" disabled />
+	<Checkbox v-model="value" theme="switch" variant="warning" label="Warning" disabled />
+	<Checkbox v-model="value" theme="switch" variant="success" label="Success" disabled />
+	<Checkbox v-model="value" theme="switch" variant="info" label="Info" disabled />
 </template>
 ```
 
