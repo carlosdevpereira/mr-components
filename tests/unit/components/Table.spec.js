@@ -2,9 +2,9 @@ import Table from '@/components/Table'
 import Checkbox from '@/components/Checkbox'
 import Spinner from '@/components/Spinner'
 import Pagination from '@/components/Pagination'
-import SimpleTableFixture from '../../../fixtures/Table/SimpleTable.json'
-import SimpleTableWithHiddenColumnsFixtures from '../../../fixtures/Table/SimpleTableWithHiddenColumns.json'
-import SimpleTableWithSortableColumnsFixtures from '../../../fixtures/Table/SimpleTableWithSortableColumnsFixtures.json'
+import SimpleTableFixture from '../../fixtures/Table/SimpleTable.json'
+import SimpleTableWithHiddenColumnsFixtures from '../../fixtures/Table/SimpleTableWithHiddenColumns.json'
+import SimpleTableWithSortableColumnsFixtures from '../../fixtures/Table/SimpleTableWithSortableColumnsFixtures.json'
 import { flushPromises, shallowMount } from '@vue/test-utils'
 
 describe('Table', () => {
