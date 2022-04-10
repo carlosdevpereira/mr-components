@@ -16,6 +16,7 @@
 		/>
 
 		<textarea
+			ref="textarea"
 			v-model="currentValue"
 			:placeholder="placeholder"
 			:disabled="isDisabled"
@@ -23,7 +24,7 @@
 			:required="required"
 			:maxlength="maxLength"
 			:rows="rows"
-			@input="textareaFitContent"
+			@input="setTextareaHeight"
 		/>
 	</label>
 </template>
@@ -186,10 +187,15 @@ export default {
 		}
 	},
 
+	mounted() {
+		this.setTextareaHeight()
+	},
+
 	methods: {
-		textareaFitContent(event) {
+		setTextareaHeight() {
+			/* istanbul ignore next */
 			if (this.height === 'fit-content') {
-				event.target.style.height = event.target.scrollHeight + 2 + "px"
+				this.$refs.textarea.style.height = this.$refs.textarea.scrollHeight + 2 + "px"
 			}
 		}
 	}

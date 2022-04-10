@@ -5,6 +5,79 @@ import { shallowMount } from '@vue/test-utils'
 describe('Textarea', () => {
 	let wrapper
 
+	describe('Attributes', () => {
+		describe('rows', () => {
+			beforeEach(() => {
+				wrapper = shallowMount(Textarea)
+			})
+
+			it('when height is `sm` textarea displays 2 rows', async () => {
+				await wrapper.setProps({ height: 'sm' })
+
+				expect(wrapper.vm.rows).toBe(2)
+			})
+
+			it('when height is `md` textarea displays 4 rows', async () => {
+				await wrapper.setProps({ height: 'md' })
+
+				expect(wrapper.vm.rows).toBe(4)
+			})
+
+			it('when height is `lg` textarea displays 8 rows', async () => {
+				await wrapper.setProps({ height: 'lg' })
+
+				expect(wrapper.vm.rows).toBe(8)
+			})
+		})
+
+		describe('height', () => {
+			describe('when height is fit-content', () => {
+				let resizeHandlerFn = jest.spyOn(Textarea.methods, 'setTextareaHeight')
+
+				it('triggers the textarea resize handler function when component is created', async () => {
+					resizeHandlerFn.mockClear()
+
+					wrapper = shallowMount(Textarea, {
+						props: {
+							height: 'fit-content',
+						},
+					})
+
+					expect(resizeHandlerFn).toHaveBeenCalledTimes(1)
+				})
+
+				it('triggers the textarea resize handler function when user writes', async () => {
+					wrapper = shallowMount(Textarea, {
+						props: {
+							height: 'fit-content',
+						},
+					})
+
+					// clears mock to make sure we validate
+					// only the types the function was called
+					// after the component was created
+					resizeHandlerFn.mockClear()
+
+					await wrapper.find('textarea').trigger('input')
+
+					expect(resizeHandlerFn).toHaveBeenCalledTimes(1)
+				})
+			})
+
+			describe('when height is not fit-content', () => {
+				it("doesn't set textarea style height", async () => {
+					wrapper = shallowMount(Textarea, {
+						props: {
+							height: 'sm',
+						},
+					})
+
+					expect(wrapper.find('textarea').element.style.height).toBe('')
+				})
+			})
+		})
+	})
+
 	describe('States', () => {
 		describe('Disabled', () => {
 			beforeEach(() => {
@@ -56,6 +129,9 @@ describe('Textarea', () => {
 					icon: 'chat-3-line',
 					iconPosition: 'start',
 					inline: true,
+					notResizable: true,
+					notResizableHorizontally: true,
+					notResizableVertically: true,
 				},
 			})
 		})
@@ -67,6 +143,9 @@ describe('Textarea', () => {
 			expect(wrapper.vm.classes).toContain('has-icon')
 			expect(wrapper.vm.classes).toContain('icon-position-start')
 			expect(wrapper.vm.classes).toContain('inline')
+			expect(wrapper.vm.classes).toContain('not-resizable')
+			expect(wrapper.vm.classes).toContain('not-resizable-horizontally')
+			expect(wrapper.vm.classes).toContain('not-resizable-vertically')
 		})
 
 		it('sets the correct theme class', () => {
