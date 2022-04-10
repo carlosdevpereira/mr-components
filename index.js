@@ -6,6 +6,7 @@ import Input from './src/components/Input/index.vue'
 import Pagination from './src/components/Pagination/index.vue'
 import Spinner from './src/components/Spinner/index.vue'
 import Table from './src/components/Table/index.vue'
+import Textarea from './src/components/Textarea/index.vue'
 import Select from './src/components/Select/index.vue'
 
 export default vueInstance => {
@@ -17,7 +18,8 @@ export default vueInstance => {
 		.component('Pagination', Pagination)
 		.component('Spinner', Spinner)
 		.component('Table', Table)
+		.component('Textarea', Textarea)
 		.component('Select', Select)
 }
 
-export { Button, Checkbox, Icon, Input, Pagination, Spinner, Table, Select }
+export { Button, Checkbox, Icon, Input, Pagination, Spinner, Table, Textarea, Select }

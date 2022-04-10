@@ -40,12 +40,14 @@ $sizes: (
 		flex-direction: row;
 		align-items: center;
 
-		input {
+		input,
+		textarea {
 			margin-left: 8px;
 		}
 
 		&.label-position-end {
-			input {
+			input,
+			textarea {
 				order: 1;
 				margin-right: 8px;
 				margin-left: 0;
@@ -81,7 +83,8 @@ $sizes: (
 		transform: translateY(-50%);
 	}
 
-	input {
+	input,
+	textarea {
 		@include canBeDisabled();
 
 		box-sizing: border-box;
@@ -107,7 +110,8 @@ $sizes: (
 
 			&.has-icon {
 				&.icon-position-start {
-					input {
+					input,
+					textarea {
 						padding-left: map.get($sizeValues, 'font-size') * 3;
 					}
 
@@ -117,7 +121,8 @@ $sizes: (
 				}
 
 				&.icon-position-end {
-					input {
+					input,
+					textarea {
 						padding-right: map.get($sizeValues, 'font-size') * 3;
 						padding-left: map.get($sizeValues, 'padding');
 					}
@@ -129,7 +134,8 @@ $sizes: (
 				}
 			}
 
-			input {
+			input,
+			textarea {
 				padding: map.get($sizeValues, 'padding');
 				font-size: map.get($sizeValues, 'font-size');
 				line-height: map.get($sizeValues, 'line-height');
@@ -138,7 +144,8 @@ $sizes: (
 	}
 
 	&.solid-theme {
-		input {
+		input,
+		textarea {
 			color: color.invert(map.get($variants, 'default'), $weight: 100%);
 			background-color: map.get($variants, 'default');
 			border-color: map.get($variants, 'default');
@@ -150,7 +157,8 @@ $sizes: (
 				$fadedVariantFocus: fade-out($variantColor, 0.2);
 
 				@if color.lightness($fadedVariant) < 80 {
-					input {
+					input,
+					textarea {
 						color: $whiteColor;
 
 						&::placeholder {
@@ -160,7 +168,8 @@ $sizes: (
 				}
 
 				@else {
-					input {
+					input,
+					textarea {
 						color: $textColor;
 
 						&::placeholder {
@@ -169,7 +178,8 @@ $sizes: (
 					}
 				}
 
-				input {
+				input,
+				textarea {
 					background-color: $fadedVariant;
 					border-color: fade-out($variantColor, 0.7);
 
@@ -182,7 +192,8 @@ $sizes: (
 	}
 
 	&.outlined-theme {
-		input {
+		input,
+		textarea {
 			color: map.get($variants, 'default');
 			background-color: fade-out($sectionBackgroundColor, 0.5);
 			border-color: map.get($variants, 'default');
@@ -191,18 +202,21 @@ $sizes: (
 		@each $variantName, $variantColor in $variants {
 			&.variant-#{$variantName} {
 				@if color.lightness($variantColor) > 80 {
-					input {
+					input,
+					textarea {
 						color: $textColor;
 					}
 				}
 
 				@else {
-					input {
+					input,
+					textarea {
 						color: $variantColor;
 					}
 				}
 
-				input {
+				input,
+				textarea {
 					border-color: fade-out($variantColor, 0.8);
 
 					&:focus {

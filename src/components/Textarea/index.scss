@@ -1,0 +1,26 @@
+.mr-input-container {
+	textarea[rows='2'] {
+		min-height: 67px;
+	}
+
+	textarea[rows='4'] {
+		min-height: 110px;
+	}
+
+	textarea[rows='8'] {
+		min-height: 200px;
+	}
+
+	&.not-resizable textarea,
+	&.not-resizable-vertically.not-resizable-horizontally textarea {
+		resize: none;
+	}
+
+	&.not-resizable-horizontally:not(.not-resizable-vertically) textarea {
+		resize: vertical;
+	}
+
+	&.not-resizable-vertically:not(.not-resizable-horizontally) textarea {
+		resize: horizontal;
+	}
+}
