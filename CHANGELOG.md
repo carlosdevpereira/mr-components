@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.2.0](https://github.com/carlosdevpereira/mr-components/compare/v1.1.7...v1.2.0) (2022-04-10)
+
+
+### 👷 Maintenance
+
+* **deps-dev:** bump @babel/core from 7.17.8 to 7.17.9 ([#92](https://github.com/carlosdevpereira/mr-components/issues/92)) ([b5f0cea](https://github.com/carlosdevpereira/mr-components/commit/b5f0ceaf202cbdd15059b2f67a8e4114f18f93fa))
+* **deps-dev:** bump sass from 1.49.11 to 1.50.0 ([#93](https://github.com/carlosdevpereira/mr-components/issues/93)) ([0ac0234](https://github.com/carlosdevpereira/mr-components/commit/0ac023442f81fd3ab8aca71dcf595325fc37eebf))
+* **deps:** bump actions/checkout from 2 to 3 ([#91](https://github.com/carlosdevpereira/mr-components/issues/91)) ([15ec1d5](https://github.com/carlosdevpereira/mr-components/commit/15ec1d53b0c9c9c71d2e453d0c0e42dbc69a76f4))
+* improve pull request template ([d8de7b3](https://github.com/carlosdevpereira/mr-components/commit/d8de7b3903f5c965e93e0680e7a46cdf829bdd9e))
+
+
+### ✨ Features
+
+* input component ([#89](https://github.com/carlosdevpereira/mr-components/issues/89)) ([e1d5118](https://github.com/carlosdevpereira/mr-components/commit/e1d5118b7845fa17b066842abd10f08a2fde9e49))
+* radio button component ([#95](https://github.com/carlosdevpereira/mr-components/issues/95)) ([624e055](https://github.com/carlosdevpereira/mr-components/commit/624e0555a5fe0572305859526a93fc930ea301c2))
+* textarea component ([#94](https://github.com/carlosdevpereira/mr-components/issues/94)) ([42e7b4b](https://github.com/carlosdevpereira/mr-components/commit/42e7b4b6f3230270fe63451daed5d0a2131497a0))
+
 ### [1.1.7](https://github.com/carlosdevpereira/mr-components/compare/v1.1.6...v1.1.7) (2022-04-06)
 
 
