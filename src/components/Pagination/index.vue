@@ -55,11 +55,14 @@
 </template>
 
 <script>
+import './index.scss'
 import Button from '../Button/index.vue'
 import Select from '../Select/index.vue'
 import Icon from '../Icon/index.vue'
 
 export default {
+	name: 'Pagination',
+
 	components: {
 		Icon,
 		Button,
@@ -120,5 +123,3 @@ export default {
 	},
 }
 </script>
-
-<style lang="scss" src="./index.scss" />

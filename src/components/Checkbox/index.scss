@@ -45,6 +45,10 @@ $sizes: (
 
 .mr-checkbox-container {
 	display: flex;
+	max-width: max-content;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	line-height: $lineHeight;
 	vertical-align: top;
 	cursor: pointer;
 

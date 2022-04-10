@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import './index.scss'
+import '../Input/index.scss'
 import 'remixicon/fonts/remixicon.css'
 import Icon from '../Icon/index.vue'
 
@@ -201,7 +203,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss" src="../Input/index.scss"></style>
-
-<style lang="scss" src="./index.scss"></style>

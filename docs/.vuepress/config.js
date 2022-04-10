@@ -1,6 +1,51 @@
 const { path } = require('@vuepress/utils')
+const fs = require('fs')
 
-module.exports = {
+/**
+ * Retrieves the list of component markdown
+ * documentation files to register in the
+ * documentation router
+ **/
+const getComponentRoutes = () => {
+	let components = []
+	const componentsFound = fs.readdirSync(path.resolve(__dirname, '../components'))
+
+	// for now the registration of the components documentation can
+	// be like this, if/when the structure of the components
+	// folder changes this can be adapted
+	componentsFound.forEach(componentName => {
+		if (componentName !== 'index.md') {
+			components.push(`/components/${componentName}`)
+		}
+	})
+
+	return components
+}
+
+/**
+ * Retrieves an object containing all
+ * the available components to register
+ * globally in the documentation pages
+ **/
+const getSourceComponents = () => {
+	let components = {}
+	const componentsFound = fs.readdirSync(path.resolve(__dirname, '../../src/components'))
+
+	// for now the registration of the components can
+	// be like this, if/when the structure of the components
+	// folder changes this can be adapted
+	componentsFound.forEach(componentName => {
+		components[componentName] = path.resolve(
+			__dirname,
+			`../../src/components/${componentName}/index.vue`
+		)
+	})
+
+	return components
+}
+
+// Documentation config
+const config = {
 	title: 'Mr. Components',
 	description: 'A set of lightweight Vue components to power @carlosdevpereira projects',
 	lang: 'en-US',
@@ -31,17 +76,7 @@ module.exports = {
 			{
 				text: 'Components',
 				link: '/components/',
-				children: [
-					'/components/button.md',
-					'/components/checkbox.md',
-					'/components/icon.md',
-					'/components/input.md',
-					'/components/pagination.md',
-					'/components/table.md',
-					'/components/textarea.md',
-					'/components/select.md',
-					'/components/spinner.md',
-				],
+				children: getComponentRoutes(),
 			},
 		],
 	},
@@ -50,21 +85,10 @@ module.exports = {
 			'@vuepress/register-components',
 			{
 				componentsDir: path.resolve(__dirname, './components'),
-				components: {
-					Button: path.resolve(__dirname, '../../src/components/Button/index.vue'),
-					Table: path.resolve(__dirname, '../../src/components/Table/index.vue'),
-					Textarea: path.resolve(__dirname, '../../src/components/Textarea/index.vue'),
-					Pagination: path.resolve(
-						__dirname,
-						'../../src/components/Pagination/index.vue'
-					),
-					Icon: path.resolve(__dirname, '../../src/components/Icon/index.vue'),
-					Input: path.resolve(__dirname, '../../src/components/Input/index.vue'),
-					Checkbox: path.resolve(__dirname, '../../src/components/Checkbox/index.vue'),
-					Select: path.resolve(__dirname, '../../src/components/Select/index.vue'),
-					Spinner: path.resolve(__dirname, '../../src/components/Spinner/index.vue'),
-				},
+				components: getSourceComponents(),
 			},
 		],
 	],
 }
+
+module.exports = config

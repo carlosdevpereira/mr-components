@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import './index.scss'
 import 'remixicon/fonts/remixicon.css'
 import Icon from '../Icon/index.vue'
 
@@ -32,6 +33,8 @@ export const sizes = ['sm', 'md', 'lg']
 export const iconPositions = ['start', 'end']
 
 export default {
+	name: 'Button',
+
 	components: { Icon },
 
 	props: {
@@ -77,5 +80,3 @@ export default {
 	},
 }
 </script>
-
-<style lang="scss" src="./index.scss" />

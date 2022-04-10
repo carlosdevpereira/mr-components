@@ -177,6 +177,7 @@
 </template>
 
 <script>
+import './index.scss'
 import 'remixicon/fonts/remixicon.css'
 import gsap from 'gsap'
 import Button from '../Button/index.vue'
@@ -418,5 +419,3 @@ export default {
 	},
 }
 </script>
-
-<style lang="scss" src="./index.scss" />

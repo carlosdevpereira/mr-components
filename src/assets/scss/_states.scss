@@ -1,4 +1,5 @@
 @mixin canBeDisabled() {
+	&.disabled,
 	&:disabled,
 	&[disabled='true'] {
 		cursor: not-allowed;

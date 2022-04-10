@@ -9,4 +9,10 @@
 	</div>
 </template>
 
-<style lang="scss" src="./index.scss" />
+<script>
+import './index.scss'
+
+export default {
+	name: 'Spinner'
+}
+</script>
