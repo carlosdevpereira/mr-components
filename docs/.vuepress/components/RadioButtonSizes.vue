@@ -1,12 +1,8 @@
 <template>
-    <div>
-        <Radio-Button v-model="value" value="default" label="Default" />
-        <Radio-Button v-model="value" value="primary" variant="primary" label="Primary" />
-        <Radio-Button v-model="value" value="secondary" variant="secondary" label="Secondary" />
-        <Radio-Button v-model="value" value="danger" variant="danger" label="Danger" />
-        <Radio-Button v-model="value" value="warning" variant="warning" label="Warning" />
-        <Radio-Button v-model="value" value="success" variant="success" label="Success" />
-        <Radio-Button v-model="value" value="info" variant="info" label="Info" />
+    <div class="components-inline">
+        <Radio-Button v-model="value" size="sm" value="small" label="Small" />
+        <Radio-Button v-model="value" size="md" value="medium" label="Medium" />
+        <Radio-Button v-model="value" size="lg" value="large" label="Large" />
     </div>
 </template>
 
