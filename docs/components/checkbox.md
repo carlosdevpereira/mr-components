@@ -1,6 +1,6 @@
 # Checkbox
 
-The checkbox component is a lightweight extension of the standard HTML input type="checkbox", featuring: themes, sizes, etc.
+The checkbox component is a lightweight extension of the standard HTML input type="checkbox" element, featuring: themes, sizes, etc.
 
 [[toc]]
 

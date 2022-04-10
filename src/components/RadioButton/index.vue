@@ -1,37 +1,31 @@
 <template>
 	<label
-		class="mr-checkbox-container"
+		class="mr-radio-container"
 		:class="labelClasses"
 	>
 		<input
 			v-model="currentValue"
-			type="checkbox"
-			class="mr-checkbox"
-			:class="classes"
+			type="radio"
+			class="mr-radio"
+			:value="value"
 			:disabled="disabled"
 		>
 
-		{{ label }}
+		<span>
+			{{ label }}
+		</span>
 	</label>
 </template>
 
 <script>
 import './index.scss'
-
-export const themes = ['solid', 'outlined', 'switch']
 export const variants = ['default', 'primary', 'secondary', 'danger', 'warning', 'success', 'info']
 export const sizes = ['sm', 'md', 'lg']
 
 export default {
-	name: 'Checkbox',
+	name: 'RadioButton',
 
 	props: {
-		theme: {
-			type: String,
-			default: themes[0],
-			validator: v => themes.includes(v),
-		},
-
 		variant: {
 			type: String,
 			default: variants[0],
@@ -51,13 +45,18 @@ export default {
 
 		label: {
 			type: String,
-			default: '',
+			required: true
 		},
 
 		modelValue: {
-			type: Boolean,
-			default: false,
+			type: [String,Boolean],
+			default: null,
 		},
+
+		value: {
+			type: [String, Number, Boolean, Date, Object],
+			default: null
+		}
 	},
 
 	emits: ['update:model-value'],
@@ -73,12 +72,8 @@ export default {
 			},
 		},
 
-		classes() {
-			return `${this.theme}-theme variant-${this.variant}`
-		},
-
 		labelClasses() {
-			return `size-${this.size} ${this.disabled ? 'disabled' : ''}`
+			return `variant-${this.variant} size-${this.size} ${this.disabled ? 'disabled' : ''}`
 		},
 	},
 }

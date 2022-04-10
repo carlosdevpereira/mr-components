@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import './index.scss'
 import 'remixicon/fonts/remixicon.css'
 import Icon from "../Icon/index.vue"
 export const themes = ['default', 'solid', 'outlined']
@@ -40,6 +41,8 @@ export const variants = ['default', 'primary', 'secondary', 'danger', 'warning',
 export const sizes = ['sm', 'md', 'lg']
 
 export default {
+	name: 'Select',
+
 	components: { Icon },
 
 	props: {
@@ -132,5 +135,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss" src="./index.scss" />
