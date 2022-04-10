@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.2.1](https://github.com/carlosdevpereira/mr-components/compare/v1.2.0...v1.2.1) (2022-04-10)
+
+
+### 🚨 Bug Fixes
+
+* radio button size documentation ([61664ec](https://github.com/carlosdevpereira/mr-components/commit/61664eccd6969ddbf57e3238361534ccef975bb6))
+
 ## [1.2.0](https://github.com/carlosdevpereira/mr-components/compare/v1.1.7...v1.2.0) (2022-04-10)
 
 
