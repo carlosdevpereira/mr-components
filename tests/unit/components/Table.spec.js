@@ -1,11 +1,12 @@
 import Table from '@/components/Table'
+import Dropdown from '@/components/Dropdown'
 import Checkbox from '@/components/Checkbox'
 import Spinner from '@/components/Spinner'
 import Pagination from '@/components/Pagination'
 import SimpleTableFixture from '../../fixtures/Table/SimpleTable.json'
 import SimpleTableWithHiddenColumnsFixtures from '../../fixtures/Table/SimpleTableWithHiddenColumns.json'
 import SimpleTableWithSortableColumnsFixtures from '../../fixtures/Table/SimpleTableWithSortableColumnsFixtures.json'
-import { flushPromises, shallowMount } from '@vue/test-utils'
+import { flushPromises, mount, shallowMount } from '@vue/test-utils'
 
 describe('Table', () => {
 	describe('Prop defaults', () => {
@@ -113,7 +114,7 @@ describe('Table', () => {
 		let wrapper
 
 		beforeEach(() => {
-			wrapper = shallowMount(Table, {
+			wrapper = mount(Table, {
 				props: {
 					columns: SimpleTableFixture.columns,
 					rows: SimpleTableFixture.rows,
@@ -121,22 +122,30 @@ describe('Table', () => {
 			})
 		})
 
-		it('renders the column visibility toggle button', () => {
-			const columnVisibilityToggleButton = wrapper.find('.column-visibility-panel-toggle')
+		it('renders the column visibility toggle dropdown', () => {
+			const columnVisibilityToggleButton = wrapper.findComponent(
+				'.column-visibility-panel-toggle'
+			)
+
 			expect(columnVisibilityToggleButton.exists()).toBeTruthy()
 		})
 
-		it('renders the column visibility panel when toggle button is clicked', async () => {
-			const columnVisibilityToggleButton = wrapper.find('.column-visibility-panel-toggle')
+		it('renders the columns checkboxes inside the column visibility dropdown', async () => {
+			const columnVisibilityToggleButton = wrapper.find(
+				'.mr-dropdown-container .column-visibility-panel-toggle'
+			)
 
 			await columnVisibilityToggleButton.trigger('click')
 
-			const columnVisibilityPanel = wrapper.find('.columns-visibility-panel')
+			const columnVisibilityPanel = wrapper.find('.mr-dropdown-container .mr-dropdown')
 			expect(columnVisibilityPanel.exists()).toBeTruthy()
 		})
 
 		it('toggles column visibility when column checkbox is clicked', async () => {
-			const columnVisibilityToggleButton = wrapper.find('.column-visibility-panel-toggle')
+			const columnVisibilityToggleButton = wrapper.find(
+				'.mr-dropdown-container .column-visibility-panel-toggle'
+			)
+
 			await columnVisibilityToggleButton.trigger('click')
 
 			const firstColumnCheckbox = wrapper.findAllComponents(Checkbox)[0]

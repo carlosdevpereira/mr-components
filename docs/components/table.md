@@ -336,3 +336,19 @@ export default {
 
   </CodeGroupItem>
 </CodeGroup>
+
+## Filters
+
+Every table can be filtered, either remotely or locally. For starters, use the `filterable` prop to identify that the table can be filtered.
+
+### Remote filtering
+
+A `filterable` table, by default, will emit the `update:filters` event whenever a filter changes. The `update:filters` event contains the full array of filters applicable. This payload can be used for server-side filtering.
+
+<Table-Filterable />
+
+### Local filtering
+
+In cases we don't need to filter the table rows remotely, we can use the `local-filtering` prop to make the table component filter the rows locally.
+
+<Table-Local-Filtering />

@@ -8,16 +8,18 @@
 			v-if="iconPosition === 'start' && icon !== ''"
 			:name="icon"
 			class="icon-position-start"
-			:class="{ 'only-icon': !$slots['default'] }"
+			:class="{ 'only-icon': hasOnlyIcon }"
 		/>
 
-		<slot />
+		<slot>
+			{{ label }}
+		</slot>
 
 		<Icon
 			v-if="iconPosition === 'end' && icon !== ''"
 			:name="icon"
 			class="icon-position-end"
-			:class="{ 'only-icon': !$slots['default'] }"
+			:class="{ 'only-icon': hasOnlyIcon }"
 		/>
 	</button>
 </template>
@@ -56,6 +58,11 @@ export default {
 			validator: v => sizes.includes(v),
 		},
 
+		label: {
+			type: String,
+			default: '',
+		},
+
 		icon: {
 			type: String,
 			default: '',
@@ -77,6 +84,10 @@ export default {
 		classes() {
 			return `${this.theme}-theme variant-${this.variant} size-${this.size}`
 		},
-	},
+
+		hasOnlyIcon() {
+			return !this.$slots['default'] && !this.label
+		}
+	}
 }
 </script>

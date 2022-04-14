@@ -1,38 +1,98 @@
 <template>
 	<div class="mr-table-container">
 		<header class="mr-table-header">
-			<div class="mr-table-search">
-				<!-- @TODO: Search bar -->
-				<!-- @TODO: Filters list & add filter button -->
-			</div>
+			<div class="mr-table-search" />
 
 			<div class="mr-table-options">
-				<Button
+				<Dropdown
+					v-if="filterable"
+					theme="text-solid"
+					icon="add-line"
+					icon-position="end"
+					label="Filter"
+				>
+					<Button
+						v-for="(col, index) in columns"
+						:key="index"
+						theme="text"
+						size="sm"
+						class="mr-dropdown-option"
+						@click="addFilterFor(col)"
+					>
+						{{ col.name }}
+					</Button>
+				</Dropdown>
+
+				<Dropdown
 					theme="text-solid"
 					icon="more-line"
 					class="column-visibility-panel-toggle"
-					@click="columnVisibilityPanelIsOpen = !columnVisibilityPanelIsOpen"
-				/>
-
-				<transition
-					name="pop-in-fade"
-					appear
 				>
-					<div
-						v-if="columnVisibilityPanelIsOpen"
-						class="columns-visibility-panel"
-					>
-						<Checkbox
-							v-for="(col, index) in columns"
-							:key="index"
-							:label="col.name"
-							:model-value="!col.hidden"
-							@update:model-value="col.hidden = !col.hidden"
-						/>
-					</div>
-				</transition>
+					<Checkbox
+						v-for="(col, index) in columns"
+						:key="index"
+						:label="col.name"
+						:model-value="!col.hidden"
+						@update:model-value="col.hidden = !col.hidden"
+					/>
+				</Dropdown>
 			</div>
 		</header>
+
+		<transition
+			name="pop-out"
+			appear
+			@before-enter="onBeforeEnter"
+			@enter="onEnter"
+		>
+			<section
+				v-if="filterable && filters.length"
+				class="mr-table-filters"
+			>
+				<Dropdown
+					v-for="(filter, filterIndex) in filters"
+					:key="filterIndex"
+					theme="text-solid"
+					:label="filterLabel(filter)"
+					:title="filterLabel(filter, false)"
+					icon-position="end"
+				>
+					<div class="mr-table-filter-operator">
+						<label class="mr-table-filter-label">
+							Operator:
+						</label>
+
+						<Select
+							v-model="filter.operator"
+							:options="operators"
+							option-name="label"
+							@update:model-value="filtersChanged"
+						/>
+					</div>
+
+					<div class="mr-table-filter-value">
+						<label class="mr-table-filter-label">
+							Value:
+						</label>
+
+						<Input
+							v-model="filter.value"
+							placeholder="Value"
+							@update:model-value="filtersChanged"
+						/>
+					</div>
+
+					<Button
+						class="mt-2"
+						theme="text-solid"
+						variant="danger"
+						@click="deleteFilter(filter)"
+					>
+						Remove
+					</Button>
+				</Dropdown>
+			</section>
+		</transition>
 
 		<table
 			class="mr-table mr-table-fixed-header"
@@ -180,21 +240,29 @@
 import './index.scss'
 import 'remixicon/fonts/remixicon.css'
 import gsap from 'gsap'
+import debounce from 'lodash/debounce'
 import Button from '../Button/index.vue'
+import Dropdown from '../Dropdown/index.vue'
 import Checkbox from '../Checkbox/index.vue'
 import Icon from '../Icon/index.vue'
 import Pagination from '../Pagination/index.vue'
 import Spinner from '../Spinner/index.vue'
+import Select from '../Select/index.vue'
+import Input from '../Input/index.vue'
+import localFiltering from '../../utils/local-filtering'
 
 export default {
 	name: 'Table',
 
 	components: {
 		Button,
+		Dropdown,
 		Checkbox,
 		Pagination,
 		Spinner,
 		Icon,
+		Select,
+		Input
 	},
 
 	props: {
@@ -253,6 +321,16 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+
+		filterable: {
+			type: Boolean,
+			default: false
+		},
+
+		localFiltering: {
+			type: Boolean,
+			default: false,
+		},
 	},
 
 	emits: [
@@ -262,12 +340,29 @@ export default {
 		'update:rows-per-page',
 		'update:sort-by',
 		'update:sort-direction',
+		'update:filters'
 	],
 
 	data() {
 		return {
 			selectedRows: [],
 			columnVisibilityPanelIsOpen: false,
+			filterCreationIsOpen: false,
+			filters: [],
+			operators: [
+				{ key: 'eq', label: 'is equal to' },
+				{ key: 'df', label: 'is different from' },
+				{ key: 'ut', label: 'is upper than' },
+				{ key: 'lt', label: 'is lower than' },
+				{ key: 'uet', label: 'is upper or equal to' },
+				{ key: 'let', label: 'is lower or equal to' },
+				{ key: 'contains', label: 'contains (case sensitive)' },
+				{ key: 'icontains', label: 'contains' },
+				{ key: 'starts', label: 'starts with (case sensitive)' },
+				{ key: 'istarts', label: 'starts with' },
+				{ key: 'ends', label: 'ends with (case sensitive)' },
+				{ key: 'iends', label: 'ends with' },
+			]
 		}
 	},
 
@@ -296,12 +391,47 @@ export default {
 		},
 
 		visibleRows() {
-			if (!this.localPagination || this.page === 0 || this.totalRows === 0)
-				return this.sortedRows
+			if (!this.localPagination || this.page === 0 || this.totalRows === 0) {
+				if (!this.localFiltering) return this.sortedRows
+				return localFiltering.filter(this.sortedRows, this.filters)
+			}
 
-			return this.sortedRows.filter((r, i) => {
+			const paginatedRows = this.sortedRows.filter((r, i) => {
 				return (this.currentPage - 1) * this.limit <= i && i < this.currentPage * this.limit
 			})
+
+			if (!this.localFiltering) return paginatedRows
+			return localFiltering.filter(paginatedRows, this.filters)
+		},
+
+		filterLabel() {
+			return (filter, limitLength = true) => {
+				let label = filter.column.name
+
+				// Operator
+				if (!filter.operator) label += " ____"
+				else {
+					label += " " + filter.operator.label
+				}
+
+				// Value
+				// (value can be trimmed in string length or not)
+				if (!filter.value) label += " ____"
+				else {
+					if (limitLength) {
+						const charLimit = 25
+						const isBiggerThanCharLimit = filter.value.length > charLimit
+
+						label += " " + filter.value.substring(0, charLimit)
+						if (isBiggerThanCharLimit) label += "..."
+					}
+					else {
+						label += " " + filter.value
+					}
+				}
+
+				return label
+			}
 		},
 
 		currentPage: {
@@ -402,6 +532,23 @@ export default {
 		clearRowSelection() {
 			this.selectedRows = []
 		},
+
+		addFilterFor(column) {
+			this.filters.push({
+				column,
+				operator: this.operators[0],
+				value: null
+			})
+		},
+
+		deleteFilter(filter) {
+			const filterIndex = this.filters.indexOf(filter)
+			this.filters.splice(filterIndex, 1)
+		},
+
+		filtersChanged: debounce(function() {
+			this.$emit('update:filters', this.filters)
+		}, 500),
 
 		onBeforeEnter(el) {
 			el.style.opacity = 0
