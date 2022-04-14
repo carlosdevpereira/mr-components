@@ -356,12 +356,12 @@ export default {
 				{ key: 'lt', label: 'is lower than' },
 				{ key: 'uet', label: 'is upper or equal to' },
 				{ key: 'let', label: 'is lower or equal to' },
-				{ key: 'contains', label: 'contains (case sensitive)' },
 				{ key: 'icontains', label: 'contains' },
-				{ key: 'starts', label: 'starts with (case sensitive)' },
+				{ key: 'contains', label: 'contains (case sensitive)' },
 				{ key: 'istarts', label: 'starts with' },
-				{ key: 'ends', label: 'ends with (case sensitive)' },
+				{ key: 'starts', label: 'starts with (case sensitive)' },
 				{ key: 'iends', label: 'ends with' },
+				{ key: 'ends', label: 'ends with (case sensitive)' },
 			]
 		}
 	},
