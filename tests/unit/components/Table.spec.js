@@ -149,7 +149,7 @@ describe('Table', () => {
 			await columnVisibilityToggleButton.trigger('click')
 
 			const firstColumnCheckbox = wrapper.findAllComponents(Checkbox)[0]
-			await firstColumnCheckbox.vm.$emit('update:modelValue')
+			await firstColumnCheckbox.vm.$emit('update:model-value')
 
 			expect(wrapper.findAll('table thead tr th').length).toBe(1)
 		})
