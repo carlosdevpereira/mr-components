@@ -1,6 +1,5 @@
 import Table from '@/components/Table'
 import Dropdown from '@/components/Dropdown'
-import Select from '@/components/Select'
 import Checkbox from '@/components/Checkbox'
 import Spinner from '@/components/Spinner'
 import Pagination from '@/components/Pagination'
@@ -8,8 +7,6 @@ import SimpleTableFixture from '../../fixtures/Table/SimpleTable.json'
 import SimpleTableWithHiddenColumnsFixtures from '../../fixtures/Table/SimpleTableWithHiddenColumns.json'
 import SimpleTableWithSortableColumnsFixtures from '../../fixtures/Table/SimpleTableWithSortableColumnsFixtures.json'
 import { flushPromises, mount, shallowMount } from '@vue/test-utils'
-
-jest.useFakeTimers()
 
 describe('Table', () => {
 	describe('Prop defaults', () => {
@@ -360,6 +357,8 @@ describe('Table', () => {
 
 		describe('when table is filterable but `filters` array is empty', () => {
 			beforeEach(async () => {
+				jest.useFakeTimers()
+
 				wrapper = mount(Table, {
 					props: {
 						columns: SimpleTableFixture.columns,
@@ -393,8 +392,12 @@ describe('Table', () => {
 				)
 			})
 
-			it('updates filter card when filter value changes', async () => {
+			it('updates filter card when filter changes', async () => {
 				await wrapper.vm.filtersChanged()
+				await wrapper.vm.filtersChanged()
+
+				jest.runOnlyPendingTimers()
+
 				expect(wrapper.emitted()['update:filters']).toBeTruthy()
 			})
 
