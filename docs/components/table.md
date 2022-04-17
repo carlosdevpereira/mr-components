@@ -21,6 +21,8 @@ The table component is an extension to the default HTML table, featuring: column
 | local-sort          | `Boolean` | `false` | Defines if the table should sort the rows internally or not. <br> The sorting will be based on the `sort-by` and `sort-direction` props.                    |
 | sort-by             | `String`  | `''`    | Defines the field that is actively being used to sort the table.                                                                                            |
 | sort-direction      | `String`  | `'asc'` | Defines the direction of the sorting applied to the table when sorting by a specific field.                                                                 |
+| filterable          | `Boolean` | `false` | Defines that the table can have filters.                                                                                                                    |
+| local-filtering     | `Boolean` | `false` | Defines that the table must filter the rows by itself instead of relying in server-side filtering only.                                                     |
 
 #### Columns
 
@@ -41,6 +43,7 @@ The table component is an extension to the default HTML table, featuring: column
 | update:rows-per-page  | Event emitted whenever the table wants to update the `rows-per-page` prop value.                       |
 | update:sort-by        | Event emitted whenever the table wants to update the `sort-by` prop value.                             |
 | update:sort-direction | Event emitted whenever the table wants to update the `sort-direction` prop value.                      |
+| update:filters        | Event emitted whenever the table `filters` data changed.                                               |
 
 ## Basic Table
 
