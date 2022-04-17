@@ -336,3 +336,86 @@ export default {
 
   </CodeGroupItem>
 </CodeGroup>
+
+## Filters
+
+Every table can be filtered, either remotely or locally. For starters, use the `filterable` prop to identify that the table can be filtered.
+
+### Remote filtering
+
+A `filterable` table, by default, will emit the `update:filters` event whenever a filter changes. The `update:filters` event contains the full array of filters applicable. This payload can be used for server-side filtering.
+
+<Table-Filterable />
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Table
+		v-model:columns="columns"
+		:rows="rows"
+		:loading="loading"
+		filterable
+		@update:filters="updateFilters"
+	/>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			columns: [...],
+			rows: [...],
+			loading: false,
+			filters: [],
+		}
+	},
+
+	methods: {
+		updateFilters(filters) {
+			this.filters = filters
+			this.loading = true
+
+			setTimeout(() => {
+				// Perform HTTP request here to retrieve the filtered rows
+				// from the server, assign them to this.rows and stop loading:
+				this.loading = false
+			}, 1000)
+		},
+	},
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+### Local filtering
+
+In cases we don't need to filter the table rows remotely, we can use the `local-filtering` prop to make the table component filter the rows locally.
+
+<Table-Local-Filtering />
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Table v-model:columns="columns" :rows="rows" filterable local-filtering />
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			columns: [...],
+			rows: [...],
+		}
+	},
+}
+</script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>

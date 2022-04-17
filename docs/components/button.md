@@ -4,6 +4,20 @@ The button component is a lightweight extension of the standard HTML button, sup
 
 [[toc]]
 
+## API
+
+### Props
+
+| Name          | Type      | Default     | Description                                                                                                                                               |
+| ------------- | --------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| theme         | `String`  | `'solid'`   | Defines the theme applied to the Button. Possible values are: `solid`, `outlined`, `text` and `text-solid`                                                |
+| variant       | `String`  | `'default'` | Defines the variant of the theme applied to the Button. Possible values are: `default`, `primary`, `secondary`, `danger`, `warning`, `success` and `info` |
+| size          | `String`  | `'md'`      | Defines the size of the Button. Possible values are: `sm`, `md`, `lg`                                                                                     |
+| label         | `String`  | `''`        | Defines the text to show inside the Button                                                                                                                |
+| icon          | `String`  | `''`        | Defines the icon to render inside the Button                                                                                                              |
+| icon-position | `String`  | `'start'`   | Defines where the icon should be placed. Possible values are: `start` and `end`                                                                           |
+| disabled      | `Boolean` | `false`     | Defines if the button should be disabled or not                                                                                                           |
+
 ## Basic Button
 
 <Button>Default</Button>

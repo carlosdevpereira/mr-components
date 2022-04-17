@@ -6,7 +6,11 @@ describe('Radio Button', () => {
 
 	describe('Events', () => {
 		beforeEach(() => {
-			wrapper = shallowMount(RadioButton)
+			wrapper = shallowMount(RadioButton, {
+				props: {
+					label: 'Test',
+				},
+			})
 		})
 
 		it('propagates update:modelValue event when radio button value changes', () => {
@@ -22,6 +26,7 @@ describe('Radio Button', () => {
 				props: {
 					variant: 'success',
 					size: 'lg',
+					label: 'Test',
 				},
 			})
 		})

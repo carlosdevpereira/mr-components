@@ -2,6 +2,7 @@
 
 -   [Button](./button.md)
 -   [Checkbox](./checkbox.md)
+-   [Dropdown](./dropdown.md)
 -   [Icon](./icon.md)
 -   [Input](./input.md)
 -   [Pagination](./pagination.md)

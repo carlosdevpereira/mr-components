@@ -1,11 +1,15 @@
 import Table from '@/components/Table'
+import Dropdown from '@/components/Dropdown'
+import Select from '@/components/Select'
 import Checkbox from '@/components/Checkbox'
 import Spinner from '@/components/Spinner'
 import Pagination from '@/components/Pagination'
 import SimpleTableFixture from '../../fixtures/Table/SimpleTable.json'
 import SimpleTableWithHiddenColumnsFixtures from '../../fixtures/Table/SimpleTableWithHiddenColumns.json'
 import SimpleTableWithSortableColumnsFixtures from '../../fixtures/Table/SimpleTableWithSortableColumnsFixtures.json'
-import { flushPromises, shallowMount } from '@vue/test-utils'
+import { flushPromises, mount, shallowMount } from '@vue/test-utils'
+
+jest.useFakeTimers()
 
 describe('Table', () => {
 	describe('Prop defaults', () => {
@@ -113,7 +117,7 @@ describe('Table', () => {
 		let wrapper
 
 		beforeEach(() => {
-			wrapper = shallowMount(Table, {
+			wrapper = mount(Table, {
 				props: {
 					columns: SimpleTableFixture.columns,
 					rows: SimpleTableFixture.rows,
@@ -121,26 +125,34 @@ describe('Table', () => {
 			})
 		})
 
-		it('renders the column visibility toggle button', () => {
-			const columnVisibilityToggleButton = wrapper.find('.column-visibility-panel-toggle')
+		it('renders the column visibility toggle dropdown', () => {
+			const columnVisibilityToggleButton = wrapper.findComponent(
+				'.column-visibility-panel-toggle'
+			)
+
 			expect(columnVisibilityToggleButton.exists()).toBeTruthy()
 		})
 
-		it('renders the column visibility panel when toggle button is clicked', async () => {
-			const columnVisibilityToggleButton = wrapper.find('.column-visibility-panel-toggle')
+		it('renders the columns checkboxes inside the column visibility dropdown', async () => {
+			const columnVisibilityToggleButton = wrapper.find(
+				'.mr-dropdown-container .column-visibility-panel-toggle'
+			)
 
 			await columnVisibilityToggleButton.trigger('click')
 
-			const columnVisibilityPanel = wrapper.find('.columns-visibility-panel')
+			const columnVisibilityPanel = wrapper.find('.mr-dropdown-container .mr-dropdown')
 			expect(columnVisibilityPanel.exists()).toBeTruthy()
 		})
 
 		it('toggles column visibility when column checkbox is clicked', async () => {
-			const columnVisibilityToggleButton = wrapper.find('.column-visibility-panel-toggle')
+			const columnVisibilityToggleButton = wrapper.find(
+				'.mr-dropdown-container .column-visibility-panel-toggle'
+			)
+
 			await columnVisibilityToggleButton.trigger('click')
 
 			const firstColumnCheckbox = wrapper.findAllComponents(Checkbox)[0]
-			await firstColumnCheckbox.vm.$emit('update:modelValue')
+			await firstColumnCheckbox.vm.$emit('update:model-value')
 
 			expect(wrapper.findAll('table thead tr th').length).toBe(1)
 		})
@@ -319,6 +331,214 @@ describe('Table', () => {
 
 				expect(wrapper.emitted('update:sort-direction')).toBeTruthy()
 				expect(wrapper.emitted('update:sort-direction')[0][0]).toBe('asc')
+			})
+		})
+	})
+
+	describe('Filtering', () => {
+		let wrapper
+
+		describe('when table is not filterable', () => {
+			beforeEach(async () => {
+				wrapper = shallowMount(Table, {
+					props: {
+						columns: SimpleTableFixture.columns,
+						rows: SimpleTableFixture.rows,
+						filterable: false,
+					},
+				})
+			})
+
+			it('renders add filter button', () => {
+				expect(wrapper.findComponent('.add-filter-action').exists()).toBe(false)
+			})
+
+			it("doesn't render filters area", () => {
+				expect(wrapper.find('.mr-table-filters').exists()).toBeFalsy()
+			})
+		})
+
+		describe('when table is filterable but `filters` array is empty', () => {
+			beforeEach(async () => {
+				wrapper = mount(Table, {
+					props: {
+						columns: SimpleTableFixture.columns,
+						rows: SimpleTableFixture.rows,
+						filterable: true,
+					},
+				})
+			})
+
+			it('renders add filter button', () => {
+				expect(wrapper.findComponent('.add-filter-action').exists()).toBe(true)
+			})
+
+			it("doesn't render filters area", () => {
+				expect(wrapper.find('.mr-table-filters').exists()).toBeFalsy()
+			})
+
+			it('renders columns dropdown when add-filter-action button is clicked', async () => {
+				await wrapper.findComponent('.add-filter-action').find('button').trigger('click')
+
+				expect(wrapper.findComponent('.add-filter-action-column').exists()).toBe(true)
+			})
+
+			it('renders filter card when filter column is clicked', async () => {
+				await wrapper.findComponent('.add-filter-action').find('button').trigger('click')
+				await wrapper.findComponent('.add-filter-action-column').trigger('click')
+
+				expect(wrapper.vm.filters.length).toBe(1)
+				expect(wrapper.vm.filters[0].column.name).toBe(
+					wrapper.findComponent('.add-filter-action-column').text()
+				)
+			})
+
+			it('updates filter card when filter value changes', async () => {
+				await wrapper.vm.filtersChanged()
+				expect(wrapper.emitted()['update:filters']).toBeTruthy()
+			})
+
+			it('removes filter card when filter delete button is clicked', async () => {
+				await wrapper.findComponent('.add-filter-action').find('button').trigger('click')
+				await wrapper.findComponent('.add-filter-action-column').trigger('click')
+				await wrapper.findComponent('.mr-table-filters button').trigger('click')
+				await wrapper.findComponent('.delete-filter-action').trigger('click')
+
+				expect(wrapper.vm.filters.length).toBe(0)
+			})
+		})
+
+		describe('when table is filterable and `filters` array is not empty', () => {
+			beforeEach(async () => {
+				wrapper = shallowMount(Table, {
+					props: {
+						columns: SimpleTableFixture.columns,
+						rows: SimpleTableFixture.rows,
+						filterable: true,
+					},
+
+					data: () => ({
+						filters: [
+							{
+								column: { key: 'number' },
+								operator: { key: 'eq' },
+								value: '2020_01',
+							},
+						],
+					}),
+				})
+			})
+
+			it('renders add filter button', () => {
+				expect(wrapper.findComponent('.add-filter-action').exists()).toBe(true)
+			})
+
+			it('renders filters area', () => {
+				expect(wrapper.find('.mr-table-filters').exists()).toBe(true)
+			})
+
+			it('renders filter items', () => {
+				expect(wrapper.find('.mr-table-filters').findAllComponents(Dropdown).length).toBe(1)
+			})
+		})
+
+		describe('Local filtering', () => {
+			describe('when table is not paginated', () => {
+				beforeEach(async () => {
+					wrapper = shallowMount(Table, {
+						props: {
+							columns: SimpleTableFixture.columns,
+							rows: SimpleTableFixture.rows,
+							filterable: true,
+							localFiltering: true,
+						},
+
+						data: () => ({
+							filters: [
+								{
+									column: { key: 'number' },
+									operator: { key: 'eq' },
+									value: '2020_01',
+								},
+							],
+						}),
+					})
+				})
+
+				it('renders add filter button', () => {
+					expect(wrapper.findComponent('.add-filter-action').exists()).toBe(true)
+				})
+
+				it('renders filters area', () => {
+					expect(wrapper.find('.mr-table-filters').exists()).toBe(true)
+				})
+
+				it('renders filter items', () => {
+					expect(
+						wrapper.find('.mr-table-filters').findAllComponents(Dropdown).length
+					).toBe(1)
+				})
+
+				it('filters the table rows', async () => {
+					expect(wrapper.findAll('table tr').length).toBe(2)
+
+					await wrapper.setData({
+						filters: [
+							{
+								column: { key: 'number' },
+								operator: { key: 'eq' },
+								value: 'Ut adipisicing consequat ex aliqua veniam ea elit culpa veniam esse enim aliquip. Ipsum tempor dolor laboris nisi dolore anim ex cupidatat deserunt deserunt occaecat fugiat excepteur tempor. Adipisicing ad aute excepteur occaecat dolor veniam eiusmod velit eu anim. Ea quis nulla proident voluptate minim voluptate culpa duis sint consequat. Laborum anim exercitation nulla ullamco quis culpa anim fugiat.',
+							},
+						],
+					})
+
+					expect(wrapper.findAll('table tr').length).toBe(1)
+				})
+			})
+
+			describe('when table is paginated', () => {
+				beforeEach(async () => {
+					wrapper = shallowMount(Table, {
+						props: {
+							columns: SimpleTableFixture.columns,
+							rows: SimpleTableFixture.rows,
+							filterable: true,
+							localFiltering: true,
+							localPagination: true,
+							page: 1,
+							rowsPerPage: 1,
+							totalRows: 2,
+						},
+
+						data: () => ({
+							filters: [
+								{
+									column: { key: 'number' },
+									operator: { key: 'eq' },
+									value: '2020_02',
+								},
+							],
+						}),
+					})
+				})
+
+				it('renders add filter button', () => {
+					expect(wrapper.findComponent('.add-filter-action').exists()).toBe(true)
+				})
+
+				it('renders filters area', () => {
+					expect(wrapper.find('.mr-table-filters').exists()).toBe(true)
+				})
+
+				it('renders filter items', () => {
+					expect(
+						wrapper.find('.mr-table-filters').findAllComponents(Dropdown).length
+					).toBe(1)
+				})
+
+				it('filters the table rows', () => {
+					expect(wrapper.findAll('table tr').length).toBe(2)
+				})
 			})
 		})
 	})
