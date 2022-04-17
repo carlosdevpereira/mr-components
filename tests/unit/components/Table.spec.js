@@ -1,5 +1,6 @@
 import Table from '@/components/Table'
 import Dropdown from '@/components/Dropdown'
+import Select from '@/components/Select'
 import Checkbox from '@/components/Checkbox'
 import Spinner from '@/components/Spinner'
 import Pagination from '@/components/Pagination'
@@ -7,6 +8,8 @@ import SimpleTableFixture from '../../fixtures/Table/SimpleTable.json'
 import SimpleTableWithHiddenColumnsFixtures from '../../fixtures/Table/SimpleTableWithHiddenColumns.json'
 import SimpleTableWithSortableColumnsFixtures from '../../fixtures/Table/SimpleTableWithSortableColumnsFixtures.json'
 import { flushPromises, mount, shallowMount } from '@vue/test-utils'
+
+jest.useFakeTimers()
 
 describe('Table', () => {
 	describe('Prop defaults', () => {
@@ -383,7 +386,6 @@ describe('Table', () => {
 			it('renders filter card when filter column is clicked', async () => {
 				await wrapper.findComponent('.add-filter-action').find('button').trigger('click')
 				await wrapper.findComponent('.add-filter-action-column').trigger('click')
-				expect(wrapper.emitted('update:filters'))
 
 				expect(wrapper.vm.filters.length).toBe(1)
 				expect(wrapper.vm.filters[0].column.name).toBe(
@@ -391,12 +393,16 @@ describe('Table', () => {
 				)
 			})
 
+			it('updates filter card when filter value changes', async () => {
+				await wrapper.vm.filtersChanged()
+				expect(wrapper.emitted()['update:filters']).toBeTruthy()
+			})
+
 			it('removes filter card when filter delete button is clicked', async () => {
 				await wrapper.findComponent('.add-filter-action').find('button').trigger('click')
 				await wrapper.findComponent('.add-filter-action-column').trigger('click')
 				await wrapper.findComponent('.mr-table-filters button').trigger('click')
 				await wrapper.findComponent('.delete-filter-action').trigger('click')
-				expect(wrapper.emitted('update:filters'))
 
 				expect(wrapper.vm.filters.length).toBe(0)
 			})
@@ -473,8 +479,20 @@ describe('Table', () => {
 					).toBe(1)
 				})
 
-				it('filters the table rows', () => {
+				it('filters the table rows', async () => {
 					expect(wrapper.findAll('table tr').length).toBe(2)
+
+					await wrapper.setData({
+						filters: [
+							{
+								column: { key: 'number' },
+								operator: { key: 'eq' },
+								value: 'Ut adipisicing consequat ex aliqua veniam ea elit culpa veniam esse enim aliquip. Ipsum tempor dolor laboris nisi dolore anim ex cupidatat deserunt deserunt occaecat fugiat excepteur tempor. Adipisicing ad aute excepteur occaecat dolor veniam eiusmod velit eu anim. Ea quis nulla proident voluptate minim voluptate culpa duis sint consequat. Laborum anim exercitation nulla ullamco quis culpa anim fugiat.',
+							},
+						],
+					})
+
+					expect(wrapper.findAll('table tr').length).toBe(1)
 				})
 			})
 

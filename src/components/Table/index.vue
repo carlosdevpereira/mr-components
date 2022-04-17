@@ -65,6 +65,7 @@
 
 						<Select
 							v-model="filter.operator"
+							class="mr-table-filter-operator-select"
 							:options="operators"
 							option-name="label"
 							@update:model-value="filtersChanged"
@@ -241,7 +242,6 @@
 import './index.scss'
 import 'remixicon/fonts/remixicon.css'
 import gsap from 'gsap'
-import debounce from 'lodash/debounce'
 import Button from '../Button/index.vue'
 import Dropdown from '../Dropdown/index.vue'
 import Checkbox from '../Checkbox/index.vue'
@@ -550,9 +550,9 @@ export default {
 			this.filters.splice(filterIndex, 1)
 		},
 
-		filtersChanged: debounce(function() {
+		filtersChanged: function() {
 			this.$emit('update:filters', this.filters)
-		}, 500),
+		},
 
 		onBeforeEnter(el) {
 			el.style.opacity = 0
