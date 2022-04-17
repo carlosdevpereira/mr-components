@@ -16,7 +16,7 @@
 	"main": "./dist/mr-components.umd.js",
 	"module": "./dist/mr-components.es.js",
 	"scripts": {
-		"dev": "vuepress dev docs",
+		"dev": "vuepress dev docs --open",
 		"serve": "dev",
 		"build:docs": "vuepress build docs",
 		"build:lib": "vite build",
