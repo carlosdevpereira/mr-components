@@ -10,13 +10,14 @@
 					icon="add-line"
 					icon-position="end"
 					label="Filter"
+					class="add-filter-action"
 				>
 					<Button
 						v-for="(col, index) in columns"
 						:key="index"
 						theme="text"
 						size="sm"
-						class="mr-dropdown-option"
+						class="mr-dropdown-option add-filter-action-column"
 						@click="addFilterFor(col)"
 					>
 						{{ col.name }}
@@ -83,7 +84,7 @@
 					</div>
 
 					<Button
-						class="mt-2"
+						class="mt-2 delete-filter-action"
 						theme="text-solid"
 						variant="danger"
 						@click="deleteFilter(filter)"
@@ -396,12 +397,15 @@ export default {
 				return localFiltering.filter(this.sortedRows, this.filters)
 			}
 
-			const paginatedRows = this.sortedRows.filter((r, i) => {
+			if (!this.localFiltering) return this.sortedRows.filter((r, i) => {
 				return (this.currentPage - 1) * this.limit <= i && i < this.currentPage * this.limit
 			})
 
-			if (!this.localFiltering) return paginatedRows
-			return localFiltering.filter(paginatedRows, this.filters)
+			return localFiltering.filter(this.sortedRows, this.filters)
+				.filter((r, i) => {
+					return (this.currentPage - 1) * this.limit <= i
+						&& i < this.currentPage * this.limit
+				})
 		},
 
 		filterLabel() {

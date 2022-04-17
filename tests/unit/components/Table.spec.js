@@ -332,6 +332,199 @@ describe('Table', () => {
 		})
 	})
 
+	describe('Filtering', () => {
+		let wrapper
+
+		describe('when table is not filterable', () => {
+			beforeEach(async () => {
+				wrapper = shallowMount(Table, {
+					props: {
+						columns: SimpleTableFixture.columns,
+						rows: SimpleTableFixture.rows,
+						filterable: false,
+					},
+				})
+			})
+
+			it('renders add filter button', () => {
+				expect(wrapper.findComponent('.add-filter-action').exists()).toBe(false)
+			})
+
+			it("doesn't render filters area", () => {
+				expect(wrapper.find('.mr-table-filters').exists()).toBeFalsy()
+			})
+		})
+
+		describe('when table is filterable but `filters` array is empty', () => {
+			beforeEach(async () => {
+				wrapper = mount(Table, {
+					props: {
+						columns: SimpleTableFixture.columns,
+						rows: SimpleTableFixture.rows,
+						filterable: true,
+					},
+				})
+			})
+
+			it('renders add filter button', () => {
+				expect(wrapper.findComponent('.add-filter-action').exists()).toBe(true)
+			})
+
+			it("doesn't render filters area", () => {
+				expect(wrapper.find('.mr-table-filters').exists()).toBeFalsy()
+			})
+
+			it('renders columns dropdown when add-filter-action button is clicked', async () => {
+				await wrapper.findComponent('.add-filter-action').find('button').trigger('click')
+
+				expect(wrapper.findComponent('.add-filter-action-column').exists()).toBe(true)
+			})
+
+			it('renders filter card when filter column is clicked', async () => {
+				await wrapper.findComponent('.add-filter-action').find('button').trigger('click')
+				await wrapper.findComponent('.add-filter-action-column').trigger('click')
+				expect(wrapper.emitted('update:filters'))
+
+				expect(wrapper.vm.filters.length).toBe(1)
+				expect(wrapper.vm.filters[0].column.name).toBe(
+					wrapper.findComponent('.add-filter-action-column').text()
+				)
+			})
+
+			it('removes filter card when filter delete button is clicked', async () => {
+				await wrapper.findComponent('.add-filter-action').find('button').trigger('click')
+				await wrapper.findComponent('.add-filter-action-column').trigger('click')
+				await wrapper.findComponent('.mr-table-filters button').trigger('click')
+				await wrapper.findComponent('.delete-filter-action').trigger('click')
+				expect(wrapper.emitted('update:filters'))
+
+				expect(wrapper.vm.filters.length).toBe(0)
+			})
+		})
+
+		describe('when table is filterable and `filters` array is not empty', () => {
+			beforeEach(async () => {
+				wrapper = shallowMount(Table, {
+					props: {
+						columns: SimpleTableFixture.columns,
+						rows: SimpleTableFixture.rows,
+						filterable: true,
+					},
+
+					data: () => ({
+						filters: [
+							{
+								column: { key: 'number' },
+								operator: { key: 'eq' },
+								value: '2020_01',
+							},
+						],
+					}),
+				})
+			})
+
+			it('renders add filter button', () => {
+				expect(wrapper.findComponent('.add-filter-action').exists()).toBe(true)
+			})
+
+			it('renders filters area', () => {
+				expect(wrapper.find('.mr-table-filters').exists()).toBe(true)
+			})
+
+			it('renders filter items', () => {
+				expect(wrapper.find('.mr-table-filters').findAllComponents(Dropdown).length).toBe(1)
+			})
+		})
+
+		describe('Local filtering', () => {
+			describe('when table is not paginated', () => {
+				beforeEach(async () => {
+					wrapper = shallowMount(Table, {
+						props: {
+							columns: SimpleTableFixture.columns,
+							rows: SimpleTableFixture.rows,
+							filterable: true,
+							localFiltering: true,
+						},
+
+						data: () => ({
+							filters: [
+								{
+									column: { key: 'number' },
+									operator: { key: 'eq' },
+									value: '2020_01',
+								},
+							],
+						}),
+					})
+				})
+
+				it('renders add filter button', () => {
+					expect(wrapper.findComponent('.add-filter-action').exists()).toBe(true)
+				})
+
+				it('renders filters area', () => {
+					expect(wrapper.find('.mr-table-filters').exists()).toBe(true)
+				})
+
+				it('renders filter items', () => {
+					expect(
+						wrapper.find('.mr-table-filters').findAllComponents(Dropdown).length
+					).toBe(1)
+				})
+
+				it('filters the table rows', () => {
+					expect(wrapper.findAll('table tr').length).toBe(2)
+				})
+			})
+
+			describe('when table is paginated', () => {
+				beforeEach(async () => {
+					wrapper = shallowMount(Table, {
+						props: {
+							columns: SimpleTableFixture.columns,
+							rows: SimpleTableFixture.rows,
+							filterable: true,
+							localFiltering: true,
+							localPagination: true,
+							page: 1,
+							rowsPerPage: 1,
+							totalRows: 2,
+						},
+
+						data: () => ({
+							filters: [
+								{
+									column: { key: 'number' },
+									operator: { key: 'eq' },
+									value: '2020_02',
+								},
+							],
+						}),
+					})
+				})
+
+				it('renders add filter button', () => {
+					expect(wrapper.findComponent('.add-filter-action').exists()).toBe(true)
+				})
+
+				it('renders filters area', () => {
+					expect(wrapper.find('.mr-table-filters').exists()).toBe(true)
+				})
+
+				it('renders filter items', () => {
+					expect(
+						wrapper.find('.mr-table-filters').findAllComponents(Dropdown).length
+					).toBe(1)
+				})
+
+				it('filters the table rows', () => {
+					expect(wrapper.findAll('table tr').length).toBe(2)
+				})
+			})
+		})
+	})
+
 	describe('Row Selection', () => {
 		let wrapper
 
