@@ -11,7 +11,7 @@ export default {
 	created() {
 		setTimeout(() => {
 			this.$refs.autocomplete.loading = true
-		}, 50)
+		}, 500)
 	},
 
 	methods: {
