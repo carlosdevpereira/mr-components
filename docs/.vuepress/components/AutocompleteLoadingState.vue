@@ -8,10 +8,13 @@
 
 <script>
 export default {
-	created() {
-		setTimeout(() => {
-			this.$refs.autocomplete.loading = true
-		}, 500)
+	mounted() {
+		const interval = setInterval(() => {
+			if (this.$refs.autocomplete) {
+				this.$refs['autocomplete'].loading = true
+				clearInterval(interval)
+			}
+		}, 50)
 	},
 
 	methods: {
@@ -20,7 +23,7 @@ export default {
 			// the autocomplete details
 			console.log('searching for: ', value)
 		}
-	}
+	},
 }
 </script>
 
