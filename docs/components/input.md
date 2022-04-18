@@ -86,8 +86,6 @@ export default {
 
 ### Label
 
-<strong>Positions:</strong>
-
 <div class="half-width-fill-on-mobile">
     <Input-Proxy label="Start" />
 </div>

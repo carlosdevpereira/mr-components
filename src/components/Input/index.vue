@@ -126,6 +126,7 @@ export default {
 			if (this.variant) classes.push(` variant-${this.variant}`)
 			if (this.size) classes.push(` size-${this.size}`)
 			if (this.inline) classes.push(` inline`)
+			if (this.label) classes.push(` has-label-text`)
 			if (this.labelPosition) classes.push(` label-position-${this.labelPosition}`)
 			if (this.icon) classes.push(' has-icon icon-position-' + this.iconPosition)
 

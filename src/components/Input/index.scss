@@ -83,6 +83,10 @@ $sizes: (
 		transform: translateY(-50%);
 	}
 
+	&.has-label-text.has-icon .mr-icon {
+		transform: translateY(-6%);
+	}
+
 	input,
 	textarea {
 		@include canBeDisabled();
