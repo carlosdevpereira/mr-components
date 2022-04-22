@@ -3,18 +3,14 @@ export const InfiniteScroll = {
 		if (binding.value && typeof binding.value === 'function') {
 			let reachedBottom = false
 
-			element.addEventListener('scroll', event => {
+			element.onScroll = event => {
 				let el = event.srcElement
 
 				let offset = 100
 				if (binding.arg) {
-					try {
-						let parsedOffset = parseInt(binding.arg)
-						if (Number.isNaN(parsedOffset) === false) {
-							offset = parsedOffset
-						}
-					} catch (e) {
-						console.error(e)
+					let parsedOffset = parseInt(binding.arg)
+					if (Number.isNaN(parsedOffset) === false) {
+						offset = parsedOffset
 					}
 				}
 
@@ -26,13 +22,15 @@ export const InfiniteScroll = {
 				} else {
 					reachedBottom = false
 				}
-			})
+			}
+
+			element.addEventListener('scroll', element.onScroll)
 		}
 	},
 
 	unmounted(element) {
-		if (element.scroll) {
-			element.removeEventListener('scroll', element.scroll)
+		if (element.onScroll) {
+			element.removeEventListener('scroll', element.onScroll)
 		}
 	},
 }
