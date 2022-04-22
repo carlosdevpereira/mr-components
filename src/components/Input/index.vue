@@ -20,6 +20,7 @@
 			type="text"
 			:placeholder="placeholder"
 			:disabled="isDisabled"
+			@focus="$emit('focus')"
 		>
 	</label>
 </template>
@@ -28,10 +29,7 @@
 import './index.scss'
 import 'remixicon/fonts/remixicon.css'
 import Icon from '../Icon/index.vue'
-
-export const themes = ['default', 'solid', 'outlined']
-export const variants = ['default', 'primary', 'secondary', 'danger', 'warning', 'success', 'info']
-export const sizes = ['sm', 'md', 'lg']
+import props from './props'
 
 export default {
 	name: 'Input',
@@ -40,69 +38,9 @@ export default {
 		Icon
 	},
 
-	props: {
-		theme: {
-			type: String,
-			default: themes[0],
-			validator: v => !v || themes.includes(v),
-		},
+	props,
 
-		variant: {
-			type: String,
-			default: variants[0],
-			validator: v => variants.includes(v),
-		},
-
-		size: {
-			type: String,
-			default: "md",
-			validator: v => sizes.includes(v),
-		},
-
-		disabled: {
-			type: Boolean,
-			default: false,
-		},
-
-		label: {
-			type: String,
-			default: ''
-		},
-
-		labelPosition: {
-			type: String,
-			default: 'start',
-			validator: (v) => ['start', 'center', 'end'].includes(v)
-		},
-
-		inline: {
-			type: Boolean,
-			default: false,
-		},
-
-		icon: {
-			type: String,
-			default: '',
-		},
-
-		iconPosition: {
-			type: String,
-			default: 'start',
-			validator: (v) => ['start', 'end'].includes(v)
-		},
-
-		placeholder: {
-			type: String,
-			default: ''
-		},
-
-		modelValue: {
-			type: [Object, Number, String],
-			default: null
-		},
-	},
-
-	emits: ["update:model-value"],
+	emits: ["update:model-value", "focus"],
 
 	computed: {
 		currentValue: {

@@ -2,7 +2,7 @@
 	<Autocomplete
 		ref="autocomplete"
 		class="autocomplete-disabled"
-		:fetch="fetchHandler"
+		:get-items="fetchHandler"
 	/>
 </template>
 
