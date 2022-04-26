@@ -142,16 +142,17 @@ describe('Table', () => {
 		})
 
 		it('toggles column visibility when column checkbox is clicked', async () => {
+			expect.assertions(1)
+
 			const columnVisibilityToggleButton = wrapper.find(
 				'.mr-dropdown-container .column-visibility-panel-toggle'
 			)
-
 			await columnVisibilityToggleButton.trigger('click')
 
 			const firstColumnCheckbox = wrapper.findAllComponents(Checkbox)[0]
 			await firstColumnCheckbox.vm.$emit('update:model-value')
 
-			expect(wrapper.findAll('table thead tr th').length).toBe(1)
+			expect(wrapper.vm.columns[0].hidden).toBeTruthy()
 		})
 
 		describe('when creating a table with hidden columns by default', () => {

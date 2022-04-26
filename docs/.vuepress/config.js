@@ -1,4 +1,8 @@
 const { path } = require('@vuepress/utils')
+const { searchPlugin } = require('@vuepress/plugin-search')
+const { nprogressPlugin } = require('@vuepress/plugin-nprogress')
+const { defaultTheme, viteBundler } = require('vuepress')
+const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
 const fs = require('fs')
 
 /**
@@ -49,21 +53,9 @@ const config = {
 	title: 'Mr. Components',
 	description: 'A set of lightweight Vue components to power @carlosdevpereira projects',
 	lang: 'en-US',
-	theme: '@vuepress/theme-default',
-	head: [
-		['link', { rel: 'icon', href: '/images/logo@1x.png' }],
-		['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
-		['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true }],
-		[
-			'link',
-			{
-				rel: 'stylesheet',
-				href: 'https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap',
-			},
-		],
-	],
 	serviceWorker: false,
-	themeConfig: {
+	bundler: viteBundler(),
+	theme: defaultTheme({
 		logo: '/images/logo@1x.png',
 		darkMode: false,
 		repo: 'carlosdevpereira/mr-components',
@@ -79,13 +71,26 @@ const config = {
 				children: getComponentRoutes(),
 			},
 		],
-	},
+	}),
 	plugins: [
 		[
-			'@vuepress/register-components',
-			{
+			nprogressPlugin(),
+			searchPlugin({}),
+			registerComponentsPlugin({
 				componentsDir: path.resolve(__dirname, './components'),
 				components: getSourceComponents(),
+			}),
+		],
+	],
+	head: [
+		['link', { rel: 'icon', href: '/images/logo@1x.png' }],
+		['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+		['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true }],
+		[
+			'link',
+			{
+				rel: 'stylesheet',
+				href: 'https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap',
 			},
 		],
 	],
