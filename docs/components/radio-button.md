@@ -4,6 +4,25 @@ The radio button component is a lightweight extension of the standard HTML input
 
 [[toc]]
 
+## API
+
+### Props
+
+| Name        | Type      | Default     | Description                                                                                                                                                     |
+| ----------- | --------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| variant     | `String`  | `'default'` | Defines the variant of the theme applied to the radio button. Possible values are: `default`, `primary`, `secondary`, `danger`, `warning`, `success` and `info` |
+| size        | `String`  | `'md'`      | Defines the size of the radio button. Possible values are: `sm`, `md`, `lg`                                                                                     |
+| label       | `String`  | `''`        | Defines the text to show inside the radio button                                                                                                                |
+| disabled    | `Boolean` | `false`     | Defines if the radio button should be disabled or not                                                                                                           |
+| model-value | `Boolean` | `false`     | Defines the status of the radio button (checked or unchecked)                                                                                                   |
+| value       | `Any`     | `null`      | Defines the value of the radio button                                                                                                                           |
+
+### Events
+
+| Name               | Description                                                     |
+| ------------------ | --------------------------------------------------------------- |
+| update:model-value | Event emitted whenever the radio button is checked or unchecked |
+
 ## Basic Radio Buttons
 
 <Simple-Radio-Buttons />

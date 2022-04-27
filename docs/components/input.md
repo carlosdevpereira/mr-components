@@ -27,6 +27,7 @@ The input component is a lightweight extension of the standard input element, su
 | Name               | Description                                           |
 | ------------------ | ----------------------------------------------------- |
 | update:model-value | Event emitted whenever the value of the input changes |
+| focus              | Event emitted whenever the input is focused           |
 
 ## Basic Input
 
