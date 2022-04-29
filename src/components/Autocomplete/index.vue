@@ -5,7 +5,6 @@
 		:class="classes"
 	>
 		<Input
-			v-model="searchValue"
 			class="mr-autocomplete-input"
 			:size="size"
 			:label="label"
@@ -14,11 +13,12 @@
 			:variant="variant"
 			:disabled="disabled"
 			:placeholder="placeholder"
+			:model-value="searchValue"
 			:label-position="labelPosition"
 			:icon="icon"
 			:icon-position="iconPosition"
 			@focus="onInputFocus"
-			@update:model-value="filterStart"
+			@update:model-value="filter"
 		/>
 
 		<transition
@@ -112,26 +112,15 @@ export default {
 			return classes
 		},
 
-		searchValue: {
-			get() {
-				if (this.modelValue) return this.modelValue.name || this.modelValue
+		searchValue() {
+			if (this.modelValue)
+				return this.modelValue.name || this.modelValue
 
-				return this.search
-			},
-
-			set(value) {
-				this.search = value
-				this.savedPosition = 0
-				this.$emit('update:model-value', null)
-			}
+			return this.search
 		},
 
 		results() {
-			if (this.getItems) {
-				return this.remoteItems
-			}
-
-			return this.localItems
+			return this.getItems ? this.remoteItems : this.localItems
 		},
 
 		localItems() {
@@ -156,17 +145,6 @@ export default {
 	},
 
 	watch: {
-		search: {
-			handler: debounce(async function(value) {
-				if (this.getItems) {
-					await this.getRemoteItems(value)
-				}
-
-				this.isOpen = !!(this.results && this.results.length)
-				this.loading = false
-			}, 500)
-		},
-
 		isOpen(isOpen) {
 			if (isOpen && this.savedPosition) {
 				this.$nextTick(() => {
@@ -177,8 +155,17 @@ export default {
 	},
 
 	methods: {
-		filterStart() {
+		filter(value) {
 			this.loading = true
+
+			this.search = value
+			this.savedPosition = 0
+			this.$emit('update:model-value', null)
+
+			// runs the remote search if configured to do so
+			// if not the localItems computed will update the
+			// suggestions based on the search string
+			useRemoteSearch.call(this, value)
 		},
 
 		async getRemoteItems(value, reset = true) {
@@ -186,8 +173,9 @@ export default {
 
 			let items
 			if (!this.lazy) items = await this.getItems(value)
-			else
+			else {
 				items = await this.getItems(value, { page: this.page, limit: this.limit })
+			}
 
 			if (items && items.length) {
 				if (reset === true) this.remoteItems = items
@@ -219,6 +207,14 @@ export default {
 			}
 		}
 	},
-
 }
+
+export const useRemoteSearch = debounce(async function(value) {
+	if (this.getItems) {
+		await this.getRemoteItems(value)
+	}
+
+	this.isOpen = !!(this.results && this.results.length)
+	this.loading = false
+}, 500)
 </script>
