@@ -31,3 +31,9 @@ td {
 		width: 100%;
 	}
 }
+
+.space-between-lines {
+	& > * {
+		margin-bottom: 1rem;
+	}
+}
