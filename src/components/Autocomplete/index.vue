@@ -147,6 +147,7 @@ export default {
 	watch: {
 		isOpen(isOpen) {
 			if (isOpen && this.savedPosition) {
+				/* istanbul ignore next */
 				this.$nextTick(() => {
 					this.$refs.resultsContainer.scrollTo({ top: this.savedPosition, behavior: 'smooth' })
 				})
