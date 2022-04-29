@@ -1,5 +1,6 @@
 # Components
 
+-   [Autocomplete](./autocomplete.md)
 -   [Button](./button.md)
 -   [Checkbox](./checkbox.md)
 -   [Dropdown](./dropdown.md)

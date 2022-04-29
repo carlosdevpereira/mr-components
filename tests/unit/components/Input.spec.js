@@ -56,6 +56,7 @@ describe('Input', () => {
 					icon: 'chat-3-line',
 					iconPosition: 'start',
 					inline: true,
+					label: 'label',
 				},
 			})
 		})
@@ -65,6 +66,7 @@ describe('Input', () => {
 			expect(wrapper.vm.classes).toContain('variant-success')
 			expect(wrapper.vm.classes).toContain('size-lg')
 			expect(wrapper.vm.classes).toContain('has-icon')
+			expect(wrapper.vm.classes).toContain('has-label-text')
 			expect(wrapper.vm.classes).toContain('icon-position-start')
 			expect(wrapper.vm.classes).toContain('inline')
 		})

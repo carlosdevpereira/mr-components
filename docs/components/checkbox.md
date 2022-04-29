@@ -4,6 +4,25 @@ The checkbox component is a lightweight extension of the standard HTML input typ
 
 [[toc]]
 
+## API
+
+### Props
+
+| Name        | Type      | Default     | Description                                                                                                                                                 |
+| ----------- | --------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| theme       | `String`  | `'solid'`   | Defines the theme applied to the Checkbox. Possible values are: `solid`, `outlined`, `text` and `text-solid`                                                |
+| variant     | `String`  | `'default'` | Defines the variant of the theme applied to the Checkbox. Possible values are: `default`, `primary`, `secondary`, `danger`, `warning`, `success` and `info` |
+| size        | `String`  | `'md'`      | Defines the size of the Checkbox. Possible values are: `sm`, `md`, `lg`                                                                                     |
+| label       | `String`  | `''`        | Defines the text to show inside the Checkbox                                                                                                                |
+| disabled    | `Boolean` | `false`     | Defines if the checkbox should be disabled or not                                                                                                           |
+| model-value | `Boolean` | `false`     | Defines the status of the Checkbox (checked or unchecked)                                                                                                   |
+
+### Events
+
+| Name               | Description                                                 |
+| ------------------ | ----------------------------------------------------------- |
+| update:model-value | Event emitted whenever the checkbox is checked or unchecked |
+
 ## Basic Checkbox
 
 <CheckboxProxy variant="default" label="Default" />
