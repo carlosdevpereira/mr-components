@@ -1,5 +1,51 @@
 # Changelog
 
+## [1.3.0](https://github.com/carlosdevpereira/mr-components/compare/v1.2.1...v1.3.0) (2022-04-29)
+
+
+### 📚 Documentation
+
+* add table filter props documentation ([a202557](https://github.com/carlosdevpereira/mr-components/commit/a2025572eb045a53e98e7fefb84042ab6506bc7e))
+
+
+### 👷 Maintenance
+
+* allow eslint formatting for .vuepress directory ([c18788e](https://github.com/carlosdevpereira/mr-components/commit/c18788e1c31860c48c447387f763b6268bc9078b))
+* **deps-dev:** bump @vue/test-utils from 2.0.0-rc.19 to 2.0.0-rc.20 ([#102](https://github.com/carlosdevpereira/mr-components/issues/102)) ([2a672e2](https://github.com/carlosdevpereira/mr-components/commit/2a672e24a9efb03c272f98425129de6f0842d542))
+* **deps-dev:** bump @vue/test-utils from 2.0.0-rc.20 to 2.0.0-rc.21 ([#116](https://github.com/carlosdevpereira/mr-components/issues/116)) ([9465d22](https://github.com/carlosdevpereira/mr-components/commit/9465d2296769e2a87ecf9da9b8fcebf06e316b22))
+* **deps-dev:** bump @vuepress/plugin-register-components ([#126](https://github.com/carlosdevpereira/mr-components/issues/126)) ([29fad29](https://github.com/carlosdevpereira/mr-components/commit/29fad293d7512a2fdf8b4727fb8ebaceba7b1d2e))
+* **deps-dev:** bump autoprefixer from 10.4.4 to 10.4.5 ([#119](https://github.com/carlosdevpereira/mr-components/issues/119)) ([487e790](https://github.com/carlosdevpereira/mr-components/commit/487e790d75a9ec2d8e5ad74f591b99c659f3207c))
+* **deps-dev:** bump babel-loader from 8.2.4 to 8.2.5 ([#113](https://github.com/carlosdevpereira/mr-components/issues/113)) ([ffe02c6](https://github.com/carlosdevpereira/mr-components/commit/ffe02c60ab48526312920385ff4764365a7c0a73))
+* **deps-dev:** bump eslint from 8.12.0 to 8.13.0 ([#98](https://github.com/carlosdevpereira/mr-components/issues/98)) ([b8a4936](https://github.com/carlosdevpereira/mr-components/commit/b8a49365bb3bfcc125c7c700ac65208622976134))
+* **deps-dev:** bump eslint from 8.13.0 to 8.14.0 ([#120](https://github.com/carlosdevpereira/mr-components/issues/120)) ([4bbee96](https://github.com/carlosdevpereira/mr-components/commit/4bbee96be24a61d727ade26e3b4c2c7e93ced97b))
+* **deps-dev:** bump eslint-plugin-vue from 8.6.0 to 8.7.1 ([#117](https://github.com/carlosdevpereira/mr-components/issues/117)) ([c2d6c1b](https://github.com/carlosdevpereira/mr-components/commit/c2d6c1b3cbdfbdcb4b7b8ed4289e63c3559e7d1a))
+* **deps-dev:** bump sass from 1.50.0 to 1.50.1 ([#111](https://github.com/carlosdevpereira/mr-components/issues/111)) ([9b61864](https://github.com/carlosdevpereira/mr-components/commit/9b618646c0ebe7b33979c4a52c37a936bb313b7c))
+* **deps-dev:** bump sass from 1.50.1 to 1.51.0 ([#123](https://github.com/carlosdevpereira/mr-components/issues/123)) ([c77c845](https://github.com/carlosdevpereira/mr-components/commit/c77c845f6d8027143047ad1e68d2b4688f395200))
+* **deps-dev:** bump stylelint from 14.6.1 to 14.7.1 ([#109](https://github.com/carlosdevpereira/mr-components/issues/109)) ([fdaef74](https://github.com/carlosdevpereira/mr-components/commit/fdaef74301e0dd5ba00342a10ede235366cec413))
+* **deps-dev:** bump stylelint from 14.8.0 to 14.8.1 ([#128](https://github.com/carlosdevpereira/mr-components/issues/128)) ([1ecbe5f](https://github.com/carlosdevpereira/mr-components/commit/1ecbe5f8de073f2c7e00d5a630f877801dcd5148))
+* **deps-dev:** bump tailwindcss from 3.0.23 to 3.0.24 ([#101](https://github.com/carlosdevpereira/mr-components/issues/101)) ([3b98fb4](https://github.com/carlosdevpereira/mr-components/commit/3b98fb42657ec2beac91f0618c2ae8cba009e6cd))
+* **deps-dev:** bump vite from 2.9.1 to 2.9.2 ([#103](https://github.com/carlosdevpereira/mr-components/issues/103)) ([c1c38ab](https://github.com/carlosdevpereira/mr-components/commit/c1c38ab9b4f9e3dfb0d777d6658a93044e1c59f2))
+* **deps-dev:** bump vite from 2.9.2 to 2.9.5 ([#105](https://github.com/carlosdevpereira/mr-components/issues/105)) ([2224e4f](https://github.com/carlosdevpereira/mr-components/commit/2224e4fe083d0a2f69c7a9593aa8abff9b03634f))
+* **deps-dev:** bump vite from 2.9.5 to 2.9.6 ([#124](https://github.com/carlosdevpereira/mr-components/issues/124)) ([bbae748](https://github.com/carlosdevpereira/mr-components/commit/bbae74829739e4597e1c3a4f7f1cb2168a90ab40))
+* **deps-dev:** bump vuepress from 2.0.0-beta.38 to 2.0.0-beta.39 ([#97](https://github.com/carlosdevpereira/mr-components/issues/97)) ([0484289](https://github.com/carlosdevpereira/mr-components/commit/0484289fea11edb80d4ac1c22078942520ab694b))
+* **deps-dev:** bump vuepress from 2.0.0-beta.39 to 2.0.0-beta.41 ([#125](https://github.com/carlosdevpereira/mr-components/issues/125)) ([932039a](https://github.com/carlosdevpereira/mr-components/commit/932039a16067f7729da31fc1b94e02aa3bd4580d))
+* **deps:** bump core-js from 3.21.1 to 3.22.0 ([#107](https://github.com/carlosdevpereira/mr-components/issues/107)) ([ac21159](https://github.com/carlosdevpereira/mr-components/commit/ac21159c23dc1c7ddea65b99d58f55c39e79b8c0))
+* **deps:** bump core-js from 3.22.0 to 3.22.1 ([#114](https://github.com/carlosdevpereira/mr-components/issues/114)) ([d42d218](https://github.com/carlosdevpereira/mr-components/commit/d42d21893a01c258b54fb4a3eb720c40657ac4e7))
+* **deps:** bump core-js from 3.22.1 to 3.22.2 ([#115](https://github.com/carlosdevpereira/mr-components/issues/115)) ([869383c](https://github.com/carlosdevpereira/mr-components/commit/869383c662e738745a8784ccc8e54faba8d34878))
+* **deps:** bump core-js from 3.22.2 to 3.22.3 ([#127](https://github.com/carlosdevpereira/mr-components/issues/127)) ([572edfb](https://github.com/carlosdevpereira/mr-components/commit/572edfb3e50a19ab5444fc1e61fecf669e896fbd))
+* **deps:** bump dependabot/fetch-metadata from 1.3.0 to 1.3.1 ([#112](https://github.com/carlosdevpereira/mr-components/issues/112)) ([021c138](https://github.com/carlosdevpereira/mr-components/commit/021c138db66eea45184f978d0a4100a46b1dce7f))
+* **deps:** bump gsap from 3.10.2 to 3.10.3 ([#99](https://github.com/carlosdevpereira/mr-components/issues/99)) ([8f8695c](https://github.com/carlosdevpereira/mr-components/commit/8f8695c18aac0fb2474531b88581d220f42be9c1))
+* **deps:** bump gsap from 3.10.3 to 3.10.4 ([#121](https://github.com/carlosdevpereira/mr-components/issues/121)) ([09f0030](https://github.com/carlosdevpereira/mr-components/commit/09f003064ef8d2e90e03baa0c93d78f3b75a43c8))
+* **deps:** bump JamesIves/github-pages-deploy-action ([#122](https://github.com/carlosdevpereira/mr-components/issues/122)) ([83cc2d0](https://github.com/carlosdevpereira/mr-components/commit/83cc2d08b91b3da0a360ffadf1c78fecce5aed37))
+* **deps:** bump vue from 3.2.31 to 3.2.33 ([#104](https://github.com/carlosdevpereira/mr-components/issues/104)) ([82159da](https://github.com/carlosdevpereira/mr-components/commit/82159da88310887be3d07b5aeba4e40e7eea6187))
+
+
+### ✨ Features
+
+* autocomplete component ([#110](https://github.com/carlosdevpereira/mr-components/issues/110)) ([f60a9d3](https://github.com/carlosdevpereira/mr-components/commit/f60a9d3784a0eced8af13a78cc9e54d85088ef43))
+* debounce update:filters event ([8a149d4](https://github.com/carlosdevpereira/mr-components/commit/8a149d4654e5e8c74caacead7fa7ab3f5b890679))
+* table filters button and section ([#106](https://github.com/carlosdevpereira/mr-components/issues/106)) ([29bfdf0](https://github.com/carlosdevpereira/mr-components/commit/29bfdf0ef905101e9d4f2033f7760a35ffe244f5))
+
 ### [1.2.1](https://github.com/carlosdevpereira/mr-components/compare/v1.2.0...v1.2.1) (2022-04-10)
 
 
