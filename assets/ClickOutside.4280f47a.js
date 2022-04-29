@@ -1,0 +1,1 @@
+const e={mounted:(t,i)=>{t.clickOutsideEvent=c=>{t==c.target||t.contains(c.target)||i.value()},document.addEventListener("click",t.clickOutsideEvent)},unmounted:t=>{document.removeEventListener("click",t.clickOutsideEvent)}};export{e as C};

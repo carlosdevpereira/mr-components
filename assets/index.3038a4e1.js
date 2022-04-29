@@ -1,1 +1,0 @@
-import{_ as n,o as r,a,n as o}from"./app.8a261fc6.js";const s={name:"Icon",props:{name:{type:String,required:!0}}};function t(c,i,e,_,l,m){return r(),a("i",{class:o(["mr-icon ri",`ri-${e.name}`])},null,2)}var u=n(s,[["render",t],["__file","index.vue"]]);export{u as default};
