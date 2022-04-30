@@ -6,49 +6,64 @@ describe('Message', () => {
 	let wrapper
 
 	beforeEach(() => {
-		wrapper = shallowMount(Message, {
-			props: {
-				title: 'message_title',
-			},
-		})
+		wrapper = shallowMount(Message)
 	})
 
-	it('renders message title', () => {
+	it('throws error when trying to open modal without a title', async () => {
+		try {
+			await wrapper.vm.show()
+		} catch (error) {
+			expect(error.message).toContain('Title')
+			expect(error.message).toContain('required')
+		}
+	})
+
+	it('renders message with title', async () => {
+		await wrapper.vm.show('message_title')
+
 		expect(wrapper.find('.mr-message-title').text()).toBe('message_title')
 	})
 
 	it('renders message body when present', async () => {
-		await wrapper.setProps({ body: 'message_body' })
+		await wrapper.vm.show('message_title', 'message_body')
 
 		expect(wrapper.find('.mr-message-body').text()).toBe('message_body')
 	})
 
-	it("doesn't render message body when not present", () => {
+	it("doesn't render message body when not present", async () => {
+		await wrapper.vm.show('message_title')
+
 		expect(wrapper.find('.mr-message-body').exists()).toBe(false)
 	})
 
 	it('renders close button when message is closeable', async () => {
+		await wrapper.vm.show('message_title')
 		await wrapper.setProps({ closeable: true })
 
 		expect(wrapper.find('.mr-message-close-trigger').exists()).toBe(true)
 	})
 
-	it('emits close event when message close button is clicked', async () => {
+	it('hides the message when close button is clicked', async () => {
+		await wrapper.vm.show('message_title')
 		await wrapper.setProps({ closeable: true })
 
 		const closeMessageButton = wrapper.find('.mr-message-close-trigger')
 		await closeMessageButton.trigger('click')
 
-		expect(wrapper.emitted()['close']).not.toBeUndefined()
+		expect(wrapper.vm.isVisible).toBe(false)
+		expect(wrapper.emitted()['update:is-visible']).not.toBeUndefined()
 	})
 
-	it("doesn't render close button when message is not closeable", () => {
+	it("doesn't render close button when message is not closeable", async () => {
+		await wrapper.vm.show('message_title')
+
 		expect(wrapper.find('.mr-message-close-trigger').exists()).toBe(false)
 	})
 
 	describe('Icons', () => {
 		describe('when icon is passed in by the icon prop', () => {
 			beforeEach(async () => {
+				await wrapper.vm.show('message_title')
 				await wrapper.setProps({ icon: 'icon-name' })
 			})
 
@@ -62,6 +77,10 @@ describe('Message', () => {
 		})
 
 		describe('when icon prop is not defined', () => {
+			beforeEach(async () => {
+				await wrapper.vm.show('message_title')
+			})
+
 			it('renders success Icon when variant is success', async () => {
 				await wrapper.setProps({ variant: 'success' })
 				expect(wrapper.findComponent(Icon).exists()).toBe(true)
@@ -89,10 +108,11 @@ describe('Message', () => {
 	})
 
 	describe('Classes', () => {
-		it('applies the correct variant class', () => {
+		it('applies the correct variant class', async () => {
 			wrapper = shallowMount(Message, {
 				props: { variant: 'danger' },
 			})
+			await wrapper.vm.show('message_title')
 
 			expect(wrapper.find('.mr-message').classes()).toContain('variant-danger')
 		})
