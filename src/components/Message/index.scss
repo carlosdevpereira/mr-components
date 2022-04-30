@@ -9,6 +9,9 @@
 	align-items: flex-start;
 	width: 100%;
 	padding: 0.8rem 1rem 0.8rem 0.8rem;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	line-height: $lineHeight;
 	background-color: $sectionBackgroundColor;
 	border-left: 6px solid transparent;
 	border-radius: $borderRadius;
@@ -25,7 +28,11 @@
 	}
 
 	.mr-message-title {
+		display: flex;
 		flex: 1;
+		flex-direction: column;
+		justify-content: center;
+		min-height: 21px;
 		padding-right: 1rem;
 		font-weight: 600;
 	}
