@@ -14,13 +14,3 @@
 		This content is injected through the default slot
 	</Modal>
 </template>
-
-<script>
-export default {
-	data() {
-		return {
-			isOpen: false,
-		}
-	},
-}
-</script>

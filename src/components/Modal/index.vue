@@ -97,67 +97,61 @@ export default {
 
 	methods: {
 		open() {
-			this.isOpen = true
-			this.$emit('update:is-open', true)
+			if (this.isOpen === false) {
+				this.isOpen = true
+				this.$emit('update:is-open', true)
 
-			const openModals = document.querySelectorAll('.mr-modal-container')
+				const openModals = document.querySelectorAll('.mr-modal-container')
 
-			openModals.forEach((modalContainer) => {
-				if (modalContainer.id !== this.$el.id) {
-					const modalEl = modalContainer.querySelector('.mr-modal')
+				openModals.forEach((modalContainer) => {
+					if (modalContainer.id !== this.$el.id) {
+						const modalEl = modalContainer.querySelector('.mr-modal')
 
-					anime({
-						targets: modalEl,
-						translateY: {
-							value: '-=7px',
-							duration: 500
-						},
-						translateX: {
-							value: '+=8px',
-							duration: 500
-						},
-						skew: {
-							value: '-4deg',
-							duration: 100,
-							easing: 'easeInOutSine'
-						},
-						easing: 'easeInOutQuad',
-						duration: 800,
-					})
-				}
-			})
+						anime({
+							targets: modalEl,
+							translateY: {
+								value: '-=12px',
+								duration: 500
+							},
+							translateX: {
+								value: '+=12px',
+								duration: 500
+							},
+							easing: 'easeInOutQuad',
+							duration: 800,
+						})
+					}
+				})
+			}
 		},
 
 		close(){
-			this.isOpen = false
-			this.$emit('update:is-open', false)
+			if (this.isOpen) {
+				this.isOpen = false
+				this.$emit('update:is-open', false)
 
-			const openModals = document.querySelectorAll('.mr-modal-container')
+				const openModals = document.querySelectorAll('.mr-modal-container')
 
-			openModals.forEach((modalContainer) => {
-				if (modalContainer.id !== this.$el.id) {
-					const modalEl = modalContainer.querySelector('.mr-modal')
+				openModals.forEach((modalContainer) => {
+					if (modalContainer.id !== this.$el.id) {
+						const modalEl = modalContainer.querySelector('.mr-modal')
 
-					anime({
-						targets: modalEl,
-						translateY: {
-							value: '+=7px',
-							duration: 500,
-						},
-						translateX: {
-							value: '-=8px',
-							duration: 500
-						},
-						skew: {
-							value: '0deg',
-							duration: 100,
-							easing: 'easeInOutSine'
-						},
-						easing: 'easeInOutQuad',
-						duration: 800,
-					})
-				}
-			})
+						anime({
+							targets: modalEl,
+							translateY: {
+								value: '+=12px',
+								duration: 500,
+							},
+							translateX: {
+								value: '-=12px',
+								duration: 500
+							},
+							easing: 'easeInOutQuad',
+							duration: 800,
+						})
+					}
+				})
+			}
 		},
 
 		animateModalRender(el, done) {
@@ -171,8 +165,8 @@ export default {
 			anime({
 				targets: modalEl,
 				translateY: [-50, 0],
-				easing: 'easeInOutQuad',
-				duration: 800,
+				easing: 'easeInOutSine',
+				duration: 500,
 				changeComplete: () => done()
 			})
 		},
@@ -185,14 +179,14 @@ export default {
 				duration: 500,
 				translateY: {
 					value: '-=130%',
-					duration: 500
+					duration: 400
 				},
 				easing: 'easeInOutSine',
 				changeComplete: () => {
 					anime({
 						targets: el,
 						opacity: [1, 0],
-						duration: 500,
+						duration: 300,
 						changeComplete: () => done()
 					})
 				}

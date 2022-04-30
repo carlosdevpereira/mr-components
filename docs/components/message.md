@@ -30,17 +30,27 @@ The message component allows to display highlighted messages to the user inside 
 	<Message ref="message" />
 </template>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Message ref="message" />
+</template>
+
 <script>
 export default {
 	methods: {
 		showMessage() {
-			this.$refs.message.show(
-				'Example message',
-			)
+			this.$refs.message.show('Example message')
 		},
 	},
 }
 </script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 <br>
 
