@@ -1,18 +1,26 @@
 <template>
 	<Message
-		v-if="!close"
-		v-model="value"
+		ref="message"
 		v-bind="$attrs"
-		@close="close = true"
 	/>
 </template>
 
 <script>
 export default {
-	data() {
-		return {
-			close: false,
+	props: {
+		body: {
+			type: String,
+			default: ''
 		}
 	},
+
+	mounted() {
+		const interval = setInterval(() => {
+			if (this.$refs.message) {
+				this.$refs['message'].show('Example message', this.body)
+				clearInterval(interval)
+			}
+		}, 50)
+	}
 }
 </script>

@@ -12,41 +12,42 @@ The message component allows to display highlighted messages to the user inside 
 | --------- | --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | variant   | `String`  | `''`    | Defines the variant of the theme applied to the input component. Possible values are: `danger`, `warning`, `success`, `info` |
 | icon      | `String`  | `''`    | Defines the icon to show inside the input element                                                                            |
-| title     | `String`  | ``      | Defines the main piece of text of the message                                                                                |
-| body      | `String`  | ``      | Defines the smaller piece of text of the message. Used for long descriptions                                                 |
 | closeable | `Boolean` | `false` | Defines if the message can be closed manually by the user or not                                                             |
 
 ### Events
 
-| Name  | Description                                                       |
-| ----- | ----------------------------------------------------------------- |
-| close | Event emitted whenever the message wants to be closed (destroyed) |
+| Name              | Description                                                       |
+| ----------------- | ----------------------------------------------------------------- |
+| update:is-visible | Event emitted whenever the message is shown or hidden (destroyed) |
 
 <br>
 
 ## Basic Message
 
-<MessageProxy title="This is a basic message" />
+<MessageProxy />
 
-<CodeGroup>
-  <CodeGroupItem title="Vue" active>
-
-```vue
 <template>
-	<Message title="This is a base message" />
+	<Message ref="message" />
 </template>
-```
 
-  </CodeGroupItem>
-</CodeGroup>
+<script>
+export default {
+	methods: {
+		showMessage() {
+			this.$refs.message.show(
+				'Example message',
+			)
+		},
+	},
+}
+</script>
 
 <br>
 
 ## Body
 
-<MessageProxy 
-    title="This message has a body" 
-    body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" 
+<MessageProxy
+	body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" 
 />
 
 <CodeGroup>
@@ -54,11 +55,21 @@ The message component allows to display highlighted messages to the user inside 
 
 ```vue
 <template>
-	<Message
-		title="This message has a body"
-		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit....."
-	/>
+	<Message ref="message" />
 </template>
+
+<script>
+export default {
+	methods: {
+		showMessage() {
+			this.$refs.message.show(
+				'Example message',
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.....'
+			)
+		},
+	},
+}
+</script>
 ```
 
   </CodeGroupItem>
@@ -69,12 +80,11 @@ The message component allows to display highlighted messages to the user inside 
 ## Closeable
 
 <div class="space-between-lines">
-    <MessageProxy title="This is a basic message" closeable />
-    <MessageProxy
-        closeable
-        title="This message has a body"
-        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna"
-    />
+    <MessageProxy closeable />
+    <MessageProxy 
+		closeable
+		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" 
+	/>
 </div>
 
 <CodeGroup>
@@ -82,13 +92,25 @@ The message component allows to display highlighted messages to the user inside 
 
 ```vue
 <template>
-	<Message title="This is a basic message" closeable />
+	<Message ref="onlyTitle" closeable />
 
-	<Message
-		title="This message has a body"
-		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit....."
-	/>
+	<Message ref="withBody" closeable />
 </template>
+
+<script>
+export default {
+	methods: {
+		showMessage() {
+			this.$refs.onlyTitle.show('Example message')
+
+			this.$refs.withBody.show(
+				'Example message',
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.....'
+			)
+		},
+	},
+}
+</script>
 ```
 
   </CodeGroupItem>
@@ -101,11 +123,25 @@ The message component allows to display highlighted messages to the user inside 
 ### Simple
 
 <div class="space-between-lines">
-    <MessageProxy title="Test message" closeable />
-    <MessageProxy title="Test message" variant="danger" closeable />
-    <MessageProxy title="Test message" variant="warning" closeable />
-    <MessageProxy title="Test message" variant="success" closeable />
-    <MessageProxy title="Test message" variant="info" closeable />
+	<MessageProxy 
+		closeable
+	/>
+	<MessageProxy
+		variant="danger"
+		closeable
+	/>
+	<MessageProxy
+		variant="warning"
+		closeable
+	/>
+	<MessageProxy
+		variant="success"
+		closeable
+	/>
+	<MessageProxy
+		variant="info"
+		closeable
+	/>
 </div>
 
 <CodeGroup>
@@ -113,12 +149,26 @@ The message component allows to display highlighted messages to the user inside 
 
 ```vue
 <template>
-	<Message title="Test message" closeable />
-	<Message title="Test message" variant="danger" closeable />
-	<Message title="Test message" variant="warning" closeable />
-	<Message title="Test message" variant="success" closeable />
-	<Message title="Test message" variant="info" closeable />
+	<Message ref="defaultMessage" closeable />
+	<Message ref="dangerMessage" variant="danger" closeable />
+	<Message ref="warningMessage" variant="warning" closeable />
+	<Message ref="successMessage" variant="success" closeable />
+	<Message ref="infoMessage" variant="info" closeable />
 </template>
+
+<script>
+export default {
+	methods: {
+		showMessage() {
+			this.$refs.defaultMessage.show('Example message')
+			this.$refs.dangerMessage.show('Example message')
+			this.$refs.warningMessage.show('Example message')
+			this.$refs.successMessage.show('Example message')
+			this.$refs.infoMessage.show('Example message')
+		},
+	},
+}
+</script>
 ```
 
   </CodeGroupItem>
@@ -129,11 +179,30 @@ The message component allows to display highlighted messages to the user inside 
 ### With Body
 
 <div class="space-between-lines">
-    <MessageProxy title="Test message" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" closeable />
-    <MessageProxy title="Test message" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" variant="danger" closeable />
-    <MessageProxy title="Test message" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" variant="warning" closeable />
-    <MessageProxy title="Test message" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" variant="success" closeable />
-    <MessageProxy title="Test message" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" variant="info" closeable />
+	<MessageProxy 
+		closeable
+		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" 
+	/>
+	<MessageProxy
+		variant="danger"
+		closeable
+		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" 
+	/>
+	<MessageProxy
+		variant="warning"
+		closeable
+		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" 
+	/>
+	<MessageProxy
+		variant="success"
+		closeable
+		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" 
+	/>
+	<MessageProxy
+		variant="info"
+		closeable
+		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec imperdiet ligula. Sed sodales, nulla at fringilla lacinia, erat nisl ultricies libero, in sollicitudin velit mauris a urna" 
+	/>
 </div>
 
 <CodeGroup>
@@ -141,36 +210,41 @@ The message component allows to display highlighted messages to the user inside 
 
 ```vue
 <template>
-	<Message
-		title="Test message"
-		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit...."
-		closeable
-	/>
-	<Message
-		closeable
-		variant="danger"
-		title="Test message"
-		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit...."
-	/>
-	<Message
-		closeable
-		variant="warning"
-		title="Test message"
-		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit...."
-	/>
-	<Message
-		closeable
-		variant="success"
-		title="Test message"
-		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit...."
-	/>
-	<Message
-		closeable
-		variant="info"
-		title="Test message"
-		body="Lorem ipsum dolor sit amet, consectetur adipiscing elit...."
-	/>
+	<Message ref="defaultMessage" closeable />
+	<Message ref="dangerMessage" closeable variant="danger" />
+	<Message ref="warningMessage" closeable variant="warning" />
+	<Message ref="successMessage" closeable variant="success" />
+	<Message ref="infoMessage" closeable variant="info" />
 </template>
+
+<script>
+export default {
+	methods: {
+		showMessage() {
+			this.$refs.defaultMessage.show(
+				'Example message',
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.....'
+			)
+			this.$refs.dangerMessage.show(
+				'Example message',
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.....'
+			)
+			this.$refs.warningMessage.show(
+				'Example message',
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.....'
+			)
+			this.$refs.successMessage.show(
+				'Example message',
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.....'
+			)
+			this.$refs.infoMessage.show(
+				'Example message',
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.....'
+			)
+		},
+	},
+}
+</script>
 ```
 
   </CodeGroupItem>

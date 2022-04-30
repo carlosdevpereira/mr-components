@@ -1,38 +1,45 @@
 <template>
-	<!-- @TODO: Add in and out animations -->
-	<!-- @TODO: Expiration timer -->
-	<!-- @TODO: Unit tests -->
-
-	<div
-		class="mr-message"
-		:class="classes"
+	<Transition
+		appear
+		:css="false"
+		mode="out-in"
+		@enter="animateMessageRender"
+		@leave="animateMessageLeave"
 	>
-		<Icon
-			v-if="iconName"
-			:name="iconName"
-		/>
+		<div
+			v-if="isVisible"
+			class="mr-message"
+			:class="classes"
+		>
+			<!-- @TODO: Expiration timer -->
 
-		<div class="mr-message-title">
-			{{ title }}
+			<Icon
+				v-if="iconName"
+				:name="iconName"
+			/>
 
-			<small
-				v-if="body"
-				class="mr-message-body"
-			>
-				{{ body }}
-			</small>
+			<div class="mr-message-title">
+				{{ title }}
+
+				<small
+					v-if="body"
+					class="mr-message-body"
+				>
+					{{ body }}
+				</small>
+			</div>
+
+			<Button
+				v-if="closeable"
+				theme="text"
+				:variant="variant || 'default'"
+				icon="close-line"
+				size="sm"
+				class="mr-message-close-trigger"
+				@click="destroy"
+			/>
 		</div>
-
-		<Button
-			v-if="closeable"
-			theme="text"
-			:variant="variant || 'default'"
-			icon="close-line"
-			size="sm"
-			class="mr-message-close-trigger"
-			@click="destroyMessage"
-		/>
-	</div>
+	</Transition>
 </template>
 
 <script>
@@ -40,6 +47,7 @@ import './index.scss'
 import 'remixicon/fonts/remixicon.css'
 import Icon from '../Icon/index.vue'
 import Button from '../Button/index.vue'
+import anime from 'animejs'
 
 export const variants = ['danger', 'warning', 'success', 'info']
 
@@ -63,23 +71,21 @@ export default {
 			default: '',
 		},
 
-		title: {
-			type: String,
-			required: true
-		},
-
-		body: {
-			type: String,
-			default: ''
-		},
-
 		closeable: {
 			type: Boolean,
 			default: false
 		},
 	},
 
-	emits: ['close'],
+	emits: ['update:is-visible'],
+
+	data() {
+		return {
+			isVisible: false,
+			title: '',
+			body: ''
+		}
+	},
 
 	computed: {
 		iconName() {
@@ -103,8 +109,44 @@ export default {
 	},
 
 	methods: {
-		destroyMessage() {
-			this.$emit('close')
+		show(title, body = '') {
+			if (!title) {
+				throw new Error('Title is required to display a message!')
+			} else {
+				this.isVisible = true
+				this.title = title
+				this.body = body
+			}
+		},
+
+		destroy() {
+			this.isVisible = false
+		},
+
+		animateMessageRender(el, done) {
+			anime({
+				targets: el,
+				opacity: [0, 1],
+				translateY: [-50, 0],
+				easing: 'easeInOutQuad',
+				duration: 800,
+				changeComplete: () => done()
+			})
+		},
+
+		animateMessageLeave(el, done) {
+			anime({
+				targets: el,
+				opacity: [1, 0],
+				translateY: {
+					value: '-=50',
+					duration: 400
+				},
+				height: 0,
+				padding: 0,
+				easing: 'easeInOutQuad',
+				changeComplete: () => done()
+			})
 		}
 	}
 }
