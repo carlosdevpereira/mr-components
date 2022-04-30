@@ -29,6 +29,7 @@
 			:variant="variant || 'default'"
 			icon="close-line"
 			size="sm"
+			class="mr-message-close-trigger"
 			@click="destroyMessage"
 		/>
 	</div>
