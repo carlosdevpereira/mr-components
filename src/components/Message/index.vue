@@ -117,10 +117,13 @@ export default {
 				this.title = title
 				this.body = body
 			}
+
+			this.$emit('update:is-visible', true)
 		},
 
 		destroy() {
 			this.isVisible = false
+			this.$emit('update:is-visible', false)
 		},
 
 		animateMessageRender(el, done) {
