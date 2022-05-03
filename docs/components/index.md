@@ -7,6 +7,7 @@
 -   [Icon](./icon.md)
 -   [Input](./input.md)
 -   [Message](./message.md)
+-   [Modal](./modal.md)
 -   [Pagination](./pagination.md)
 -   [Radio Button](./radio-button.md)
 -   [Table](./table.md)

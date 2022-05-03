@@ -80,11 +80,14 @@ app.component('Checkbox', Checkbox)
 
 ## Checkout the available components:
 
--   [Button](https://mr-components.carlosdevpereira.com/components/button.html#basic-button)
+-   [Autocomplete](https://mr-components.carlosdevpereira.com/components/autocomplete.html)
+-   [Button](https://mr-components.carlosdevpereira.com/components/button.html)
 -   [Checkbox](https://mr-components.carlosdevpereira.com/components/checkbox.html)
 -   [Dropdown](https://mr-components.carlosdevpereira.com/components/dropdown.html)
 -   [Icon](https://mr-components.carlosdevpereira.com/components/icon.html)
 -   [Input](https://mr-components.carlosdevpereira.com/components/input.html)
+-   [Message](https://mr-components.carlosdevpereira.com/components/message.html)
+-   [Modal](https://mr-components.carlosdevpereira.com/components/modal.html)
 -   [Pagination](https://mr-components.carlosdevpereira.com/components/pagination.html)
 -   [Radio Button](https://mr-components.carlosdevpereira.com/components/radio-button.html)
 -   [Table](https://mr-components.carlosdevpereira.com/components/table.html)
