@@ -34,6 +34,7 @@
 						:key="index"
 						:label="col.name"
 						:model-value="!col.hidden"
+						:disabled="!col.hidden && visibleColumns.length === 1"
 						@update:model-value="col.hidden = !col.hidden"
 					/>
 				</Dropdown>
