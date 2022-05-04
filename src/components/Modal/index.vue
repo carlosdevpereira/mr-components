@@ -59,7 +59,7 @@
 
 <script>
 import './index.scss'
-import anime from 'animejs'
+import gsap from 'gsap'
 import Button from '../Button/index.vue'
 
 export const sizes = ['sm', 'md', 'lg', 'xl']
@@ -127,19 +127,9 @@ export default {
 				openModals.forEach((modalContainer) => {
 					if (modalContainer.id !== this.$el.id) {
 						const modalEl = modalContainer.querySelector('.mr-modal')
-
-						anime({
-							targets: modalEl,
-							translateY: {
-								value: '-=12px',
-								duration: 500
-							},
-							translateX: {
-								value: '+=12px',
-								duration: 500
-							},
-							easing: 'easeInOutQuad',
-							duration: 800,
+						gsap.to(modalEl, {
+							translateY: '-=12px',
+							translateX: '+=12px'
 						})
 					}
 				})
@@ -160,18 +150,9 @@ export default {
 					if (modalContainer.id !== this.$el.id) {
 						const modalEl = modalContainer.querySelector('.mr-modal')
 
-						anime({
-							targets: modalEl,
-							translateY: {
-								value: '+=12px',
-								duration: 500,
-							},
-							translateX: {
-								value: '-=12px',
-								duration: 500
-							},
-							easing: 'easeInOutQuad',
-							duration: 800,
+						gsap.to(modalEl, {
+							translateY: '+=12px',
+							translateX: '-=12px'
 						})
 					}
 				})
@@ -179,32 +160,24 @@ export default {
 		},
 
 		animateModalRender(el, done) {
-			anime({
-				targets: el,
-				opacity: [0, 1],
+			gsap.from(el, {
+				opacity: 0
 			})
 
 			const modalEl = el.querySelector('.mr-modal')
 			const isMobile = window.innerWidth < 968
 
 			if (!isMobile) {
-				anime({
-					targets: modalEl,
-					translateY: [-50, 0],
-					easing: 'easeInOutSine',
-					duration: 500,
-					changeComplete: () => done()
+				gsap.from(modalEl, {
+					translateY: -50,
+					onComplete: () => done(),
 				})
 			} else {
-				anime({
-					targets: modalEl,
-					bottom: ['-20%', 0],
-					easing: 'easeInOutSine',
-					duration: 700,
-					changeComplete: () => done()
+				gsap.from(modalEl, {
+					bottom: '-20%',
+					onComplete: () => done(),
 				})
 			}
-
 		},
 
 		animateModalLeave(el, done) {
@@ -212,23 +185,15 @@ export default {
 			const isMobile = window.innerWidth < 968
 
 			const translationOut = !isMobile ? '-=130%' : '+=130%'
-			anime({
-				targets: modalEl,
-				opacity: [1, 0],
-				duration: 500,
-				translateY: {
-					value: translationOut,
-					duration: 400
-				},
-				easing: 'easeInOutSine',
-				changeComplete: () => {
-					anime({
-						targets: el,
-						opacity: [1, 0],
-						duration: 300,
-						changeComplete: () => done()
+			gsap.to(modalEl, {
+				opacity: 0,
+				translateY: translationOut,
+				onComplete: () => {
+					gsap.to(el, {
+						opacity: 0,
+						onComplete: () => done(),
 					})
-				}
+				},
 			})
 		},
 
@@ -237,40 +202,31 @@ export default {
 			const modalEl = modalContainer.querySelector('.mr-modal')
 
 			if (!this.isFullscreen) {
-				anime({
-					targets: modalContainer,
-					paddingTop: '0',
-					easing: 'easeInOutSine',
-					duration: 500,
+				gsap.to(modalContainer, {
+					paddingTop: 0
 				})
 
-				anime({
-					targets: modalEl,
-					width: '100%',
-					height: '100%',
-					maxWidth: '100%',
-					easing: 'easeInOutSine',
-					duration: 350,
-				})
+				gsap
+					.to(modalEl, {
+						width: '100%',
+						height: '100%',
+						maxWidth: '100%',
+					})
+					.duration(0.25)
 			} else {
-				anime({
-					targets: modalContainer,
+				gsap.to(modalContainer, {
 					paddingTop: '5rem',
-					easing: 'easeInOutSine',
-					duration: 500,
 				})
 
 				modalEl.style.removeProperty('width')
 				modalEl.style.removeProperty('height')
 
-				anime({
-					targets: modalEl,
+				gsap.to(modalEl, {
 					maxWidth: '95%',
-					width: 'inherit',
-					height: 'inherit',
-					easing: 'easeInOutSine',
-					duration: 500,
 				})
+
+				modalEl.style.removeProperty('width')
+				modalEl.style.removeProperty('height')
 			}
 
 			this.isFullscreen = !this.isFullscreen

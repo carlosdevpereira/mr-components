@@ -190,6 +190,7 @@ describe('Table', () => {
 
 	describe('Pagination', () => {
 		let wrapper
+		let scrollTopMock = jest.spyOn(Table.methods, 'scrollToTopOfElement')
 
 		beforeEach(() => {
 			wrapper = shallowMount(Table, {
@@ -202,6 +203,8 @@ describe('Table', () => {
 					totalRows: 2,
 				},
 			})
+
+			scrollTopMock.mockClear()
 		})
 
 		it('renders pagination component', () => {
@@ -222,6 +225,13 @@ describe('Table', () => {
 			wrapper.vm.limit = 20
 
 			expect(wrapper.emitted('update:rows-per-page')).toBeTruthy()
+			expect(scrollTopMock).not.toHaveBeenCalled()
+
+			await wrapper.setProps({ rowsPerPage: 2 })
+			wrapper.vm.limit = 1
+
+			expect(wrapper.emitted('update:rows-per-page')).toBeTruthy()
+			expect(scrollTopMock).toHaveBeenCalled()
 		})
 	})
 
