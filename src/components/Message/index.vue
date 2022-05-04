@@ -45,9 +45,9 @@
 <script>
 import './index.scss'
 import 'remixicon/fonts/remixicon.css'
+import gsap from 'gsap'
 import Icon from '../Icon/index.vue'
 import Button from '../Button/index.vue'
-import anime from 'animejs'
 
 export const variants = ['danger', 'warning', 'success', 'info']
 
@@ -127,28 +127,24 @@ export default {
 		},
 
 		animateMessageRender(el, done) {
-			anime({
-				targets: el,
-				opacity: [0, 1],
-				translateY: [-50, 0],
-				easing: 'easeInOutQuad',
-				duration: 800,
-				changeComplete: () => done()
+			gsap.from(el, {
+				opacity: 0,
+				translateY: -50,
+				height: 0,
+				padding: 0,
+				margin: 0,
+				onComplete: () => done(),
 			})
 		},
 
 		animateMessageLeave(el, done) {
-			anime({
-				targets: el,
-				opacity: [1, 0],
-				translateY: {
-					value: '-=50',
-					duration: 400
-				},
+			gsap.to(el, {
+				opacity: 0,
+				translateY: -50,
 				height: 0,
 				padding: 0,
-				easing: 'easeInOutQuad',
-				changeComplete: () => done()
+				margin: 0,
+				onComplete: () => done(),
 			})
 		}
 	}

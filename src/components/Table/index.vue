@@ -141,6 +141,7 @@
 				:css="false"
 				@before-enter="onBeforeEnter"
 				@enter="onEnter"
+				@leave="onLeave"
 			>
 				<tr
 					v-for="(row, index) in visibleRows"
@@ -209,32 +210,42 @@
 		</footer>
 
 		<Teleport
-			v-if="selectableRows && selectedRows.length"
+			v-if="selectableRows"
 			to="body"
 		>
-			<div class="mr-table-row-selection-panel">
-				<div class="row-selection-count">
-					<strong>
-						{{ selectedRows.length }}
-					</strong>
-					<small>selected</small>
+			<transition
+				appear
+				:css="false"
+				@enter="onEnterRowSelectionPanel"
+				@leave="onLeaveRowSelectionPanel"
+			>
+				<div
+					v-if="selectedRows.length"
+					class="mr-table-row-selection-panel"
+				>
+					<div class="row-selection-count">
+						<strong>
+							{{ selectedRows.length }}
+						</strong>
+						<small>selected</small>
 
-					<Button
-						class="clear-row-selection"
-						variant="primary"
-						@click="clearRowSelection"
-					>
-						Clear selection
-					</Button>
-				</div>
+						<Button
+							class="clear-row-selection"
+							variant="primary"
+							@click="clearRowSelection"
+						>
+							Clear selection
+						</Button>
+					</div>
 
-				<div class="mr-table-row-selection-actions">
-					<slot
-						name="selection-actions"
-						:rows="selectedRows"
-					/>
+					<div class="mr-table-row-selection-actions">
+						<slot
+							name="selection-actions"
+							:rows="selectedRows"
+						/>
+					</div>
 				</div>
-			</div>
+			</transition>
 		</Teleport>
 	</div>
 </template>
@@ -446,6 +457,8 @@ export default {
 			},
 
 			set(value) {
+				this.scrollToTopOfElement(this.$el)
+
 				this.$emit('update:page', value)
 			},
 		},
@@ -456,6 +469,10 @@ export default {
 			},
 
 			set(value) {
+				if (this.rowsPerPage > value) {
+					this.scrollToTopOfElement(this.$el)
+				}
+
 				this.$emit('update:rows-per-page', value)
 			},
 		},
@@ -556,6 +573,13 @@ export default {
 			this.$emit('update:filters', this.filters)
 		}, 700),
 
+		scrollToTopOfElement(element) {
+			window.scrollTo({
+				top: element.offsetTop - 120,
+				behavior: 'smooth',
+			})
+		},
+
 		onBeforeEnter(el) {
 			el.style.opacity = 0
 			el.style.height = 0
@@ -566,9 +590,35 @@ export default {
 				opacity: 1,
 				height: 'auto',
 				delay: el.dataset.index * 0.05,
-				onComplete: done,
+				onComplete: () => done()
+			})
+
+		},
+
+		onLeave(el, done) {
+			gsap.to(el, {
+				opacity: 0,
+				height: '0',
+				delay: el.dataset.index * 0.05,
+				onComplete: () => done(),
 			})
 		},
+
+		onEnterRowSelectionPanel(el, done) {
+			gsap.from(el, {
+				opacity: 0,
+				translateY: '150%',
+				onComplete: done(),
+			})
+		},
+
+		onLeaveRowSelectionPanel(el, done) {
+			gsap.to(el, {
+				opacity: 0,
+				translateY: '150%',
+				onComplete: () => done(),
+			})
+		}
 	},
 }
 </script>
