@@ -57,22 +57,22 @@ app.component('Checkbox', Checkbox)
 
 ```html
 <template>
-	<div>
-		<button>Click me</button>
-	</div>
+  <div>
+    <button>Click me</button>
+  </div>
 </template>
 
 <script>
-	import '@carlosdevpereira/mr-components/dist/style.css'
-	import { Button } from '@carlosdevpereira/mr-components'
+import '@carlosdevpereira/mr-components/dist/style.css'
+import { Button } from '@carlosdevpereira/mr-components'
 
-	export default {
-		components: {
-			Button,
-		},
+export default {
+  components: {
+    Button,
+  },
 
-		// ...
-	}
+  // ...
+}
 </script>
 ```
 
