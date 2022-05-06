@@ -1,6 +1,6 @@
 import 'remixicon/fonts/remixicon.css'
 // Exportable plugins
-import { Toast as ToastPlugin } from './src/plugins/Notifications'
+import { Toast as ToastPlugin } from './src/plugins/Toast'
 // Exportable component
 import Autocomplete from './src/components/Autocomplete/index.vue'
 import Button from './src/components/Button/index.vue'
