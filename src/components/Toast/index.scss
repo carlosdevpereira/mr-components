@@ -1,0 +1,86 @@
+@use 'sass:color';
+@use 'sass:map';
+
+@import '../../assets/scss/_variables.scss';
+
+.mr-toast-container {
+	position: fixed;
+	top: 0.5rem;
+	right: 0.5rem;
+	z-index: 100;
+	display: flex;
+	flex-direction: column;
+
+	.mr-toast {
+		position: relative;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		width: 300px;
+		max-width: 95%;
+		padding: 1rem 1rem 1rem 0.8rem;
+		margin-bottom: 4px;
+		font-family: $fontFamily;
+		font-size: $fontSize;
+		line-height: $lineHeight;
+		background-color: $whiteColor;
+		border-left: 8px solid transparent;
+		border-radius: 6px;
+		box-shadow: 0 4px 6px rgb(50 50 93 / 5%), 0 1px 3px rgb(0 0 0 / 2%);
+
+		.mr-toast-icon {
+			margin-right: 16px;
+			margin-left: 4px;
+			font-size: 22px;
+		}
+
+		@each $variantName, $variantColor in $variants {
+			&.variant-#{$variantName} {
+				border-left-color: $variantColor;
+
+				.mr-toast-icon {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					width: 22px;
+					height: 22px;
+					color: $whiteColor;
+					background-color: $variantColor;
+					border-radius: 50%;
+				}
+			}
+		}
+
+		.mr-toast-body {
+			display: flex;
+			flex-direction: column;
+
+			strong {
+				margin-bottom: 4px;
+				font-size: 16px;
+				text-transform: capitalize;
+			}
+
+			small {
+				display: -webkit-box;
+				overflow: hidden;
+				font-size: 12.5px;
+				text-overflow: ellipsis;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
+		}
+
+		.mr-toast-close {
+			position: absolute;
+			top: 6px;
+			right: 6px;
+			display: block;
+			align-self: flex-start;
+			width: 22px;
+			height: 22px;
+			padding: 0;
+			border-radius: 50%;
+		}
+	}
+}

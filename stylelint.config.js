@@ -19,7 +19,6 @@ module.exports = {
 		],
 		'at-rule-name-case': 'lower',
 		'at-rule-name-space-after': 'always-single-line',
-		'at-rule-no-vendor-prefix': true,
 		'at-rule-semicolon-newline-after': 'always',
 		'block-closing-brace-empty-line-before': 'never',
 		'block-closing-brace-newline-after': 'always',
@@ -113,7 +112,7 @@ module.exports = {
 		'number-max-precision': 4,
 		'number-no-trailing-zeros': true,
 		'property-case': 'lower',
-		'property-no-vendor-prefix': true,
+
 		'rule-empty-line-before': [
 			'always-multi-line',
 			{
@@ -143,7 +142,7 @@ module.exports = {
 		'selector-list-comma-newline-after': 'always',
 		'selector-list-comma-space-before': 'never',
 		'selector-max-empty-lines': 0,
-		'selector-no-vendor-prefix': true,
+
 		'selector-pseudo-class-case': 'lower',
 		'selector-pseudo-class-parentheses-space-inside': 'never',
 		'selector-pseudo-element-case': 'lower',
@@ -156,6 +155,13 @@ module.exports = {
 		'value-list-comma-space-after': 'always-single-line',
 		'value-list-comma-space-before': 'never',
 		'value-list-max-empty-lines': 0,
-		'value-no-vendor-prefix': true,
+		'selector-no-vendor-prefix': true,
+		'at-rule-no-vendor-prefix': true,
+		'property-no-vendor-prefix': {
+			ignoreProperties: ['box-orient'],
+		},
+		'value-no-vendor-prefix': {
+			ignoreValues: ['box'],
+		},
 	},
 }

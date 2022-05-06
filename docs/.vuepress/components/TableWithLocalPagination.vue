@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TableWithPagination from '../../../tests/fixtures/Table/TableWithPagination.json'
+import TableWithPagination from '@tests/fixtures/Table/TableWithPagination.json'
 
 export default {
 	data() {
