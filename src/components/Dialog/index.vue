@@ -131,10 +131,18 @@ export default {
 		},
 
 		animateRender(el, done) {
+			let mobileTransitions = {}
+
+			const isMobile = window.innerWidth < 968
+			if (isMobile) {
+				mobileTransitions.translateY = 100
+			}
+
 			gsap.from(el, {
 				opacity: 0,
 				scale: .2,
 				duration: .2,
+				...mobileTransitions,
 				onComplete: () => {
 					done()
 
@@ -144,10 +152,18 @@ export default {
 		},
 
 		animateLeave(el, done) {
+			let mobileTransitions = {}
+
+			const isMobile = window.innerWidth < 968
+			if (isMobile) {
+				mobileTransitions.translateY = 100
+			}
+
 			gsap.to(el, {
 				opacity: 0,
 				scale: .2,
 				duration: .2,
+				...mobileTransitions,
 				onComplete: () => {
 					done()
 
