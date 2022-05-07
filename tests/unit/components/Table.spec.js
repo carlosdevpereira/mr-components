@@ -8,6 +8,8 @@ import SimpleTableWithHiddenColumnsFixtures from '../../fixtures/Table/SimpleTab
 import SimpleTableWithSortableColumnsFixtures from '../../fixtures/Table/SimpleTableWithSortableColumnsFixtures.json'
 import { flushPromises, mount, shallowMount } from '@vue/test-utils'
 
+global.scrollTo = jest.fn()
+
 describe('Table', () => {
 	describe('Prop defaults', () => {
 		let wrapper
