@@ -545,6 +545,7 @@
 		],
 		"transform": {
 			"^.+\\.vue$": "vue3-jest",
+			"^.+\\.ts$": "ts-jest",
 			"^.+\\js$": "babel-jest",
 			"^.+\\.svg$": "./tests/transformers/svgTransform.ts"
 		},
@@ -560,6 +561,13 @@
 			"clover",
 			"html",
 			"lcov"
+		],
+		"collectCoverageFrom": [
+			"src/**/*.{ts,js,vue}"
+		],
+		"coveragePathIgnorePatterns": [
+			"!src/types/*",
+			"!*.d.ts"
 		]
 	},
 	"gitHooks": {
