@@ -5,11 +5,41 @@
 
 .mr-toast-container {
 	position: fixed;
-	top: 0.5rem;
-	right: 0.5rem;
 	z-index: 100;
 	display: flex;
 	flex-direction: column;
+
+	&.mr-toast-top-left {
+		top: 0.5rem;
+		left: 0.5rem;
+	}
+
+	&.mr-toast-top-center {
+		top: 0.5rem;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&.mr-toast-top-right {
+		top: 0.5rem;
+		right: 0.5rem;
+	}
+
+	&.mr-toast-bottom-left {
+		bottom: 0.5rem;
+		left: 0.5rem;
+	}
+
+	&.mr-toast-bottom-center {
+		bottom: 0.5rem;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&.mr-toast-bottom-right {
+		right: 0.5rem;
+		bottom: 0.5rem;
+	}
 
 	.mr-toast {
 		position: relative;

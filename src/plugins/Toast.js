@@ -5,6 +5,7 @@ export const Toast = {
 
 	notify(options) {
 		let notification = {
+			id: Math.floor(Math.random() * Date.now()),
 			type: options.type,
 			title: options.title,
 			message: options.message,

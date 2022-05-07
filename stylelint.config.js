@@ -157,11 +157,7 @@ module.exports = {
 		'value-list-max-empty-lines': 0,
 		'selector-no-vendor-prefix': true,
 		'at-rule-no-vendor-prefix': true,
-		'property-no-vendor-prefix': {
-			ignoreProperties: ['box-orient'],
-		},
-		'value-no-vendor-prefix': {
-			ignoreValues: ['box'],
-		},
+		'property-no-vendor-prefix': false,
+		'value-no-vendor-prefix': false,
 	},
 }

@@ -20,6 +20,17 @@ To create the `Toast` component instance you need to import the `Toast` componen
 </template>
 ```
 
+#### Position
+
+The location where the notifications will appear depends on the `position` prop. The accepted values are:
+
+-   `top-left`
+-   `top-center`
+-   `top-right` <small>(default)</small>
+-   `bottom-left`
+-   `bottom-center`
+-   `bottom-right`
+
 ### 2. Plugin Registration
 
 Registering the `Toast` plugin is the next and last step before being able to dispatch notifications. The registration of the plugin can be automatic if the full `@carlosdevpereira/mr-components` package was registered globally, or manually otherwise.
@@ -260,17 +271,3 @@ export default {
 
   </CodeGroupItem>
 </CodeGroup>
-
-<!-- ## Position
-
-### Top Left
-
-### Top Right
-
-### Top Center
-
-### Bottom Left
-
-### Bottom Center
-
-### Bottom Right -->
