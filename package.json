@@ -79,12 +79,6 @@
 			"@babel/preset-env"
 		]
 	},
-	"postcss": {
-		"plugins": {
-			"tailwindcss": {},
-			"autoprefixer": {}
-		}
-	},
 	"eslintConfig": {
 		"root": true,
 		"extends": [

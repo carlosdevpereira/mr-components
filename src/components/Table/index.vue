@@ -26,7 +26,7 @@
 
 				<Dropdown
 					theme="text-solid"
-					icon="more-line"
+					icon="list-check-2"
 					class="column-visibility-panel-toggle"
 				>
 					<Checkbox
