@@ -4,25 +4,32 @@ export const Toast = {
 	notifications: reactive([]),
 
 	notify(options) {
-		let notification = {
-			id: Math.floor(Math.random() * Date.now()),
-			type: options.type,
-			title: options.title,
-			message: options.message,
-			closeable:
-				options.closeable === undefined || options.closeable === null || options.closeable,
-			timer: options.timer,
-		}
+		if (!options.message || options.message === '')
+			throw new Error('Toast message is required!')
+		else {
+			let closeable = false
+			if (options.closeable === undefined || options.closeable === null || options.closeable)
+				closeable = true
 
-		this.notifications.push(notification)
+			let notification = {
+				id: Math.floor(Math.random() * Date.now()),
+				type: options.type,
+				title: options.title,
+				message: options.message,
+				timer: options.timer,
+				closeable,
+			}
 
-		if (notification.timer) {
-			setTimeout(() => {
-				const notificationIndex = this.notifications.indexOf(notification)
-				if (notificationIndex > -1) {
-					this.notifications.splice(this.notifications.indexOf(notification), 1)
-				}
-			}, notification.timer)
+			this.notifications.push(notification)
+
+			if (notification.timer) {
+				setTimeout(() => {
+					const notificationIndex = this.notifications.indexOf(notification)
+					if (notificationIndex > -1) {
+						this.notifications.splice(this.notifications.indexOf(notification), 1)
+					}
+				}, notification.timer)
+			}
 		}
 	},
 
