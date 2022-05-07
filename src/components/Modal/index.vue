@@ -1,5 +1,8 @@
 <template>
-	<Teleport to="body">
+	<Teleport
+		v-if="isOpen || animationInProgress"
+		to="body"
+	>
 		<Transition
 			appear
 			:css="false"
@@ -95,6 +98,7 @@ export default {
 		return {
 			isOpen: false,
 			isFullscreen: false,
+			animationInProgress: false,
 			uniqueId: Math.floor(Math.random() * Date.now()),
 		}
 	},
@@ -138,6 +142,7 @@ export default {
 
 		close(){
 			if (this.isOpen) {
+				this.animationInProgress = true
 				this.isOpen = false
 				this.$emit('update:is-open', false)
 
@@ -170,12 +175,20 @@ export default {
 			if (!isMobile) {
 				gsap.from(modalEl, {
 					translateY: -50,
-					onComplete: () => done(),
+					onComplete: () => {
+						done()
+
+						this.animationInProgress = false
+					},
 				})
 			} else {
 				gsap.from(modalEl, {
 					bottom: '-20%',
-					onComplete: () => done(),
+					onComplete: () => {
+						done()
+
+						this.animationInProgress = false
+					}
 				})
 			}
 		},
@@ -191,7 +204,11 @@ export default {
 				onComplete: () => {
 					gsap.to(el, {
 						opacity: 0,
-						onComplete: () => done(),
+						onComplete: () => {
+							done()
+
+							this.animationInProgress = false
+						}
 					})
 				},
 			})

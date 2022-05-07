@@ -1,6 +1,7 @@
 import 'remixicon/fonts/remixicon.css'
 // Exportable plugins
 import { Toast as ToastPlugin } from './src/plugins/Toast'
+import { Dialog as DialogPlugin } from './src/plugins/Dialog'
 // Exportable component
 import Autocomplete from './src/components/Autocomplete/index.vue'
 import Button from './src/components/Button/index.vue'
@@ -19,7 +20,8 @@ import Textarea from './src/components/Textarea/index.vue'
 import Toast from './src/components/Toast/index.vue'
 
 export default Vue => {
-	Vue.config.globalProperties.$toast = Notifications
+	Vue.config.globalProperties.$toast = ToastPlugin
+	Vue.config.globalProperties.$dialog = DialogPlugin
 
 	Vue.component('Autocomplete', Autocomplete)
 		.component('Button', Button)
@@ -41,6 +43,7 @@ export default Vue => {
 export {
 	// Plugins
 	ToastPlugin,
+	DialogPlugin,
 	// Components
 	Autocomplete,
 	Button,
