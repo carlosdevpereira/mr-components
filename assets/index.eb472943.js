@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as r,F as a,l as t,b as i,D as o}from"./app.49631f86.js";const c={name:"Spinner"},l={class:"mr-spinner"};function p(_,m,d,u,f,v){return n(),r("div",l,[(n(),r(a,null,t(2,e=>i("div",{key:e,class:o(["mr-spinner-item",`mr-spinner-item-${e}`])},null,2)),64))])}var $=s(c,[["render",p],["__file","index.vue"]]);export{$ as default};
