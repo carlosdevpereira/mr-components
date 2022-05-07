@@ -15,6 +15,7 @@
 		"skipLibCheck": true,
 		"allowSyntheticDefaultImports": true,
 		"baseUrl": ".",
+		"allowJs": true,
 		"paths": {
 			"@/*": ["src/*"]
 		},
