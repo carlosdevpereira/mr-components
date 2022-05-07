@@ -1,4 +1,4 @@
-import { InfiniteScroll } from '../../../src/directives/InfiniteScroll'
+import { InfiniteScroll } from '@/directives/InfiniteScroll'
 
 let targetEl = {
 	addEventListener: jest.fn(),

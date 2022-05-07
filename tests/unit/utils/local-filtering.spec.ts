@@ -1,4 +1,4 @@
-import localFiltering from '../../../src/utils/local-filtering'
+import localFiltering from '@/utils/local-filtering'
 
 let testRowsArray = [
 	{ id: 1, name: 'Test01' },

@@ -1,4 +1,4 @@
-import { ClickOutside } from '../../../src/directives/ClickOutside'
+import { ClickOutside } from '@/directives/ClickOutside'
 
 let targetEl = {
 	contains: jest.fn(),

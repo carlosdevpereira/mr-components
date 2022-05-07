@@ -39,6 +39,8 @@
 	"devDependencies": {
 		"@babel/core": "^7.17.8",
 		"@babel/preset-env": "^7.16.5",
+		"@types/jest": "^27.5.0",
+		"@types/node": "^17.0.31",
 		"@vitejs/plugin-vue": "^2.3.1",
 		"@vue/component-compiler-utils": "^3.3.0",
 		"@vue/test-utils": "^2.0.0-rc.19",
@@ -59,6 +61,8 @@
 		"stylelint-config-recess-order": "^3.0.0",
 		"tailwindcss": "^3.0.22",
 		"ts-jest": "^27.1.4",
+		"tslib": "^2.4.0",
+		"typescript": "^4.6.4",
 		"vite": "^2.9.1",
 		"vue-loader": "^17.0.0",
 		"vue-router": "^4.0.12",
@@ -535,6 +539,7 @@
 		"moduleFileExtensions": [
 			"vue",
 			"js",
+			"ts",
 			"json",
 			"jsx"
 		],
