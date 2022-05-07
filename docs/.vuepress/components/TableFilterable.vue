@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import SimpleTable from '../../../tests/fixtures/Table/SimpleTable.json'
+import SimpleTable from '@tests/fixtures/Table/SimpleTable.json'
 
 export default {
 	data() {

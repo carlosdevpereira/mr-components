@@ -1,4 +1,7 @@
 import 'remixicon/fonts/remixicon.css'
+// Exportable plugins
+import { Toast as ToastPlugin } from './src/plugins/Toast'
+// Exportable component
 import Autocomplete from './src/components/Autocomplete/index.vue'
 import Button from './src/components/Button/index.vue'
 import Checkbox from './src/components/Checkbox/index.vue'
@@ -13,10 +16,12 @@ import Select from './src/components/Select/index.vue'
 import Spinner from './src/components/Spinner/index.vue'
 import Table from './src/components/Table/index.vue'
 import Textarea from './src/components/Textarea/index.vue'
+import Toast from './src/components/Toast/index.vue'
 
-export default vueInstance => {
-	vueInstance
-		.component('Autocomplete', Autocomplete)
+export default Vue => {
+	Vue.config.globalProperties.$toast = Notifications
+
+	Vue.component('Autocomplete', Autocomplete)
 		.component('Button', Button)
 		.component('Checkbox', Checkbox)
 		.component('Dropdown', Dropdown)
@@ -30,9 +35,13 @@ export default vueInstance => {
 		.component('Spinner', Spinner)
 		.component('Table', Table)
 		.component('Textarea', Textarea)
+		.component('Toast', Toast)
 }
 
 export {
+	// Plugins
+	ToastPlugin,
+	// Components
 	Autocomplete,
 	Button,
 	Checkbox,
@@ -47,4 +56,5 @@ export {
 	Spinner,
 	Table,
 	Textarea,
+	Toast,
 }

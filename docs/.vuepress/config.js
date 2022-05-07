@@ -10,16 +10,16 @@ const fs = require('fs')
  * documentation files to register in the
  * documentation router
  **/
-const getComponentRoutes = () => {
+const getComponentRoutes = (folderName = 'components') => {
 	let components = []
-	const componentsFound = fs.readdirSync(path.resolve(__dirname, '../components'))
+	const componentsFound = fs.readdirSync(path.resolve(__dirname, '../' + folderName))
 
 	// for now the registration of the components documentation can
 	// be like this, if/when the structure of the components
 	// folder changes this can be adapted
 	componentsFound.forEach(componentName => {
 		if (componentName !== 'index.md') {
-			components.push(`/components/${componentName}`)
+			components.push(`/${folderName}/${componentName}`)
 		}
 	})
 
@@ -55,6 +55,10 @@ const config = {
 	lang: 'en-US',
 	serviceWorker: false,
 	bundler: viteBundler(),
+	alias: {
+		'@': path.resolve(__dirname, '../../src'),
+		'@tests': path.resolve(__dirname, '../../tests'),
+	},
 	theme: defaultTheme({
 		logo: '/images/logo@1x.png',
 		darkMode: false,
@@ -69,6 +73,11 @@ const config = {
 				text: 'Components',
 				link: '/components/',
 				children: getComponentRoutes(),
+			},
+			{
+				text: 'Plugins',
+				link: '/plugins/',
+				children: getComponentRoutes('plugins'),
 			},
 		],
 	}),

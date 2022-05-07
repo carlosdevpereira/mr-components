@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import TableSortable from '../../../tests/fixtures/Table/TableSortable.json'
+import TableSortable from '@tests/fixtures/Table/TableSortable.json'
 
 export default {
 	data() {

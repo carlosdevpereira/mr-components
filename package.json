@@ -6,6 +6,8 @@
 	"icon": "/docs/.vuepress/public/images/logo@2x.png",
 	"homepage": "https://mr-components.carlosdevpereira.com",
 	"description": "A set of lightweight Vue components to power @carlosdevpereira projects",
+	"main": "./dist/mr-components.umd.js",
+	"module": "./dist/mr-components.es.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/carlosdevpereira/mr-components"
@@ -13,10 +15,8 @@
 	"files": [
 		"dist"
 	],
-	"main": "./dist/mr-components.umd.js",
-	"module": "./dist/mr-components.es.js",
 	"scripts": {
-		"dev": "vuepress dev docs --open",
+		"dev": "vuepress dev docs",
 		"serve": "yarn dev",
 		"build:docs": "vuepress build docs",
 		"build:lib": "vite build",
@@ -32,6 +32,7 @@
 		"core-js": "^3.6.5",
 		"gsap": "^3.10.2",
 		"lodash": "^4.17.21",
+		"pinia": "^2.0.13",
 		"remixicon": "^2.5.0",
 		"vue": "^3.2.25"
 	},
@@ -63,5 +64,305 @@
 		"vue-router": "^4.0.12",
 		"vue3-jest": "^27.0.0-alpha.1",
 		"vuepress": "^2.0.0-beta.41"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not dead"
+	],
+	"eslintConfig": {
+		"root": true,
+		"extends": [
+			"plugin:vue/vue3-recommended"
+		],
+		"env": {
+			"node": true
+		},
+		"parserOptions": {
+			"ecmaVersion": 2020
+		},
+		"overrides": [
+			{
+				"files": [
+					"**/__tests__/*.{j,t}s?(x)",
+					"**/tests/unit/**/*.spec.{j,t}s?(x)"
+				],
+				"env": {
+					"jest": true
+				}
+			}
+		],
+		"rules": {
+			"operator-linebreak": [
+				"error",
+				"before"
+			],
+			"vue/no-unused-vars": "error",
+			"vue/multi-word-component-names": "off",
+			"template-curly-spacing": "off",
+			"no-unused-vars": "warn",
+			"vue/no-spaces-around-equal-signs-in-attribute": [
+				"error"
+			],
+			"block-spacing": [
+				"error",
+				"always"
+			],
+			"no-multiple-empty-lines": [
+				"error",
+				{
+					"max": 1,
+					"maxEOF": 0
+				}
+			],
+			"vue/max-len": [
+				"error",
+				{
+					"code": 100,
+					"template": 100,
+					"tabWidth": 4,
+					"comments": 80,
+					"ignorePattern": "",
+					"ignoreComments": false,
+					"ignoreTrailingComments": true,
+					"ignoreUrls": true,
+					"ignoreStrings": true,
+					"ignoreTemplateLiterals": false,
+					"ignoreRegExpLiterals": true,
+					"ignoreHTMLAttributeValues": true,
+					"ignoreHTMLTextContents": true
+				}
+			],
+			"vue/no-multi-spaces": [
+				"error",
+				{
+					"ignoreProperties": false
+				}
+			],
+			"space-before-function-paren": [
+				"error",
+				{
+					"anonymous": "never",
+					"named": "never",
+					"asyncArrow": "always"
+				}
+			],
+			"no-trailing-spaces": "error",
+			"indent": [
+				"error",
+				"tab"
+			],
+			"vue/html-indent": [
+				"error",
+				"tab",
+				{
+					"attribute": 1,
+					"baseIndent": 1,
+					"closeBracket": 0,
+					"alignAttributesVertically": true,
+					"ignores": []
+				}
+			],
+			"vue/script-indent": [
+				"error",
+				"tab",
+				{
+					"baseIndent": 0,
+					"switchCase": 0,
+					"ignores": []
+				}
+			],
+			"vue/max-attributes-per-line": [
+				"error",
+				{
+					"singleline": {
+						"max": 1
+					},
+					"multiline": {
+						"max": 1
+					}
+				}
+			],
+			"vue/first-attribute-linebreak": [
+				"error",
+				{
+					"singleline": "beside",
+					"multiline": "below"
+				}
+			],
+			"vue/html-closing-bracket-spacing": [
+				"error",
+				{
+					"startTag": "never",
+					"endTag": "never",
+					"selfClosingTag": "always"
+				}
+			],
+			"vue/new-line-between-multi-line-property": [
+				"error",
+				{
+					"minLineOfMultilineProperty": 2
+				}
+			],
+			"vue/multiline-html-element-content-newline": [
+				"error",
+				{
+					"ignoreWhenEmpty": true,
+					"ignores": [
+						"pre",
+						"textarea",
+						"small"
+					],
+					"allowEmptyLines": false
+				}
+			],
+			"vue/singleline-html-element-content-newline": [
+				"error",
+				{
+					"ignoreWhenNoAttributes": false,
+					"ignoreWhenEmpty": true,
+					"ignores": [
+						"pre",
+						"textarea",
+						"small"
+					]
+				}
+			],
+			"vue/padding-line-between-blocks": [
+				"error",
+				"always"
+			],
+			"vue/component-tags-order": [
+				"warn",
+				{
+					"order": [
+						[
+							"script",
+							"template"
+						],
+						"style"
+					]
+				}
+			],
+			"vue/attributes-order": [
+				"warn",
+				{
+					"order": [
+						"DEFINITION",
+						"CONDITIONALS",
+						"LIST_RENDERING",
+						"RENDER_MODIFIERS",
+						"GLOBAL",
+						[
+							"UNIQUE",
+							"SLOT"
+						],
+						"TWO_WAY_BINDING",
+						"OTHER_DIRECTIVES",
+						"OTHER_ATTR",
+						"EVENTS",
+						"CONTENT"
+					],
+					"alphabetical": false
+				}
+			],
+			"vue/order-in-components": [
+				"warn",
+				{
+					"order": [
+						"el",
+						"name",
+						"key",
+						"parent",
+						"functional",
+						[
+							"delimiters",
+							"comments"
+						],
+						[
+							"components",
+							"directives",
+							"filters"
+						],
+						"extends",
+						"mixins",
+						[
+							"provide",
+							"inject"
+						],
+						"ROUTER_GUARDS",
+						"layout",
+						"middleware",
+						"validate",
+						"scrollToTop",
+						"transition",
+						"loading",
+						"inheritAttrs",
+						"model",
+						[
+							"props",
+							"propsData"
+						],
+						"emits",
+						"setup",
+						"asyncData",
+						"data",
+						"fetch",
+						"head",
+						"computed",
+						"watch",
+						"watchQuery",
+						"LIFECYCLE_HOOKS",
+						"methods",
+						[
+							"template",
+							"render"
+						],
+						"renderError"
+					]
+				}
+			]
+		}
+	},
+	"jest": {
+		"moduleNameMapper": {
+			"^@/(.*)$": "<rootDir>/src/$1",
+			"^~(.*)$": "<rootDir>/node_modules/$1",
+			"^.+\\.(css|scss)$": "<rootDir>/tests/transformers/cssTransform.js"
+		},
+		"moduleFileExtensions": [
+			"vue",
+			"js",
+			"json",
+			"jsx"
+		],
+		"testEnvironment": "jsdom",
+		"transform": {
+			"^.+\\.vue$": "vue3-jest",
+			"^.+\\js$": "babel-jest",
+			"^.+\\.svg$": "./tests/transformers/svgTransform.js"
+		},
+		"setupFilesAfterEnv": [
+			"./tests/unit/setup-tests.js"
+		],
+		"transformIgnorePatterns": [
+			"/node_modules/",
+			"\\.pnp\\.[^\\/]+$"
+		],
+		"coverageReporters": [
+			"text-summary",
+			"clover",
+			"html",
+			"lcov"
+		]
+	},
+	"gitHooks": {
+		"pre-commit": "lint-staged"
+	},
+	"lint-staged": {
+		"*.{js,jsx,vue,ts,tsx}": [
+			"npm run lint",
+			"git add"
+		]
 	}
 }
