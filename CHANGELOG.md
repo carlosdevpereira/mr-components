@@ -1,5 +1,53 @@
 # Changelog
 
+## [1.4.0](https://github.com/carlosdevpereira/mr-components/compare/v1.3.0...v1.4.0) (2022-05-07)
+
+
+### 🚨 Bug Fixes
+
+* at least one column is always visible ([#147](https://github.com/carlosdevpereira/mr-components/issues/147)) ([bfd9409](https://github.com/carlosdevpereira/mr-components/commit/bfd9409134381a275fe05eeaa21bcfa39580604c))
+* message component font styles ([9a7e070](https://github.com/carlosdevpereira/mr-components/commit/9a7e0700b0f4ec7c628736ed8fd813d21e6730e4))
+* message component unit tests ([d942e61](https://github.com/carlosdevpereira/mr-components/commit/d942e61e242d22f57a8317e3cc2780f42c648043))
+* postcss warning ([b5d8827](https://github.com/carlosdevpereira/mr-components/commit/b5d882757e0f8c89c21a9401b1f1cf51f1c3e932))
+* specs warning for missing scrollTo method on window ([24bd511](https://github.com/carlosdevpereira/mr-components/commit/24bd511b61016143192f61aec8d3b8cb0e04edeb))
+* table numeric filters ([#146](https://github.com/carlosdevpereira/mr-components/issues/146)) ([4f8beda](https://github.com/carlosdevpereira/mr-components/commit/4f8beda714a55a4864dea3d34e332652301557e6))
+* test coverage not counting all source files ([dde13c7](https://github.com/carlosdevpereira/mr-components/commit/dde13c725aec0cfc8a0e0973facd8c3be3245b62))
+
+
+### ✨ Features
+
+* dialog plugin ([#158](https://github.com/carlosdevpereira/mr-components/issues/158)) ([0d93795](https://github.com/carlosdevpereira/mr-components/commit/0d9379594a76918b76cbe6cee444586ea0051cc5))
+* message component ([#135](https://github.com/carlosdevpereira/mr-components/issues/135)) ([c9855b4](https://github.com/carlosdevpereira/mr-components/commit/c9855b41891ffad0347386f3e7046d6a5df47d33))
+* modal component ([#137](https://github.com/carlosdevpereira/mr-components/issues/137)) ([3ebf873](https://github.com/carlosdevpereira/mr-components/commit/3ebf873e1bb02f448d7fccbdfe5b5b366f3985ba))
+* refactor message component and introduce animations ([b5e04f6](https://github.com/carlosdevpereira/mr-components/commit/b5e04f6e6cb82e68ffc70922f2fe92822d9b86a9))
+* toast notification plugin ([#157](https://github.com/carlosdevpereira/mr-components/issues/157)) ([f511c00](https://github.com/carlosdevpereira/mr-components/commit/f511c009cecce9693011fe1a5e1c9917446cfda0))
+
+
+### 👷 Maintenance
+
+* **deps-dev:** bump @babel/core from 7.17.9 to 7.17.10 ([#138](https://github.com/carlosdevpereira/mr-components/issues/138)) ([3c46e47](https://github.com/carlosdevpereira/mr-components/commit/3c46e477b38552dbd1096fb25633522fd5d02b51))
+* **deps-dev:** bump @babel/preset-env from 7.16.11 to 7.17.10 ([#144](https://github.com/carlosdevpereira/mr-components/issues/144)) ([987721e](https://github.com/carlosdevpereira/mr-components/commit/987721e6a21297e0b98ade8b9bf4631c9f79e811))
+* **deps-dev:** bump @vitejs/plugin-vue from 2.3.1 to 2.3.2 ([#156](https://github.com/carlosdevpereira/mr-components/issues/156)) ([f458346](https://github.com/carlosdevpereira/mr-components/commit/f4583468f1a847a2f344f1a829ab98f75acfa494))
+* **deps-dev:** bump @vuepress/plugin-register-components ([#141](https://github.com/carlosdevpereira/mr-components/issues/141)) ([ae7dff7](https://github.com/carlosdevpereira/mr-components/commit/ae7dff7f16e608b06ca2b908b3d6abfc74499e24))
+* **deps-dev:** bump @vuepress/plugin-register-components ([#148](https://github.com/carlosdevpereira/mr-components/issues/148)) ([d4fc5de](https://github.com/carlosdevpereira/mr-components/commit/d4fc5dea39adcd0a5791bb1455f81ebd4de28e01))
+* **deps-dev:** bump @vuepress/plugin-search ([#145](https://github.com/carlosdevpereira/mr-components/issues/145)) ([4904f76](https://github.com/carlosdevpereira/mr-components/commit/4904f76bb4912a86f93e9cfb7cbc33f4e16adbb9))
+* **deps-dev:** bump @vuepress/plugin-search ([#152](https://github.com/carlosdevpereira/mr-components/issues/152)) ([3264f0c](https://github.com/carlosdevpereira/mr-components/commit/3264f0c879bf63018d25304454a089671d6225e1))
+* **deps-dev:** bump autoprefixer from 10.4.5 to 10.4.7 ([#143](https://github.com/carlosdevpereira/mr-components/issues/143)) ([af1108b](https://github.com/carlosdevpereira/mr-components/commit/af1108b863069d8f92681062437418e77feead07))
+* **deps-dev:** bump postcss from 8.4.12 to 8.4.13 ([#139](https://github.com/carlosdevpereira/mr-components/issues/139)) ([6721848](https://github.com/carlosdevpereira/mr-components/commit/6721848ae64d4f763a63b775653cae5466143ccd))
+* **deps-dev:** bump stylelint from 14.8.1 to 14.8.2 ([#150](https://github.com/carlosdevpereira/mr-components/issues/150)) ([7c0e9e2](https://github.com/carlosdevpereira/mr-components/commit/7c0e9e2109181bc9f6ef3f06a39416ef564845ad))
+* **deps-dev:** bump vite from 2.9.6 to 2.9.7 ([#142](https://github.com/carlosdevpereira/mr-components/issues/142)) ([065811f](https://github.com/carlosdevpereira/mr-components/commit/065811fb4f37b3508ce2ecfffce515e2365458a4))
+* **deps-dev:** bump vite from 2.9.7 to 2.9.8 ([#155](https://github.com/carlosdevpereira/mr-components/issues/155)) ([0c0a9d1](https://github.com/carlosdevpereira/mr-components/commit/0c0a9d136d818c96c3b4810677cd3eee2bd65a84))
+* **deps-dev:** bump vue-router from 4.0.14 to 4.0.15 ([#151](https://github.com/carlosdevpereira/mr-components/issues/151)) ([e10e0bc](https://github.com/carlosdevpereira/mr-components/commit/e10e0bc5abc3616344cdc5e5342dee68814b75d2))
+* **deps-dev:** bump vuepress from 2.0.0-beta.41 to 2.0.0-beta.42 ([#140](https://github.com/carlosdevpereira/mr-components/issues/140)) ([101924f](https://github.com/carlosdevpereira/mr-components/commit/101924f10c46046f612ed46bb6b7662f406abb47))
+* **deps-dev:** bump vuepress from 2.0.0-beta.42 to 2.0.0-beta.43 ([#153](https://github.com/carlosdevpereira/mr-components/issues/153)) ([a5bca42](https://github.com/carlosdevpereira/mr-components/commit/a5bca42340867e1afab6a1565cb565e71d67dad9))
+* **deps:** bump core-js from 3.22.3 to 3.22.4 ([#149](https://github.com/carlosdevpereira/mr-components/issues/149)) ([b92a69b](https://github.com/carlosdevpereira/mr-components/commit/b92a69b510c3977c0941ef87f5fe39f1306c3682))
+* improve README spacings ([ffc2ea3](https://github.com/carlosdevpereira/mr-components/commit/ffc2ea392de4969acf2a916e0cf31005d60c8349))
+* remove netlify from readme ([d18afc1](https://github.com/carlosdevpereira/mr-components/commit/d18afc1634cc6c3de8ec74e0d3dfafac5088129e))
+* replace javascript config files with typescript ([c73e664](https://github.com/carlosdevpereira/mr-components/commit/c73e664f3b1fa435bb7caa07fc8aebd7ea0ef91e))
+* replace vuepress js config with ts ([63985a0](https://github.com/carlosdevpereira/mr-components/commit/63985a0d77b35bdf753174e91960939b07313364))
+* stick with gsap animation library only ([#154](https://github.com/carlosdevpereira/mr-components/issues/154)) ([647ba49](https://github.com/carlosdevpereira/mr-components/commit/647ba4967882e083f988860653ad4509a725bb3d))
+* update paths on tests ([c79772d](https://github.com/carlosdevpereira/mr-components/commit/c79772d305674fd45b7c93a2249160790b383391))
+
 ## [1.3.0](https://github.com/carlosdevpereira/mr-components/compare/v1.2.1...v1.3.0) (2022-04-29)
 
 
