@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.5.1](https://github.com/carlosdevpereira/mr-components/compare/v1.5.0...v1.5.1) (2022-05-08)
+
+
+### 🚨 Bug Fixes
+
+* failed deployment ([b99cf50](https://github.com/carlosdevpereira/mr-components/commit/b99cf509df1e40e18342dfdd3d9508053ddb62f1))
+
 ## [1.5.0](https://github.com/carlosdevpereira/mr-components/compare/v1.4.0...v1.5.0) (2022-05-08)
 
 
