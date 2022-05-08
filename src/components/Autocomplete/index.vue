@@ -3,6 +3,7 @@
 		v-click-outside="close"
 		class="mr-autocomplete-container"
 		:class="classes"
+		:aria-invalid="errors.length > 0 || undefined"
 	>
 		<Input
 			class="mr-autocomplete-input"
@@ -17,6 +18,7 @@
 			:label-position="labelPosition"
 			:icon="icon"
 			:icon-position="iconPosition"
+			:errors="errors"
 			@focus="onInputFocus"
 			@update:model-value="filter"
 		/>

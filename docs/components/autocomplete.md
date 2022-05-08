@@ -272,6 +272,26 @@ export default {
 
 <br />
 
+## Validations
+
+<div class="half-width-fill-on-mobile">
+    <AutocompleteLocal label="Country" :errors="['Country name is too short']" />
+</div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Autocomplete :errors="['Country name is too short']" />
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+<br />
+
 ## Sizes
 
 <div class="half-width-fill-on-mobile">

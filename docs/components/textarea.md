@@ -28,6 +28,7 @@ The textarea component is a lightweight extension of the standard textarea eleme
 | not-resizable              | `Boolean`                | `false`         | Defines if the user should be able to resize the textarea manually or not                                                                                          |
 | not-resizable-horizontally | `Boolean`                | `false`         | Defines if the user should be able to resize the textarea horizontally manually or not                                                                             |
 | not-resizable-vertically   | `Boolean`                | `false`         | Defines if the user should be able to resize the textarea vertically manually or not                                                                               |
+| errors                     | `Array<String>`          | `[]`            | Defines a String array of validation errors for the textarea field                                                                                                 |
 
 ### Events
 
@@ -167,6 +168,24 @@ export default {
 	},
 }
 </script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+## Validations
+
+<div class="half-width-fill-on-mobile">
+    <Textarea-Proxy label="Description" :errors="['Description is too short']" />
+</div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Textarea-Proxy label="Description" :errors="['Description is too short']" />
+</template>
 ```
 
   </CodeGroupItem>
