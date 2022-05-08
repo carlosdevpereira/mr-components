@@ -60,10 +60,18 @@ $sizes: (
 			&.variant-#{$variantName} {
 				@if color.lightness($variantColor) < 80 {
 					color: $whiteColor;
+
+					.mr-spinner .mr-spinner-item {
+						background-color: $whiteColor;
+					}
 				}
 
 				@else {
 					color: $textColor;
+
+					.mr-spinner .mr-spinner-item {
+						background-color: $textColor;
+					}
 				}
 
 				background-color: $variantColor;
@@ -95,19 +103,35 @@ $sizes: (
 
 				@if color.lightness($variantColor) < 80 {
 					color: $variantColor;
+
+					.mr-spinner .mr-spinner-item {
+						background-color: $variantColor;
+					}
 				}
 
 				@else {
 					color: $textColor;
+
+					.mr-spinner .mr-spinner-item {
+						background-color: $textColor;
+					}
 				}
 
 				&:not(:disabled):hover {
 					@if color.lightness($variantColor) < 80 {
 						color: $whiteColor;
+
+						.mr-spinner .mr-spinner-item {
+							background-color: $whiteColor;
+						}
 					}
 
 					@else {
 						color: $textColor;
+
+						.mr-spinner .mr-spinner-item {
+							background-color: $textColor;
+						}
 					}
 
 					background-color: $variantColor;
@@ -131,10 +155,18 @@ $sizes: (
 			&.variant-#{$variantName} {
 				@if color.lightness($variantColor) < 80 {
 					color: $variantColor;
+
+					.mr-spinner .mr-spinner-item {
+						background-color: $variantColor;
+					}
 				}
 
 				@else {
 					color: $textColor;
+
+					.mr-spinner .mr-spinner-item {
+						background-color: $textColor;
+					}
 				}
 
 				&:not(:disabled):hover {
@@ -160,10 +192,18 @@ $sizes: (
 
 				@if color.lightness($variantColor) < 80 {
 					color: $variantColor;
+
+					.mr-spinner .mr-spinner-item {
+						background-color: $variantColor;
+					}
 				}
 
 				@else {
 					color: $textColor;
+
+					.mr-spinner .mr-spinner-item {
+						background-color: $textColor;
+					}
 				}
 
 				&:active,
@@ -189,5 +229,16 @@ $sizes: (
 		width: 24px;
 		height: 24px;
 		zoom: 0.7;
+	}
+
+	.mr-spinner {
+		position: absolute;
+		width: 18px;
+		height: 18px;
+		margin: 0;
+	}
+
+	&.is-loading {
+		color: transparent !important;
 	}
 }

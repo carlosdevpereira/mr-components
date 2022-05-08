@@ -17,6 +17,7 @@ The button component is a lightweight extension of the standard HTML button, sup
 | icon          | `String`  | `''`        | Defines the icon to render inside the Button                                                                                                              |
 | icon-position | `String`  | `'start'`   | Defines where the icon should be placed. Possible values are: `start` and `end`                                                                           |
 | disabled      | `Boolean` | `false`     | Defines if the button should be disabled or not                                                                                                           |
+| loading       | `Boolean` | `false`     | Defines if the button should be in loading mode or not                                                                                                    |
 
 ## Basic Button
 
@@ -290,6 +291,94 @@ Besides themes and sizes, every button can define a set of props to control thei
 	<Button disabled theme="text-solid" variant="warning">Warning</Button>
 	<Button disabled theme="text-solid" variant="success">Success</Button>
 	<Button disabled theme="text-solid" variant="info">Info</Button>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+### Loading
+
+<p class="components-inline">
+    <Button loading>Default</Button>
+    <Button loading variant="primary">Primary</Button>
+    <Button loading variant="secondary">Secondary</Button>
+    <Button loading variant="danger">Danger</Button>
+    <Button loading variant="warning">Warning</Button>
+    <Button loading variant="success">Success</Button>
+    <Button loading variant="info">Info</Button>
+</p>
+
+<p class="components-inline">
+    <Button loading theme="outlined">Default</Button>
+    <Button loading theme="outlined" variant="primary">Primary</Button>
+    <Button loading theme="outlined" variant="secondary">Secondary</Button>
+    <Button loading theme="outlined" variant="danger">Danger</Button>
+    <Button loading theme="outlined" variant="warning">Warning</Button>
+    <Button loading theme="outlined" variant="success">Success</Button>
+    <Button loading theme="outlined" variant="info">Info</Button>
+</p>
+
+<p class="components-inline">
+    <Button loading theme="text">Default</Button>
+    <Button loading theme="text" variant="primary">Primary</Button>
+    <Button loading theme="text" variant="secondary">Secondary</Button>
+    <Button loading theme="text" variant="danger">Danger</Button>
+    <Button loading theme="text" variant="warning">Warning</Button>
+    <Button loading theme="text" variant="success">Success</Button>
+    <Button loading theme="text" variant="info">Info</Button>
+</p>
+
+<p class="components-inline">
+    <Button loading theme="text-solid">Default</Button>
+    <Button loading theme="text-solid" variant="primary">Primary</Button>
+    <Button loading theme="text-solid" variant="secondary">Secondary</Button>
+    <Button loading theme="text-solid" variant="danger">Danger</Button>
+    <Button loading theme="text-solid" variant="warning">Warning</Button>
+    <Button loading theme="text-solid" variant="success">Success</Button>
+    <Button loading theme="text-solid" variant="info">Info</Button>
+</p>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<!-- Solid -->
+	<Button loading>Default</Button>
+	<Button loading variant="primary">Primary</Button>
+	<Button loading variant="secondary">Secondary</Button>
+	<Button loading variant="danger">Danger</Button>
+	<Button loading variant="warning">Warning</Button>
+	<Button loading variant="success">Success</Button>
+	<Button loading variant="info">Info</Button>
+
+	<!-- Outlined -->
+	<Button loading theme="outlined">Default</Button>
+	<Button loading theme="outlined" variant="primary">Primary</Button>
+	<Button loading theme="outlined" variant="secondary">Secondary</Button>
+	<Button loading theme="outlined" variant="danger">Danger</Button>
+	<Button loading theme="outlined" variant="warning">Warning</Button>
+	<Button loading theme="outlined" variant="success">Success</Button>
+	<Button loading theme="outlined" variant="info">Info</Button>
+
+	<!-- Text -->
+	<Button loading theme="text">Default</Button>
+	<Button loading theme="text" variant="primary">Primary</Button>
+	<Button loading theme="text" variant="secondary">Secondary</Button>
+	<Button loading theme="text" variant="danger">Danger</Button>
+	<Button loading theme="text" variant="warning">Warning</Button>
+	<Button loading theme="text" variant="success">Success</Button>
+	<Button loading theme="text" variant="info">Info</Button>
+
+	<!-- Text Solid -->
+	<Button loading theme="text-solid">Default</Button>
+	<Button loading theme="text-solid" variant="primary">Primary</Button>
+	<Button loading theme="text-solid" variant="secondary">Secondary</Button>
+	<Button loading theme="text-solid" variant="danger">Danger</Button>
+	<Button loading theme="text-solid" variant="warning">Warning</Button>
+	<Button loading theme="text-solid" variant="success">Success</Button>
+	<Button loading theme="text-solid" variant="info">Info</Button>
 </template>
 ```
 

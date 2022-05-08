@@ -2,8 +2,10 @@
 	<button
 		class="mr-button"
 		:class="classes"
-		:disabled="disabled"
+		:disabled="disabled || loading"
 	>
+		<Spinner v-if="loading" />
+
 		<Icon
 			v-if="iconPosition === 'start' && icon !== ''"
 			:name="icon"
@@ -28,6 +30,7 @@
 import './index.scss'
 import 'remixicon/fonts/remixicon.css'
 import Icon from '../Icon/index.vue'
+import Spinner from '../Spinner/index.vue'
 
 export const themes = ['solid', 'outlined', 'text', 'text-solid']
 export const variants = ['default', 'primary', 'secondary', 'danger', 'warning', 'success', 'info']
@@ -37,7 +40,7 @@ export const iconPositions = ['start', 'end']
 export default {
 	name: 'Button',
 
-	components: { Icon },
+	components: { Icon, Spinner },
 
 	props: {
 		theme: {
@@ -78,11 +81,23 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+
+		loading: {
+			type: Boolean,
+			default: false,
+		},
 	},
 
 	computed: {
 		classes() {
-			return `${this.theme}-theme variant-${this.variant} size-${this.size}`
+			let classes = []
+
+			classes.push(`${this.theme}-theme`)
+			classes.push(`variant-${this.variant}`)
+			classes.push(`size-${this.size}`)
+			if (this.loading) classes.push('is-loading')
+
+			return classes.join(' ')
 		},
 
 		hasOnlyIcon() {
