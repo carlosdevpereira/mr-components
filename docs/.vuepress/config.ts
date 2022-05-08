@@ -1,9 +1,9 @@
+const fs = require('fs')
 const { path } = require('@vuepress/utils')
 const { searchPlugin } = require('@vuepress/plugin-search')
 const { nprogressPlugin } = require('@vuepress/plugin-nprogress')
 const { defaultTheme, viteBundler } = require('vuepress')
 const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
-const fs = require('fs')
 
 /**
  * Retrieves the list of component markdown
@@ -48,8 +48,7 @@ const getSourceComponents = () => {
 	return components
 }
 
-// Documentation config
-const config = {
+module.exports = {
 	title: 'Mr. Components',
 	description: 'A set of lightweight Vue components to power @carlosdevpereira projects',
 	lang: 'en-US',
@@ -104,5 +103,3 @@ const config = {
 		],
 	],
 }
-
-module.exports = config
