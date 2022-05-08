@@ -4,6 +4,7 @@
 		class="mr-input-container"
 		:class="classes"
 		:disabled="isDisabled"
+		:aria-invalid="hasErrors || undefined"
 	>
 		<Icon
 			v-if="icon"
@@ -12,6 +13,7 @@
 
 		<span
 			v-if="label"
+			class="mr-input-label"
 			v-text="label"
 		/>
 
@@ -24,8 +26,22 @@
 			:required="required"
 			:maxlength="maxLength"
 			:rows="rows"
+			:aria-errormessage="hasErrors ? errors : undefined"
 			@input="setTextareaHeight"
 		/>
+
+		<div
+			v-if="hasErrors"
+			class="mr-input-error-messages"
+		>
+			<small
+				v-for="(error, index) in errors"
+				:key="index"
+				class="mr-input-error"
+			>
+				{{ error }}
+			</small>
+		</div>
 	</label>
 </template>
 
@@ -143,6 +159,11 @@ export default {
 			type: Boolean,
 			default: false
 		},
+
+		errors: {
+			type: Array,
+			default: () => []
+		}
 	},
 
 	emits: ["update:model-value"],
@@ -186,6 +207,10 @@ export default {
 			}
 
 			return 4
+		},
+
+		hasErrors() {
+			return this.errors.length > 0
 		}
 	},
 

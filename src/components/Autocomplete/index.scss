@@ -49,6 +49,17 @@
 				}
 			}
 		}
+
+		&[aria-invalid='true'] {
+			&::before {
+				bottom: 15px;
+			}
+
+			input {
+				border-bottom-color: transparent;
+				transition: border-bottom-color 0 linear;
+			}
+		}
 	}
 
 	&.label-input-inline {

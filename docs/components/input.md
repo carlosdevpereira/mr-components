@@ -19,8 +19,9 @@ The input component is a lightweight extension of the standard input element, su
 | inline         | `Boolean`                | `false`     | Defines if the label and the input must be inline or not                                                                                                        |
 | icon           | `String`                 | `''`        | Defines the icon to show inside the input element                                                                                                               |
 | icon-position  | `String`                 | `'start'`   | Defines where the icon must be placed. Possible values are: `start` and `end`                                                                                   |
-| placeholder    | `String`                 | `''`        | Defines the placeholder to show when the input is empty.                                                                                                        |
+| placeholder    | `String`                 | `''`        | Defines the placeholder to show when the input is empty                                                                                                         |
 | model-value    | `Object\|Number\|String` | `null`      | Defines the value of the input                                                                                                                                  |
+| errors         | `Array<String>`          | `[]`        | Defines a String array of validation errors for the input field                                                                                                 |
 
 ### Events
 
@@ -159,6 +160,44 @@ export default {
 	},
 }
 </script>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+## Validations
+
+### Single error
+
+<div class="half-width-fill-on-mobile">
+    <Input-Proxy :errors="['Username is too short']" />
+</div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Input-Proxy :errors="['Username is too short']" />
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+### Multiple errors
+
+<div class="half-width-fill-on-mobile">
+    <Input-Proxy :errors="['Username is too short', 'Username already taken']" />
+</div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Input-Proxy :errors="['Username is too short', 'Username already taken']" />
+</template>
 ```
 
   </CodeGroupItem>

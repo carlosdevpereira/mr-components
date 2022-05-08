@@ -64,4 +64,9 @@ export default {
 		type: [Object, Number, String],
 		default: null,
 	},
+
+	errors: {
+		type: Array,
+		default: () => [],
+	},
 }

@@ -230,4 +230,29 @@ $sizes: (
 			}
 		}
 	}
+
+	&[aria-invalid='true'] {
+		.mr-input-label {
+			color: map.get($variants, 'danger');
+		}
+
+		input,
+		textarea {
+			color: map.get($variants, 'danger');
+			border-bottom-color: fade-out(map.get($variants, 'danger'), 0.5);
+			border-bottom-width: 3px;
+		}
+	}
+
+	.mr-input-error-messages {
+		display: flex;
+		flex-direction: column;
+		padding-top: 4px;
+	}
+
+	.mr-input-error {
+		line-height: 16px;
+		color: map.get($variants, 'danger');
+		text-transform: initial;
+	}
 }
