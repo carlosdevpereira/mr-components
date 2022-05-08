@@ -1,4 +1,4 @@
-export {
+import {
 	test,
 	create,
 	each,
@@ -16,6 +16,23 @@ export {
 } from 'vest'
 
 export const Validation = {
+	test,
+	create,
+	each,
+	only,
+	skip,
+	warn,
+	group,
+	optional,
+	skipWhen,
+	omitWhen,
+	enforce,
+	context,
+	include,
+	eager,
+}
+
+export {
 	test,
 	create,
 	each,
