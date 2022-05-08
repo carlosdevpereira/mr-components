@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.5.0](https://github.com/carlosdevpereira/mr-components/compare/v1.4.0...v1.5.0) (2022-05-08)
+
+
+### ✨ Features
+
+* add loading state to button component ([#159](https://github.com/carlosdevpereira/mr-components/issues/159)) ([78f373a](https://github.com/carlosdevpereira/mr-components/commit/78f373a42b590c485588738995c05808425c866c))
+* create CODE_OF_CONDUCT.md ([07ff282](https://github.com/carlosdevpereira/mr-components/commit/07ff282be3b71c297285fc4dd272c79029bbc984))
+* input validation message area ([#161](https://github.com/carlosdevpereira/mr-components/issues/161)) ([5367cdd](https://github.com/carlosdevpereira/mr-components/commit/5367cdd867578ab14debdc40d3220b5d40840094))
+
+
+### 👷 Maintenance
+
+* add features to homepage ([215bee7](https://github.com/carlosdevpereira/mr-components/commit/215bee7ab9e4c3c2cb673119181912900e54a27a))
+
 ## [1.4.0](https://github.com/carlosdevpereira/mr-components/compare/v1.3.0...v1.4.0) (2022-05-07)
 
 
