@@ -1,5 +1,6 @@
 import Button from '@/components/Button'
 import Icon from '@/components/Icon'
+import Spinner from '@/components/Spinner'
 import { shallowMount } from '@vue/test-utils'
 
 describe('Button', () => {
@@ -72,24 +73,54 @@ describe('Button', () => {
 	})
 
 	describe('States', () => {
-		beforeEach(() => {
-			wrapper = shallowMount(Button, {
-				props: {
-					disabled: false,
-				},
+		describe('disabled', () => {
+			beforeEach(() => {
+				wrapper = shallowMount(Button, {
+					props: {
+						disabled: false,
+					},
+				})
+			})
+
+			it('button is not disabled when `disabled` prop is false', async () => {
+				expect(wrapper.find('button[disabled]').exists()).toBeFalsy()
+			})
+
+			it('sets the button as disabled when `disabled` prop is true', async () => {
+				expect(wrapper.find('button[disabled]').exists()).toBeFalsy()
+
+				await wrapper.setProps({ disabled: true })
+
+				expect(wrapper.find('button[disabled]').exists()).toBeTruthy()
 			})
 		})
 
-		it('button is not disabled when `disabled` prop is false', async () => {
-			expect(wrapper.find('button[disabled]').exists()).toBeFalsy()
-		})
+		describe('loading', () => {
+			beforeEach(() => {
+				wrapper = shallowMount(Button, {
+					props: {
+						loading: false,
+					},
+				})
+			})
 
-		it('sets the button as disabled when `disabled` prop is true', async () => {
-			expect(wrapper.find('button[disabled]').exists()).toBeFalsy()
+			it('button is not in loading state when `loading` prop is false', async () => {
+				expect(wrapper.find('button.is-loading').exists()).toBeFalsy()
+			})
 
-			await wrapper.setProps({ disabled: true })
+			it('sets the button as loading when `loading` prop is true', async () => {
+				expect(wrapper.find('button.is-loading').exists()).toBeFalsy()
 
-			expect(wrapper.find('button[disabled]').exists()).toBeTruthy()
+				await wrapper.setProps({ loading: true })
+
+				expect(wrapper.find('button.is-loading').exists()).toBeTruthy()
+			})
+
+			it('renders spinner component when button is in loading state', async () => {
+				await wrapper.setProps({ loading: true })
+
+				expect(wrapper.findComponent(Spinner).exists()).toBe(true)
+			})
 		})
 	})
 })
