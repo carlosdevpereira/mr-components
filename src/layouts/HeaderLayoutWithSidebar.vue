@@ -71,7 +71,7 @@ export default {
 	}
 
 	&:not(.sidebar-filled) {
-		.mr-sidebar-layout {
+		.mr-sidebar-layout:not(.sidebar-is-open) {
 			.mr-sidebar {
 				background-color: transparent;
 			}

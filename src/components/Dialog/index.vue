@@ -44,6 +44,7 @@
 
 					<footer class="mr-dialog-footer">
 						<Button
+							class="mr-dialog-cancel"
 							theme="outlined"
 							variant="secondary"
 							:label="dialog.cancelButtonLabel"
@@ -51,6 +52,7 @@
 						/>
 
 						<Button
+							class="mr-dialog-confirm"
 							:label="dialog.confirmButtonLabel"
 							:variant="dialog.type"
 							@click="onClickConfirm(dialog)"

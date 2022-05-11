@@ -72,6 +72,7 @@ export default {
 		customTransitions() {
 			const isMobile = this.windowWidth < 968
 			const transitions = {}
+
 			if (isMobile) transitions.translateY = '100%'
 			else transitions.translateX = '-100%'
 
@@ -122,7 +123,7 @@ export default {
 				...this.customTransitions,
 			})
 
-			gsap.fromTo('.mr-sidebar, .mr-sidebar > *', {
+			gsap.fromTo('.mr-sidebar > *', {
 				opacity: 0,
 				translateY: '-10px',
 				duration: 0.3,
@@ -151,7 +152,7 @@ export default {
 				translateY: '-10px',
 			})
 
-			gsap.fromTo('.mr-sidebar, .mr-sidebar > *', {
+			gsap.fromTo('.mr-sidebar > *', {
 				opacity: 1,
 				translateY: 0,
 				duration: 0.3,

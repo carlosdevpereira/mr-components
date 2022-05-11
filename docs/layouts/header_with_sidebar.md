@@ -124,7 +124,7 @@ Ad velit magna minim aliqua. Ea ex deserunt adipisicing cupidatat est ex culpa v
             Sidebar Content
         </template>
         <template #header>
-            Fixed Header
+            Fixed Sidebar
         </template>
 
 Aute et eu occaecat ea officia magna. Non reprehenderit cupidatat sit sunt anim qui eiusmod officia. Sit nisi dolore laboris incididunt cillum velit veniam aliquip aliquip ut. Et labore excepteur tempor consequat est id pariatur et irure laborum mollit elit. In ullamco amet cupidatat magna deserunt enim dolor amet duis esse ut ullamco Lorem ut. Quis velit ullamco eu et nisi mollit.
