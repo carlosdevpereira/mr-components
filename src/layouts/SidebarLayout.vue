@@ -67,6 +67,15 @@ export default {
 	computed: {
 		hasSidebar() {
 			return this.isOpen || this.windowWidth >= 968
+		},
+
+		customTransitions() {
+			const isMobile = this.windowWidth < 968
+			const transitions = {}
+			if (isMobile) transitions.translateY = '100%'
+			else transitions.translateX = '-100%'
+
+			return transitions
 		}
 	},
 
@@ -95,11 +104,6 @@ export default {
 		},
 
 		onSidebarEnter(el, done) {
-			const isMobile = this.windowWidth < 968
-			const transitions = {}
-			if (isMobile) transitions.translateY = '100%'
-			else transitions.translateX = '-100%'
-
 			gsap.to('.mr-layout-main', {
 				opacity: 0,
 				duration: 0,
@@ -115,10 +119,10 @@ export default {
 			gsap.from(el, {
 				opacity: 0,
 				duration: 0.4,
-				...transitions,
+				...this.customTransitions,
 			})
 
-			gsap.fromTo('.mr-sidebar > *', {
+			gsap.fromTo('.mr-sidebar, .mr-sidebar > *', {
 				opacity: 0,
 				translateY: '-10px',
 				duration: 0.3,
@@ -142,17 +146,12 @@ export default {
 		},
 
 		onSidebarLeave(el, done) {
-			const isMobile = this.windowWidth < 968
-			const transitions = {}
-			if (isMobile) transitions.translateY = '100%'
-			else transitions.translateX = '-100%'
-
 			gsap.to('.mr-sidebar-toggle', {
 				opacity: 0,
 				translateY: '-10px',
 			})
 
-			gsap.fromTo('.mr-sidebar > *', {
+			gsap.fromTo('.mr-sidebar, .mr-sidebar > *', {
 				opacity: 1,
 				translateY: 0,
 				duration: 0.3,
@@ -165,7 +164,7 @@ export default {
 					gsap.to(el, {
 						opacity: 0,
 						duration: 0.4,
-						...transitions,
+						...this.customTransitions,
 						onComplete: () => {
 							done()
 
