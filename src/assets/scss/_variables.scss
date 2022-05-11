@@ -27,3 +27,11 @@ $borderRadius: 6px;
 // Breakpoints
 $smallBreakpoint: 640px;
 $mediumBreakpoint: 968px;
+
+$breakpoints: (
+	'xs': 450,
+	'sm': 640,
+	'md': 968,
+	'lg': 1180,
+	'xl': 1350,
+);

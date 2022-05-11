@@ -1,3 +1,7 @@
+.custom-layout .theme-default-content {
+	max-width: 95%;
+}
+
 .theme-default-content:not(.custom) {
 	h1,
 	h2,
@@ -36,4 +40,8 @@ td {
 	& > * {
 		margin-bottom: 1rem;
 	}
+}
+
+.custom-layout p {
+	margin-top: 0;
 }
