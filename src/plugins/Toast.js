@@ -42,7 +42,7 @@ export const Toast = {
 	},
 
 	alert(options) {
-		this.notify({ ...options, type: 'danger' })
+		this.notify({ ...options, type: 'error' })
 	},
 
 	info(options) {

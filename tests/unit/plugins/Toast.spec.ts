@@ -87,7 +87,7 @@ describe('Toast Plugin', () => {
         expect(Toast.notifications.length).toBe(1)
         expect(Toast.notifications[0].title).toBe('title example')
         expect(Toast.notifications[0].message).toBe('message example')
-        expect(Toast.notifications[0].type).toBe('danger')
+        expect(Toast.notifications[0].type).toBe('error')
     })
 
     it('creates an info toast', () => {

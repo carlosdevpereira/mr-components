@@ -1,6 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
 import DialogComponent from '@/components/Dialog'
-import Button from '@/components/Button'
 import { Dialog } from '@/plugins/Dialog'
 
 describe('Dialog', () => {
