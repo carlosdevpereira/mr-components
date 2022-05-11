@@ -48,6 +48,27 @@ const getSourceComponents = () => {
 	return components
 }
 
+const getLayoutSourceComponents = () => {
+	let components = {}
+	const componentsFound = fs.readdirSync(path.resolve(__dirname, '../../src/layouts'))
+
+	// for now the registration of the components can
+	// be like this, if/when the structure of the components
+	// folder changes this can be adapted
+	componentsFound.forEach(componentName => {
+		let layoutName = componentName.split('.')
+		layoutName.splice(-1)
+		layoutName = layoutName.join('.')
+
+		components[layoutName] = path.resolve(
+			__dirname,
+			`../../src/layouts/${layoutName}.vue`
+		)
+	})
+
+	return components
+}
+
 module.exports = {
 	title: 'Mr. Components',
 	description: 'A set of lightweight Vue components to power @carlosdevpereira projects',
@@ -78,6 +99,11 @@ module.exports = {
 				link: '/plugins/',
 				children: getComponentRoutes('plugins'),
 			},
+			{
+				text: 'Layouts',
+				link: '/layouts/',
+				children: getComponentRoutes('layouts'),
+			},
 		],
 	}),
 	plugins: [
@@ -86,7 +112,10 @@ module.exports = {
 			searchPlugin({}),
 			registerComponentsPlugin({
 				componentsDir: path.resolve(__dirname, './components'),
-				components: getSourceComponents(),
+				components: {
+					...getSourceComponents(),
+					...getLayoutSourceComponents()
+				},
 			}),
 		],
 	],
