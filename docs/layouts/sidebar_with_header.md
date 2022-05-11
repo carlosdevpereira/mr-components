@@ -7,7 +7,7 @@ pageClass: custom-layout
 ## Basic Layout
 
 <div style=" width: 100%; height: 500px; border: 1px solid #c1c1c1;">
-    <SidebarLayoutWithHeader>
+    <Sidebar-Layout-With-Header>
         Est nisi ea sint laboris sunt est occaecat in proident. Qui occaecat voluptate amet nostrud cupidatat ipsum dolor. Minim dolore eiusmod non quis duis amet pariatur est mollit aliqua magna. Non nisi sint sit duis quis.
 
 Anim pariatur laborum ut culpa mollit velit anim nisi. Ullamco ullamco voluptate officia dolore. Aliqua ipsum exercitation tempor dolore. Exercitation exercitation ad dolore elit magna duis tempor exercitation dolore dolore ullamco consequat tempor enim. Voluptate reprehenderit exercitation fugiat amet nulla ut proident voluptate ut. Exercitation dolore velit excepteur elit.
@@ -27,38 +27,35 @@ Occaecat consequat excepteur duis id duis consectetur ea ea esse nisi non magna 
 Reprehenderit occaecat deserunt eu excepteur enim. Officia Lorem proident sint quis enim consectetur do. Eu do duis et nisi aliquip do est sunt id dolore amet eu id. Aute cupidatat sit minim sint deserunt pariatur et elit ut laborum minim. Nostrud voluptate magna magna fugiat quis incididunt sunt deserunt. Laborum nostrud mollit ad occaecat consectetur duis. Lorem nostrud consequat cupidatat minim laboris dolor velit dolore id pariatur officia sit nostrud.
 
 Ullamco officia reprehenderit mollit ad ipsum et duis laborum in. Ut exercitation anim excepteur eiusmod dolor. Elit laboris ipsum dolor laboris irure voluptate non consequat velit cillum ipsum minim.
-</SidebarLayoutWithHeader>
+</Sidebar-Layout-With-Header>
 
 </div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Sidebar-Layout-With-Header>
+		<!-- Write your content here -->
+	</Sidebar-Layout-With-Header>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Slots
 
 <div style=" width: 100%; height: 500px; border: 1px solid #c1c1c1;">
     <SidebarLayoutWithHeader>
         <template #sidebar>
-            Occaecat et cillum sint elit quis enim irure veniam irure nisi reprehenderit et. Amet cillum excepteur cillum eu velit. Pariatur consequat laborum sit aliqua enim est. Voluptate deserunt id anim proident culpa incididunt sunt qui sunt aliquip do laborum. Laboris sunt fugiat amet veniam consequat quis quis tempor culpa anim. Sunt enim proident esse quis in ipsum tempor dolor deserunt. Tempor ea nulla est do nisi labore culpa magna.
+            Sidebar content
+        </template>
+        <template #header>
+            Header Content
+        </template>
 
-Lorem aute eiusmod labore laborum. Mollit ex tempor nostrud incididunt ipsum voluptate sint excepteur. Ea nisi minim incididunt id proident exercitation ipsum voluptate deserunt minim id non. Officia reprehenderit nisi quis sunt ipsum eiusmod. Labore ipsum nisi elit consectetur officia est non pariatur eiusmod.
-
-Proident laborum nostrud duis nulla. Mollit ad est elit pariatur sit proident adipisicing incididunt culpa. Dolor nulla excepteur sit sit ea eu in. Elit duis ex reprehenderit in adipisicing. Sit eiusmod aute nisi dolor ea velit fugiat. Reprehenderit eiusmod sit elit occaecat amet aute.
-
-Non cillum anim deserunt adipisicing eu enim. Officia incididunt elit ut velit commodo eiusmod amet est nisi pariatur. Adipisicing labore cupidatat in ut officia est eiusmod commodo esse duis magna culpa. Qui consequat esse sunt deserunt ex irure voluptate duis eiusmod est Lorem nostrud. Voluptate officia aliqua quis veniam. Amet aliqua qui elit culpa id id consectetur ullamco.
-
-Deserunt sit voluptate duis commodo duis elit cillum irure nostrud eiusmod irure. Laborum ad excepteur non ullamco consequat ex. Aute velit irure laboris laborum duis excepteur consequat culpa. Anim veniam occaecat ad duis exercitation in laborum aliquip consectetur officia cillum non incididunt.
-
-Id labore id sunt in voluptate laboris nisi laborum nisi ut velit aliqua officia eiusmod. Sint do consequat ullamco deserunt enim. Ad minim et ipsum proident in fugiat esse. Tempor fugiat commodo ipsum in proident sint Lorem velit aliqua adipisicing.
-
-Irure labore minim exercitation non. Deserunt voluptate ut magna labore velit est cillum elit in anim commodo. Irure aliquip labore aute anim nostrud commodo ipsum ea incididunt deserunt aliqua. Do nisi minim voluptate ea.
-
-Fugiat nulla anim magna occaecat culpa velit reprehenderit do tempor. Esse ex ipsum sit quis. Eiusmod occaecat eiusmod est anim occaecat consectetur consectetur. Pariatur laboris eu Lorem enim voluptate ut excepteur.
-
-Et proident quis nostrud minim ex in dolor dolore ex. Incididunt ad proident esse ex eu minim reprehenderit minim dolor non. Sit enim incididunt eu laboris culpa aliquip qui sit et ex. Deserunt id incididunt aute commodo. Labore elit proident laboris ut.
-
-In cillum non sint commodo magna nisi quis sit magna pariatur ipsum nostrud sunt. Est ex qui consectetur ullamco tempor consectetur enim occaecat duis. Pariatur voluptate qui ullamco enim laboris ipsum culpa in mollit anim ad irure. Nisi dolor sint do anim nulla duis sit ullamco culpa non quis.
-</template>
-<template #header>
-Header Content
-</template>
 Cupidatat veniam aliquip excepteur incididunt eiusmod laboris non minim nostrud do. Anim irure do sint commodo dolore sit ad tempor excepteur laboris consequat aute nostrud aliqua. Ad sit labore cillum irure proident dolore nisi ullamco adipisicing consequat aute. Irure commodo quis est eiusmod qui aliquip. Eu eu sit voluptate exercitation est consequat in qui.
 
 Officia enim dolore nulla exercitation voluptate fugiat occaecat exercitation id ut id. Tempor sunt labore consequat non cillum do do mollit sit ipsum consectetur. Mollit velit in ullamco amet aliqua ullamco cillum ullamco. Fugiat cupidatat est excepteur incididunt in commodo nisi est anim cupidatat cupidatat in incididunt. Ut aliquip quis ea non dolore ex ipsum proident aliqua quis sint. Incididunt cupidatat do eiusmod adipisicing non excepteur. Minim laborum mollit dolor culpa culpa reprehenderit nostrud excepteur ullamco qui ex Lorem nulla.
@@ -81,6 +78,28 @@ Velit magna quis nisi ullamco sit. Exercitation labore proident enim eu dolore d
 </SidebarLayoutWithHeader>
 
 </div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Sidebar-Layout-With-Header>
+		<template #sidebar>
+			<!-- Sidebar content here -->
+		</template>
+
+		<template #header>
+			<!-- Header bar content here -->
+		</template>
+
+		<!-- Write body here -->
+	</Sidebar-Layout-With-Header>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Fixed Header
 
@@ -114,3 +133,25 @@ Ad velit magna minim aliqua. Ea ex deserunt adipisicing cupidatat est ex culpa v
 </SidebarLayoutWithHeader>
 
 </div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Sidebar-Layout-With-Header fixed-header>
+		<template #sidebar>
+			<!-- Sidebar content here -->
+		</template>
+
+		<template #header>
+			<!-- Header bar content here -->
+		</template>
+
+		<!-- Write body here -->
+	</Sidebar-Layout-With-Header>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>

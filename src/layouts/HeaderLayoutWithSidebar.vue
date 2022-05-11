@@ -37,6 +37,11 @@ export default {
 		fixedSidebar: {
 			type: Boolean,
 			default: false
+		},
+
+		sidebarFilled: {
+			type: Boolean,
+			default: false
 		}
 	},
 
@@ -46,6 +51,7 @@ export default {
 
 			if(this.fixedHeader) classes.push('fixed-header')
 			if(this.fixedSidebar) classes.push('fixed-sidebar')
+			if(this.sidebarFilled && this.fixedSidebar && this.fixedHeader) classes.push('sidebar-filled')
 
 			return classes.join(' ')
 		}
@@ -64,9 +70,11 @@ export default {
 		padding: 0;
 	}
 
-	.mr-sidebar-layout {
-		.mr-sidebar {
-			background-color: transparent;
+	&:not(.sidebar-filled) {
+		.mr-sidebar-layout {
+			.mr-sidebar {
+				background-color: transparent;
+			}
 		}
 	}
 

@@ -38,6 +38,28 @@ Velit magna quis nisi ullamco sit. Exercitation labore proident enim eu dolore d
 
 </div>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Header-Layout-With-Sidebar>
+		<template #sidebar>
+			<!-- Sidebar content here -->
+		</template>
+
+		<template #header>
+			<!-- Header bar content here -->
+		</template>
+
+		<!-- Write body here -->
+	</Header-Layout-With-Sidebar>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ## Fixed Header
 
 <div style=" width: 100%; height: 500px; border: 1px solid #c1c1c1;">
@@ -71,6 +93,28 @@ Ad velit magna minim aliqua. Ea ex deserunt adipisicing cupidatat est ex culpa v
 </HeaderLayoutWithSidebar>
 
 </div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Header-Layout-With-Sidebar fixed-header>
+		<template #sidebar>
+			<!-- Sidebar content here -->
+		</template>
+
+		<template #header>
+			<!-- Header bar content here -->
+		</template>
+
+		<!-- Write body here -->
+	</Header-Layout-With-Sidebar>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Fixed Sidebar
 
@@ -106,6 +150,28 @@ Ad velit magna minim aliqua. Ea ex deserunt adipisicing cupidatat est ex culpa v
 
 </div>
 
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Header-Layout-With-Sidebar fixed-sidebar>
+		<template #sidebar>
+			<!-- Sidebar content here -->
+		</template>
+
+		<template #header>
+			<!-- Header bar content here -->
+		</template>
+
+		<!-- Write body here -->
+	</Header-Layout-With-Sidebar>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ## Fixed Header and Sidebar
 
 <div style=" width: 100%; height: 500px; border: 1px solid #c1c1c1;">
@@ -139,3 +205,81 @@ Ad velit magna minim aliqua. Ea ex deserunt adipisicing cupidatat est ex culpa v
 </HeaderLayoutWithSidebar>
 
 </div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Header-Layout-With-Sidebar fixed-header fixed-sidebar>
+		<template #sidebar>
+			<!-- Sidebar content here -->
+		</template>
+
+		<template #header>
+			<!-- Header bar content here -->
+		</template>
+
+		<!-- Write body here -->
+	</Header-Layout-With-Sidebar>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+## Fixed Header and Sidebar (filled)
+
+<div style=" width: 100%; height: 500px; border: 1px solid #c1c1c1;">
+    <HeaderLayoutWithSidebar fixed-header fixed-sidebar sidebar-filled>
+        <template #sidebar>
+            Sidebar Content
+        </template>
+        <template #header>
+            Fixed Header
+        </template>
+
+Aute et eu occaecat ea officia magna. Non reprehenderit cupidatat sit sunt anim qui eiusmod officia. Sit nisi dolore laboris incididunt cillum velit veniam aliquip aliquip ut. Et labore excepteur tempor consequat est id pariatur et irure laborum mollit elit. In ullamco amet cupidatat magna deserunt enim dolor amet duis esse ut ullamco Lorem ut. Quis velit ullamco eu et nisi mollit.
+
+Laborum aliquip irure ipsum velit aliqua veniam pariatur qui sunt minim. Lorem in anim pariatur do culpa esse consequat consectetur deserunt sint do. In velit minim velit eu culpa nisi ut incididunt. Qui ex duis dolor amet nostrud magna id nisi duis aliqua eu in pariatur. Eu adipisicing ullamco ullamco proident enim.
+
+Qui adipisicing tempor Lorem magna non nostrud qui deserunt eiusmod. Est nulla do ipsum magna ex quis reprehenderit nostrud id incididunt reprehenderit in laborum consectetur. Quis anim ullamco enim est duis nostrud duis esse mollit cillum.
+
+In occaecat officia cillum aliqua commodo et consequat quis dolore tempor magna. Cupidatat cillum officia incididunt culpa. Ut aliqua duis deserunt consequat pariatur occaecat non. Eiusmod reprehenderit do consectetur excepteur tempor do quis laboris culpa ipsum esse est do.
+
+Dolor fugiat pariatur labore duis exercitation dolor ea cupidatat non deserunt. Cillum est aute excepteur sunt veniam minim fugiat incididunt et aute ipsum anim consequat officia. Duis irure velit irure veniam culpa nulla reprehenderit voluptate. Ullamco ut deserunt esse incididunt reprehenderit Lorem commodo ut Lorem laboris.
+
+Quis eu et amet in id consequat duis ad. Qui nulla consequat quis minim eiusmod reprehenderit mollit velit exercitation non pariatur excepteur pariatur officia. Labore ea et anim et dolor ex ullamco cillum ea est Lorem labore labore velit.
+
+Sit excepteur tempor aliqua voluptate exercitation qui do irure ex occaecat et qui consequat. Ex ad deserunt est pariatur deserunt non in incididunt. Aliqua duis ipsum ipsum laborum laborum. Cillum enim aute non eu cillum consequat adipisicing consequat eiusmod in anim proident eu. Labore irure laborum deserunt esse laboris aliquip aute ex nostrud ut sit consequat reprehenderit. Dolore cupidatat pariatur ad ut excepteur proident excepteur.
+
+Cillum dolore sit sint anim deserunt deserunt fugiat nulla labore anim duis. Occaecat qui commodo duis tempor. Ea tempor tempor anim laborum ipsum cillum pariatur.
+
+Amet deserunt cupidatat sunt laboris ipsum incididunt do. Velit mollit mollit sunt anim cupidatat quis minim ipsum. Sunt laboris ex commodo minim dolor ullamco ad. In reprehenderit anim deserunt nulla velit aliqua ea incididunt. Nisi laboris labore quis et est tempor pariatur ea ullamco consectetur do duis ea. Aliqua ullamco cillum qui duis.
+
+Ad velit magna minim aliqua. Ea ex deserunt adipisicing cupidatat est ex culpa voluptate deserunt. Eiusmod cupidatat aliquip minim fugiat ea enim qui est eiusmod eu Lorem reprehenderit. Minim enim ad ut non fugiat. Amet in labore qui ad amet consequat nulla nisi eu incididunt.
+</HeaderLayoutWithSidebar>
+
+</div>
+
+<CodeGroup>
+  <CodeGroupItem title="Vue" active>
+
+```vue
+<template>
+	<Header-Layout-With-Sidebar fixed-header fixed-sidebar sidebar-filled>
+		<template #sidebar>
+			<!-- Sidebar content here -->
+		</template>
+
+		<template #header>
+			<!-- Header bar content here -->
+		</template>
+
+		<!-- Write body here -->
+	</Header-Layout-With-Sidebar>
+</template>
+```
+
+  </CodeGroupItem>
+</CodeGroup>
