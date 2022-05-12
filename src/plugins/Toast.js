@@ -24,6 +24,7 @@ export const Toast = {
 			this.notifications.push(notification)
 
 			if (notification.timer) {
+				/* istanbul ignore next */
 				setTimeout(() => {
 					const notificationIndex = this.notifications.indexOf(notification)
 					if (notificationIndex > -1) {
