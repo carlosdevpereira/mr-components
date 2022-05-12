@@ -7,9 +7,7 @@
 				<Dropdown
 					v-if="filterable"
 					theme="text-solid"
-					icon="add-line"
-					icon-position="end"
-					label="Filter"
+					label="Add Filter"
 					class="add-filter-action"
 				>
 					<Button
@@ -26,7 +24,7 @@
 
 				<Dropdown
 					theme="text-solid"
-					icon="list-check-2"
+					label="Columns"
 					class="column-visibility-panel-toggle"
 				>
 					<Checkbox
