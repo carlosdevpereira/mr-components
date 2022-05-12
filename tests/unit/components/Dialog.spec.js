@@ -11,6 +11,28 @@ describe('Dialog', () => {
 				stubs: { teleport: true },
 			},
 		})
+
+		global.innerWidth = 1280
+		global.dispatchEvent(new Event('resize'))
+	})
+
+	it('applies the correct mobile transitions', async () => {
+		global.innerWidth = 900
+		global.dispatchEvent(new Event('resize'))
+
+		await wrapper.vm.$nextTick()
+
+		expect(wrapper.vm.mobileTransitions().translateY).toBe(100)
+	})
+
+	it('applies a custom icon', async () => {
+		Dialog.success({ title: 'dialog_title', message: 'dialog_message', icon: 'test_icon' })
+		await wrapper.vm.$nextTick()
+
+		const icon = wrapper.findComponent('.mr-dialog-icon')
+		expect(icon.vm.name).toBe('test_icon')
+
+		wrapper.vm.destroy()
 	})
 
 	describe('Variants', () => {

@@ -21,7 +21,7 @@
 		"build:docs": "vuepress build docs",
 		"build:lib": "vite build",
 		"build": "yarn build:lib && yarn build:docs",
-		"test": "yarn test:unit --verbose",
+		"test": "yarn test:unit:coverage --verbose",
 		"test:watch": "yarn test --watch",
 		"test:unit": "jest --no-cache --detectOpenHandles",
 		"test:unit:coverage": "rm -rf ./coverage && jest --no-cache --detectOpenHandles --coverage",
