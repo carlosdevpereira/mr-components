@@ -1,5 +1,5 @@
 const { shallowMount } = require('@vue/test-utils')
-import Modal from '@/components/modal'
+import Modal from '@/components/Modal'
 
 describe('Modal', () => {
 	let wrapper
