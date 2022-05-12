@@ -70,14 +70,6 @@ export default {
 		padding: 0;
 	}
 
-	&:not(.sidebar-filled) {
-		.mr-sidebar-layout:not(.sidebar-is-open) {
-			.mr-sidebar {
-				background-color: transparent;
-			}
-		}
-	}
-
 	&.fixed-header:not(.fixed-sidebar) {
 		display: block;
 		overflow: auto;
@@ -104,6 +96,14 @@ export default {
 					position: sticky;
 					top: 0;
 					overflow: auto;
+				}
+			}
+		}
+
+		&:not(.sidebar-filled) {
+			.mr-sidebar-layout {
+				.mr-sidebar {
+					background-color: transparent;
 				}
 			}
 		}
@@ -153,6 +153,10 @@ export default {
 			.mr-sidebar-toggle {
 				position: absolute;
 				top: -50px;
+			}
+
+			.mr-sidebar {
+				background-color: $whiteColor;
 			}
 		}
 	}
