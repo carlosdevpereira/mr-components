@@ -1,9 +1,14 @@
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import Vue from '@vitejs/plugin-vue'
 import path from 'path'
 
 export default defineConfig({
-	plugins: [vue({ reactivityTransform: true })],
+	plugins: [
+		Vue({
+			include: [/\.vue$/, /\.md$/],
+			reactivityTransform: true,
+		})
+	],
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),

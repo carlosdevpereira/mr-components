@@ -1,4 +1,3 @@
-import { flushPromises } from '@vue/test-utils'
 import { Toast } from '../../../src/plugins/Toast'
 
 describe('Toast Plugin', () => {
@@ -48,19 +47,6 @@ describe('Toast Plugin', () => {
         expect(Toast.notifications[0].title).toBe('title example')
         expect(Toast.notifications[0].message).toBe('message example')
         expect(Toast.notifications[0].closeable).toBe(false)
-    })
-
-    it('creates a timed toast', async () => {
-        jest.useFakeTimers()
-        Toast.notify({ title: 'title example', message: 'message example', timer: 500 })
-
-        expect(Toast.notifications.length).toBe(1)
-        expect(Toast.notifications[0].title).toBe('title example')
-        expect(Toast.notifications[0].message).toBe('message example')
-        expect(Toast.notifications[0].timer).toBe(500)
-
-        jest.runOnlyPendingTimers()
-        expect(Toast.notifications.length).toBe(0)
     })
 
     it('creates a success toast', () => {
