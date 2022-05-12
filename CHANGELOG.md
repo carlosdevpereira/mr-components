@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.6.0](https://github.com/carlosdevpereira/mr-components/compare/v1.5.1...v1.6.0) (2022-05-12)
+
+
+### 👷 Maintenance
+
+* **deps-dev:** bump eslint from 8.14.0 to 8.15.0 ([#163](https://github.com/carlosdevpereira/mr-components/issues/163)) ([9ca9e69](https://github.com/carlosdevpereira/mr-components/commit/9ca9e6940923132c33cf7b91ec2e64dfeab82b1d))
+* **deps:** bump core-js from 3.22.4 to 3.22.5 ([#164](https://github.com/carlosdevpereira/mr-components/issues/164)) ([15badcd](https://github.com/carlosdevpereira/mr-components/commit/15badcdd37ec0b7a4d10adfa1329bb9f440b7cac))
+
+
+### ✨ Features
+
+* 404 layout ([#167](https://github.com/carlosdevpereira/mr-components/issues/167)) ([4f11e29](https://github.com/carlosdevpereira/mr-components/commit/4f11e298b16d1dc8b8dac105a607206f011c870e))
+* header and sidebar layouts ([#165](https://github.com/carlosdevpereira/mr-components/issues/165)) ([a7e41c8](https://github.com/carlosdevpereira/mr-components/commit/a7e41c81da6de8fd963bad56ee4cf966fefef83f))
+* maintenance layout ([#168](https://github.com/carlosdevpereira/mr-components/issues/168)) ([31fa50d](https://github.com/carlosdevpereira/mr-components/commit/31fa50d1f288ab6cd1f919b28712ad89eb95aa59))
+
 ### [1.5.1](https://github.com/carlosdevpereira/mr-components/compare/v1.5.0...v1.5.1) (2022-05-08)
 
 
