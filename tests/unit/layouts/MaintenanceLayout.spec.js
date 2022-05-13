@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import MaintenanceLayout from '@/layouts/MaintenanceLayout'
 import Button from '@/components/Button'
 
@@ -9,7 +9,7 @@ describe('Maintenance Layout (503)', () => {
 		windowOpenSpy = jest.spyOn(window, 'open')
 		windowOpenSpy.mockImplementation(() => {})
 
-		wrapper = shallowMount(MaintenanceLayout, {
+		wrapper = mount(MaintenanceLayout, {
 			props: {
 				contactAddress: 'example@example.com',
 			},

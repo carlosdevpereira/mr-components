@@ -1,6 +1,6 @@
 <template>
-	<div class="mr-layout-maintenance">
-		<div class="mr-layout-main">
+	<Split-Layout class="mr-layout-maintenance">
+		<template #right>
 			<h1 class="mr-layout-title">
 				{{ title }}
 			</h1>
@@ -18,16 +18,18 @@
 					@click="mailToContactAddress"
 				/>
 			</div>
-		</div>
-	</div>
+		</template>
+	</Split-Layout>
 </template>
 
 <script>
 import Button from '@/components/Button/index.vue'
+import SplitLayout from '@/layouts/SplitLayout.vue'
 
 export default {
 	components: {
-		Button
+		Button,
+		SplitLayout
 	},
 
 	props: {
@@ -57,24 +59,18 @@ export default {
 
 <style lang="scss">
 @use 'sass:color';
+@use 'sass:map';
 
 @import '../assets/scss/_variables.scss';
 
 .mr-layout-maintenance {
-	display: flex;
-	justify-content: flex-end;
-	width: 100%;
-	height: 100%;
-	background-color: $sectionBackgroundColor;
+	.mr-layout-left-section {
+		width: 45%;
+	}
 
-	.mr-layout-main {
-		box-sizing: border-box;
-		display: flex;
-		flex-direction: column;
+	.mr-layout-right-section {
 		justify-content: center;
 		width: 55%;
-		padding: 2rem;
-		background-color: $whiteColor;
 
 		.mr-layout-title {
 			max-width: 450px;
@@ -84,6 +80,25 @@ export default {
 
 		.mr-layout-notice {
 			margin-top: 2rem;
+		}
+	}
+
+	@media screen and (max-width: #{map.get($breakpoints, 'xl')}px) {
+		.mr-layout-right-section .mr-layout-title {
+			font-size: 55px;
+		}
+	}
+
+	@media screen and (max-width: #{map.get($breakpoints, 'lg')}px) {
+		.mr-layout-left-section {
+			width: 0;
+			padding: 0;
+		}
+
+		.mr-layout-right-section {
+			align-items: center;
+			width: 100%;
+			text-align: center;
 		}
 	}
 }
