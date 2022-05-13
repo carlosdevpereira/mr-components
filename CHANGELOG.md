@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.7.0](https://github.com/carlosdevpereira/mr-components/compare/v1.6.0...v1.7.0) (2022-05-13)
+
+
+### 🚨 Bug Fixes
+
+* wrong background-color on header sidebar layout ([66bc05d](https://github.com/carlosdevpereira/mr-components/commit/66bc05d24d9d1c1b4e26058d58ba15a8f9156825))
+
+
+### 👷 Maintenance
+
+* **deps-dev:** bump @types/node from 17.0.31 to 17.0.33 ([#171](https://github.com/carlosdevpereira/mr-components/issues/171)) ([7746afb](https://github.com/carlosdevpereira/mr-components/commit/7746afb2496a9abfa885876fa949de6ec877cd27))
+* **deps-dev:** bump @vitejs/plugin-vue from 2.3.2 to 2.3.3 ([#173](https://github.com/carlosdevpereira/mr-components/issues/173)) ([a1eb754](https://github.com/carlosdevpereira/mr-components/commit/a1eb754c5c4bd4928b780a0bb34f779261b7773d))
+* **deps-dev:** bump vite from 2.9.8 to 2.9.9 ([#172](https://github.com/carlosdevpereira/mr-components/issues/172)) ([73a0d6d](https://github.com/carlosdevpereira/mr-components/commit/73a0d6dd2f9ad65f3b4383e3b9322dad924a8474))
+* replace column visibility icon with text ([d61dfcd](https://github.com/carlosdevpereira/mr-components/commit/d61dfcd91e470036642d59befb4beb0cb82f7cd3))
+
+
+### ✨ Features
+
+* split layout component ([5ca5ab6](https://github.com/carlosdevpereira/mr-components/commit/5ca5ab69cee6470a826b8ce383839d80fe2613e6))
+
 ## [1.6.0](https://github.com/carlosdevpereira/mr-components/compare/v1.5.1...v1.6.0) (2022-05-12)
 
 
