@@ -1,5 +1,6 @@
 <template>
 	<button
+		type="button"
 		class="mr-button"
 		:class="classes"
 		:disabled="disabled || loading"
