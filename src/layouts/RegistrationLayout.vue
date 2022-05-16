@@ -1,63 +1,69 @@
 <template>
 	<Split-Layout class="mr-layout-registration">
 		<template #right>
-			<header class="mr-layout-header">
-				<h2 class="mr-layout-title">
-					Let's get you started.
-				</h2>
+			<div class="mr-layout-content">
+				<header class="mr-layout-header">
+					<h2 class="mr-layout-title">
+						Let's get you started.
+					</h2>
 
-				<small>
-					Create your free account by filling the fields below.
-				</small>
-			</header>
+					<small>
+						Create your free account by filling the fields below.
+					</small>
+				</header>
 
-			<form class="mr-layout-form">
-				<Input
-					v-model="name"
-					label="Name"
-				/>
-
-				<Input
-					v-model="email"
-					label="Email"
-				/>
-
-				<Input
-					v-model="password"
-					label="Password"
-				/>
-
-				<Input
-					v-model="passwordConfirmation"
-					label="Password Confirmation"
-				/>
-
-				<div class="mr-layout-form-actions">
-					<Button
-						label="Sign In"
-						@click="onSignUp"
+				<form class="mr-layout-form">
+					<Input
+						v-model="registrationForm.name"
+						label="Name"
+						:errors="errors.name"
 					/>
 
-					<slot name="custom-registration-actions" />
+					<Input
+						v-model="registrationForm.email"
+						label="Email"
+						:errors="errors.email"
+					/>
 
-					<small class="already-have-an-account">
-						Already have an account?
+					<Input
+						v-model="registrationForm.password"
+						label="Password"
+						:errors="errors.password"
+					/>
+
+					<Input
+						v-model="registrationForm.passwordConfirmation"
+						label="Password Confirmation"
+						:errors="errors.passwordConfirmation"
+					/>
+
+					<div class="mr-layout-form-actions">
 						<Button
-							label="Sign in now"
-							size="sm"
-							theme="text"
-							variant="secondary"
-							@click="onSignIn"
+							label="Sign Up"
+							@click="onSignUp"
 						/>
-					</small>
-				</div>
-			</form>
+
+						<slot name="custom-registration-actions" />
+
+						<small class="already-have-an-account">
+							Already have an account?
+							<Button
+								label="Sign in now"
+								size="sm"
+								theme="text"
+								variant="secondary"
+								@click="onSignIn"
+							/>
+						</small>
+					</div>
+				</form>
+			</div>
 		</template>
 	</Split-Layout>
 </template>
 
 <script>
-// @TODO: Form validations for name, email, password and confirmation
+import { validate } from '../validators/RegistrationValidator'
 import SplitLayout from "./SplitLayout.vue"
 import Input from '@/components/Input/index.vue'
 
@@ -71,21 +77,36 @@ export default {
 
 	data() {
 		return {
-			name: '',
-			email: '',
-			password: '',
-			passwordConfirmation: '',
+			errors: {},
+			registrationForm: {
+				name: '',
+				email: '',
+				password: '',
+				passwordConfirmation: '',
+			}
 		}
 	},
 
 	methods: {
+		validate,
+
 		onSignUp() {
-			this.$emit('sign-up', {
-				name: this.name,
-				email: this.email,
-				password: this.password,
-				passwordConfirmation: this.passwordConfirmation
-			})
+			let validation = validate(this.registrationForm)
+			this.errors = {
+				name: validation.getErrors('name'),
+				email: validation.getErrors('email'),
+				password: validation.getErrors('password'),
+				passwordConfirmation: validation.getErrors('passwordConfirmation'),
+			}
+
+			if (!validation.hasErrors()) {
+				this.$emit('sign-up', {
+					name: this.name,
+					email: this.email,
+					password: this.password,
+					passwordConfirmation: this.passwordConfirmation
+				})
+			}
 		},
 
 		onSignIn() {
@@ -102,8 +123,23 @@ export default {
 @import '../assets/scss/_variables.scss';
 
 .mr-layout-registration {
+	box-sizing: border-box;
+
+	.mr-layout-content {
+		padding-bottom: 2rem;
+		margin: 0 auto;
+	}
+
+	.mr-layout-left-section {
+		width: 55%;
+	}
+
 	.mr-layout-right-section {
+		display: flex;
+		flex-direction: column;
 		justify-content: center;
+		width: 45%;
+		overflow: auto;
 	}
 
 	.mr-layout-header {
@@ -116,7 +152,7 @@ export default {
 	}
 
 	.mr-layout-form {
-		padding: 24px 0;
+		padding: 24px 0 0;
 
 		.mr-input-container {
 			margin-bottom: 12px;

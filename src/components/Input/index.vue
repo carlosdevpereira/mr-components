@@ -22,6 +22,7 @@
 			type="text"
 			:placeholder="placeholder"
 			:disabled="isDisabled"
+			:required="required"
 			:aria-errormessage="hasErrors ? errors : undefined"
 			@focus="$emit('focus')"
 		>
