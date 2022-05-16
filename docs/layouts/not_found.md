@@ -2,7 +2,7 @@
 pageClass: custom-layout
 ---
 
-# 404 Layout
+# Not Found Layout
 
 ## Basic Layout
 

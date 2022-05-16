@@ -27,12 +27,14 @@
 
 					<Input
 						v-model="registrationForm.password"
+						type="password"
 						label="Password"
 						:errors="errors.password"
 					/>
 
 					<Input
 						v-model="registrationForm.passwordConfirmation"
+						type="password"
 						label="Password Confirmation"
 						:errors="errors.passwordConfirmation"
 					/>
@@ -88,8 +90,6 @@ export default {
 	},
 
 	methods: {
-		validate,
-
 		onSignUp() {
 			let validation = validate(this.registrationForm)
 			this.errors = {
@@ -101,10 +101,10 @@ export default {
 
 			if (!validation.hasErrors()) {
 				this.$emit('sign-up', {
-					name: this.name,
-					email: this.email,
-					password: this.password,
-					passwordConfirmation: this.passwordConfirmation
+					name: this.registrationForm.name,
+					email: this.registrationForm.email,
+					password: this.registrationForm.password,
+					passwordConfirmation: this.registrationForm.passwordConfirmation
 				})
 			}
 		},

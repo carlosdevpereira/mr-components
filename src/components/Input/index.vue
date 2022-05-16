@@ -19,7 +19,7 @@
 
 		<input
 			v-model="currentValue"
-			type="text"
+			:type="type"
 			:placeholder="placeholder"
 			:disabled="isDisabled"
 			:required="required"
