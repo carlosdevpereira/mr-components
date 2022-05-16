@@ -1,60 +1,64 @@
 <template>
-	<Split-Layout class="mr-layout-registration">
-		<template #right>
+	<Split-Layout
+		class="mr-layout-login"
+		inverse
+	>
+		<template #left>
 			<div class="mr-layout-content">
 				<header class="mr-layout-header">
 					<h2 class="mr-layout-title">
-						Let's get you started.
+						Welcome back
 					</h2>
 
 					<small>
-						Create your free account by filling the fields below.
+						Welcome back! Please enter your credentials.
 					</small>
 				</header>
 
 				<form class="mr-layout-form">
 					<Input
-						v-model="registrationForm.name"
-						label="Name"
-						:errors="errors.name"
-					/>
-
-					<Input
-						v-model="registrationForm.email"
+						v-model="loginForm.email"
 						label="Email"
 						:errors="errors.email"
 					/>
 
 					<Input
-						v-model="registrationForm.password"
-						type="password"
+						v-model="loginForm.password"
 						label="Password"
+						type="password"
 						:errors="errors.password"
 					/>
 
-					<Input
-						v-model="registrationForm.passwordConfirmation"
-						type="password"
-						label="Password Confirmation"
-						:errors="errors.passwordConfirmation"
-					/>
+					<div class="password-remember-or-recover">
+						<Checkbox
+							v-model="loginForm.rememberMe"
+							label="Remember me for 30 days"
+						/>
+
+						<Button
+							theme="text"
+							size="sm"
+							label="Forgot password"
+							@click="onForgotPassword"
+						/>
+					</div>
 
 					<div class="mr-layout-form-actions">
 						<Button
-							label="Sign Up"
-							@click="onSignUp"
+							label="Sign In"
+							@click="onSignIn"
 						/>
 
-						<slot name="custom-registration-actions" />
+						<slot name="custom-login-actions" />
 
-						<small class="already-have-an-account">
-							Already have an account?
+						<small class="dont-have-an-account">
+							Don't have an account?
 							<Button
-								label="Sign in now"
+								label="Sign up for free"
 								size="sm"
 								theme="text"
 								variant="secondary"
-								@click="onSignIn"
+								@click="onSignUpRequest"
 							/>
 						</small>
 					</div>
@@ -65,14 +69,16 @@
 </template>
 
 <script>
-import { validate } from '../validators/RegistrationValidator'
+import { validate } from '../validators/LoginValidator'
 import SplitLayout from "./SplitLayout.vue"
 import Input from '@/components/Input/index.vue'
+import Checkbox from '@/components/Checkbox/index.vue'
 
 export default {
 	components: {
 		SplitLayout,
 		Input,
+		Checkbox
 	},
 
 	emits: ['sign-in', 'sign-up', 'forgot-password'],
@@ -80,37 +86,37 @@ export default {
 	data() {
 		return {
 			errors: {},
-			registrationForm: {
-				name: '',
+			loginForm: {
 				email: '',
 				password: '',
-				passwordConfirmation: '',
-			}
+				rememberMe: false,
+			},
 		}
 	},
 
 	methods: {
-		onSignUp() {
-			let validation = validate(this.registrationForm)
+		onForgotPassword() {
+			this.$emit('forgot-password')
+		},
+
+		onSignIn() {
+			let validation = validate(this.loginForm)
 			this.errors = {
-				name: validation.getErrors('name'),
 				email: validation.getErrors('email'),
 				password: validation.getErrors('password'),
-				passwordConfirmation: validation.getErrors('passwordConfirmation'),
 			}
 
 			if (!validation.hasErrors()) {
-				this.$emit('sign-up', {
-					name: this.registrationForm.name,
-					email: this.registrationForm.email,
-					password: this.registrationForm.password,
-					passwordConfirmation: this.registrationForm.passwordConfirmation
+				this.$emit('sign-in', {
+					email: this.loginForm.email,
+					password: this.loginForm.password,
+					rememberMe: this.loginForm.rememberMe
 				})
 			}
 		},
 
-		onSignIn() {
-			this.$emit('sign-in')
+		onSignUpRequest() {
+			this.$emit('sign-up')
 		}
 	}
 }
@@ -122,7 +128,7 @@ export default {
 
 @import '../assets/scss/_variables.scss';
 
-.mr-layout-registration {
+.mr-layout-login {
 	box-sizing: border-box;
 
 	.mr-layout-content {
@@ -131,15 +137,7 @@ export default {
 	}
 
 	.mr-layout-left-section {
-		width: 55%;
-	}
-
-	.mr-layout-right-section {
-		display: flex;
-		flex-direction: column;
 		justify-content: center;
-		width: 45%;
-		overflow: auto;
 	}
 
 	.mr-layout-header {
@@ -152,22 +150,26 @@ export default {
 	}
 
 	.mr-layout-form {
-		padding: 24px 0 0;
+		padding: 24px 0;
 
 		.mr-input-container {
 			margin-bottom: 12px;
 		}
 	}
 
-	.mr-layout-form-actions {
-		margin-top: 24px;
+	.password-remember-or-recover {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 24px;
+	}
 
+	.mr-layout-form-actions {
 		.mr-button {
 			width: 100%;
 			margin-bottom: 12px;
 		}
 
-		.already-have-an-account {
+		.dont-have-an-account {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -184,11 +186,11 @@ export default {
 	}
 
 	@media screen and (max-width: #{map.get($breakpoints, 'lg')}px) {
-		.mr-layout-right-section {
+		.mr-layout-left-section {
 			width: 100%;
 		}
 
-		.mr-layout-left-section {
+		.mr-layout-right-section {
 			width: 0;
 			padding: 0;
 		}

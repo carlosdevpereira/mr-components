@@ -70,6 +70,11 @@ export default {
 		default: () => [],
 	},
 
+	type: {
+		type: String,
+		default: 'text',
+	},
+
 	required: {
 		type: Boolean,
 		default: false,
