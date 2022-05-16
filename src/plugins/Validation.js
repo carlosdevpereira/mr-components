@@ -1,5 +1,4 @@
-import isEmail from 'validator/es/lib/isEmail'
-import isMobilePhone from 'validator/es/lib/isMobilePhone'
+import { isEmail, isMobilePhone } from 'validator'
 import {
 	test,
 	create,

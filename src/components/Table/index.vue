@@ -84,7 +84,7 @@
 					</div>
 
 					<Button
-						class="mt-2 delete-filter-action"
+						class="delete-filter-action"
 						theme="text-solid"
 						variant="danger"
 						@click="deleteFilter(filter)"
