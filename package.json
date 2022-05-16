@@ -34,6 +34,7 @@
 		"gsap": "^3.10.2",
 		"lodash": "^4.17.21",
 		"remixicon": "^2.5.0",
+		"validator": "^13.7.0",
 		"vest": "^4.3.4",
 		"vue": "^3.2.25"
 	},
@@ -61,7 +62,6 @@
 		"sass-loader": "^12.6.0",
 		"stylelint": "^14.6.1",
 		"stylelint-config-recess-order": "^3.0.0",
-		"tailwindcss": "^3.0.22",
 		"ts-jest": "^27.1.4",
 		"tslib": "^2.4.0",
 		"typescript": "^4.6.4",
@@ -525,32 +525,34 @@
 		}
 	},
 	"jest": {
+		"verbose": true,
 		"preset": "ts-jest",
 		"testEnvironment": "jsdom",
 		"moduleNameMapper": {
 			"^@/(.*)$": "<rootDir>/src/$1",
 			"^~(.*)$": "<rootDir>/node_modules/$1",
-			"^.+\\.(css|scss)$": "<rootDir>/tests/transformers/cssTransform.ts"
+			"^.+\\.(css|scss)$": "<rootDir>/tests/transformers/cssTransform.ts",
+			"validator/es/lib/isEmail": "<rootDir>/tests/mocks/isEmail.js",
+			"validator/es/lib/isMobilePhone": "<rootDir>/tests/mocks/isMobilePhone.js"
 		},
+		"moduleDirectories": [
+			"node_modules",
+			"src"
+		],
 		"moduleFileExtensions": [
 			"vue",
 			"js",
 			"ts",
-			"json",
 			"jsx"
 		],
 		"transform": {
 			"^.+\\.vue$": "vue3-jest",
-			"^.+\\.ts$": "ts-jest",
-			"^.+\\js$": "babel-jest",
+			"^.+\\.(ts|tsx)?$": "ts-jest",
+			"^.+\\.(js|jsx)$": "babel-jest",
 			"^.+\\.svg$": "./tests/transformers/svgTransform.ts"
 		},
 		"setupFilesAfterEnv": [
 			"./tests/unit/setup-tests.ts"
-		],
-		"transformIgnorePatterns": [
-			"/node_modules/",
-			"\\.pnp\\.[^\\/]+$"
 		],
 		"coverageReporters": [
 			"text-summary",

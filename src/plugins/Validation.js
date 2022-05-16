@@ -1,3 +1,4 @@
+import { isEmail, isMobilePhone } from 'validator'
 import {
 	test,
 	create,
@@ -14,6 +15,8 @@ import {
 	include,
 	eager,
 } from 'vest'
+
+enforce.extend({ isEmail, isMobilePhone })
 
 export const Validation = {
 	test,

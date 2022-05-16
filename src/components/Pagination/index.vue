@@ -32,7 +32,7 @@
 				<Icon name="arrow-left-line" />
 			</Button>
 
-			<span class="ml-3 mr-3">
+			<span>
 				<span class="current-page">
 					{{ page }}
 				</span> of
