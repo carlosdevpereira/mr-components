@@ -526,32 +526,34 @@
 		}
 	},
 	"jest": {
+		"verbose": true,
 		"preset": "ts-jest",
 		"testEnvironment": "jsdom",
 		"moduleNameMapper": {
 			"^@/(.*)$": "<rootDir>/src/$1",
 			"^~(.*)$": "<rootDir>/node_modules/$1",
-			"^.+\\.(css|scss)$": "<rootDir>/tests/transformers/cssTransform.ts"
+			"^.+\\.(css|scss)$": "<rootDir>/tests/transformers/cssTransform.ts",
+			"validator/es/lib/isEmail": "<rootDir>/tests/mocks/isEmail.js",
+			"validator/es/lib/isMobilePhone": "<rootDir>/tests/mocks/isMobilePhone.js"
 		},
+		"moduleDirectories": [
+			"node_modules",
+			"src"
+		],
 		"moduleFileExtensions": [
 			"vue",
 			"js",
 			"ts",
-			"json",
 			"jsx"
 		],
 		"transform": {
 			"^.+\\.vue$": "vue3-jest",
-			"^.+\\.ts$": "ts-jest",
-			"^.+\\js$": "babel-jest",
+			"^.+\\.(ts|tsx)?$": "ts-jest",
+			"^.+\\.(js|jsx)$": "babel-jest",
 			"^.+\\.svg$": "./tests/transformers/svgTransform.ts"
 		},
 		"setupFilesAfterEnv": [
 			"./tests/unit/setup-tests.ts"
-		],
-		"transformIgnorePatterns": [
-			"/node_modules/",
-			"\\.pnp\\.[^\\/]+$"
 		],
 		"coverageReporters": [
 			"text-summary",
