@@ -18,7 +18,9 @@
 				<form class="mr-layout-form">
 					<Input
 						v-model="loginForm.email"
+						type="email"
 						label="Email"
+						autocomplete="email"
 						:errors="errors.email"
 					/>
 
@@ -26,6 +28,7 @@
 						v-model="loginForm.password"
 						label="Password"
 						type="password"
+						autocomplete="new-password"
 						:errors="errors.password"
 					/>
 

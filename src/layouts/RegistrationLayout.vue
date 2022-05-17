@@ -17,11 +17,14 @@
 						v-model="registrationForm.name"
 						label="Name"
 						:errors="errors.name"
+						autocomplete="given-name"
 					/>
 
 					<Input
 						v-model="registrationForm.email"
 						label="Email"
+						type="email"
+						autocomplete="email"
 						:errors="errors.email"
 					/>
 
@@ -29,6 +32,7 @@
 						v-model="registrationForm.password"
 						type="password"
 						label="Password"
+						autocomplete="new-password"
 						:errors="errors.password"
 					/>
 
@@ -36,6 +40,7 @@
 						v-model="registrationForm.passwordConfirmation"
 						type="password"
 						label="Password Confirmation"
+						autocomplete="new-password"
 						:errors="errors.passwordConfirmation"
 					/>
 

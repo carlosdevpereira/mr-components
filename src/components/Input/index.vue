@@ -23,6 +23,7 @@
 			:placeholder="placeholder"
 			:disabled="isDisabled"
 			:required="required"
+			:autocomplete="autocomplete"
 			:aria-errormessage="hasErrors ? errors : undefined"
 			@focus="$emit('focus')"
 		>

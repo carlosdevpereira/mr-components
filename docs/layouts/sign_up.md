@@ -6,7 +6,7 @@ pageClass: custom-layout
 
 ## Basic Registration Layout
 
-<div style="width: 100%; height: 800px; border: 1px solid #c1c1c1;">
+<div style="width: 100%; height: 750px; border: 1px solid #c1c1c1;">
     <Registration-Layout />
 </div>
 
