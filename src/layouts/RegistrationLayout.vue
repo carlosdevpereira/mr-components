@@ -1,70 +1,78 @@
 <template>
 	<Split-Layout class="mr-layout-registration">
 		<template #right>
-			<div class="mr-layout-content">
-				<header class="mr-layout-header">
-					<h2 class="mr-layout-title">
-						Let's get you started.
-					</h2>
+			<Transition
+				appear
+				:css="false"
+				mode="out-in"
+				@enter="onEnter"
+				@leave="onLeave"
+			>
+				<div class="mr-layout-content">
+					<header class="mr-layout-header">
+						<h2 class="mr-layout-title">
+							Let's get you started.
+						</h2>
 
-					<small>
-						Create your free account by filling the fields below.
-					</small>
-				</header>
+						<small>
+							Create your free account by filling the fields below.
+						</small>
+					</header>
 
-				<form class="mr-layout-form">
-					<Input
-						v-model="registrationForm.name"
-						label="Name"
-						:errors="errors.name"
-						autocomplete="given-name"
-					/>
-
-					<Input
-						v-model="registrationForm.email"
-						label="Email"
-						type="email"
-						autocomplete="email"
-						:errors="errors.email"
-					/>
-
-					<Input
-						v-model="registrationForm.password"
-						type="password"
-						label="Password"
-						autocomplete="new-password"
-						:errors="errors.password"
-					/>
-
-					<Input
-						v-model="registrationForm.passwordConfirmation"
-						type="password"
-						label="Password Confirmation"
-						autocomplete="new-password"
-						:errors="errors.passwordConfirmation"
-					/>
-
-					<div class="mr-layout-form-actions">
-						<Button
-							label="Sign Up"
-							@click="onSignUp"
+					<form class="mr-layout-form">
+						<Input
+							v-model="registrationForm.name"
+							label="Name"
+							:errors="errors.name"
+							autocomplete="given-name"
 						/>
 
-						<slot name="custom-registration-actions" />
+						<Input
+							v-model="registrationForm.email"
+							label="Email"
+							type="email"
+							autocomplete="email"
+							:errors="errors.email"
+						/>
 
-						<small class="already-have-an-account">
-							Already have an account?
+						<Input
+							v-model="registrationForm.password"
+							type="password"
+							label="Password"
+							autocomplete="new-password"
+							:errors="errors.password"
+						/>
+
+						<Input
+							v-model="registrationForm.passwordConfirmation"
+							type="password"
+							label="Password Confirmation"
+							autocomplete="new-password"
+							:errors="errors.passwordConfirmation"
+						/>
+
+						<div class="mr-layout-form-actions">
 							<Button
-								label="Sign in now"
-								size="sm"
-								theme="text"
-								variant="secondary"
-								@click="onSignIn"
+								label="Sign Up"
+								@click="onSignUp"
 							/>
-						</small>
-					</div>
-				</form>
-			</div>
+
+							<slot name="custom-registration-actions" />
+
+							<small class="already-have-an-account">
+								Already have an account?
+								<Button
+									label="Sign in now"
+									size="sm"
+									theme="text"
+									variant="secondary"
+									@click="onSignIn"
+								/>
+							</small>
+						</div>
+					</form>
+				</div>
+			</Transition>
 		</template>
 	</Split-Layout>
 </template>
@@ -73,6 +81,7 @@
 import { validate } from '../validators/RegistrationValidator'
 import SplitLayout from "./SplitLayout.vue"
 import Input from '@/components/Input/index.vue'
+import gsap from 'gsap'
 
 export default {
 	components: {
@@ -116,6 +125,27 @@ export default {
 
 		onSignIn() {
 			this.$emit('sign-in')
+		},
+
+		onEnter(el, done) {
+			let targets = el.children.length > 0 ? el.children : el
+
+			gsap.from(targets, {
+				opacity: 0,
+				translateY: 150,
+				stagger: 0.5,
+				onComplete: () => done()
+			})
+		},
+
+		onLeave(el, done) {
+			gsap.to(el, {
+				opacity: 0,
+				translateY: -150,
+				height: 0,
+				padding: 0,
+				onComplete: () => done()
+			})
 		}
 	}
 }
