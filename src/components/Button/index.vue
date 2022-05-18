@@ -29,7 +29,6 @@
 
 <script>
 import './index.scss'
-import 'remixicon/fonts/remixicon.css'
 import Icon from '../Icon/index.vue'
 import Spinner from '../Spinner/index.vue'
 

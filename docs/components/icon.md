@@ -13,9 +13,9 @@ The icon component represents a lightweight wrapper around the icon library used
 
 ```vue
 <template>
-    <Icon name="chat-1-line" />
-    <Icon name="pencil-line" />
-    <Icon name="mac-line" />
+	<Icon name="chat-1-line" />
+	<Icon name="pencil-line" />
+	<Icon name="mac-line" />
 </template>
 ```
 

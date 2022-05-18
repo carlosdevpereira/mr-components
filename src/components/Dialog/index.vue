@@ -115,7 +115,7 @@ export default {
 		mobileTransitions() {
 			let mobileTransitions = {}
 
-			const isMobile = window.innerWidth < 968
+			const isMobile = window && window.innerWidth < 968
 			if (isMobile) {
 				mobileTransitions.translateY = 100
 			}

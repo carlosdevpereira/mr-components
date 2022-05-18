@@ -1,4 +1,3 @@
-import 'remixicon/fonts/remixicon.css'
 // Exportable plugins
 import { Toast as ToastPlugin } from './src/plugins/Toast'
 import { Dialog as DialogPlugin } from './src/plugins/Dialog'
@@ -7,6 +6,7 @@ import { Validation as ValidationPlugin } from './src/plugins/Validation'
 import Autocomplete from './src/components/Autocomplete/index.vue'
 import Button from './src/components/Button/index.vue'
 import Checkbox from './src/components/Checkbox/index.vue'
+import Dialog from './src/components/Dialog/index.vue'
 import Dropdown from './src/components/Dropdown/index.vue'
 import Icon from './src/components/Icon/index.vue'
 import Input from './src/components/Input/index.vue'
@@ -28,6 +28,7 @@ export default Vue => {
 	Vue.component('Autocomplete', Autocomplete)
 		.component('Button', Button)
 		.component('Checkbox', Checkbox)
+		.component('Dialog', Dialog)
 		.component('Dropdown', Dropdown)
 		.component('Icon', Icon)
 		.component('Input', Input)

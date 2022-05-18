@@ -44,7 +44,6 @@
 
 <script>
 import './index.scss'
-import 'remixicon/fonts/remixicon.css'
 import gsap from 'gsap'
 import Icon from '../Icon/index.vue'
 import Button from '../Button/index.vue'

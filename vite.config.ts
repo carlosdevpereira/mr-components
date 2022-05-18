@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import PurgeIcons from 'vite-plugin-purge-icons'
 import Vue from '@vitejs/plugin-vue'
 import path from 'path'
 
@@ -7,7 +8,9 @@ export default defineConfig({
 		Vue({
 			include: [/\.vue$/, /\.md$/],
 			reactivityTransform: true,
-		})
+		}),
+
+		PurgeIcons(),
 	],
 	resolve: {
 		alias: {

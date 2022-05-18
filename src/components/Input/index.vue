@@ -45,7 +45,6 @@
 
 <script>
 import './index.scss'
-import 'remixicon/fonts/remixicon.css'
 import Icon from '../Icon/index.vue'
 import props from './props'
 

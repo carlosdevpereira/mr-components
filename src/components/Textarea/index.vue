@@ -48,7 +48,6 @@
 <script>
 import './index.scss'
 import '../Input/index.scss'
-import 'remixicon/fonts/remixicon.css'
 import Icon from '../Icon/index.vue'
 
 export const themes = ['default', 'solid', 'outlined']

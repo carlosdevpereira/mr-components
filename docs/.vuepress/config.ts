@@ -1,3 +1,5 @@
+import PurgeIcons from 'vite-plugin-purge-icons'
+
 const fs = require('fs')
 const { path } = require('@vuepress/utils')
 const { searchPlugin } = require('@vuepress/plugin-search')
@@ -74,7 +76,13 @@ module.exports = {
 	description: 'A set of lightweight Vue components to power @carlosdevpereira projects',
 	lang: 'en-US',
 	serviceWorker: false,
-	bundler: viteBundler(),
+	bundler: viteBundler({
+		viteOptions: {
+			plugins: [
+				PurgeIcons(),
+			]
+		}
+	}),
 	alias: {
 		'@': path.resolve(__dirname, '../../src'),
 		'@tests': path.resolve(__dirname, '../../tests'),

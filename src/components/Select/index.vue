@@ -34,7 +34,6 @@
 
 <script>
 import './index.scss'
-import 'remixicon/fonts/remixicon.css'
 import Icon from "../Icon/index.vue"
 export const themes = ['default', 'solid', 'outlined']
 export const variants = ['default', 'primary', 'secondary', 'danger', 'warning', 'success', 'info']
