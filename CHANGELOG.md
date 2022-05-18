@@ -1,5 +1,38 @@
 # Changelog
 
+## [1.7.0](https://github.com/carlosdevpereira/mr-components/compare/v1.6.0...v1.7.0) (2022-05-18)
+
+
+### 🚨 Bug Fixes
+
+* wrong background-color on header sidebar layout ([66bc05d](https://github.com/carlosdevpereira/mr-components/commit/66bc05d24d9d1c1b4e26058d58ba15a8f9156825))
+
+
+### 👷 Maintenance
+
+* **deps-dev:** bump @babel/core from 7.17.10 to 7.17.12 ([#183](https://github.com/carlosdevpereira/mr-components/issues/183)) ([53532ca](https://github.com/carlosdevpereira/mr-components/commit/53532caf61136984ff0a285ede4c4a8010675019))
+* **deps-dev:** bump @babel/preset-env from 7.17.10 to 7.17.12 ([#182](https://github.com/carlosdevpereira/mr-components/issues/182)) ([9222dfa](https://github.com/carlosdevpereira/mr-components/commit/9222dfa4f1784d2e8917e4e9c8bbafdb36c9010e))
+* **deps-dev:** bump @types/node from 17.0.31 to 17.0.33 ([#171](https://github.com/carlosdevpereira/mr-components/issues/171)) ([7746afb](https://github.com/carlosdevpereira/mr-components/commit/7746afb2496a9abfa885876fa949de6ec877cd27))
+* **deps-dev:** bump @types/node from 17.0.33 to 17.0.34 ([#181](https://github.com/carlosdevpereira/mr-components/issues/181)) ([e2ad0bb](https://github.com/carlosdevpereira/mr-components/commit/e2ad0bb7c64137b4a49895f4fb05fc7f67ed6722))
+* **deps-dev:** bump @vitejs/plugin-vue from 2.3.2 to 2.3.3 ([#173](https://github.com/carlosdevpereira/mr-components/issues/173)) ([a1eb754](https://github.com/carlosdevpereira/mr-components/commit/a1eb754c5c4bd4928b780a0bb34f779261b7773d))
+* **deps-dev:** bump @vuepress/plugin-register-components ([#177](https://github.com/carlosdevpereira/mr-components/issues/177)) ([30fae69](https://github.com/carlosdevpereira/mr-components/commit/30fae6967d36fa229b465bbef3f013e00612d0f8))
+* **deps-dev:** bump @vuepress/plugin-search ([#178](https://github.com/carlosdevpereira/mr-components/issues/178)) ([5d6b022](https://github.com/carlosdevpereira/mr-components/commit/5d6b02272905a24f482908ee2a776625cf2b6fa1))
+* **deps-dev:** bump @vueuse/core from 8.4.2 to 8.5.0 ([#179](https://github.com/carlosdevpereira/mr-components/issues/179)) ([2a765fa](https://github.com/carlosdevpereira/mr-components/commit/2a765fa71ff1455850240c2a0e7a601bec238fe7))
+* **deps-dev:** bump vite from 2.9.8 to 2.9.9 ([#172](https://github.com/carlosdevpereira/mr-components/issues/172)) ([73a0d6d](https://github.com/carlosdevpereira/mr-components/commit/73a0d6dd2f9ad65f3b4383e3b9322dad924a8474))
+* **deps-dev:** bump vuepress from 2.0.0-beta.43 to 2.0.0-beta.45 ([#176](https://github.com/carlosdevpereira/mr-components/issues/176)) ([1e549d4](https://github.com/carlosdevpereira/mr-components/commit/1e549d49a8f721a8c9809c91772c1dee43d13c47))
+* **deps:** bump vest from 4.3.4 to 4.4.0 ([#184](https://github.com/carlosdevpereira/mr-components/issues/184)) ([0489566](https://github.com/carlosdevpereira/mr-components/commit/0489566dd2549b8a74842f221d11a17262bcf974))
+* replace column visibility icon with text ([d61dfcd](https://github.com/carlosdevpereira/mr-components/commit/d61dfcd91e470036642d59befb4beb0cb82f7cd3))
+
+
+### ✨ Features
+
+* add transitions to login and registration ([85a71c1](https://github.com/carlosdevpereira/mr-components/commit/85a71c1bdf413c7d343dc58b20abfa660335b29e))
+* login layout ([#175](https://github.com/carlosdevpereira/mr-components/issues/175)) ([e758a2d](https://github.com/carlosdevpereira/mr-components/commit/e758a2d6dda5814d0e4411778078aad728c745d0))
+* password recovery and reset screens ([#185](https://github.com/carlosdevpereira/mr-components/issues/185)) ([e34a277](https://github.com/carlosdevpereira/mr-components/commit/e34a277d2c761487abc35c08bdd29d05270af4de))
+* registration layout ([#174](https://github.com/carlosdevpereira/mr-components/issues/174)) ([8021666](https://github.com/carlosdevpereira/mr-components/commit/80216665a41f3db622a19bd903328e39e565c3a1))
+* remove remixicon dependency and implement iconify with purge-icons ([4b2a10e](https://github.com/carlosdevpereira/mr-components/commit/4b2a10e3bc34c84edf3aec210a01f3101e64f444))
+* split layout component ([5ca5ab6](https://github.com/carlosdevpereira/mr-components/commit/5ca5ab69cee6470a826b8ce383839d80fe2613e6))
+
 ## [1.6.0](https://github.com/carlosdevpereira/mr-components/compare/v1.5.1...v1.6.0) (2022-05-12)
 
 
