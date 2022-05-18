@@ -4,69 +4,77 @@
 		inverse
 	>
 		<template #left>
-			<div class="mr-layout-content">
-				<header class="mr-layout-header">
-					<h2 class="mr-layout-title">
-						Welcome back
-					</h2>
+			<Transition
+				appear
+				:css="false"
+				mode="out-in"
+				@enter="onEnter"
+				@leave="onLeave"
+			>
+				<div class="mr-layout-content">
+					<header class="mr-layout-header">
+						<h2 class="mr-layout-title">
+							Welcome back
+						</h2>
 
-					<small>
-						Welcome back! Please enter your credentials.
-					</small>
-				</header>
-
-				<form class="mr-layout-form">
-					<Input
-						v-model="loginForm.email"
-						type="email"
-						label="Email"
-						autocomplete="email"
-						:errors="errors.email"
-					/>
-
-					<Input
-						v-model="loginForm.password"
-						label="Password"
-						type="password"
-						autocomplete="new-password"
-						:errors="errors.password"
-					/>
-
-					<div class="password-remember-or-recover">
-						<Checkbox
-							v-model="loginForm.rememberMe"
-							label="Remember me for 30 days"
-						/>
-
-						<Button
-							theme="text"
-							size="sm"
-							label="Forgot password"
-							@click="onForgotPassword"
-						/>
-					</div>
-
-					<div class="mr-layout-form-actions">
-						<Button
-							label="Sign In"
-							@click="onSignIn"
-						/>
-
-						<slot name="custom-login-actions" />
-
-						<small class="dont-have-an-account">
-							Don't have an account?
-							<Button
-								label="Sign up for free"
-								size="sm"
-								theme="text"
-								variant="secondary"
-								@click="onSignUpRequest"
-							/>
+						<small>
+							Welcome back! Please enter your credentials.
 						</small>
-					</div>
-				</form>
-			</div>
+					</header>
+
+					<form class="mr-layout-form">
+						<Input
+							v-model="loginForm.email"
+							type="email"
+							label="Email"
+							autocomplete="email"
+							:errors="errors.email"
+						/>
+
+						<Input
+							v-model="loginForm.password"
+							label="Password"
+							type="password"
+							autocomplete="new-password"
+							:errors="errors.password"
+						/>
+
+						<div class="password-remember-or-recover">
+							<Checkbox
+								v-model="loginForm.rememberMe"
+								label="Remember me for 30 days"
+							/>
+
+							<Button
+								theme="text"
+								size="sm"
+								label="Forgot password"
+								@click="onForgotPassword"
+							/>
+						</div>
+
+						<div class="mr-layout-form-actions">
+							<Button
+								label="Sign In"
+								@click="onSignIn"
+							/>
+
+							<slot name="custom-login-actions" />
+
+							<small class="dont-have-an-account">
+								Don't have an account?
+								<Button
+									label="Sign up for free"
+									size="sm"
+									theme="text"
+									variant="secondary"
+									@click="onSignUpRequest"
+								/>
+							</small>
+						</div>
+					</form>
+				</div>
+			</Transition>
 		</template>
 	</Split-Layout>
 </template>
@@ -76,6 +84,7 @@ import { validate } from '../validators/LoginValidator'
 import SplitLayout from "./SplitLayout.vue"
 import Input from '@/components/Input/index.vue'
 import Checkbox from '@/components/Checkbox/index.vue'
+import gsap from 'gsap'
 
 export default {
 	components: {
@@ -120,6 +129,27 @@ export default {
 
 		onSignUpRequest() {
 			this.$emit('sign-up')
+		},
+
+		onEnter(el, done) {
+			let targets = el.children.length > 0 ? el.children : el
+
+			gsap.from(targets, {
+				opacity: 0,
+				translateY: 150,
+				stagger: 0.5,
+				onComplete: () => done()
+			})
+		},
+
+		onLeave(el, done) {
+			gsap.to(el, {
+				opacity: 0,
+				translateY: -150,
+				height: 0,
+				padding: 0,
+				onComplete: () => done()
+			})
 		}
 	}
 }
