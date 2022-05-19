@@ -1,5 +1,16 @@
 # Changelog
 
+### [1.7.2](https://github.com/carlosdevpereira/mr-components/compare/v1.7.1...v1.7.2) (2022-05-19)
+
+
+### 👷 Maintenance
+
+* **deps-dev:** bump @types/node from 17.0.34 to 17.0.35 ([#191](https://github.com/carlosdevpereira/mr-components/issues/191)) ([549364e](https://github.com/carlosdevpereira/mr-components/commit/549364e6b449e9e0a0e969baca786d6dcde57214))
+* **deps-dev:** bump postcss from 8.4.13 to 8.4.14 ([#188](https://github.com/carlosdevpereira/mr-components/issues/188)) ([9eadbc3](https://github.com/carlosdevpereira/mr-components/commit/9eadbc3b7b19dfa61e3954e009527f222677b40a))
+* **deps-dev:** bump sass-loader from 12.6.0 to 13.0.0 ([#190](https://github.com/carlosdevpereira/mr-components/issues/190)) ([967db74](https://github.com/carlosdevpereira/mr-components/commit/967db74f4437350ee4e242949015bbb95100572e))
+* **deps:** bump vue from 3.2.33 to 3.2.34 ([#189](https://github.com/carlosdevpereira/mr-components/issues/189)) ([0b5d924](https://github.com/carlosdevpereira/mr-components/commit/0b5d924a7148221059fa53ccf0abc0f4d61a67b6))
+* use unocss to import and bundle fonts ([7636f50](https://github.com/carlosdevpereira/mr-components/commit/7636f5011e3dead11d2676202f7d3ca53d5694cd))
+
 ### [1.7.1](https://github.com/carlosdevpereira/mr-components/compare/v1.7.0...v1.7.1) (2022-05-19)
 
 
