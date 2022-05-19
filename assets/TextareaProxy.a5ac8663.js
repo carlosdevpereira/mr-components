@@ -1,0 +1,1 @@
+import{_ as l,r as n,o as s,q as u,s as p}from"./app.d8122980.js";const _={data(){return{value:null}}};function m(r,e,c,x,o,d){const a=n("Textarea");return s(),u(a,p({modelValue:o.value,"onUpdate:modelValue":e[0]||(e[0]=t=>o.value=t)},r.$attrs),null,16,["modelValue"])}var v=l(_,[["render",m],["__file","TextareaProxy.vue"]]);export{v as default};
