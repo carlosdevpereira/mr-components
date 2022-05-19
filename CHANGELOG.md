@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.7.1](https://github.com/carlosdevpereira/mr-components/compare/v1.7.0...v1.7.1) (2022-05-19)
+
+
+### 🚨 Bug Fixes
+
+* add layouts to exports ([87d7976](https://github.com/carlosdevpereira/mr-components/commit/87d7976e7ffd9f227aefd3939277a656f60f505a))
+
 ## [1.7.0](https://github.com/carlosdevpereira/mr-components/compare/v1.6.0...v1.7.0) (2022-05-18)
 
 
