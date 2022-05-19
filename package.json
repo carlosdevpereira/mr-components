@@ -60,7 +60,7 @@
 		"prettier": "^2.6.2",
 		"regenerator-runtime": "^0.13.9",
 		"sass": "^1.49.11",
-		"sass-loader": "^12.6.0",
+		"sass-loader": "^13.0.0",
 		"stylelint": "^14.6.1",
 		"stylelint-config-recess-order": "^3.0.0",
 		"ts-jest": "^27.1.4",
