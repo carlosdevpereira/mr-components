@@ -207,7 +207,7 @@ export default {
 			align-items: center;
 			justify-content: center;
 			font-size: 12px;
-			font-weight: 300;
+			font-weight: 400;
 
 			.mr-button {
 				width: max-content;

@@ -1,0 +1,8 @@
+@import './variables';
+
+/// CSS to be imported globally when bundling the
+/// components or docs
+
+*:not(.code-group):not(pre):not(code):not(code *) {
+	font-family: $fontFamily;
+}

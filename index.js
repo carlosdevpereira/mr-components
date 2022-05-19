@@ -1,4 +1,5 @@
 import 'uno.css'
+import './src/assets/scss/global.scss'
 // Exportable plugins
 import { Toast as ToastPlugin } from './src/plugins/Toast'
 import { Dialog as DialogPlugin } from './src/plugins/Dialog'
