@@ -1,0 +1,1 @@
+const e={key:"v-67d16688",path:"/plugins/",title:"Plugins",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1653000683e3,contributors:[{name:"Carlos Pereira",email:"carlos.dev.pereira@gmail.com",commits:1}]},filePathRelative:"plugins/index.md"};export{e as data};

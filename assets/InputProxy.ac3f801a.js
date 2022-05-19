@@ -1,0 +1,1 @@
+import{_ as l,r as s,o as u,q as a,s as p}from"./app.e4a290ec.js";const _={data(){return{value:null}}};function m(n,e,c,d,o,f){const r=s("Input");return u(),a(r,p({modelValue:o.value,"onUpdate:modelValue":e[0]||(e[0]=t=>o.value=t)},n.$attrs),null,16,["modelValue"])}var i=l(_,[["render",m],["__file","InputProxy.vue"]]);export{i as default};
