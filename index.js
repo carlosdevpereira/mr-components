@@ -1,3 +1,4 @@
+import 'uno.css'
 // Exportable plugins
 import { Toast as ToastPlugin } from './src/plugins/Toast'
 import { Dialog as DialogPlugin } from './src/plugins/Dialog'
@@ -31,7 +32,6 @@ import RegistrationLayout from './src/layouts/RegistrationLayout.vue'
 import SidebarLayout from './src/layouts/SidebarLayout.vue'
 import SidebarLayoutWithHeader from './src/layouts/SidebarLayoutWithHeader.vue'
 import SplitLayout from './src/layouts/SplitLayout.vue'
-
 
 export default Vue => {
 	Vue.config.globalProperties.$toast = ToastPlugin
@@ -85,7 +85,8 @@ export {
 	NotFoundLayout,
 	PasswordRecoveryLayout,
 	PasswordResetLayout,
+	RegistrationLayout,
 	SidebarLayout,
 	SidebarLayoutWithHeader,
-	SplitLayout
+	SplitLayout,
 }

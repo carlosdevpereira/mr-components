@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
-import PurgeIcons from 'vite-plugin-purge-icons'
-import Vue from '@vitejs/plugin-vue'
 import path from 'path'
+import Vue from '@vitejs/plugin-vue'
+import VitePlugins from './vite.plugins.config'
 
 export default defineConfig({
 	plugins: [
@@ -10,7 +10,7 @@ export default defineConfig({
 			reactivityTransform: true,
 		}),
 
-		PurgeIcons(),
+		...VitePlugins,
 	],
 	resolve: {
 		alias: {

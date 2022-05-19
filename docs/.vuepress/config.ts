@@ -1,4 +1,4 @@
-import PurgeIcons from 'vite-plugin-purge-icons'
+import VitePlugins from '../../vite.plugins.config'
 
 const fs = require('fs')
 const { path } = require('@vuepress/utils')
@@ -62,10 +62,7 @@ const getLayoutSourceComponents = () => {
 		layoutName.splice(-1)
 		layoutName = layoutName.join('.')
 
-		components[layoutName] = path.resolve(
-			__dirname,
-			`../../src/layouts/${layoutName}.vue`
-		)
+		components[layoutName] = path.resolve(__dirname, `../../src/layouts/${layoutName}.vue`)
 	})
 
 	return components
@@ -78,10 +75,8 @@ module.exports = {
 	serviceWorker: false,
 	bundler: viteBundler({
 		viteOptions: {
-			plugins: [
-				PurgeIcons(),
-			]
-		}
+			plugins: [...VitePlugins],
+		},
 	}),
 	alias: {
 		'@': path.resolve(__dirname, '../../src'),
@@ -122,21 +117,10 @@ module.exports = {
 				componentsDir: path.resolve(__dirname, './components'),
 				components: {
 					...getSourceComponents(),
-					...getLayoutSourceComponents()
+					...getLayoutSourceComponents(),
 				},
 			}),
 		],
 	],
-	head: [
-		['link', { rel: 'icon', href: '/images/logo@1x.png' }],
-		['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
-		['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true }],
-		[
-			'link',
-			{
-				rel: 'stylesheet',
-				href: 'https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap',
-			},
-		],
-	],
+	head: [['link', { rel: 'icon', href: '/images/logo@1x.png' }]],
 }
