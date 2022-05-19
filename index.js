@@ -19,6 +19,19 @@ import Spinner from './src/components/Spinner/index.vue'
 import Table from './src/components/Table/index.vue'
 import Textarea from './src/components/Textarea/index.vue'
 import Toast from './src/components/Toast/index.vue'
+// Exportable layouts
+import HeaderLayout from './src/layouts/HeaderLayout.vue'
+import HeaderLayoutWithSidebar from './src/layouts/HeaderLayoutWithSidebar.vue'
+import LoginLayout from './src/layouts/LoginLayout.vue'
+import MaintenanceLayout from './src/layouts/MaintenanceLayout.vue'
+import NotFoundLayout from './src/layouts/NotFoundLayout.vue'
+import PasswordRecoveryLayout from './src/layouts/PasswordRecoveryLayout.vue'
+import PasswordResetLayout from './src/layouts/PasswordResetLayout.vue'
+import RegistrationLayout from './src/layouts/RegistrationLayout.vue'
+import SidebarLayout from './src/layouts/SidebarLayout.vue'
+import SidebarLayoutWithHeader from './src/layouts/SidebarLayoutWithHeader.vue'
+import SplitLayout from './src/layouts/SplitLayout.vue'
+
 
 export default Vue => {
 	Vue.config.globalProperties.$toast = ToastPlugin
@@ -64,4 +77,15 @@ export {
 	Table,
 	Textarea,
 	Toast,
+	// Layouts
+	HeaderLayout,
+	HeaderLayoutWithSidebar,
+	LoginLayout,
+	MaintenanceLayout,
+	NotFoundLayout,
+	PasswordRecoveryLayout,
+	PasswordResetLayout,
+	SidebarLayout,
+	SidebarLayoutWithHeader,
+	SplitLayout
 }
