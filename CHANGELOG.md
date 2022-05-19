@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.7.3](https://github.com/carlosdevpereira/mr-components/compare/v1.7.2...v1.7.3) (2022-05-19)
+
+
+### 🚨 Bug Fixes
+
+* fonts not correctly applied to all elements ([498bb6c](https://github.com/carlosdevpereira/mr-components/commit/498bb6c9d3eb9ff47e68ee06c660aea38ce92700))
+
 ### [1.7.2](https://github.com/carlosdevpereira/mr-components/compare/v1.7.1...v1.7.2) (2022-05-19)
 
 
