@@ -43,7 +43,7 @@
 		"@iconify/iconify": "^2.2.1",
 		"@types/jest": "^27.5.0",
 		"@types/node": "^17.0.31",
-		"@unocss/preset-web-fonts": "^0.36.0",
+		"@unocss/preset-web-fonts": "^0.37.1",
 		"@vitejs/plugin-vue": "^2.3.1",
 		"@vue/component-compiler-utils": "^3.3.0",
 		"@vue/test-utils": "^2.0.0-rc.19",
