@@ -2,7 +2,7 @@ import VitePlugins from '../../vite.plugins.config'
 
 const fs = require('fs')
 const { path } = require('@vuepress/utils')
-const { searchPlugin } = require('@vuepress/plugin-search')
+const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
 const { nprogressPlugin } = require('@vuepress/plugin-nprogress')
 const { defaultTheme, viteBundler } = require('vuepress')
 const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
@@ -112,7 +112,21 @@ module.exports = {
 	plugins: [
 		[
 			nprogressPlugin(),
-			searchPlugin({}),
+			docsearchPlugin({
+				indexName: 'mr-components',
+				appId: '9L6TKQY68C',
+				apiKey: '66bf47d2f78f7142bd11cf04d9ab9733',
+				locales: {
+					'/': {
+						placeholder: 'Search',
+						translations: {
+							button: {
+								buttonText: 'Search',
+							},
+						},
+					},
+				},
+			}),
 			registerComponentsPlugin({
 				componentsDir: path.resolve(__dirname, './components'),
 				components: {
