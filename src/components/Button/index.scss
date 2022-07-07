@@ -135,7 +135,7 @@ $sizes: (
 					}
 
 					background-color: $variantColor;
-					box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+					box-shadow: 0 4px 6px fade-out($variantColor, 0.75), 0 1px 3px fade-out($variantColor, 0.6);
 				}
 
 				&:active,
@@ -170,13 +170,14 @@ $sizes: (
 				}
 
 				&:not(:disabled):hover {
-					background-color: fade-out($variantColor, 0.9);
+					box-shadow: 0 3px 6px fade-out($variantColor, 0.9);
 				}
 
 				&:active,
 				&:focus-visible {
-					background-color: fade-out($variantColor, 0.8);
-					border-color: fade-out($variantColor, 0.95);
+					background-color: lighten($variantColor, 75%);
+					border-color: lighten($variantColor, 80%);
+					box-shadow: 0 3px 6px fade-out($variantColor, 0.85);
 				}
 			}
 		}

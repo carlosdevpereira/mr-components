@@ -84,6 +84,11 @@
 			justify-content: start;
 			text-align: left;
 			border-radius: 0;
+
+			&.mr-button:focus {
+				background-color: transparent;
+				border-color: transparent;
+			}
 		}
 	}
 }

@@ -262,14 +262,28 @@ export default {
 	}
 
 	@media screen and (max-width: #{map.get($breakpoints, 'lg')}px) {
-		.mr-layout-left-section {
+		position: relative;
+		flex-direction: column;
+		overflow: auto;
+
+		.mr-layout-left-section:not(:empty) {
+			position: absolute;
+			top: 100%;
+			order: 2;
+			width: 100%;
+			height: 100%;
+		}
+
+		.mr-layout-left-section:empty {
 			width: 0;
 			padding: 0;
 		}
 
 		.mr-layout-right-section {
 			align-items: center;
+			order: 1;
 			width: 100%;
+			height: 100vh;
 			text-align: center;
 		}
 

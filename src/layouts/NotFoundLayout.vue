@@ -43,12 +43,14 @@ export default {
 	background-color: $sectionBackgroundColor;
 
 	h1 {
+		padding: 0;
 		margin: 0;
 		font-size: 100px;
 		font-weight: bold;
 	}
 
 	h3.mr-layout-title {
+		padding: 0;
 		margin: 0;
 		font-size: 36px;
 	}
