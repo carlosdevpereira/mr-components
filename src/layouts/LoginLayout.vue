@@ -219,11 +219,24 @@ export default {
 	}
 
 	@media screen and (max-width: #{map.get($breakpoints, 'lg')}px) {
+		position: relative;
+		flex-direction: column;
+		justify-content: flex-start;
+		overflow: auto;
+
 		.mr-layout-left-section {
 			width: 100%;
+			height: 100%;
 		}
 
-		.mr-layout-right-section {
+		.mr-layout-right-section:not(:empty) {
+			position: absolute;
+			top: 100%;
+			width: 100%;
+			height: 100%;
+		}
+
+		.mr-layout-right-section:empty {
 			width: 0;
 			padding: 0;
 		}

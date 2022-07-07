@@ -125,12 +125,8 @@ export default {
 			}
 		}
 
-		.mr-sidebar-toggle {
-			position: sticky;
-		}
-
 		& > .mr-layout-main {
-			padding: 1.5rem;
+			padding: 4rem 1.5rem;
 			overflow: auto;
 
 			.mr-header-layout {

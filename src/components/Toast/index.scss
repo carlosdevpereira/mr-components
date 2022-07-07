@@ -70,6 +70,7 @@
 
 				.mr-toast-icon {
 					display: flex;
+					flex: 1;
 					align-items: center;
 					justify-content: center;
 					width: 22px;
@@ -83,6 +84,7 @@
 
 		.mr-toast-body {
 			display: flex;
+			flex: 10;
 			flex-direction: column;
 
 			strong {

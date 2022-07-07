@@ -16,19 +16,19 @@ describe('Button', () => {
 		})
 
 		it('renders the icon', () => {
-			let iconComponent = wrapper.findComponent(Icon)
+			const iconComponent = wrapper.findComponent(Icon)
 
 			expect(iconComponent.exists()).toBeTruthy()
 		})
 
 		it('renders the correct icon', () => {
-			let iconComponent = wrapper.findComponent(Icon)
+			const iconComponent = wrapper.findComponent(Icon)
 
 			expect(iconComponent.vm.name).toBe('chat-1-line')
 		})
 
 		it('renders the icon by default in the left side of the button', () => {
-			let iconComponent = wrapper.findComponent(Icon)
+			const iconComponent = wrapper.findComponent(Icon)
 
 			expect(iconComponent.classes()).toContain('icon-position-start')
 		})
@@ -36,7 +36,7 @@ describe('Button', () => {
 		it('renders the icon in the right side of the button', async () => {
 			await wrapper.setProps({ iconPosition: 'end' })
 
-			let iconComponent = wrapper.findComponent(Icon)
+			const iconComponent = wrapper.findComponent(Icon)
 
 			expect(iconComponent.classes()).toContain('icon-position-end')
 		})

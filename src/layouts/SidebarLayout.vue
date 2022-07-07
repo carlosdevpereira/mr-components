@@ -20,10 +20,11 @@
 		</Transition>
 
 		<Button
+			:key="isOpen"
 			class="mr-sidebar-toggle"
 			theme="text"
 			:icon="isOpen ? 'close-fill' : 'menu-2-line'"
-			:class="{'active': isOpen || animationInProgress}"
+			:class="{'active': isOpen}"
 			@click="toggleSidebar"
 		/>
 
@@ -94,8 +95,8 @@ export default {
 
 	methods: {
 		toggleSidebar() {
-			this.animationInProgress = true
 			this.isOpen = !this.isOpen
+			this.animationInProgress = true
 
 			if (this.windowWidth < 968) {
 				if (this.hasSidebar || this.animationInProgress) {
@@ -133,6 +134,8 @@ export default {
 				duration: 0.3,
 				stagger: 0.15,
 				onComplete: () => {
+					this.animationInProgress = false
+
 					done()
 
 					gsap.to('.mr-layout-main', {
@@ -140,16 +143,13 @@ export default {
 						duration: 0.8,
 						translateY: 0
 					})
-
-					this.animationInProgress = false
 				}
 			})
 		},
 
 		onSidebarLeave(el, done) {
 			gsap.to('.mr-sidebar-toggle', {
-				opacity: 0,
-				translateY: '-10px',
+				opacity: 0
 			})
 
 			gsap.fromTo('.mr-sidebar > *', {
@@ -167,14 +167,17 @@ export default {
 						duration: 0.4,
 						...this.customTransitions,
 						onComplete: () => {
-							done()
-
 							this.animationInProgress = false
 
-							gsap.fromTo(
+							gsap.to(
 								'.mr-sidebar-toggle',
-								{ opacity: 0, translateY: '-10px' },
-								{ opacity: 1, translateY: 0 }
+								{
+									opacity: 1,
+									duration: 1,
+									onComplete: () => {
+										done()
+									}
+								},
 							)
 
 							document.querySelector('body').style.removeProperty('overflow')
@@ -236,7 +239,7 @@ export default {
 		flex-direction: column;
 
 		.mr-sidebar {
-			position: fixed;
+			position: absolute;
 			top: 0;
 			left: 0;
 			display: none;
@@ -245,11 +248,11 @@ export default {
 		}
 
 		.mr-layout-main {
-			padding: 3rem 1.5rem 1.5rem;
+			padding: 5rem 1.5rem 1.5rem;
 		}
 
 		.mr-sidebar-toggle {
-			position: sticky;
+			position: absolute;
 			top: 1.5rem;
 			left: 1rem;
 			z-index: 150;
@@ -266,13 +269,6 @@ export default {
 				z-index: 200;
 				display: flex;
 				flex-direction: column;
-			}
-
-			.mr-sidebar-toggle {
-				position: fixed;
-				top: 1.5rem;
-				right: 1.5rem;
-				left: auto;
 			}
 		}
 	}

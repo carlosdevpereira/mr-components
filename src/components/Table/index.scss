@@ -78,6 +78,7 @@
 	overflow-y: hidden;
 	background: $whiteColor;
 	border: none;
+	border-radius: $borderRadius;
 
 	thead {
 		background: $sectionBackgroundColor;
