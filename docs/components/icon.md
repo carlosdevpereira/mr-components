@@ -22,4 +22,6 @@ The icon component represents a lightweight wrapper around the icon library used
   </CodeGroupItem>
 </CodeGroup>
 
-For the list of all available icons click [here](https://remixicon.com/)
+## Icon set:
+
+<IconList />

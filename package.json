@@ -41,6 +41,7 @@
 		"@babel/core": "^7.17.8",
 		"@babel/preset-env": "^7.16.5",
 		"@iconify/iconify": "^2.2.1",
+		"@iconify/json": "^2.1.73",
 		"@types/jest": "^27.5.0",
 		"@types/node": "^18.0.3",
 		"@unocss/preset-web-fonts": "^0.43.0",
