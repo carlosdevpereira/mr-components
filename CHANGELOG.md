@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/carlosdevpereira/mr-components/compare/v1.8.0...v1.8.1) (2022-08-02)
+
+
+### 👷 Maintenance
+
+* **deps-dev:** bump @vuepress/plugin-register-components from 2.0.0-beta.48 to 2.0.0-beta.49 ([#321](https://github.com/carlosdevpereira/mr-components/issues/321)) ([c7c943a](https://github.com/carlosdevpereira/mr-components/commit/c7c943ad88c2f6a00586417b87785e1e8b37f4ef))
+
 ## [1.8.0](https://github.com/carlosdevpereira/mr-components/compare/v1.7.3...v1.8.0) (2022-08-02)
 
 
