@@ -58,13 +58,13 @@ jobs:
               if: ${{ steps.release.outputs.release_created }}
               run: npm publish --access public
               env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: sync staging branch with production
-							if: ${{ steps.release.outputs.release_created }}
-							run: |
-									git fetch --all
-									git pull
-									git checkout development
-									git pull
-									git merge master
-									git push origin development
+              if: ${{ steps.release.outputs.release_created }}
+                run: |
+                  git fetch --all
+                  git pull
+                  git checkout development
+                  git pull
+                  git merge master
+                  git push origin development
