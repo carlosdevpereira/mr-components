@@ -22,7 +22,7 @@ jobs:
               if: ${{ steps.release.outputs.release_created }}
               run: |
                   git config user.name carlosdevpereira
-									git config user.email carlos@carlosdevpereira.com
+                  git config user.email carlos@carlosdevpereira.com
                   git tag -d v${{ steps.release.outputs.major }} || true
                   git tag -d v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} || true
                   git push origin :v${{ steps.release.outputs.major }} || true
