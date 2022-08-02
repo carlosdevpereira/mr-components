@@ -1,7 +1,7 @@
 on:
     push:
         branches:
-            - development
+            - master
 
 name: release
 jobs:
@@ -14,14 +14,15 @@ jobs:
                   token: ${{ secrets.GH_TOKEN }}
                   release-type: node
                   package-name: Mr.Components
+                  default-branch: master
                   pull-request-title-pattern: '🚀 Release ${component} ${version}'
                   changelog-types: '[{"type":"feat","section":"✨ Features","hidden":false},{"type":"fix","section":"🚨 Bug Fixes","hidden":false},{"type":"hotfix","section":"🚒 Hotfixes","hidden":false},{"type":"chore","section":"👷 Maintenance","hidden":false},{"type":"docs","section":"📚 Documentation","hidden":false}]'
             - uses: actions/checkout@v3
             - name: tag major and minor versions
               if: ${{ steps.release.outputs.release_created }}
               run: |
-                  git config user.name github-actions[bot]
-                  git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+                  git config user.name carlosdevpereira
+									git config user.email carlos@carlosdevpereira.com
                   git tag -d v${{ steps.release.outputs.major }} || true
                   git tag -d v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} || true
                   git push origin :v${{ steps.release.outputs.major }} || true
@@ -52,8 +53,18 @@ jobs:
                   projectName: mr-components
                   directory: docs/.vuepress/dist
                   gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+                  branch: master
             - name: publish npm package 🚀
               if: ${{ steps.release.outputs.release_created }}
               run: npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: sync staging branch with production
+							if: ${{ steps.release.outputs.release_created }}
+							run: |
+									git fetch --all
+									git pull
+									git checkout development
+									git pull
+									git merge master
+									git push origin development
