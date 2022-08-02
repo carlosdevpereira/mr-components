@@ -563,7 +563,9 @@
 			"text-summary",
 			"clover",
 			"html",
-			"lcov"
+			"lcov",
+			"json",
+			"text"
 		],
 		"collectCoverageFrom": [
 			"src/**/*.{ts,js,vue}"
