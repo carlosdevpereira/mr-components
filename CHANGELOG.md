@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.9.0](https://github.com/carlosdevpereira/mr-components/compare/v1.8.0...v1.9.0) (2022-08-03)
+
+
+### 👷 Maintenance
+
+* **deps-dev:** bump @vuepress/plugin-register-components from 2.0.0-beta.48 to 2.0.0-beta.49 ([#321](https://github.com/carlosdevpereira/mr-components/issues/321)) ([c7c943a](https://github.com/carlosdevpereira/mr-components/commit/c7c943ad88c2f6a00586417b87785e1e8b37f4ef))
+
+
+### ✨ Features
+
+* release from development branch to master ([e60c3c6](https://github.com/carlosdevpereira/mr-components/commit/e60c3c6aaf2bd15c78e90936d3f43ba3c02964d0))
+* staging release drafter ([4ba84e3](https://github.com/carlosdevpereira/mr-components/commit/4ba84e3b80d085e8c78b3fb58d0d2228891217f5))
+
+
+### 🚨 Bug Fixes
+
+* build breaking ([ab4645f](https://github.com/carlosdevpereira/mr-components/commit/ab4645f94a06b3fe865cba81be7b79b9ede14b82))
+* indent ([1753599](https://github.com/carlosdevpereira/mr-components/commit/17535990d3c7c6707c00ded997892ee955942c4e))
+* indent ([548272b](https://github.com/carlosdevpereira/mr-components/commit/548272bf9b30bd67b440a82e917a56117b31938c))
+* indentation ([42907a6](https://github.com/carlosdevpereira/mr-components/commit/42907a69cbdf2298430dcad50d69f1b24e3c833c))
+* tests breaking ([258f721](https://github.com/carlosdevpereira/mr-components/commit/258f721fc3dfd3ae4e2151e011cef843169970ed))
+
 ## [1.8.0](https://github.com/carlosdevpereira/mr-components/compare/v1.7.3...v1.8.0) (2022-08-02)
 
 
