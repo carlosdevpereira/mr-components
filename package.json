@@ -34,7 +34,7 @@
 		"gsap": "^3.10.2",
 		"lodash": "^4.17.21",
 		"validator": "^13.7.0",
-		"vest": "^4.3.4",
+		"vest": "^5.0.0",
 		"vue": "^3.2.25"
 	},
 	"devDependencies": {
