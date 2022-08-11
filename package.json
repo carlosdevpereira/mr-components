@@ -1,6 +1,6 @@
 {
 	"name": "@carlosdevpereira/mr-components",
-	"version": "1.8.0",
+	"version": "1.9.1",
 	"author": "carlosdevpereira",
 	"license": "MIT",
 	"icon": "/docs/.vuepress/public/images/logo@2x.png",
@@ -68,7 +68,7 @@
 		"ts-jest": "^27.1.4",
 		"tslib": "^2.4.0",
 		"typescript": "^4.6.4",
-		"unocss": "^0.43.0",
+		"unocss": "^0.33.5",
 		"vite": "^2.9.1",
 		"vite-plugin-purge-icons": "^0.9.0",
 		"vue-loader": "^17.0.0",
@@ -94,6 +94,7 @@
 		"env": {
 			"node": true
 		},
+		"parser": "@babel/eslint-parser",
 		"parserOptions": {
 			"ecmaVersion": 2020
 		},
@@ -563,7 +564,9 @@
 			"text-summary",
 			"clover",
 			"html",
-			"lcov"
+			"lcov",
+			"json",
+			"text"
 		],
 		"collectCoverageFrom": [
 			"src/**/*.{ts,js,vue}"

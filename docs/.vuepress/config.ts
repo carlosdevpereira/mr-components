@@ -13,7 +13,7 @@ const { registerComponentsPlugin } = require('@vuepress/plugin-register-componen
  * documentation router
  **/
 const getComponentRoutes = (folderName = 'components') => {
-	let components = []
+	let components: Array<string> = []
 	const componentsFound = fs.readdirSync(path.resolve(__dirname, '../' + folderName))
 
 	// for now the registration of the components documentation can
@@ -84,7 +84,8 @@ module.exports = {
 	},
 	theme: defaultTheme({
 		logo: '/images/logo@1x.png',
-		darkMode: false,
+		colorMode: 'light',
+		colorModeSwitch: false,
 		repo: 'carlosdevpereira/mr-components',
 		editLink: false,
 		search: true,
