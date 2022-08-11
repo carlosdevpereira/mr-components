@@ -1,3 +1,22 @@
+#app > .theme-container {
+	& > .navbar {
+		--navbar-height: 94px;
+		--navbar-padding-v: 1.5rem;
+		--navbar-line-height: calc(var(--navbar-height) - 2.5 * var(--navbar-padding-v));
+
+		padding: 1.5rem 1.8rem;
+		border-bottom: none;
+	}
+
+	& > .sidebar {
+		top: calc(var(--navbar-height) + 1rem);
+	}
+
+	& > .page {
+		padding-top: calc(var(--navbar-height) + 2.3rem);
+	}
+}
+
 .custom-layout .theme-default-content {
 	max-width: 95%;
 }
