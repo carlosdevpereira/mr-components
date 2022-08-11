@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/carlosdevpereira/mr-components/compare/v1.9.0...v1.9.1) (2022-08-11)
+
+
+### 👷 Maintenance
+
+* disable dark mode ([7e021c7](https://github.com/carlosdevpereira/mr-components/commit/7e021c749ee78e100821282d48c07a425cd3d7ec))
+
 ## [1.9.0](https://github.com/carlosdevpereira/mr-components/compare/v1.8.0...v1.9.0) (2022-08-03)
 
 
