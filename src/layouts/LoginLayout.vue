@@ -44,22 +44,24 @@
 								v-model="loginForm.rememberMe"
 								label="Remember me for 30 days"
 							/>
-
-							<Button
-								theme="text"
-								size="sm"
-								label="Forgot password"
-								@click="onForgotPassword"
-							/>
 						</div>
 
 						<div class="mr-layout-form-actions">
 							<Button
+								class="sign-in-button"
 								label="Sign In"
 								@click="onSignIn"
 							/>
 
 							<slot name="custom-login-actions" />
+
+							<Button
+								theme="text"
+								class="!w-fit ml-auto mr-auto"
+								size="sm"
+								label="Forgot password?"
+								@click="onForgotPassword"
+							/>
 
 							<small class="dont-have-an-account">
 								Don't have an account?
@@ -71,6 +73,8 @@
 									@click="onSignUpRequest"
 								/>
 							</small>
+
+
 						</div>
 					</form>
 				</div>
@@ -206,6 +210,7 @@ export default {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			margin-top: 18px;
 			font-size: 12px;
 			font-weight: 400;
 

@@ -148,8 +148,23 @@ $sizes: (
 	}
 
 	&.text-theme {
+		position: relative;
+		padding: 0;
 		color: map.get($variants, 'default');
 		background-color: transparent;
+		border-radius: 0;
+
+		&::after {
+			position: absolute;
+			bottom: -5px;
+			left: 50%;
+			width: 0;
+			height: 2px;
+			content: ' ';
+			background-color: transparent;
+			transition: width 200ms ease-in-out, background-color 300ms ease-in-out;
+			transform: translateX(-50%);
+		}
 
 		@each $variantName, $variantColor in $variants {
 			&.variant-#{$variantName} {
@@ -169,15 +184,10 @@ $sizes: (
 					}
 				}
 
-				&:not(:disabled):hover {
-					box-shadow: 0 3px 6px fade-out($variantColor, 0.9);
-				}
-
-				&:active,
-				&:focus-visible {
-					background-color: lighten($variantColor, 75%);
-					border-color: lighten($variantColor, 80%);
-					box-shadow: 0 3px 6px fade-out($variantColor, 0.85);
+				&:not(:disabled):hover::after,
+				&:focus::after {
+					width: 75%;
+					background-color: $variantColor;
 				}
 			}
 		}

@@ -82,12 +82,22 @@
 
 		.mr-dropdown-option {
 			justify-content: start;
+			padding: 0.35rem 0.5rem;
 			text-align: left;
 			border-radius: 0;
 
-			&.mr-button:focus {
-				background-color: transparent;
+			&:focus {
+				background-color: rgb(0 0 0 / 5%);
+			}
+
+			&:hover,
+			&:focus {
+				background-color: rgb(0 0 0 / 5%);
 				border-color: transparent;
+
+				&::after {
+					background-color: transparent !important;
+				}
 			}
 		}
 	}
