@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.9.2](https://github.com/carlosdevpereira/mr-components/compare/v1.9.1...v1.9.2) (2022-08-15)
+
+
+### 👷 Maintenance
+
+* change primary color && fix icon sizes ([387e9d4](https://github.com/carlosdevpereira/mr-components/commit/387e9d4730e6d2fb43ca3ec462a212b482e9dd7a))
+* **deps-dev:** bump @iconify/json from 2.1.89 to 2.1.90 ([#374](https://github.com/carlosdevpereira/mr-components/issues/374)) ([38b4801](https://github.com/carlosdevpereira/mr-components/commit/38b48014c120c40329d4e38b929372573a91658d))
+* **deps-dev:** bump @iconify/json from 2.1.90 to 2.1.93 ([#378](https://github.com/carlosdevpereira/mr-components/issues/378)) ([55e8f87](https://github.com/carlosdevpereira/mr-components/commit/55e8f87f278ecc6376c2987c0b5fff4e03bbfef4))
+* **deps-dev:** bump @types/node from 18.7.1 to 18.7.2 ([#373](https://github.com/carlosdevpereira/mr-components/issues/373)) ([3dcb110](https://github.com/carlosdevpereira/mr-components/commit/3dcb110345e2e40c448ffa29152a57a88dc11284))
+* **deps-dev:** bump @types/node from 18.7.2 to 18.7.4 ([#375](https://github.com/carlosdevpereira/mr-components/issues/375)) ([5372679](https://github.com/carlosdevpereira/mr-components/commit/537267919ab741315f5399a59c5961474db73f7e))
+* **deps-dev:** bump @vitejs/plugin-vue from 2.3.3 to 2.3.4 ([#372](https://github.com/carlosdevpereira/mr-components/issues/372)) ([38a5fe2](https://github.com/carlosdevpereira/mr-components/commit/38a5fe21a249bcae04cd2e8bd13d437ab707af1c))
+* **deps-dev:** bump eslint from 8.21.0 to 8.22.0 ([#376](https://github.com/carlosdevpereira/mr-components/issues/376)) ([2b82954](https://github.com/carlosdevpereira/mr-components/commit/2b829548966d116b4ccb128fdb80140222b187ed))
+* **deps-dev:** bump typescript from 4.6.4 to 4.7.4 ([#267](https://github.com/carlosdevpereira/mr-components/issues/267)) ([c1c2d53](https://github.com/carlosdevpereira/mr-components/commit/c1c2d531735409a58ed0e128fc3924bf327c4d6e))
+* **deps:** bump vest from 4.6.2 to 4.6.3 ([#377](https://github.com/carlosdevpereira/mr-components/issues/377)) ([ed8d2c4](https://github.com/carlosdevpereira/mr-components/commit/ed8d2c42cb2629ca3bdc940a2163048612b105bb))
+
 ## [1.9.1](https://github.com/carlosdevpereira/mr-components/compare/v1.9.0...v1.9.1) (2022-08-11)
 
 
