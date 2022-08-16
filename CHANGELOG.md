@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.10.0](https://github.com/carlosdevpereira/mr-components/compare/v1.9.2...v1.10.0) (2022-08-16)
+
+
+### 👷 Maintenance
+
+* specify environment on release-production ([3e800ee](https://github.com/carlosdevpereira/mr-components/commit/3e800eecee56367b0a92ab8ab8c2a378c809d5e0))
+* specify environment on release-staging.yml ([35b19e8](https://github.com/carlosdevpereira/mr-components/commit/35b19e856c55d53d59baa045542d23428c807633))
+
+
+### ✨ Features
+
+* add button slot to dropdown ([81d8235](https://github.com/carlosdevpereira/mr-components/commit/81d82359aa68b0ca6858b80a46e2c1825e40adb3))
+
 ## [1.9.2](https://github.com/carlosdevpereira/mr-components/compare/v1.9.1...v1.9.2) (2022-08-15)
 
 
