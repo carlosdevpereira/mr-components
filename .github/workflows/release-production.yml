@@ -7,6 +7,9 @@ name: release
 jobs:
     release-please:
         runs-on: ubuntu-latest
+        environment:
+            name: production
+            url: https://mr-components.carlosdevpereira.com
         steps:
             - uses: google-github-actions/release-please-action@v3
               id: release
