@@ -6,7 +6,9 @@
 		<Button
 			v-bind="$attrs"
 			@click="toggleDropdown"
-		/>
+		>
+			<slot name="button"></slot>
+		</Button>
 
 		<transition
 			name="pop-in-fade"
