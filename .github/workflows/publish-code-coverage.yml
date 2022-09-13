@@ -1,7 +1,12 @@
 on:
-    push:
-        branches:
-            - '**'
+    pull_request_target:
+        types:
+            - opened
+            - synchronize
+
+permissions:
+    pull-requests: write
+    contents: write
 
 name: Coverage
 jobs:
@@ -26,8 +31,23 @@ jobs:
                   gitHubToken: ${{ secrets.GITHUB_TOKEN }}
                   projectName: mr-components-coverage
                   directory: coverage
-                  branch: ${{ github.head_ref }}
+                  branch: ${{ github.event.pull_request.head.ref }}
             - name: Comment coverage on active PR
-              run: |
-                  echo "Upload ID: ${{ steps.upload.outputs.id }}"
-                  echo "Upload Url: ${{ steps.upload.outputs.url }}"
+              uses: actions/github-script@v3
+              env:
+                BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+                UPLOAD_ID: ${{ steps.upload.outputs.id }}
+                UPLOAD_URL: ${{ steps.upload.outputs.url }}
+              with:
+                github-token: ${{secrets.GITHUB_TOKEN}}
+                script: |
+                var BRANCH_NAME = process.env.BRANCH_NAME;
+                var UPLOAD_ID = process.env.UPLOAD_ID;
+                var UPLOAD_URL = process.env.UPLOAD_URL;
+                github.issues.createComment({
+                    issue_number: context.issue.number,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    body: `## Coverage Report: ID: ${UPLOAD_ID} | URL: ${UPLOAD_URL}`
+                }) 
+              
