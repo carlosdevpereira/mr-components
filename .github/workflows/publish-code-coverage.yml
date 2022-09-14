@@ -43,24 +43,20 @@ jobs:
                           issue_number: context.issue.number,
                           owner: context.repo.owner,
                           repo: context.repo.repo,
-                          body: `### 🔖 Coverage Report
----
+                          body: `### 🔖 Coverage Report <br> --- <br> Base: **81%** | Current PR: **82%**
+                        > Coverage data is based on head (\`${BRANCH_NAME}\`) compared to base (\`${BASE_BRANCH_NAME}\`).
 
-Base: **81%** | Current PR: **82%**
+                        <br>
 
-> Coverage data is based on head (\`${BRANCH_NAME}\`) compared to base (\`${BASE_BRANCH_NAME}\`).
+                        **Coverage Summary:**
 
-<br>
+                        |    Type     | Percentage |  Count  |
+                        | ----------- | ---------- | ------- |
+                        | Statements  |   83.39%   | 638/765 |
+                        | Branches    |   91.06%   | 316/347 |
+                        | Functions   |   69.12%   | 197/285 |
+                        | Lines       |   82.09%   | 573/698 |
 
-**Coverage Summary:**
+                        <br>
 
-|    Type     | Percentage |  Count  |
-| ----------- | ---------- | ------- |
-| Statements  |   83.39%   | 638/765 |
-| Branches    |   91.06%   | 316/347 |
-| Functions   |   69.12%   | 197/285 |
-| Lines       |   82.09%   | 573/698 |
-
-<br>
-
-[View full coverage report 🔗](${UPLOAD_URL})`})
+                        [View full coverage report 🔗](${UPLOAD_URL})`})
