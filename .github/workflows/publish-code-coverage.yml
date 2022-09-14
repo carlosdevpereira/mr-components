@@ -43,25 +43,24 @@ jobs:
                           issue_number: context.issue.number,
                           owner: context.repo.owner,
                           repo: context.repo.repo,
-                          body: `### <img style="float: right;" src="https://knokcare.com/favicon-32x32.png" alt="Knok"> 🔖 Coverage Report
+                          body: `### 🔖 Coverage Report
+---
 
-                            ---
+Base: **81%** | Current PR: **82%**
 
-                            Base: **81%** | Current PR: **82%**
+> Coverage data is based on head (\`${BRANCH_NAME}\`) compared to base (\`${BASE_BRANCH_NAME}\`).
 
-                            > Coverage data is based on head (\`${BRANCH_NAME}\`) compared to base (\`${BASE_BRANCH_NAME}\`).
+<br>
 
-                            <br>
+**Coverage Summary:**
 
-                            **Coverage Summary:**
-                            |    Type     | Percentage |  Count  |
-                            | ----------- | ---------- | ------- |
-                            | Statements  |   83.39%   | 638/765 |
-                            | Branches    |   91.06%   | 316/347 |
-                            | Functions   |   69.12%   | 197/285 |
-                            | Lines       |   82.09%   | 573/698 |
+|    Type     | Percentage |  Count  |
+| ----------- | ---------- | ------- |
+| Statements  |   83.39%   | 638/765 |
+| Branches    |   91.06%   | 316/347 |
+| Functions   |   69.12%   | 197/285 |
+| Lines       |   82.09%   | 573/698 |
 
-                            <br>
+<br>
 
-                            [View full coverage report 🔗](${UPLOAD_URL})`
-                      })
+[View full coverage report 🔗](${UPLOAD_URL})`})
