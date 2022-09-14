@@ -47,7 +47,7 @@ jobs:
                         ---
                         - **Base:** 81% | **Pull Request:** 82%
                         - **Coverage Summary:**
-                        
+
                         |    Type     | Percentage |  Count  |
                         | ----------- | ---------- | ------- |
                         | Statements  |   83.39%   | 638/765 |
@@ -55,6 +55,6 @@ jobs:
                         | Functions   |   69.12%   | 197/285 |
                         | Lines       |   82.09%   | 573/698 |
 
-                        > Coverage data is based on head (\`${BRANCH_NAME}\`) compared to base (\`${BASE_BRANCH_NAME}\`).
+                        > Coverage data is based on head (**\`${BRANCH_NAME}\`**) compared to base (**\`${BASE_BRANCH_NAME}\`**).
 
                         [View full coverage report 🔗](${UPLOAD_URL})`})
