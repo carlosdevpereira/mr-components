@@ -562,11 +562,8 @@
 		],
 		"coverageReporters": [
 			"text-summary",
-			"clover",
 			"html",
-			"lcov",
-			"json",
-			"text"
+			"json-summary"
 		],
 		"collectCoverageFrom": [
 			"src/**/*.{ts,js,vue}"
