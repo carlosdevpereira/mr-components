@@ -49,7 +49,7 @@ jobs:
 
                             Base: **81%** | Current PR: **82%**
 
-                            > Coverage data is based on head (`${BRANCH_NAME}`) compared to base (`${BASE_BRANCH_NAME}`).
+                            > Coverage data is based on head (\`${BRANCH_NAME}\`) compared to base (\`${BASE_BRANCH_NAME}\`).
 
                             <br>
 
