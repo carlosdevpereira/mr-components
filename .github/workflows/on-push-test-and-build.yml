@@ -84,6 +84,13 @@ jobs:
             if (pulls.total_count > 0) {
               pulls.items.forEach(async (pullRequest) => {
                 // Get the existing comments.
+                const {data: fullPr} = await github.rest.pulls.get({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    pull_number: pullRequest.number,
+                })
+
+                // Get the existing comments.
                 const {data: comments} = await github.rest.issues.listComments({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
@@ -108,7 +115,7 @@ jobs:
                 | Functions   |   ${totals.functions.pct}%   |      ${totals.functions.covered}/${totals.functions.total}      |
                 | Lines       |   ${totals.lines.pct}%   |      ${totals.lines.covered}/${totals.lines.total}      |
 
-                > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${BASE_BRANCH_NAME}** (\`${BASE_COMMIT}\`).
+                > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${fullPr.base.ref}** (\`${fullPr.base.sha.slice(0, 7)}\`).
                 > ${TEST_STATISTICS}
 
                 [View full coverage report 🔗](${UPLOAD_URL})`
