@@ -39,18 +39,6 @@ jobs:
           directory: coverage
           branch: ${{ steps.sha_shorts.outputs.head_sha }}
 
-      - name: Build Docs 📕
-        run: npm run build
-
-  comment-code-coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Compute short commit hashes
-        id: sha_shorts
-        run: |
-          HEAD_SHA=`git rev-parse --short ${{ github.sha }}`
-          echo ::set-output name=head_sha::"$HEAD_SHA"
-
       - name: Comment coverage on active PR
         uses: actions/github-script@v6
         env:
@@ -70,3 +58,6 @@ jobs:
             });
 
             console.log('pull requests: ', pulls)
+
+      - name: Build Docs 📕
+        run: npm run build
