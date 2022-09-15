@@ -48,7 +48,6 @@ jobs:
         env:
           BRANCH_NAME: ${{ github.ref_name }}
           BRANCH_COMMIT: ${{ steps.sha_shorts.outputs.head_sha }}
-          UPLOAD_ID: ${{ steps.upload.outputs.id }}
           UPLOAD_URL: ${{ steps.upload.outputs.url }}
           TEST_STATISTICS: ${{ steps.tests.outputs.statistics }}
         with:
@@ -56,16 +55,24 @@ jobs:
           script: |
             const BRANCH_NAME = process.env.BRANCH_NAME;
             const BRANCH_COMMIT = process.env.BRANCH_COMMIT;
+            const UPLOAD_URL = process.env.UPLOAD_URL;
+            const TEST_STATISTICS = process.env.TEST_STATISTICS;
             const BASE_PAGES = "mr-components-coverage.pages.dev";
 
             // Get coverage summary with retries
-            const getCoverageSummary = async () => {
-              return await github.request(`${UPLOAD_URL}/coverage-summary.json`)
-              //try {
-              //} catch (error) {
-                //await new Promise(resolve => setTimeout(resolve, 1500));
-                //return await getCoverageSummary()
-              //}
+            const getCoverageSummary = async (retryCount = 3) => {
+              try {
+                return await github.request(`${UPLOAD_URL}/coverage-summary.json`)
+              } catch (error) {
+                if (retryCount === 0) {
+                  throw error
+                } else {
+                  console.log(error)
+                  console.warn("Cloudflare pages request failed. Retrying...")
+                  await new Promise(resolve => setTimeout(resolve, 1500));
+                  return await getCoverageSummary(retryCount - 1)
+                }
+              }
             }
 
             // Get open pull request for $BRANCH_NAME
