@@ -48,7 +48,7 @@ jobs:
       - name: Compute short commit hashes
         id: sha_shorts
         run: |
-          HEAD_BRANCH=`${{ github.ref }}`
+          HEAD_BRANCH=`${{ github.ref_name }}`
           HEAD_SHA=`git rev-parse --short ${{ github.sha }}`
 
           echo ::set-output name=head_sha::"$HEAD_SHA"
