@@ -47,7 +47,7 @@ jobs:
                           issue_number: context.payload.number,
                       })
 
-                      const result = await github.request(`${UPLOAD_URL}/coverage-summary.json`)
+                      const result = await github.request(`https://${UPLOAD_URL}/coverage-summary.json`)
                       console.log(result)
 
                       const botComment = comments.find(comment => comment.user.id === 41898282)
