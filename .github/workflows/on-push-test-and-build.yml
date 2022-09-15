@@ -120,6 +120,13 @@ jobs:
                 })
                 const botComment = comments.find(comment => comment.user.id === 41898282)
 
+                let coverageMessage
+                if (headAvgPercentage > baseAvgPercentage) {
+                  coverageMessage = `\n> Wooo 🎉, the tests are passing and the coverage percentage **increased** with this pull request, well done! 👏\n> ${pullRequest.base.ref}: **${Math.round(baseAvgPercentage, -1)}%** | ${BRANCH_NAME}: **${Math.round(headAvgPercentage, -1)}%**`
+                }
+
+                console.log("coverage message: ", coverageMessage)
+
                 const commentBody = `## 🔖 Coverage Report
 
             > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${pullRequest.base.ref}** (\`${shortBaseSha}\`).
