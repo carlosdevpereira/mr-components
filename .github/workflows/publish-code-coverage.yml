@@ -52,9 +52,6 @@ jobs:
                       const UPLOAD_ID = process.env.UPLOAD_ID;
                       const UPLOAD_URL = process.env.UPLOAD_URL;
 
-                      // Give time for cloudflare to setup the coverage page
-                      await setTimeout(() => {}, 1500)
-
                       // Get the existing comments.
                       const {data: comments} = await github.rest.issues.listComments({
                           owner: context.repo.owner,
@@ -62,7 +59,16 @@ jobs:
                           issue_number: context.payload.number,
                       })
 
-                      const result = await github.request(`${UPLOAD_URL}/coverage-summary.json`)
+                      const getCoverageSummary = async () => {
+                        try {
+                          return await github.request(`${UPLOAD_URL}/coverage-summary.json`)
+                        } catch (error) => {
+                          await new Promise(resolve => setTimeout(resolve, 1500));
+                          return await getCoverageSummary()
+                        }
+                      }
+
+                      const result = getCoverageSummary()
                       const totals = result.data.total
                       const percentages = [totals.lines.pct, totals.statements.pct, totals.functions.pct, totals.branches.pct]
                       const prPercentage = percentages.reduce((a, b) => a + b, 0) / percentages.length
