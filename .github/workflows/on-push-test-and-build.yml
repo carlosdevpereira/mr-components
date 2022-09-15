@@ -41,3 +41,35 @@ jobs:
 
       - name: Build Docs 📕
         run: npm run build
+
+  comment-code-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compute short commit hashes
+        id: sha_shorts
+        run: |
+          HEAD_BRANCH=`git rev-parse --short ${{ github.ref }}`
+          HEAD_SHA=`git rev-parse --short ${{ github.sha }}`
+
+          echo ::set-output name=head_sha::"$HEAD_SHA"
+          echo ::set-output name=head_branch::"$HEAD_BRANCH"
+
+      - name: Comment coverage on active PR
+        uses: actions/github-script@v6
+        env:
+          BRANCH_NAME: ${{ steps.sha_shorts.outputs.head_branch }}
+          BRANCH_COMMIT: ${{ steps.sha_shorts.outputs.head_sha }}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const BRANCH_NAME = process.env.BRANCH_NAME;
+            const BRANCH_COMMIT = process.env.BRANCH_COMMIT;
+            const BASE_PAGES = "mr-components-coverage.pages.dev";
+
+            // Get open pull request for $BRANCH_NAME
+            const pullsQueryString = `is:pr state:open repo:${context.repo.owner}/${context.repo.repo} head:${BRANCH_NAME}`
+            const {data: pulls} = await github.rest.search.issuesAndPullRequests({
+              q: pullsQueryString,
+            });
+
+            console.log('pull requests: ', pulls)
