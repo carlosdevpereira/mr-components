@@ -1,11 +1,11 @@
-# Only trigger, after tests run successfully
+name: Comment code coverage
+
 on:
   workflow_run:
     workflows: ["Build"]
     types:
       - completed
 
-name: Comment code coverage
 jobs:
   comment-code-coverage:
     runs-on: ubuntu-latest
