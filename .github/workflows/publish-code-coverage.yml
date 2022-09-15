@@ -35,10 +35,10 @@ jobs:
               with:
                   github-token: ${{secrets.GITHUB_TOKEN}}
                   script: |
-                      var BASE_BRANCH_NAME = process.env.BASE_BRANCH_NAME;
-                      var BRANCH_NAME = process.env.BRANCH_NAME;
-                      var UPLOAD_ID = process.env.UPLOAD_ID;
-                      var UPLOAD_URL = process.env.UPLOAD_URL;
+                      const BASE_BRANCH_NAME = process.env.BASE_BRANCH_NAME;
+                      const BRANCH_NAME = process.env.BRANCH_NAME;
+                      const UPLOAD_ID = process.env.UPLOAD_ID;
+                      const UPLOAD_URL = process.env.UPLOAD_URL;
 
                       // Get the existing comments.
                       const {data: comments} = await github.rest.issues.listComments({
@@ -46,6 +46,9 @@ jobs:
                           repo: context.repo.repo,
                           issue_number: context.payload.number,
                       })
+
+                      const result = await github.request(`${UPLOAD_URL}/coverage-summary.json`)
+                      console.log(result)
 
                       const botComment = comments.find(comment => comment.user.id === 41898282)
                       const commentBody = `### 🔖 Coverage Report
