@@ -75,7 +75,7 @@ jobs:
             });
 
             if (pulls.total_count > 0) {
-              pulls.items.forEach((pullRequest) => {
+              pulls.items.forEach(async (pullRequest) => {
                 // Get the existing comments.
                 const {data: comments} = await github.rest.issues.listComments({
                     owner: context.repo.owner,
