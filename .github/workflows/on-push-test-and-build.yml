@@ -123,6 +123,10 @@ jobs:
                 let coverageMessage
                 if (headAvgPercentage > baseAvgPercentage) {
                   coverageMessage = `\n> Wooo 🎉, the tests are passing and the coverage percentage **increased** with this pull request, well done! 👏\n> ${pullRequest.base.ref}: **${Math.round(baseAvgPercentage, -1)}%** | ${BRANCH_NAME}: **${Math.round(headAvgPercentage, -1)}%**`
+                } else if (headAvgPercentage === baseAvgPercentage) {
+                  coverageMessage = `\n> Good job 👌, the tests are passing and the coverage percentage remained intact.`
+                } else {
+                  coverageMessage = `\n> Tests are passing but the coverage percentage **is decreased** 😱 by this pull request, read coverage report below for more details.\n\n🔻 ${pullRequest.base.ref}: **${Math.round(baseAvgPercentage, -1)}%** | ${BRANCH_NAME}: **${Math.round(headAvgPercentage, -1)}%** 🔻`
                 }
 
                 console.log("coverage message: ", coverageMessage)
