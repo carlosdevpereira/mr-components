@@ -60,18 +60,18 @@ jobs:
 
             // Get coverage summary with retries
             const getCoverageSummary = async () => {
-              try {
-                return await github.request(`${UPLOAD_URL}/coverage-summary.json`)
-              } catch (error) {
-                # await new Promise(resolve => setTimeout(resolve, 1500));
-                # return await getCoverageSummary()
-              }
+              return await github.request(`${UPLOAD_URL}/coverage-summary.json`)
+              //try {
+              //} catch (error) {
+                //await new Promise(resolve => setTimeout(resolve, 1500));
+                //return await getCoverageSummary()
+              //}
             }
 
             // Get open pull request for $BRANCH_NAME
             const pullsQueryString = `is:pr state:open repo:${context.repo.owner}/${context.repo.repo} head:${BRANCH_NAME}`
             const {data: pulls} = await github.rest.search.issuesAndPullRequests({
-              q: pullsQueryString,
+              q: pullsQueryString
             });
 
             if (pulls.total_count > 0) {
