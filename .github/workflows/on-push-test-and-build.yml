@@ -50,6 +50,7 @@ jobs:
           BRANCH_COMMIT: ${{ steps.sha_shorts.outputs.head_sha }}
           UPLOAD_URL: ${{ steps.upload.outputs.url }}
           TEST_STATISTICS: ${{ steps.tests.outputs.statistics }}
+          BASE_CLOUDFLARE_URL: "mr-components-coverage.pages.dev"
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -57,65 +58,112 @@ jobs:
             const BRANCH_COMMIT = process.env.BRANCH_COMMIT;
             const UPLOAD_URL = process.env.UPLOAD_URL;
             const TEST_STATISTICS = process.env.TEST_STATISTICS;
-            const BASE_PAGES = "mr-components-coverage.pages.dev";
+            const BASE_CLOUDFLARE_URL = process.env.BASE_CLOUDFLARE_URL;
 
             // Get coverage summary with retries
-            const getCoverageSummary = async (retryCount = 3) => {
+            const getCoverageSummary = async (reportUrl, { retryCount = 3, ignoreErrors = false } = {}) => {
               try {
-                return await github.request(`${UPLOAD_URL}/coverage-summary.json`)
+                return await github.request(`${reportUrl}/coverage-summary.json`)
               } catch (error) {
                 if (retryCount === 0) {
-                  throw error
+                  if (!ignoreErrors) throw error
                 } else {
                   console.log(error)
                   console.warn("Cloudflare pages request failed. Retrying...")
                   await new Promise(resolve => setTimeout(resolve, 1500));
-                  return await getCoverageSummary(retryCount - 1)
+                  return await getCoverageSummary(reportUrl, { retryCount: retryCount - 1 })
                 }
               }
             }
 
-            // Get open pull request for $BRANCH_NAME
-            const pullsQueryString = `is:pr state:open repo:${context.repo.owner}/${context.repo.repo} head:${BRANCH_NAME}`
+            // Get open pull requests for $BRANCH_NAME
             const {data: pulls} = await github.rest.search.issuesAndPullRequests({
-              q: pullsQueryString
+              q: `is:pr state:open repo:${context.repo.owner}/${context.repo.repo} head:${BRANCH_NAME}`
             });
 
             if (pulls.total_count > 0) {
-              pulls.items.forEach(async (pullRequest) => {
+              pulls.items.forEach(async (pull) => {
                 // Get the existing comments.
-                const {data: fullPr} = await github.rest.pulls.get({
+                const { data: pullRequest } = await github.rest.pulls.get({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
-                    pull_number: pullRequest.number,
+                    pull_number: pull.number,
                 })
+                const shortBaseSha = pullRequest.base.sha.slice(0, 7)
+
+                const headResult = await getCoverageSummary(UPLOAD_URL)
+                const headTotals = headResult.data.total
+                const headPercentages = [headTotals.lines.pct, headTotals.statements.pct, headTotals.functions.pct, headTotals.branches.pct]
+                const headAvgPercentage = headPercentages.reduce((a, b) => a + b, 0) / headPercentages.length
+
+                const baseResult = await getCoverageSummary(`https://${shortBaseSha}.${BASE_CLOUDFLARE_URL}`, { retryCount: 0, ignoreErrors: true })
+                let baseTotals
+                let basePercentages = [0, 0, 0, 0]
+                let baseAvgPercentage = 0
+                console.log("base result: ", baseResult)
+                if (baseResult) {
+                  baseTotals = baseResult.data.total
+                  basePercentages = [baseTotals.lines.pct, baseTotals.statements.pct, baseTotals.functions.pct, baseTotals.branches.pct]
+                  baseAvgPercentage = basePercentages.reduce((a, b) => a + b, 0) / basePercentages.length
+                }
+                
+
+
 
                 // Get the existing comments.
-                const {data: comments} = await github.rest.issues.listComments({
+                const { data: comments } = await github.rest.issues.listComments({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     issue_number: pullRequest.number,
                 })
-
-                const result = await getCoverageSummary()
-                const totals = result.data.total
-                const percentages = [totals.lines.pct, totals.statements.pct, totals.functions.pct, totals.branches.pct]
-                const prPercentage = percentages.reduce((a, b) => a + b, 0) / percentages.length
-
                 const botComment = comments.find(comment => comment.user.id === 41898282)
-                const commentBody = `### 🔖 Coverage Report
-            ---
-            - **Base:** 81% | **Pull Request:** ${Math.round(prPercentage, -1)}%
-            - **Coverage Summary:**
 
-            |   Category  | Percentage |  Covered / Total  |
-            | ----------- | ---------- | ----------------- |
-            | Statements  |   ${totals.statements.pct}%   |      ${totals.statements.covered}/${totals.statements.total}      |
-            | Branches    |   ${totals.branches.pct}%   |      ${totals.branches.covered}/${totals.branches.total}      |
-            | Functions   |   ${totals.functions.pct}%   |      ${totals.functions.covered}/${totals.functions.total}      |
-            | Lines       |   ${totals.lines.pct}%   |      ${totals.lines.covered}/${totals.lines.total}      |
+                // Start building comment body
+                // Coverage status message
+                let coverageMessage
+                if (headAvgPercentage > baseAvgPercentage) {
+                  coverageMessage = `
+            > Wooo 🎉, the tests are passing and the coverage percentage **increased** with this pull request, well done! 👏
+            > ${pullRequest.base.ref}: **${Math.round(baseAvgPercentage, -1)}%** | ${BRANCH_NAME}: **${Math.round(headAvgPercentage, -1)}%**`
+                } else if (headAvgPercentage === baseAvgPercentage) {
+                  coverageMessage = `
+            > Good job 👌, the tests are passing and the coverage percentage remained intact.`
+                } else {
+                  coverageMessage = `
+            > Tests are passing but the coverage percentage **is decreased** 😱 by this pull request, read coverage report below for more details.
 
-            > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${fullPr.base.ref}** (\`${fullPr.base.sha.slice(0, 7)}\`).
+            🔻 ${pullRequest.base.ref}: **${Math.round(baseAvgPercentage, -1)}%** | ${BRANCH_NAME}: **${Math.round(headAvgPercentage, -1)}%** 🔻`
+                }
+
+                let coverageSummaryTable = `
+            ```diff
+            @@                            Coverage Summary                         @@
+            -------------------------------------------------------------------------
+            |   Category   |  Master Branch  |  Current Branch  |  Covered / Total  |
+            | ------------ | --------------- | ---------------- | ----------------- |`
+
+            coverageSummaryTable += `\n${!baseTotals || baseTotals.statements.pct === headTotals.statements.pct ? ' ' : (headTotals.statements.pct > baseTotals.statements.pct ? '+' : '-') } `
+            coverageSummaryTable += `| Statements   |     ${baseTotals ? \`${baseTotals.statements.pct}%\` : '  -  '}      |      ${headTotals.statements.pct}%      |       ${headTotals.statements.covered}/${headTotals.statements.total}     |`
+
+            coverageSummaryTable += `\n${!baseTotals || baseTotals.branches.pct === headTotals.branches.pct ? ' ' : (headTotals.branches.pct > baseTotals.branches.pct ? '+' : '-') } `
+            coverageSummaryTable += `| Branches   |     ${baseTotals ? \`${baseTotals.branches.pct}%\` : '  -  '}      |      ${headTotals.branches.pct}%      |       ${headTotals.branches.covered}/${headTotals.branches.total}     |`
+
+            coverageSummaryTable += `\n${!baseTotals || baseTotals.functions.pct === headTotals.functions.pct ? ' ' : (headTotals.functions.pct > baseTotals.functions.pct ? '+' : '-') } `
+            coverageSummaryTable += `| Functions   |     ${baseTotals ? \`${baseTotals.functions.pct}%\` : '  -  '}      |      ${headTotals.functions.pct}%      |       ${headTotals.functions.covered}/${headTotals.functions.total}     |`
+
+            coverageSummaryTable += `\n${!baseTotals || baseTotals.lines.pct === headTotals.lines.pct ? ' ' : (headTotals.lines.pct > baseTotals.lines.pct ? '+' : '-') } `
+            coverageSummaryTable += `| Lines   |     ${baseTotals ? \`${baseTotals.lines.pct}%\` : '  -  '}      |      ${headTotals.lines.pct}%      |       ${headTotals.lines.covered}/${headTotals.lines.total}     |`
+
+            coverageSummaryTable += `\n  -------------------------------------------------------------------------\n\`\`\``
+
+
+                const commentBody = `## 🔖 Coverage Report
+
+            ${coverageMessage}
+
+            ${coverageSummaryTable}
+
+            > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${pullRequest.base.ref}** (\`${shortBaseSha}\`).
             > ${TEST_STATISTICS}
 
             [View full coverage report 🔗](${UPLOAD_URL})`
