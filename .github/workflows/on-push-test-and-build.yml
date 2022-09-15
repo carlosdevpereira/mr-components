@@ -63,8 +63,8 @@ jobs:
               try {
                 return await github.request(`${UPLOAD_URL}/coverage-summary.json`)
               } catch (error) {
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                return await getCoverageSummary()
+                # await new Promise(resolve => setTimeout(resolve, 1500));
+                # return await getCoverageSummary()
               }
             }
 
