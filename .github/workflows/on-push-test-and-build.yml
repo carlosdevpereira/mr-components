@@ -50,7 +50,7 @@ jobs:
           BRANCH_COMMIT: ${{ steps.sha_shorts.outputs.head_sha }}
           UPLOAD_URL: ${{ steps.upload.outputs.url }}
           TEST_STATISTICS: ${{ steps.tests.outputs.statistics }}
-          BASE_CLOUDFLARE_URL: "mr-components-coverage.pages.dev"
+          BASE_CLOUDFLARE_URL: mr-components-coverage.pages.dev
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
