@@ -19,7 +19,11 @@ jobs:
         run: npm ci
 
       - name: Execute unit tests 🧪
-        run: npm run test:unit:coverage
+        id: tests
+        run: |
+          test_results=`npm run test:unit:coverage`
+          TEST_RUN_STATISTICS=${test_results#*================================================================================}
+          echo ::set-output name=statistics::"$TEST_RUN_STATISTICS"
 
       - name: Compute short commit hashes
         id: sha_shorts
@@ -44,6 +48,9 @@ jobs:
         env:
           BRANCH_NAME: ${{ github.ref_name }}
           BRANCH_COMMIT: ${{ steps.sha_shorts.outputs.head_sha }}
+          UPLOAD_ID: ${{ steps.upload.outputs.id }}
+          UPLOAD_URL: ${{ steps.upload.outputs.url }}
+          TEST_STATISTICS: ${{ steps.tests.outputs.statistics }}
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -51,13 +58,71 @@ jobs:
             const BRANCH_COMMIT = process.env.BRANCH_COMMIT;
             const BASE_PAGES = "mr-components-coverage.pages.dev";
 
+            // Get coverage summary with retries
+            const getCoverageSummary = async () => {
+              try {
+                return await github.request(`${UPLOAD_URL}/coverage-summary.json`)
+              } catch (error) {
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                return await getCoverageSummary()
+              }
+            }
+
             // Get open pull request for $BRANCH_NAME
             const pullsQueryString = `is:pr state:open repo:${context.repo.owner}/${context.repo.repo} head:${BRANCH_NAME}`
             const {data: pulls} = await github.rest.search.issuesAndPullRequests({
               q: pullsQueryString,
             });
 
-            console.log('pull requests: ', pulls)
+            if (pulls.total_count > 0) {
+              pulls.items.forEach((pullRequest) => {
+                // Get the existing comments.
+                const {data: comments} = await github.rest.issues.listComments({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: pullRequest.number,
+                })
+
+                const result = await getCoverageSummary()
+                const totals = result.data.total
+                const percentages = [totals.lines.pct, totals.statements.pct, totals.functions.pct, totals.branches.pct]
+                const prPercentage = percentages.reduce((a, b) => a + b, 0) / percentages.length
+
+                const botComment = comments.find(comment => comment.user.id === 41898282)
+                const commentBody = `### 🔖 Coverage Report
+                ---
+                - **Base:** 81% | **Pull Request:** ${Math.round(prPercentage, -1)}%
+                - **Coverage Summary:**
+
+                |   Category  | Percentage |  Covered / Total  |
+                | ----------- | ---------- | ----------------- |
+                | Statements  |   ${totals.statements.pct}%   |      ${totals.statements.covered}/${totals.statements.total}      |
+                | Branches    |   ${totals.branches.pct}%   |      ${totals.branches.covered}/${totals.branches.total}      |
+                | Functions   |   ${totals.functions.pct}%   |      ${totals.functions.covered}/${totals.functions.total}      |
+                | Lines       |   ${totals.lines.pct}%   |      ${totals.lines.covered}/${totals.lines.total}      |
+
+                > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${BASE_BRANCH_NAME}** (\`${BASE_COMMIT}\`).
+                > ${TEST_STATISTICS}
+
+                [View full coverage report 🔗](${UPLOAD_URL})`
+
+                if (botComment) {
+                  await github.rest.issues.updateComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    comment_id: botComment.id,
+                    body: commentBody
+                  })
+                } else {
+                  await github.rest.issues.createComment({
+                    issue_number: pullRequest.number,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    body: commentBody
+                  })
+                }
+              })
+            }
 
       - name: Build Docs 📕
         run: npm run build
