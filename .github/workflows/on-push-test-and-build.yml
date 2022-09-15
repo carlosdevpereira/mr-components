@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - '**'
+      - "**"
 
 jobs:
   test:
@@ -12,8 +12,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'npm'
+          node-version: "16"
+          cache: "npm"
 
       - name: Install dependencies 📦
         run: npm ci
@@ -21,16 +21,23 @@ jobs:
       - name: Execute unit tests 🧪
         run: npm run test:unit:coverage
 
+      - name: Compute short commit hashes
+        id: sha_shorts
+        run: |
+          HEAD_SHA=`git rev-parse --short ${{ github.sha }}`
+          echo ::set-output name=head_sha::"$HEAD_SHA"
+
       - name: Upload test coverage 🧪
         if: ${{ github.actor != 'dependabot[bot]' }}
-        uses: codecov/codecov-action@v3
+        id: upload
+        uses: cloudflare/pages-action@1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: true
-          files: ./coverage/clover.xml,./coverage/lcov.info
-          flags: unittests
-          name: codecov-umbrella
-          verbose: true
-      
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: mr-components-coverage
+          directory: coverage
+          branch: ${{ steps.sha_shorts.outputs.head_sha }}
+
       - name: Build Docs 📕
         run: npm run build
