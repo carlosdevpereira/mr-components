@@ -104,21 +104,21 @@ jobs:
 
                 const botComment = comments.find(comment => comment.user.id === 41898282)
                 const commentBody = `### 🔖 Coverage Report
-                ---
-                - **Base:** 81% | **Pull Request:** ${Math.round(prPercentage, -1)}%
-                - **Coverage Summary:**
+            ---
+            - **Base:** 81% | **Pull Request:** ${Math.round(prPercentage, -1)}%
+            - **Coverage Summary:**
 
-                |   Category  | Percentage |  Covered / Total  |
-                | ----------- | ---------- | ----------------- |
-                | Statements  |   ${totals.statements.pct}%   |      ${totals.statements.covered}/${totals.statements.total}      |
-                | Branches    |   ${totals.branches.pct}%   |      ${totals.branches.covered}/${totals.branches.total}      |
-                | Functions   |   ${totals.functions.pct}%   |      ${totals.functions.covered}/${totals.functions.total}      |
-                | Lines       |   ${totals.lines.pct}%   |      ${totals.lines.covered}/${totals.lines.total}      |
+            |   Category  | Percentage |  Covered / Total  |
+            | ----------- | ---------- | ----------------- |
+            | Statements  |   ${totals.statements.pct}%   |      ${totals.statements.covered}/${totals.statements.total}      |
+            | Branches    |   ${totals.branches.pct}%   |      ${totals.branches.covered}/${totals.branches.total}      |
+            | Functions   |   ${totals.functions.pct}%   |      ${totals.functions.covered}/${totals.functions.total}      |
+            | Lines       |   ${totals.lines.pct}%   |      ${totals.lines.covered}/${totals.lines.total}      |
 
-                > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${fullPr.base.ref}** (\`${fullPr.base.sha.slice(0, 7)}\`).
-                > ${TEST_STATISTICS}
+            > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${fullPr.base.ref}** (\`${fullPr.base.sha.slice(0, 7)}\`).
+            > ${TEST_STATISTICS}
 
-                [View full coverage report 🔗](${UPLOAD_URL})`
+            [View full coverage report 🔗](${UPLOAD_URL})`
 
                 if (botComment) {
                   await github.rest.issues.updateComment({
