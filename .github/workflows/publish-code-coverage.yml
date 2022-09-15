@@ -68,7 +68,7 @@ jobs:
                         }
                       }
 
-                      const result = getCoverageSummary()
+                      const result = await getCoverageSummary()
                       const totals = result.data.total
                       const percentages = [totals.lines.pct, totals.statements.pct, totals.functions.pct, totals.branches.pct]
                       const prPercentage = percentages.reduce((a, b) => a + b, 0) / percentages.length
