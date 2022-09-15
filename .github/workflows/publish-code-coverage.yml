@@ -15,6 +15,14 @@ jobs:
             - run: npm ci
             - name: Generate coverage report
               run: npm run test:unit:coverage
+            - name: Compute short commit hashes
+              id: sha_shorts
+              run: |
+                  HEAD_SHA=`git rev-parse --short ${{ github.event.pull_request.head.sha }}`
+                  BASE_SHA=`git rev-parse --short ${{ github.event.pull_request.base.sha }}`
+
+                  echo ::set-output name=head_sha::"$HEAD_SHA"
+                  echo ::set-output name=base_sha::"$BASE_SHA"
             - name: Deploy coverage report
               id: upload
               uses: cloudflare/pages-action@1
@@ -24,19 +32,23 @@ jobs:
                   gitHubToken: ${{ secrets.GITHUB_TOKEN }}
                   projectName: mr-components-coverage
                   directory: coverage
-                  branch: ${{ github.event.pull_request.head.ref }}
+                  branch: ${{ steps.sha_shorts.outputs.head_sha }}
             - name: Comment coverage on active PR
               uses: actions/github-script@v6
               env:
                   BASE_BRANCH_NAME: ${{ github.event.pull_request.base.ref }}
+                  BASE_COMMIT: ${{ steps.sha_shorts.outputs.base_sha }}
                   BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+                  BRANCH_COMMIT: ${{ steps.sha_shorts.outputs.head_sha }}
                   UPLOAD_ID: ${{ steps.upload.outputs.id }}
                   UPLOAD_URL: ${{ steps.upload.outputs.url }}
               with:
                   github-token: ${{secrets.GITHUB_TOKEN}}
                   script: |
                       const BASE_BRANCH_NAME = process.env.BASE_BRANCH_NAME;
+                      const BASE_COMMIT = process.env.BASE_COMMIT;
                       const BRANCH_NAME = process.env.BRANCH_NAME;
+                      const BRANCH_COMMIT = process.env.BRANCH_COMMIT;
                       const UPLOAD_ID = process.env.UPLOAD_ID;
                       const UPLOAD_URL = process.env.UPLOAD_URL;
 
@@ -48,22 +60,24 @@ jobs:
                       })
 
                       const result = await github.request(`${UPLOAD_URL}/coverage-summary.json`)
-                      console.log(result)
+                      const totals = result.data.total
+                      const percentages = [totals.lines.pct, totals.statements.pct, totals.functions.pct, totals.branches.pct]
+                      const prPercentage = percentages.reduce((a, b) => a + b, 0) / percentages.length
 
                       const botComment = comments.find(comment => comment.user.id === 41898282)
                       const commentBody = `### 🔖 Coverage Report
                       ---
-                      - **Base:** 81% | **Pull Request:** 82%
+                      - **Base:** 81% | **Pull Request:** ${Math.round(prPercentage, -1)}%
                       - **Coverage Summary:**
 
                       |   Category  | Percentage |  Covered / Total  |
                       | ----------- | ---------- | ----------------- |
-                      | Statements  |   83.39%   |      638/765      |
-                      | Branches    |   91.06%   |      316/347      |
-                      | Functions   |   69.12%   |      197/285      |
-                      | Lines       |   82.09%   |      573/698      |
+                      | Statements  |   ${totals.statements.pct}%   |      638/765      |
+                      | Branches    |   ${totals.branches.pct}%   |      316/347      |
+                      | Functions   |   ${totals.functions.pct}%   |      197/285      |
+                      | Lines       |   ${totals.lines.pct}%   |      573/698      |
 
-                      > Coverage data is based on head (**\`${BRANCH_NAME}\`**) compared to base (**\`${BASE_BRANCH_NAME}\`**).
+                      > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${BASE_BRANCH_NAME}** (\`${BASE_COMMIT}\`).
                       > **365** tests passing in **30** suites.
 
                       [View full coverage report 🔗](${UPLOAD_URL})`
