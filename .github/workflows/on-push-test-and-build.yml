@@ -80,6 +80,8 @@ jobs:
               q: `is:pr state:open repo:${context.repo.owner}/${context.repo.repo} head:${BRANCH_NAME}`
             });
 
+            console.log("pull requests: ", pulls)
+
             if (pulls.total_count > 0) {
               pulls.items.forEach(async (pull) => {
                 // Get the existing comments.
@@ -89,11 +91,15 @@ jobs:
                     pull_number: pull.number,
                 })
                 const shortBaseSha = pullRequest.base.sha.slice(0, 7)
+                console.log("currently on PR: ", pullRequest)
+                console.log("short hash: ", shortBaseSha)
 
                 const headResult = await getCoverageSummary(UPLOAD_URL)
+                console.log("head result: ", headResult)
                 const headTotals = headResult.data.total
                 const headPercentages = [headTotals.lines.pct, headTotals.statements.pct, headTotals.functions.pct, headTotals.branches.pct]
                 const headAvgPercentage = headPercentages.reduce((a, b) => a + b, 0) / headPercentages.length
+                console.log("head percentage: ", headAvgPercentage)
 
                 const baseResult = await getCoverageSummary(`https://${shortBaseSha}.${BASE_CLOUDFLARE_URL}`, { retryCount: 0, ignoreErrors: true })
                 let baseTotals
@@ -105,9 +111,6 @@ jobs:
                   basePercentages = [baseTotals.lines.pct, baseTotals.statements.pct, baseTotals.functions.pct, baseTotals.branches.pct]
                   baseAvgPercentage = basePercentages.reduce((a, b) => a + b, 0) / basePercentages.length
                 }
-                
-
-
 
                 // Get the existing comments.
                 const { data: comments } = await github.rest.issues.listComments({
@@ -117,27 +120,7 @@ jobs:
                 })
                 const botComment = comments.find(comment => comment.user.id === 41898282)
 
-                // Start building comment body
-                // Coverage status message
-                let coverageMessage
-                if (headAvgPercentage > baseAvgPercentage) {
-                  coverageMessage = `
-            > Wooo 🎉, the tests are passing and the coverage percentage **increased** with this pull request, well done! 👏
-            > ${pullRequest.base.ref}: **${Math.round(baseAvgPercentage, -1)}%** | ${BRANCH_NAME}: **${Math.round(headAvgPercentage, -1)}%**`
-                } else if (headAvgPercentage === baseAvgPercentage) {
-                  coverageMessage = `
-            > Good job 👌, the tests are passing and the coverage percentage remained intact.`
-                } else {
-                  coverageMessage = `
-            > Tests are passing but the coverage percentage **is decreased** 😱 by this pull request, read coverage report below for more details.
-
-            🔻 ${pullRequest.base.ref}: **${Math.round(baseAvgPercentage, -1)}%** | ${BRANCH_NAME}: **${Math.round(headAvgPercentage, -1)}%** 🔻`
-                }
-
-
                 const commentBody = `## 🔖 Coverage Report
-
-            ${coverageMessage}
 
             > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${pullRequest.base.ref}** (\`${shortBaseSha}\`).
             > ${TEST_STATISTICS}
