@@ -52,6 +52,9 @@ jobs:
                       const UPLOAD_ID = process.env.UPLOAD_ID;
                       const UPLOAD_URL = process.env.UPLOAD_URL;
 
+                      // Give time for cloudflare to setup the coverage page
+                      await setTimeout(() => {}, 1500)
+
                       // Get the existing comments.
                       const {data: comments} = await github.rest.issues.listComments({
                           owner: context.repo.owner,
