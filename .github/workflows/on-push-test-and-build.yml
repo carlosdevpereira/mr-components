@@ -134,11 +134,19 @@ jobs:
                 let coverageSummaryTable = `
             \`\`\`diff
             @@                            Coverage Summary                         @@
-            -------------------------------------------------------------------------
-            |   Category   |  Master Branch  |  Current Branch  |  Covered / Total  |
-            | ------------ | --------------- | ---------------- | ----------------- |`
+               -----------------------------------------------------------------------
+              |   Category   |  Master Branch  |  Current Branch  |  Covered / Total  |
+              | ------------ | --------------- | ---------------- | ----------------- |`
 
-            console.log("coverage table: ", coverageSummaryTable)
+                if (baseResult && baseTotals.statements.pct === headTotals.statements.pct) coverageSummaryTable += `\n  `
+                else if (baseResult && headTotals.statements.pct > baseTotals.statements.pct) coverageSummaryTable += `\n+ `
+                else if (baseResult && headTotals.statements.pct < baseTotals.statements.pct) coverageSummaryTable += `\n- `
+                else if (!baseResult) coverageSummaryTable += `\n  `
+
+                coverageSummaryTable += `\n  -------------------------------------------------------------------------\n\`\`\``
+
+                console.log("coverage table: ", coverageSummaryTable)
+                
 
                 const commentBody = `## 🔖 Coverage Report
 
