@@ -21,7 +21,10 @@ jobs:
       - name: Execute unit tests 🧪
         id: tests
         run: |
-          test_results=`npm run test:unit:coverage`
+          TEST_RESULTS=`npm run test:unit:coverage`
+          echo "Test results:"
+          echo "$TEST_RESULTS"
+
           TEST_RUN_STATISTICS=${test_results#*================================================================================}
           echo ::set-output name=statistics::"$TEST_RUN_STATISTICS"
 
