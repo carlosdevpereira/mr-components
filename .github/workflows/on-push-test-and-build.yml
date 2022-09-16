@@ -142,7 +142,7 @@ jobs:
                 else if (baseResult && headTotals.statements.pct > baseTotals.statements.pct) coverageSummaryTable += `\n+ `
                 else if (baseResult && headTotals.statements.pct < baseTotals.statements.pct) coverageSummaryTable += `\n- `
                 else if (!baseResult) coverageSummaryTable += `\n+ `
-                coverageSummaryTable += `| Statements   |     ${baseResult ? \`${baseTotals.statements.pct}%\` : '  -  '}      |      ${headTotals.statements.pct}%      |       ${headTotals.statements.covered}/${headTotals.statements.total}     |`
+                coverageSummaryTable += `| Statements   |     ${ baseResult ? baseTotals.statements.pct : "  -  " }      |      ${headTotals.statements.pct}%      |       ${headTotals.statements.covered}/${headTotals.statements.total}     |`
 
                 coverageSummaryTable += `\n  -------------------------------------------------------------------------\n\`\`\``
 
