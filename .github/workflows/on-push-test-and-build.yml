@@ -131,9 +131,20 @@ jobs:
 
                 console.log("coverage message: ", coverageMessage)
 
+                let coverageSummaryTable = `
+            \`\`\`diff
+            @@                            Coverage Summary                         @@
+            -------------------------------------------------------------------------
+            |   Category   |  Master Branch  |  Current Branch  |  Covered / Total  |
+            | ------------ | --------------- | ---------------- | ----------------- |`
+
+            console.log("coverage table: ", coverageSummaryTable)
+
                 const commentBody = `## 🔖 Coverage Report
 
             ${coverageMessage}
+
+            ${coverageSummaryTable}
 
             > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${pullRequest.base.ref}** (\`${shortBaseSha}\`).
             > ${TEST_STATISTICS}
