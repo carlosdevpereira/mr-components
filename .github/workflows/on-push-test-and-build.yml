@@ -131,7 +131,29 @@ jobs:
 
                 console.log("coverage message: ", coverageMessage)
 
+                let coverageSummaryTable = `\n\`\`\`diff\n@@                            Coverage Summary                         @@\n-------------------------------------------------------------------------\n|   Category   |  Master Branch  |  Current Branch  |  Covered / Total  |\n| ------------ | --------------- | ---------------- | ----------------- |`
+                coverageSummaryTable += `\n${!baseTotals || baseTotals.statements.pct === headTotals.statements.pct ? ' ' : (headTotals.statements.pct > baseTotals.statements.pct ? '+' : '-') } `
+                coverageSummaryTable += `| Statements   |     ${baseTotals ? \`${baseTotals.statements.pct}%\` : '  -  '}      |      ${headTotals.statements.pct}%      |       ${headTotals.statements.covered}/${headTotals.statements.total}     |`
+
+                coverageSummaryTable += `\n${!baseTotals || baseTotals.branches.pct === headTotals.branches.pct ? ' ' : (headTotals.branches.pct > baseTotals.branches.pct ? '+' : '-') } `
+                coverageSummaryTable += `| Branches   |     ${baseTotals ? \`${baseTotals.branches.pct}%\` : '  -  '}      |      ${headTotals.branches.pct}%      |       ${headTotals.branches.covered}/${headTotals.branches.total}     |`
+
+                coverageSummaryTable += `\n${!baseTotals || baseTotals.functions.pct === headTotals.functions.pct ? ' ' : (headTotals.functions.pct > baseTotals.functions.pct ? '+' : '-') } `
+                coverageSummaryTable += `| Functions   |     ${baseTotals ? \`${baseTotals.functions.pct}%\` : '  -  '}      |      ${headTotals.functions.pct}%      |       ${headTotals.functions.covered}/${headTotals.functions.total}     |`
+
+                coverageSummaryTable += `\n${!baseTotals || baseTotals.lines.pct === headTotals.lines.pct ? ' ' : (headTotals.lines.pct > baseTotals.lines.pct ? '+' : '-') } `
+                coverageSummaryTable += `| Lines   |     ${baseTotals ? \`${baseTotals.lines.pct}%\` : '  -  '}      |      ${headTotals.lines.pct}%      |       ${headTotals.lines.covered}/${headTotals.lines.total}     |`
+
+                coverageSummaryTable += `\n  -------------------------------------------------------------------------\n\`\`\``
+
+                console.log("coverage summary table: ", coverageSummaryTable)
+
+
                 const commentBody = `## 🔖 Coverage Report
+
+            ${coverageMessage}
+
+            ${coverageSummaryTable}
 
             > Coverage data is based on head **${BRANCH_NAME}** (\`${BRANCH_COMMIT}\`) compared to base **${pullRequest.base.ref}** (\`${shortBaseSha}\`).
             > ${TEST_STATISTICS}
