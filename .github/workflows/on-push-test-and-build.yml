@@ -21,7 +21,7 @@ jobs:
       - name: Execute unit tests 🧪
         id: tests
         run: |
-          TEST_RESULTS=`npm run test:unit:coverage`
+          TEST_RESULTS=$(npm run test:unit:coverage)
           echo "Test results:"
           echo "$TEST_RESULTS"
 
