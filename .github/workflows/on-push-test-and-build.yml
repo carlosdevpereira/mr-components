@@ -124,7 +124,8 @@ jobs:
                   baseAvgPercentage = basePercentages.reduce((a, b) => a + b, 0) / basePercentages.length
                 }
 
-                const statistics = await getTestResults(UPLOAD_URL)
+                let statistics = await getTestResults(UPLOAD_URL)
+                statistics = statistics.data
                 console.log("test result statistics: ", statistics)
 
                 // Get the existing comments.
