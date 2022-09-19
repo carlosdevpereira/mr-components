@@ -561,7 +561,6 @@
 			"./tests/unit/setup-tests.ts"
 		],
 		"coverageReporters": [
-			"text-summary",
 			"html",
 			"json-summary"
 		],
