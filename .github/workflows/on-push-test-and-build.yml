@@ -87,20 +87,6 @@ jobs:
               }
             }
 
-            let statistics = await getTestResults(UPLOAD_URL)
-            statistics = statistics.data
-
-            const now = new Date().getTime()
-            const msDifference = now - statistics.startTime
-            const secondsTaken = Math.floor(msDifference/1000)
-            const minutesTaken = Math.floor(msDifference/1000/60)
-            const hoursTaken = Math.floor(msDifference/1000/60/60)
-
-            let timeTaken = ''
-            if (hoursTaken > 0) timeTaken = `${hoursTaken} hours, `
-            if (minutesTaken > 0) timeTaken += `${minutesTaken} minutes and `
-            if (secondsTaken > 0) timeTaken += `${secondsTaken} seconds`
-
             // Get open pull requests for $BRANCH_NAME
             const {data: pulls} = await github.rest.search.issuesAndPullRequests({
               q: `is:pr state:open repo:${context.repo.owner}/${context.repo.repo} head:${BRANCH_NAME}`
@@ -138,6 +124,19 @@ jobs:
                   baseAvgPercentage = basePercentages.reduce((a, b) => a + b, 0) / basePercentages.length
                 }
 
+                let statistics = await getTestResults(UPLOAD_URL)
+                statistics = statistics.data
+
+                const lastTestEndedAt = statistics.testResults[statistics.testResults.length - 1].endTime
+                const msDifference = lastTestEndedAt - statistics.startTime
+                const secondsTaken = Math.floor(msDifference/1000)
+                const minutesTaken = Math.floor(msDifference/1000/60)
+                const hoursTaken = Math.floor(msDifference/1000/60/60)
+
+                let timeTaken = ''
+                if (hoursTaken > 0) timeTaken = `${hoursTaken} hours, `
+                if (minutesTaken > 0) timeTaken += `${minutesTaken} minutes and `
+                if (secondsTaken > 0) timeTaken += `${secondsTaken} seconds`
                 
                 console.log("test result statistics: ", statistics)
 
