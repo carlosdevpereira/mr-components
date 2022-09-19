@@ -63,7 +63,6 @@ jobs:
                 if (retryCount === 0) {
                   if (!ignoreErrors) throw error
                 } else {
-                  console.log(error)
                   console.warn("Cloudflare pages request failed. Retrying...")
                   await new Promise(resolve => setTimeout(resolve, 2000));
                   return await getCoverageSummary(reportUrl, { retryCount: retryCount - 1 })
@@ -79,7 +78,6 @@ jobs:
                 if (retryCount === 0) {
                   if (!ignoreErrors) throw error
                 } else {
-                  console.log(error)
                   console.warn("Cloudflare pages request failed. Retrying...")
                   await new Promise(resolve => setTimeout(resolve, 2000));
                   return await getCoverageSummary(reportUrl, { retryCount: retryCount - 1 })
@@ -92,8 +90,6 @@ jobs:
               q: `is:pr state:open repo:${context.repo.owner}/${context.repo.repo} head:${BRANCH_NAME}`
             });
 
-            console.log("pull requests: ", pulls)
-
             if (pulls.total_count > 0) {
               pulls.items.forEach(async (pull) => {
                 // Get the existing comments.
@@ -102,22 +98,18 @@ jobs:
                     repo: context.repo.repo,
                     pull_number: pull.number,
                 })
+
                 const shortBaseSha = pullRequest.base.sha.slice(0, 7)
-                console.log("currently on PR: ", pullRequest)
-                console.log("short hash: ", shortBaseSha)
 
                 const headResult = await getCoverageSummary(UPLOAD_URL)
-                console.log("head result: ", headResult)
                 const headTotals = headResult.data.total
                 const headPercentages = [headTotals.lines.pct, headTotals.statements.pct, headTotals.functions.pct, headTotals.branches.pct]
                 const headAvgPercentage = headPercentages.reduce((a, b) => a + b, 0) / headPercentages.length
-                console.log("head percentage: ", headAvgPercentage)
 
                 const baseResult = await getCoverageSummary(`https://${shortBaseSha}.${BASE_CLOUDFLARE_URL}`, { retryCount: 0, ignoreErrors: true })
                 let baseTotals
                 let basePercentages = [0, 0, 0, 0]
                 let baseAvgPercentage = 0
-                console.log("base result: ", baseResult)
                 if (baseResult) {
                   baseTotals = baseResult.data.total
                   basePercentages = [baseTotals.lines.pct, baseTotals.statements.pct, baseTotals.functions.pct, baseTotals.branches.pct]
@@ -137,8 +129,6 @@ jobs:
                 if (hoursTaken > 0) timeTaken = `${hoursTaken} hours, `
                 if (minutesTaken > 0) timeTaken += `${minutesTaken} minutes and `
                 if (secondsTaken > 0) timeTaken += `${secondsTaken} seconds`
-                
-                console.log("test result statistics: ", statistics)
 
                 // Get the existing comments.
                 const { data: comments } = await github.rest.issues.listComments({
@@ -157,8 +147,6 @@ jobs:
                   coverageMessage = `\n> Tests are passing but the coverage percentage **is decreased** 😱 by this pull request, read coverage report below for more details.\n\n🔻 ${pullRequest.base.ref}: **${Math.round(baseAvgPercentage, -1)}%** | ${BRANCH_NAME}: **${Math.round(headAvgPercentage, -1)}%** 🔻`
                 }
 
-                console.log("coverage message: ", coverageMessage)
-
                 let coverageSummaryTable = `
             \`\`\`diff
             @@                             Coverage Summary                          @@
@@ -176,8 +164,6 @@ jobs:
                 coverageSummaryTable += `| Lines        |     ${ baseResult ? baseTotals.lines.pct.toString() + "%" : "   -  " }      |      ${headTotals.lines.pct}%      |       ${headTotals.lines.covered}/${headTotals.lines.total}     |`
 
                 coverageSummaryTable += `\n  -------------------------------------------------------------------------\n\`\`\``
-
-                console.log("coverage table: ", coverageSummaryTable)
                 
 
                 const commentBody = `## 🔖 Coverage Report
