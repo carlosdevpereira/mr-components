@@ -65,7 +65,7 @@ jobs:
                 } else {
                   console.log(error)
                   console.warn("Cloudflare pages request failed. Retrying...")
-                  await new Promise(resolve => setTimeout(resolve, 1500));
+                  await new Promise(resolve => setTimeout(resolve, 2000));
                   return await getCoverageSummary(reportUrl, { retryCount: retryCount - 1 })
                 }
               }
@@ -81,7 +81,7 @@ jobs:
                 } else {
                   console.log(error)
                   console.warn("Cloudflare pages request failed. Retrying...")
-                  await new Promise(resolve => setTimeout(resolve, 1500));
+                  await new Promise(resolve => setTimeout(resolve, 2000));
                   return await getCoverageSummary(reportUrl, { retryCount: retryCount - 1 })
                 }
               }
