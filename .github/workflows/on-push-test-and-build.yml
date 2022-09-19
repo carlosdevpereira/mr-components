@@ -21,10 +21,7 @@ jobs:
       - name: Execute unit tests 🧪
         id: tests
         run: |
-          // Runs unit tests, generating the coverage report in HTML and
-          // saves the output as JSON for more in-depth details about the tests
-          // that ran in this execution
-          echo $(./node_modules/jest/bin/jest.js --no-cache --detectOpenHandles --coverage --json) > coverage/test-results.json
+          echo $(./node_modules/jest/bin/jest.js --no-cache --detectOpenHandles --coverage --json) > ./coverage/test-results.json
 
       - name: Compute short commit hashes
         id: sha_shorts
