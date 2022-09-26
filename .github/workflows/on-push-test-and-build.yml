@@ -19,7 +19,7 @@ jobs:
         run: npm ci
 
       - name: Test & Publish to Cloudflare 🧪
-        uses: carlosdevpereira/test-publish-to-cloudflare@v0.1.2-rc
+        uses: carlosdevpereira/test-publish-to-cloudflare@v0.1.3-rc
         with:
           framework: jest
           githubToken: ${{ secrets.GITHUB_TOKEN }}
