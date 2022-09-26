@@ -21,6 +21,7 @@ jobs:
       - name: Test & Publish to Cloudflare 🧪
         uses: carlosdevpereira/test-publish-to-cloudflare@v0.1.4-rc
         with:
+          framework: jest
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           cloudflareProjectName: mr-components-coverage
           cloudflareApiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
