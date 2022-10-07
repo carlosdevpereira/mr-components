@@ -19,7 +19,7 @@ jobs:
         run: npm ci
 
       - name: Test & Publish to Cloudflare 🧪
-        uses: carlosdevpereira/test-publish-to-cloudflare@v1.1.12-rc
+        uses: carlosdevpereira/test-publish-to-cloudflare@v1.1.13-rc
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           branchName: ${{ github.ref_name }}
