@@ -1,5 +1,93 @@
 # Changelog
 
+## [1.11.0](https://github.com/carlosdevpereira/mr-components/compare/v1.10.0...v1.11.0) (2022-10-12)
+
+
+### ✨ Features
+
+* publish code coverage to pages ([#414](https://github.com/carlosdevpereira/mr-components/issues/414)) ([6e6b44f](https://github.com/carlosdevpereira/mr-components/commit/6e6b44fe5dd274c68c453bd081572c5515063283))
+* use published action ([56629eb](https://github.com/carlosdevpereira/mr-components/commit/56629ebd3f04019953b2679131d7c411bafc6b7f))
+
+
+### 🚨 Bug Fixes
+
+* add framework ([55cb66a](https://github.com/carlosdevpereira/mr-components/commit/55cb66a36ab03680822e54510c9d029a6afa0857))
+
+
+### 👷 Maintenance
+
+* bump action version ([39166c8](https://github.com/carlosdevpereira/mr-components/commit/39166c8370826a5a60353c4f713ce728d504baa0))
+* bump action version ([cfc4121](https://github.com/carlosdevpereira/mr-components/commit/cfc4121afeb23b0a8a78cd9ef335af55f175ebf9))
+* bump action version ([8c11e41](https://github.com/carlosdevpereira/mr-components/commit/8c11e41317e15c786b2a74a15acd9becd79cfdc7))
+* bump action version ([2bf0de8](https://github.com/carlosdevpereira/mr-components/commit/2bf0de824b541124ea1d53c1b6eb9f7d88508a5d))
+* bump action version ([8c4f42a](https://github.com/carlosdevpereira/mr-components/commit/8c4f42a1b0cb803e2070652d0c81024cf275011c))
+* bump action version ([3f57dfe](https://github.com/carlosdevpereira/mr-components/commit/3f57dfed0fb460ad1ae10d6b06e37654cdef2a22))
+* bump action version ([23d99ea](https://github.com/carlosdevpereira/mr-components/commit/23d99ea14186c696da6c33695bded430c2ec90b6))
+* bump action version ([914d9f0](https://github.com/carlosdevpereira/mr-components/commit/914d9f0cfed0b936e0f2eba4aa73e3f2bd8d980b))
+* bump action version ([1ce96a5](https://github.com/carlosdevpereira/mr-components/commit/1ce96a5c7c35a015e506b9a392dda4b5a437b982))
+* bump action version ([4bb91df](https://github.com/carlosdevpereira/mr-components/commit/4bb91df7dfcf5b28f4a49eac041ec6602f53ae46))
+* bump action version ([b76507f](https://github.com/carlosdevpereira/mr-components/commit/b76507f2932d6e484a5bd3ee86446f3277fdaf9c))
+* bump action version ([a8ee7d5](https://github.com/carlosdevpereira/mr-components/commit/a8ee7d590b3d340574bf3cfb150dfff9ffabf1ae))
+* bump action version ([fa12b24](https://github.com/carlosdevpereira/mr-components/commit/fa12b244c68e8fb63740193f50519ba192ae8665))
+* bump action version ([38c8b12](https://github.com/carlosdevpereira/mr-components/commit/38c8b128d95292b93c4fbdbfc9816aeec2e33347))
+* bump action version ([05ce617](https://github.com/carlosdevpereira/mr-components/commit/05ce6176d14f582a143b0c9e3b5ff0f0dc209188))
+* bump action version ([b749f79](https://github.com/carlosdevpereira/mr-components/commit/b749f7928a162482220ba195e6d8d78d97e77d99))
+* bump action version ([6ac5d9f](https://github.com/carlosdevpereira/mr-components/commit/6ac5d9facac38c64d629f00df392281b9510eec8))
+* bump action version ([9c452eb](https://github.com/carlosdevpereira/mr-components/commit/9c452eb1472d8defbdeeb6e7245ecbf53c719238))
+* **deps-dev:** bump @babel/core from 7.18.10 to 7.18.13 ([#400](https://github.com/carlosdevpereira/mr-components/issues/400)) ([efa62b7](https://github.com/carlosdevpereira/mr-components/commit/efa62b75b4ab657acf6f6508408d4184525795e0))
+* **deps-dev:** bump @iconify/json from 2.1.93 to 2.1.95 ([#387](https://github.com/carlosdevpereira/mr-components/issues/387)) ([e0a7220](https://github.com/carlosdevpereira/mr-components/commit/e0a7220a7fe371543dafda84cd6a2d0e143c72c0))
+* **deps-dev:** bump @iconify/json from 2.1.95 to 2.1.96 ([#395](https://github.com/carlosdevpereira/mr-components/issues/395)) ([a02f701](https://github.com/carlosdevpereira/mr-components/commit/a02f701d98c1e5356710a9f908750e1668705a8b))
+* **deps-dev:** bump @types/node from 18.7.6 to 18.7.9 ([#394](https://github.com/carlosdevpereira/mr-components/issues/394)) ([3c25e8e](https://github.com/carlosdevpereira/mr-components/commit/3c25e8e98772191c36eadb256e6f77350f07a8de))
+* **deps-dev:** bump @types/node from 18.7.9 to 18.7.11 ([#397](https://github.com/carlosdevpereira/mr-components/issues/397)) ([d7441a1](https://github.com/carlosdevpereira/mr-components/commit/d7441a19fffc5e0cbaea3f218ec00c63bfe21e57))
+* **deps-dev:** bump @unocss/preset-web-fonts from 0.45.7 to 0.45.8 ([#386](https://github.com/carlosdevpereira/mr-components/issues/386)) ([9d8ee42](https://github.com/carlosdevpereira/mr-components/commit/9d8ee42468ece26cc0d8e574058d9a1f340aed74))
+* **deps-dev:** bump @unocss/preset-web-fonts from 0.45.8 to 0.45.12 ([#392](https://github.com/carlosdevpereira/mr-components/issues/392)) ([945667f](https://github.com/carlosdevpereira/mr-components/commit/945667f9125db591e38f1800e54f4be477b6095f))
+* **deps-dev:** bump @vuepress/plugin-search from 2.0.0-beta.49 to 2.0.0-beta.50 ([#401](https://github.com/carlosdevpereira/mr-components/issues/401)) ([79cd412](https://github.com/carlosdevpereira/mr-components/commit/79cd412aac02c0a12fb9798a867a91a0e441241c))
+* **deps-dev:** bump sass from 1.54.4 to 1.54.5 ([#393](https://github.com/carlosdevpereira/mr-components/issues/393)) ([51481d9](https://github.com/carlosdevpereira/mr-components/commit/51481d9a9f8bf9327e8c01c744756ba97556670b))
+* **deps-dev:** bump stylelint from 14.10.0 to 14.11.0 ([#391](https://github.com/carlosdevpereira/mr-components/issues/391)) ([f8ed880](https://github.com/carlosdevpereira/mr-components/commit/f8ed880258ed66e9bf2ffc6f43a7c3654d904524))
+* **deps-dev:** bump vue-router from 4.1.3 to 4.1.4 ([#396](https://github.com/carlosdevpereira/mr-components/issues/396)) ([81efa75](https://github.com/carlosdevpereira/mr-components/commit/81efa7560fa9ecaeec8a16b242de031e47b4afcc))
+* **deps:** bump gsap from 3.10.4 to 3.11.0 ([#389](https://github.com/carlosdevpereira/mr-components/issues/389)) ([e7b3517](https://github.com/carlosdevpereira/mr-components/commit/e7b351741c3125100a6651ad889d3d6d4d4547d7))
+* **deps:** bump vest from 4.6.4 to 4.6.5 ([#402](https://github.com/carlosdevpereira/mr-components/issues/402)) ([89451d3](https://github.com/carlosdevpereira/mr-components/commit/89451d315c555495a3ca7d587e157793d6f6f0a0))
+* remove coverage logs ([#416](https://github.com/carlosdevpereira/mr-components/issues/416)) ([85446df](https://github.com/carlosdevpereira/mr-components/commit/85446dfeda125e4948e25b9b0c594d6e6a3be12a))
+* update action ([27503ee](https://github.com/carlosdevpereira/mr-components/commit/27503eec9fccd415a385ed3055a80bb7780a7dd9))
+* update action ([907d668](https://github.com/carlosdevpereira/mr-components/commit/907d6686bb1a77b6d9592286084c79934a89f00a))
+* update action version ([bbcf03c](https://github.com/carlosdevpereira/mr-components/commit/bbcf03ce5e72406a6efdef91424d9e6e54e3bc95))
+* update action version ([98dc7ae](https://github.com/carlosdevpereira/mr-components/commit/98dc7aefcf70b155e447ac8170aef19873c77410))
+* update action version ([a9e598e](https://github.com/carlosdevpereira/mr-components/commit/a9e598e08923c60c836e6ae068834354aed251ee))
+* update action version ([ee8c1e2](https://github.com/carlosdevpereira/mr-components/commit/ee8c1e2fb6924822342271610b946628a04e92a4))
+* update action version ([156d5b1](https://github.com/carlosdevpereira/mr-components/commit/156d5b1fd7a2b4c37cddd0b1c6b60ac5d3ab2bf4))
+* update action version ([84699e4](https://github.com/carlosdevpereira/mr-components/commit/84699e4515fd4c41a1a293cd10d4a0f6ee379a76))
+* update action version ([38e4356](https://github.com/carlosdevpereira/mr-components/commit/38e4356abc29649177621f241b85840d66a159de))
+* update action version ([244c886](https://github.com/carlosdevpereira/mr-components/commit/244c886057c66cf19858a64df56f7027d3b256fb))
+* update action version ([affebb2](https://github.com/carlosdevpereira/mr-components/commit/affebb27499e7b659740a3e786154bc764ca5e6a))
+* update action version ([411f6fc](https://github.com/carlosdevpereira/mr-components/commit/411f6fc033d496459b826c2ef17749ef45a25c5e))
+* update action version ([95fc4e5](https://github.com/carlosdevpereira/mr-components/commit/95fc4e5a3ff7574f1c892a10548b91f5b64252ba))
+* upgrade action version ([9039429](https://github.com/carlosdevpereira/mr-components/commit/90394292ad354c1b3efea86a2329f55f1b93bf46))
+* upgrade action version ([2085b4a](https://github.com/carlosdevpereira/mr-components/commit/2085b4a8bc33506ba198d1b7045b023f75343434))
+* upgrade action version ([284eaf1](https://github.com/carlosdevpereira/mr-components/commit/284eaf1f0bb345fc201405d9034a9a7752f26d9c))
+* upgrade action version ([c0a82e6](https://github.com/carlosdevpereira/mr-components/commit/c0a82e622bc338b5f0a1637cf21124c2982db4fa))
+* upgrade action version ([87aa1cc](https://github.com/carlosdevpereira/mr-components/commit/87aa1cca178ffc87a3e215b29d0a10e694013c25))
+* upgrade action version ([e458700](https://github.com/carlosdevpereira/mr-components/commit/e4587005df8b5519b6ad55afb715cdcb4b345abb))
+* upgrade action version ([b05906a](https://github.com/carlosdevpereira/mr-components/commit/b05906a58f4de231d87d48f96be10a775c6a5cd9))
+* upgrade action version ([e0ebc85](https://github.com/carlosdevpereira/mr-components/commit/e0ebc85b64ec78acdaf505625aa9dcc08c1cf93e))
+* upgrade action version ([618a7bc](https://github.com/carlosdevpereira/mr-components/commit/618a7bcbc40b32f2d1bce1544be53e69cc1f2696))
+* upgrade action version ([70d0f3b](https://github.com/carlosdevpereira/mr-components/commit/70d0f3bb0d4cb24a3fc588cfe54ef81365c7b3be))
+* upgrade action version ([22246f7](https://github.com/carlosdevpereira/mr-components/commit/22246f7c8ad6b7d225cbe204bbc295919e0da70e))
+* upgrade action version ([9d6879c](https://github.com/carlosdevpereira/mr-components/commit/9d6879c6a762c43a363a819c3b660eead20ea3f1))
+* upgrade action version ([d1d029a](https://github.com/carlosdevpereira/mr-components/commit/d1d029a3a806397812def0082df857c5c2504e4a))
+* upgrade action version ([9c54162](https://github.com/carlosdevpereira/mr-components/commit/9c54162e4c26072cb7249fdafc7506d446c95c15))
+* upgrade action version ([3e31c76](https://github.com/carlosdevpereira/mr-components/commit/3e31c76b6f51b1fbf3a650a9dd1327b4f4143e73))
+* upgrade action version ([c1d7323](https://github.com/carlosdevpereira/mr-components/commit/c1d73232ed478dbe64b1187c4f48dcedaf0b995e))
+* upgrade action version ([0ee628b](https://github.com/carlosdevpereira/mr-components/commit/0ee628b53c61db51be9e4dfd25d23d13727ed282))
+* upgrade action version ([104dd6c](https://github.com/carlosdevpereira/mr-components/commit/104dd6cc460e7663d1181c19225d1498531b941f))
+* upgrade action version ([4f7eed6](https://github.com/carlosdevpereira/mr-components/commit/4f7eed6f2f5eea67ee0a5fb5bbaefb015564eb3c))
+* upgrade action version ([6240fa1](https://github.com/carlosdevpereira/mr-components/commit/6240fa1a0f52d1c69e65e3f2648c36ed2ee1d5f5))
+* upgrade action version ([247ad82](https://github.com/carlosdevpereira/mr-components/commit/247ad821d745d9fa9f41238db55632d01960e65a))
+* upgrade action version ([ba128d7](https://github.com/carlosdevpereira/mr-components/commit/ba128d7bd7cb417ca8baab6ed9047636a67df98d))
+* upgrade action version ([dacdd77](https://github.com/carlosdevpereira/mr-components/commit/dacdd77653263036ed7df36999c8ecdfeefac3ea))
+* upgrade action version ([b737779](https://github.com/carlosdevpereira/mr-components/commit/b737779336a76d5ad61fe0f9fc40823cc459c095))
+* upgrade action version ([fbd04e4](https://github.com/carlosdevpereira/mr-components/commit/fbd04e43364e240f28ba99adbd1320be0705c1ff))
+* upgrade action version ([d2e7896](https://github.com/carlosdevpereira/mr-components/commit/d2e7896fe944df7d2aede6dcdc2d8a829b74460f))
+
 ## [1.10.0](https://github.com/carlosdevpereira/mr-components/compare/v1.9.2...v1.10.0) (2022-08-16)
 
 
